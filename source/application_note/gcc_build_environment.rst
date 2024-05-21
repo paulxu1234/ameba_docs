@@ -1,0 +1,955 @@
+Build Environment
+==================================
+Introduction
+------------------------
+This chapter illustrates how to build Realtek's SDK under GCC environment. It focuses on both Windows platform and Linux distribution. The build and download procedures are quite similar between Windows and Linux operating systems.
+
+- For Windows, Windows 10 64\-bit is used as a platform.
+
+- For Linux server, Ubuntu 16.04 64\-bit is used as a platform.
+
+Preparing GCC Environment
+--------------------------------------------------
+Windows
+~~~~~~~~~~~~~~
+For Windows, use MSYS2 and MinGW as the GCC environment.
+
+- MSYS2 is a collection of tools and libraries providing an easy\-to\-use environment for building, installing, and running native Windows software.
+
+- MinGW is an advancement of the original mingw.org project. It is created to support the GCC compiler on Windows system.
+
+
+The steps to prepare GCC environment are as follows:
+
+1. Download MSYS2 from its official website .
+
+2. Run the installer. MSYS2 requires 64\-bit Windows 7 or newer.
+
+3. Enter your desired \ ``Installation Folder``\ \ `` ``\ (ASCII, no accents, spaces nor symlinks, short path)
+
+4. When done, tick \ ``Run MSYS2 now``\ .
+
+
+
+5. Update the package database and base packages with:
+
+.. code::
+
+   
+   pacman -Syu
+When "Proceed with installation? [Y/n]" is displayed, type "Y" and continue until the package installation is done.
+
+
+
+.. image:: ../_static/gcc_build_environment_rst/03b36142a17d370d5dc82679a28dead21a1d5f06.png
+   :height: 44
+   :width: 144
+   :align: center
+
+
+.. note::
+   After installation of MSYS2, there will be four start modes:
+   - MSYS2 MinGW 32\-bit
+
+   - MSYS2 MinGW 64\-bit
+
+   - MSYS2 MinGW UCRT 64\-bit
+
+   - MSYS2 MSYS
+
+   Because the toolchain release will base on 64\-bit MinGW, choose \ ``MSYS2 MinGW 64\-bit``\  when starting the MinGW terminal.
+
+6. Run \ ``MSYS2 MinGW 64\-bit``\  from \ ``Start``\  menu. Update the rest of the base packages with:
+
+.. code::
+
+   
+   pacman -Syu
+When "Proceed with installation? [Y/n]" is displayed, type "Y" and continue until the package installation is done.
+
+.. image:: ../_static/gcc_build_environment_rst/570687cf2f8026e90eb349c00760d8257841d38f.png
+   :height: 395
+   :width: 579
+   :align: center
+
+
+7. Install the necessary software packages with the commands below in order:
+
+.. code::
+
+   
+   pacman –S make
+   pacman –S unzip
+   pacman –S gcc
+   pacman –S python
+   pacman –S ncurses-devel
+   pacman –S openssl-devel
+   pacman -S mingw-w64-x86_64-gcc-libs
+When "Proceed with installation? [Y/n]" is displayed, type "Y" and continue until each software package installation is done.
+
+8. Search the needed packages (used to compile TF\-M) in  and install them as you need with the commands below.
+
+.. code::
+
+   
+   pacman -S diffutils
+   pacman -S vim
+   pacman -S python-pip
+   pacman -S cmake
+   pip install Jinja2
+9. Remove the file path length limit by editing the registry to allow the file paths longer than 260 characters.
+
+   a. Press \ ``Win\+R``\  keys to open the \ ``Run``\  dialog box, then type "\ ``regedit``\ " and press \ ``Enter``\  to open the \ ``Registry Editor``\ .
+
+   b. Navigate to the registry key: \ ``Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem``\ .
+
+   c. Search and check if the "LongPathsEnabled" item exists. If not, continue to step d); otherwise, go to step e).
+
+   d. Right\-click on an empty space in the right pane, then select \ ``New > DWORD (32\-bit) Value``\ , and name it "\ ``LongPathsEnabled``\ ".
+
+   e. Double\-click on "\ ``LongPathsEnabled``\ " and set its value to 1, then click \ ``OK``\  to save.
+
+Linux
+~~~~~~~~~~
+On Linux, 32\-bit Linux is not supported because of the toolchain.
+
+
+The packages listed below should be installed for the GCC environment:
+
+- \ ``gc``\ \ ``c``\ 
+
+- \ ``lib``\ \ ``ncurses5``\ 
+
+- \ ``bash``\ 
+
+- \ ``make``\ 
+
+- \ ``libssl\-dev``\ 
+
+- \ ``bi``\ \ ``nutils``\ 
+
+- \ ``p``\ \ ``ython3``\ 
+
+
+Some of the packages above may have been pre\-installed in your operating system. You can either use package manager or type the corresponding version command on terminal to check whether these packages have already existed. If not, make them installed.
+
+
+- \ ``$``\  \ ``echo $SHELL``\ 
+
+Starting from Ubuntu 6.10, dash is used by default instead of bash. You can check by using \ ``$``\  \ ``ech``\ \ ``o $SHELL``\  command.
+
+.. image:: ../_static/gcc_build_environment_rst/8fec34465badfc6b34d0fdcc29d36ee5fb9311d6.png
+   :height: 35
+   :width: 384
+   :align: center
+
+
+To switch from dash to bash, you can use \ ``$``\ \ ``sudo dpkg\-reconfigure``\  \ ``d``\ \ ``ash``\  command and choose No.
+
+.. image:: ../_static/gcc_build_environment_rst/db5fbf215efd5d28ffe910f846b055dbcee20d7f.png
+   :height: 224
+   :width: 1241
+   :align: center
+
+
+- \ ``$``\  \ ``make \-v``\ 
+
+.. image:: ../_static/gcc_build_environment_rst/e71390dc1eb5172b2df7fa87c842a7bc8fea4e39.png
+   :height: 123
+   :width: 705
+   :align: center
+
+
+- \ ``$ sudo apt\-get install libssl\-dev``\ 
+
+.. image:: ../_static/gcc_build_environment_rst/46814da9a2a450dc380db80bdcd1ebca2020d1df.png
+   :height: 513
+   :width: 1039
+   :align: center
+
+
+- \ ``b``\ \ ``i``\ \ ``nutils``\ 
+
+Use \ ``ld \-v``\  command to check if binutils has been installed. If not, the following error may occur.
+
+.. image:: ../_static/gcc_build_environment_rst/6d675afc5542fb6e3bd158a5bd557c0972e4d854.png
+   :height: 694
+   :width: 1155
+   :align: center
+
+
+Troubleshooting
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- MSYS2 pacman is responsible for managing and installing software, which is similar to apt\-get in ubuntu. When "bash:XXX:command not found" appears, you can try instruction "pacman \-S <package_name>" to install.
+
+- For detailed information of one package, try "pacman \-Si <package_name>".
+
+- If system head files are not found when building tool, "No such file or directory" error will show up. You can try "pacman \-Fy <FILE_NAME>" to check which package is lost, and install the lost package. If too many packages are lost, look for detailed information about the packages to decide which to install.
+
+- For multi\-version python host, command "\ ``update\-alternatives \-\-install /usr/bin/python python /usr/bin/python3.``\ \ ``x``\  \ ``1``\ " can be used to select python of specific version 3.x, where x represents a desired version number.
+
+Installing Toolchain
+----------------------------------------
+Windows
+~~~~~~~~~~~~~~
+This section introduces the steps to prepare the toolchain environment.
+
+1. Acquire the zip files of <$$CHIP_NAME> toolchain from Realtek.
+
+2. Create a new directory \ ``rtk\-toolchain``\  under the path \ ``{MSYS2_path}\opt``\ .
+
+For example, if your MSYS2 installation path is as set in section 1.2.1 step (3), the \ ``rtk\-toolchain``\  should be in \ ``C:\msys64\opt``\ .
+
+.. image:: ../_static/gcc_build_environment_rst/22f030f8961c57b130296f000622620755228734.png
+   :height: 86
+   :width: 202
+   :align: center
+
+
+3. Unzip \ ``asdk\-1``\ \ ``0.``\ \ ``3.x``\ \-\ ``mingw32\-newlib\-build\-xxxx.zip``\  and place the toolchain folder \ ``asdk\-10.3.x``\  to the folder \ ``rtk\-toolchain``\  created in step (2).
+
+.. image:: ../_static/gcc_build_environment_rst/0ff7a5efd195823cafdd080ad0f2510849d9f11a.png
+   :height: 128
+   :width: 388
+   :align: center
+
+
+.. image:: ../_static/gcc_build_environment_rst/20f92e22ade6f926e5dee79c585d34a703340b4e.png
+   :height: 44
+   :width: 114
+   :align: center
+
+
+   - The unzip folders should stay the same with the figure above and do NOT change them, otherwise you need to modify the toolchain directory in makefile to customize the path.
+
+   - If an error of the toolchain, just like the log "Error: No Toolchain in /opt/rtk\-toolchain/vsdk\-10.3.1/mingw32/newlib" appears when building the project, find out if your toolchain files directory are not the same with the directory in the log. Place the toolchain files correctly and try again.
+
+Linux
+~~~~~~~~~~
+This section introduces the steps to prepare the toolchain environment.
+
+1. Acquire the zip files of <$$CHIP_NAME> toolchain from Realtek.
+
+2. Create a new directory \ ``rtk\-toolchain``\  under the path \ ``/opt``\ \ ``.``\ 
+
+.. image:: ../_static/gcc_build_environment_rst/92fe2af04ddff6b8f199fbe7bb6e6da206c76525.png
+   :height: 59
+   :width: 841
+   :align: center
+
+
+3. Unzip \ ``asdk\-10``\ \ ``.``\ \ ``3``\ \ ``.``\ \ ``x``\ \ ``\-linux\-newlib\-build\-xxxx.tar.bz2``\  to \ ``/opt/rtk\-toolchain``\  , then you can get the directory below:
+
+.. image:: ../_static/gcc_build_environment_rst/e04dbe47db18cb25c644ef8e078dbd7fef1af47d.png
+   :height: 103
+   :width: 518
+   :align: center
+
+
+.. image:: ../_static/gcc_build_environment_rst/20f92e22ade6f926e5dee79c585d34a703340b4e.png
+   :height: 44
+   :width: 114
+   :align: center
+
+
+.. note::
+   The unzip folders should stay the same with the figure above and do NOT change them, otherwise you need to modify the toolchain directory in makefile to customize the path.
+
+Configuring SDK
+------------------------------
+This section illustrates how to change SDK configurations.
+
+
+User can configure SDK options for KM0 and KM4 at the same time through \ ``$ make menuconfig``\  command.
+
+1. Switch to the directory \ ``{SDK}``\ \ ``\``\ \ ``amebadplus_gcc_project``\ 
+
+2. Run \ ``$ make menuconfig``\  command on MSYS2 MinGW 64\-bit (Windows) or terminal (Linux)
+
+.. image:: ../_static/gcc_build_environment_rst/20f92e22ade6f926e5dee79c585d34a703340b4e.png
+   :height: 44
+   :width: 114
+   :align: center
+
+
+.. note::
+   \ ``$``\  \ ``make menuconfig``\  command is only supported under \ ``{SDK}``\ \ ``\``\ \ ``amebadplus_gcc_project``\ , but not supported under other paths.
+
+
+The main configurable options are divided into four parts:
+
+- General Config: the shared kernel configurations for KM4 and KM0. The configurations will take effect in both KM4 and KM0.
+
+- Network Config: the shared kernel configurations for KM4 and KM0. The configurations will take effect in both KM4 and KM0.
+
+- KM4 Config: the exclusive kernel configurations for KM4. The configurations will take effect only in KM4 but not in KM0.
+
+- KM0 Config: the exclusive kernel configurations for KM0. The configurations will take effect only in KM0 but not in KM4.
+
+
+Figure 1\-1 is the menuconfig UI, and the options in red may be used frequently.
+
+
+
+Figure \- menuconfig UI
+
+Building Code
+--------------------------
+This section illustrates how to build SDK for both Windows and Linux. Table 1\-1 lists all the GCC project directories of SDK.
+
+Table \- GCC project directory
+
++-------------+------------------------------------------+
+| GCC project | Directory                                |
++=============+==========================================+
+| KM4         | {SDK}\amebadplus_gcc_project\project_km4 |
++-------------+------------------------------------------+
+| KM0         | {SDK}\amebadplus_gcc_project\project_km0 |
++-------------+------------------------------------------+
+
+.. image:: ../_static/gcc_build_environment_rst/20f92e22ade6f926e5dee79c585d34a703340b4e.png
+   :height: 44
+   :width: 114
+   :align: center
+
+
+.. note::
+   Replace the {SDK} with your own SDK directory.
+
+
+There are two ways to build the SDK, you can choose either of them.
+
+Build One by One
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Follow these steps to build the SDK of KM4 and KM0 project one by one:
+
+1. Use \ ``$ cd``\  command to switch to the project directories of SDK on Windows or Linux.
+
+For example, you can type \ ``$ cd``\  \ ``{``\ \ ``SDK``\ \ ``}``\ \ ``\``\ \ ``amebadplus_gcc_project``\ \ ``\``\ \ ``project_``\ \ ``km``\ \ ``4``\  to switch to the KM4 project, the same operation for the KM0 project.
+
+2. Build SDK under the KM0 or KM4 project directory on Windows or Linux.
+
+   - For normal image, simply use \ ``$ make all``\  command to build SDK.
+
+   - For MP image, refer to Section \ ``错误``\ \ ``!``\ \ ``未找到引用源。``\  to build SDK.
+
+3. Check the command execution results. If somehow failed, type \ ``$ make clean``\  to clean and then redo the make procedure.
+
+   - For KM4 project, if the terminal contains “target_img2.axf” and “Image manipulating end” message (see Figure 1\-2), it means that KM4 images have been built successfully. You can find them under \ ``\``\ \ ``amebadplus_gcc_project``\ \ ``\``\ \ ``project_km4``\ \ ``\``\ \ ``asdk``\ \ ``\``\ \ ``image``\ , as shown in Figure 1\-3.
+
+   - For KM0 project, if the terminal contains “target_img2.axf” and “Image manipulating end” message (see Figure 1\-4), it means that KM0 image has been built successfully. You can find it under \ ``\``\ \ ``amebadplus_gcc_project``\ \ ``\``\ \ ``project_km0``\ \ ``\``\ \ ``asdk``\ \ ``\``\ \ ``image``\ , as shown in Figure 1\-5.
+
+.. image:: ../_static/gcc_build_environment_rst/de6ff35ea78866f121782953644dfaaaddb070d9.png
+   :height: 527
+   :width: 1373
+   :align: center
+
+
+Figure \- KM4 project make all
+
+.. image:: ../_static/gcc_build_environment_rst/600cf88515837e768418cb60c3901eba302ff2bd.png
+   :height: 527
+   :width: 457
+   :align: center
+
+
+Figure \- KM4 image generation
+
+.. image:: ../_static/gcc_build_environment_rst/4c521532fcd62d43810f56398086be334a66be52.png
+   :height: 527
+   :width: 1364
+   :align: center
+
+
+Figure \- KM0 project make all
+
+.. image:: ../_static/gcc_build_environment_rst/12d2d05411c2875752bcad6da0df243f6ed968ba.png
+   :height: 397
+   :width: 609
+   :align: center
+
+
+Figure \- KM0 image generation
+
+Build Together
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In order to improve the efficiency of building SDK, you can also execute \ ``$ make all``\  command once under \ ``\``\ \ ``amebadplus_gcc_project``\ , instead of executing \ ``$ make all``\  command separately under the KM0 project and KM4 project.
+
+- If the terminal contains “target_img2.axf” and “Image manipulating end” message (see Figure 1\-6), it means that all the images have been built successfully. The image files are generated under \ ``\``\ \ ``amebadplus_gcc_project``\ , as shown in Figure 1\-7. You can also find them under \ ``\``\ \ ``amebadplus_gcc_project``\ \ ``\``\ \ ``project_km0``\ \ ``\``\ \ ``asdk``\ \ ``\``\ \ ``image``\  and \ ``\``\ \ ``amebadplus_gcc_project``\ \ ``\``\ \ ``project_km4``\ \ ``\``\ \ ``asdk``\ \ ``\``\ \ ``image``\ .
+
+- If somehow failed, type \ ``$ make clean``\  to clean and then redo the make procedure.
+
+.. image:: ../_static/gcc_build_environment_rst/2b6c497fafe1f17ab59dd26e23d468a9255e0fe3.png
+   :height: 527
+   :width: 1369
+   :align: center
+
+
+Figure \- KM4 & KM0 projects make all
+
+.. image:: ../_static/gcc_build_environment_rst/e590ac02d9dd56e8ae7d1fe0e0a96c5e0e74bf64.png
+   :height: 527
+   :width: 485
+   :align: center
+
+
+Figure \- KM4 & KM0 image generation
+
+.. image:: ../_static/gcc_build_environment_rst/20f92e22ade6f926e5dee79c585d34a703340b4e.png
+   :height: 44
+   :width: 114
+   :align: center
+
+
+.. note::
+   If you want to search some .map files for debugging, get them under the directory \ ``{SDK}``\ \ ``\``\ \ ``amebadplus_gcc_project``\ \ ``\``\ \ ``project_km0``\ \ ``\``\  \ ``asdk``\ \ ``\``\ \ ``image``\  or \ ``{SDK}``\ \ ``\``\ \ ``amebadplus_gcc_project``\ \ ``\``\ \ ``project_km4``\ \ ``\``\ \ ``asdk``\ \ ``\``\ \ ``image``\ , but not \ ``{SDK}``\ \ ``\``\ \ ``amebadplus_gcc_project``\ .
+
+Setting Debugger
+--------------------------------
+Probe <internal>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+RLX Probe debugger (Probe) is an in\-house ICE solution to debug CPU. The <$$CHIP_NAME> device board supports Probe. We can use Probe to download the software and enter GBD debugger mode under GCC environment. For Windows and Linux server, the operations are the same.
+
+
+1. Install Probe driver
+
+Before using the Probe, install its driver correctly.
+
+   - Location: \ ``{SDK}``\ \ ``\``\ \ ``tools``\ \ ``\``\ \ ``probe``\ 
+
+   - Driver: \ ``RLX_Probe_Driver_2.3.1``\ \ ``4``\ \ ``p``\ \ ``6``\ \ ``_Setup.exe``\ 
+
+2. Refer to Figure 1\-8 to connect Probe debugger to the SWD of <$$CHIP_NAME>, that is, connect TCK pin of Probe to SWD CLK pin of <$$CHIP_NAME>, and TMS pin of Probe to SWD DATA pin of <$$CHIP_NAME>. What's more, a common ground is needed between Probe Board and Device Board.
+
+
+
+Figure \- Wiring diagram of connecting Probe to SWD
+
+KM4 Setup
+******************
+1. Execute the \ ``cm4``\ \ ``_``\ \ ``RTL``\ _\ ``Probe``\ \ ``.bat``\ 
+
+Execute the \ ``cm4``\ _\ ``RTL_Probe``\ \ ``.bat``\ \ `` ``\ under \ ``\``\ \ ``amebadplus_gcc_project``\ \ ``\``\ \ ``utils``\ \ ``\``\ \ ``jl``\ \ ``ink_script``\ . The started Probe server looks like Figure 1\-9. This window should NOT be closed if you want to enter debug mode.
+
+.. image:: ../_static/gcc_build_environment_rst/20f92e22ade6f926e5dee79c585d34a703340b4e.png
+   :height: 44
+   :width: 114
+   :align: center
+
+
+.. note::
+   The default path of Probe driver in RTL_Probe_cm4.bat file is C:\RLX\PROBE\rlx_probe_driver.exe, you may have to change the path according to your own settings.
+
+.. image:: ../_static/gcc_build_environment_rst/2484831eaddc35fb96a02fdfd6b15850aed8256d.png
+   :height: 995
+   :width: 1522
+   :align: center
+
+
+Figure \- KM4 Probe server connection under Windows
+
+2. Setup Probe for KM4
+
+   a. Change directory to project_hp.
+
+   b. On the MSYS2 terminal, type $ \ ``make setup GDB_SERVER\=``\ \ ``probe``\ \ `` ``\ command to select Probe debugger, as Figure 1\-10 shows.
+
+.. image:: ../_static/gcc_build_environment_rst/f70edcf4a31f1be6787196496d025d68f4bc84a0.png
+   :height: 374
+   :width: 1247
+   :align: center
+
+
+Figure \- KM4 Probe setup under Windows
+
+KM0 \+ KM4 Setup
+******************************
+1. Execute the \ ``RTL_Probe_cm0``\ \ ``.bat``\ \ ``（这个文件找不到，所以不知道这一节的操作是否还需要``\ \ ``，或者已变更``\ \ ``）``\ 
+
+Execute the RTL_Probe_cm0.bat under \amebadplus_gcc_project\utils\jlink_script. This operation will connect the Probe to both KM0 and KM4.
+
+.. image:: ../_static/gcc_build_environment_rst/20f92e22ade6f926e5dee79c585d34a703340b4e.png
+   :height: 44
+   :width: 114
+   :align: center
+
+
+.. note::
+   Connect to target KM0 with port 2331, and KM4 with port 2335.
+
+
+The started Probe server looks like Figure 1\-11. This window should NOT be closed if you want to download the image or enter debug mode.
+
+.. image:: ../_static/gcc_build_environment_rst/61e38375cf378beddcbf59164b47b0deba89db40.png
+   :height: 1001
+   :width: 1011
+   :align: center
+
+
+Figure \- KM0 Probe server connection under Windows
+
+2. Setup Probe for KM0
+
+On the MSYS2 terminal, type \ ``$ make setup GDB_SERVER\=``\ \ ``probe``\ \ `` ``\ command to select Probe debugger, as Figure 1\-12 shows.
+
+.. image:: ../_static/gcc_build_environment_rst/d5fe2324d384d2773cb3c71fa1a8bc61dd1e12f7.png
+   :height: 310
+   :width: 1347
+   :align: center
+
+
+Figure \- KM0 Probe setup under Windows
+
+J\-Link
+~~~~~~~~~~~~
+The <$$CHIP_NAME> supports J\-Link debugger. Before setting J\-Link debugger, you need to do some hardware configuration and download images to the <$$CHIP_NAME> device first.
+
+1. Connect J\-Link to the SWD of <$$CHIP_NAME>.
+
+   a. Refer to Figure 1\-13 to connect SWCLK pin of J\-Link to SWD CLK pin of <$$CHIP_NAME>, and SWDIO pin of J\-Link to SWD DATA pin of <$$CHIP_NAME>.
+
+   b. Connect the <$$CHIP_NAME> device to PC after finishing these configurations.
+
+
+
+Figure \- Wiring diagram of connecting J\-Link to SWD
+
+.. image:: ../_static/gcc_build_environment_rst/20f92e22ade6f926e5dee79c585d34a703340b4e.png
+   :height: 44
+   :width: 114
+   :align: center
+
+
+.. note::
+   For <$$CHIP_NAME>, the J\-Link version must be v9 or higher. If Virtual Machine (VM) is used as your platform, make sure that the USB connection setting between VM host and client is correct, so that the VM host can detect the device.
+
+2. Download images to the <$$CHIP_NAME> device via ImageTool.
+
+ImageTool is a software tool provided by Realtek. For more information, refer to \ ``错误``\ \ ``!``\ \ ``未找到引用源。``\ .
+
+Windows
+**************
+Besides the hardware configuration, J\-Link GDB server is also required to install.
+
+
+For Windows, click  and download the software in "J\-Link Software and Documentation Pack", then install it correctly.
+
+.. image:: ../_static/gcc_build_environment_rst/20f92e22ade6f926e5dee79c585d34a703340b4e.png
+   :height: 44
+   :width: 114
+   :align: center
+
+
+.. note::
+   The version of J\-Link GDB server below is just an example, you can select the latest version to download.
+
+KM4 Setup
+++++++++++++++++++
+1. Execute the \ ``cm4_jlink.bat``\ 
+
+Double\-click the\ `` ``\ \ ``cm4_jlink.bat``\ \ `` ``\ under\ `` ``\ \ ``{SDK}``\ \ ``\``\ \ ``amebadplus_gcc_project``\ \ ``\``\ \ ``utils``\ \ ``\``\ \ ``jlink_script``\ . You may have to change the path of JLinkGDBServer.exe and JLink.exe in the \ ``cm4_jlink.ba``\ \ ``t``\  script according to your own settings.
+
+
+The started J\-Link GDB server looks like Figure 1\-14. This window should NOT be closed if you want to download the image or enter debug mode.
+
+.. image:: ../_static/gcc_build_environment_rst/6a31598acac3832c2b8f68f873f6fa0b6a4c02f8.png
+   :height: 44
+   :width: 144
+   :align: center
+
+
+.. note::
+   Keep this window active to download the images to target.
+
+.. image:: ../_static/gcc_build_environment_rst/530288efba004fd02c2840bd74ef68df7d18a6b9.png
+   :height: 438
+   :width: 631
+   :align: center
+
+
+Figure \- KM4 J\-Link GDB server connection under Windows
+
+2. Setup J\-Link for KM4
+
+   a. Change the working directory to project_km4.
+
+   b. On the MSYS2 terminal, type \ ``$ make setup GDB_SERVER\=jlink``\  command before selecting J\-Link debugger, as Figure 1\-15 shows.
+
+.. image:: ../_static/gcc_build_environment_rst/86ff2a499d3ae5112c163cbfa88952b3254ce533.png
+   :height: 328
+   :width: 716
+   :align: center
+
+
+Figure \- KM4 J\-Link setup under Windows
+
+KM0 Setup
+++++++++++++++++++
+1. Execute the \ ``cm0_jlink``\ \ ``.bat``\ 
+
+Double\-click the \ ``c``\ \ ``m0_jlink``\ \ ``.bat``\  under \ ``{SDK}``\ \ ``\``\ \ ``amebadplus_gcc_project``\ \ ``\``\ \ ``utils``\ \ ``\``\ \ ``jlink_script``\ , the same as executing the \ ``cm4_jlink.bat``\ .
+
+
+The started J\-Link GDB server looks like Figure 1\-16. This window should NOT be closed if you want to download the image or enter debug mode. Because KM4 will download all the images, you don't need to connect J\-Link to KM0 when downloading images. J\-Link can connect to KM0 when debugging.
+
+.. image:: ../_static/gcc_build_environment_rst/c7f47aa89f3e0e81009ad5b1be2713e2b3125e46.png
+   :height: 440
+   :width: 625
+   :align: center
+
+
+Figure \- KM0 J\-Link GDB server connection under Windows
+
+2. Setup J\-Link for KM0
+
+   a. Change working directory to project_km0.
+
+   b. On the Cygwin terminal, type \ ``$ make setup GDB_SERVER\=jlink``\  command to select J\-Link debugger.
+
+.. image:: ../_static/gcc_build_environment_rst/ca5ea7b14e7f9a050d5ebd859311fbd870d95679.png
+   :height: 328
+   :width: 717
+   :align: center
+
+
+Figure \- KM0 J\-Link setup under Windows
+
+Linux
+**********
+For J\-Link GDB server, click  and download the software in “J\-Link Software and Documentation Pack”. It is suggested to use Debian package manager to install the Debian version.
+
+
+Open a new terminal and type the following command to install GDB server. After the installation of the software pack, there is a tool named “JLinkGDBServer” under the J\-Link directory. Take Ubuntu 18.04 as an example, the JLinkGDBServer can be found at \ ``/opt/SEGGER/JLink``\ .
+
+.. code::
+
+   
+   $ dpkg –i jlink_6.0.7_x86_64.deb
+.. image:: ../_static/gcc_build_environment_rst/20f92e22ade6f926e5dee79c585d34a703340b4e.png
+   :height: 44
+   :width: 114
+   :align: center
+
+
+.. note::
+   The version of J\-Link GDB server below is just an example, you can select the latest version to download.
+
+KM4 Setup
+++++++++++++++++++
+1. Connect to KM4
+
+   a. Open a new terminal under directory\ `` ``\ \ ``/``\ \ ``amebadplus_gcc_project``\ \ ``/utils/jlink_script``\ .
+
+   b. Type \ ``$ /opt/SEGGER/JLink/JLinkGDBServer``\  \ ``\-select USB``\ \ `` ``\ \ ``\-``\ \ ``device``\  \ ``C``\ \ ``ortex\-``\ \ ``M``\ \ ``3``\ \ ``3 \-if SWD \-scriptfile``\  \ ``AP2_KM4.JLinkScript``\  \ ``port 2335``\ .
+
+.. image:: ../_static/gcc_build_environment_rst/3a73ffdefc959b62a5ac63904c79428981efe209.png
+   :height: 394
+   :width: 716
+   :align: center
+
+
+Figure \- KM4 J\-Link GDB server connection setting under Linux
+
+If the connection is successful, the log is shown as Figure 1\-19. This terminal should NOT be closed if you want to download software or enter GDB debugger mode.
+
+.. image:: ../_static/gcc_build_environment_rst/59dad1832b731545f9c929206bcd561972ebe31a.png
+   :height: 392
+   :width: 501
+   :align: center
+
+
+Figure \- KM4 J\-Link GDB server connection success under Linux
+
+2. Setup J\-Link for KM4
+
+   a. Open a new terminal under project_km4 folder.
+
+   b. Type \ ``$ make setup GDB_SERVER\=jlink``\  command before using J\-Link to download software or enter GDB debugger.
+
+.. image:: ../_static/gcc_build_environment_rst/58a0327b3fc8cd10f2969037fde9046de033207c.png
+   :height: 395
+   :width: 717
+   :align: center
+
+
+Figure \- KM4 J\-Link terminal setup under Linux
+
+KM0 Setup
+++++++++++++++++++
+1. Connect to KM0
+
+   a. Open a new terminal under directory \ ``/``\ \ ``amebadplus_gcc_project``\ \ ``/utils/jlink_script``\ .
+
+   b. Type \ ``$ /opt/SEGGER/JLink/``\ \ ``JLinkGDBServer \-select USB \-device Cortex\-M``\ \ ``2``\ \ ``3 \-if SWD \-scriptfile AP``\ \ ``1``\ \ ``_KM``\ \ ``0``\ \ ``.JLinkScript port 233``\ \ ``1``\ .
+
+.. image:: ../_static/gcc_build_environment_rst/ee44c486fd43a440e27ec196a1496641edff6846.png
+   :height: 381
+   :width: 716
+   :align: center
+
+
+Figure \- KM0 J\-Link connection setting under Linux
+
+If the connection is successful, the log is shown below.
+
+.. image:: ../_static/gcc_build_environment_rst/cf73ef0ffcab9249ce56be33bacf5d317500b3be.png
+   :height: 395
+   :width: 537
+   :align: center
+
+
+Figure \- KM0 J\-Link GDB server connection success under Linux
+
+2. Setup J\-Link for KM0
+
+   a. Open a new terminal under project_km0.
+
+   b. Type \ ``$ make setup GDB_SERVER\=jlink``\  command before using J\-Link to download software or enter GDB debugger.
+
+.. image:: ../_static/gcc_build_environment_rst/c9db42ae3cd7dd4af333959cf05be0aa9243a1b0.png
+   :height: 399
+   :width: 716
+   :align: center
+
+
+Figure \- KM0 J\-Link terminal setup under Linux
+
+Downloading Image to Flash
+----------------------------------------------------
+There are two ways to download image to Flash:
+
+1. Image Tool, a software provided by Realtek (recommended). For more information, refer to \ ``错误``\ \ ``!``\ \ ``未找到引用源。``\ .
+
+2. GDB Server, mainly used for GDB debug user case.
+
+
+This section illustrates the second method to download images to Flash.
+
+
+To download software into Device Board, make sure the steps mentioned in Section 1.5 are done, and then type \ ``$ make flash``\  command on MSYS2 (Windows) or terminal (Linux).
+
+
+Images are downloaded only under KM4 by this command. This command downloads the software into Flash and it will take several seconds to finish, as shown in Figure 1\-24.
+
+
+.. image:: ../_static/gcc_build_environment_rst/ce2c821e3d19d1204e359a47f589c27704981ca9.png
+   :height: 380
+   :width: 1056
+   :align: center
+
+
+.. image:: ../_static/gcc_build_environment_rst/3e27fcc724d1e62a3069c644a6aee6b1a1b2e4bf.png
+   :height: 176
+   :width: 613
+   :align: center
+
+
+Figure \- Download codes success log
+
+To check whether the image is downloaded correctly into memory, you can select "verify download" before downloading images, and during image download process, "verified OK" log will be shown.
+
+.. image:: ../_static/gcc_build_environment_rst/87c6625c823cb92441389600b0994979bc6c985d.png
+   :height: 847
+   :width: 1038
+   :align: center
+
+
+Figure \- Verify download
+
+After download is successful, press \ ``Reset``\  button and you will see that the device boots with the new image.
+
+.. image:: ../_static/gcc_build_environment_rst/20f92e22ade6f926e5dee79c585d34a703340b4e.png
+   :height: 44
+   :width: 114
+   :align: center
+
+
+.. note::
+   The command is only supported to use in KM4 project, and km4_boot_all.bin & KM0_km4_app.bin can be downloaded to Flash.
+
+<$IF internal>
+
+.. note::
+   For Probe download:
+
+   - Make chip enter download mode before downloading code into Flash.
+
+   - Probe uses USB 1.0 interface, so its download rate is limited by the USB 1.0 protocol.
+
+<$ENDIF internal>
+
+Entering Debug Mode
+--------------------------------------
+GDB Server
+~~~~~~~~~~~~~~~~~~~~
+To enter GDB debugger mode, follow the steps below:
+
+1. Make sure that the steps mentioned in Sections 1.4 to 1.6 are finished, then reset the device.
+
+2. Change directory to target project which can be project_km4 or project_km0, and type \ ``$ make debug``\  command on MSYS2 (Windows) or terminal (Linux).
+
+J\-Link
+~~~~~~~~~~~~
+Steps
+**********
+1. Press ⊞\ ``Win\+R``\  on your keyboard. Hold down the Windows key on your keyboard, and press the "R" button. This will open the "Run" tool in a new pop\-up window. Alternatively, you can find and click \ ``Run``\  on the Start menu.
+
+2. Type \ ``cmd``\  in the Run window. This shortcut will open the Command Prompt terminal.
+
+3. Click \ ``OK``\ \ `` ``\ in the Run window. This will run your shortcut command, and open the Command Prompt terminal in a new window.
+
+4. Copy the J\-Link script command below for specific target:
+
+For KM4:
+
+.. code::
+
+   
+   "{Jlink_path}\JLink.exe" -device Cortex-M33 -if SWD -speed 4000 -autoconnect 1
+For KM0: 
+
+.. code::
+
+   
+   "{Jlink_path}\JLink.exe" -device Cortex-M23 -if SWD -speed 4000 -autoconnect 1
+.. image:: ../_static/gcc_build_environment_rst/20f92e22ade6f926e5dee79c585d34a703340b4e.png
+   :height: 44
+   :width: 114
+   :align: center
+
+
+.. note::
+   The J\-Link connection command path mentioned above are:
+   - \ ``{Jlink_path}``\ : the path your Segger J\-Link installed, the default is "C:\Program Files (x86)\SEGGER\JLink".
+
+   - \ ``{``\ \ ``script path``\ \ ``}``\ : {SDK}\amebadplus_gcc_project\utils\jlink_script.
+
+
+Commands
+****************
+The following commands are often used when the program is stuck. All commands are accepted case insensitive.
+
+
++----------------+-----------------+--------------------------------------+-------------------------------------------------+
+| Command (long) | Command (short) | Syntax                               | Explanation                                     |
++================+=================+======================================+=================================================+
+| Halt           | H               |                                      | Halt CPU                                        |
++----------------+-----------------+--------------------------------------+-------------------------------------------------+
+| Go             | G               |                                      | Start CPU if halted                             |
++----------------+-----------------+--------------------------------------+-------------------------------------------------+
+| Mem            |                 | Mem <Addr> <NumBytes>                | Read memory and show corresponding ASCII values |
++----------------+-----------------+--------------------------------------+-------------------------------------------------+
+| SaveBin        |                 | SaveBin <FileName> <Addr> <NumBytes> | Save target memory range into binary file       |
++----------------+-----------------+--------------------------------------+-------------------------------------------------+
+| Exit           |                 |                                      | Close J\-Link connection and quit               |
++----------------+-----------------+--------------------------------------+-------------------------------------------------+
+
+
+For more information, you can visit .
+
+.. image:: ../_static/gcc_build_environment_rst/20f92e22ade6f926e5dee79c585d34a703340b4e.png
+   :height: 44
+   :width: 114
+   :align: center
+
+
+   - You can type "H" and "G" several times and record the PC, then look for the PC in which function in asm file. This function might be where you get stuck.
+
+   - You can also use "mem" to dump some address after "sp", from these addresses you can find the function call stack.
+
+Command Lists
+--------------------------
+The commands mentioned above are listed in Table 1\-2.
+
+Table \- Command lists
+
++-------+---------------------------------+---------------------------------------------+
+| Usage | Command                         | Description                                 |
++=======+=================================+=============================================+
+| all   | $ make all                      | Compile the project to generate ram_all.bin |
++-------+---------------------------------+---------------------------------------------+
+| setup | $ make setup GDB_SERVER\= jlink | Select GDB_SERVER                           |
++-------+---------------------------------+---------------------------------------------+
+| flash | $ make flash                    | Download ram_all.bin to Flash               |
++-------+---------------------------------+---------------------------------------------+
+| clean | $ make clean                    | Remove compile file (\*.bin, \*.o, …)       |
++-------+---------------------------------+---------------------------------------------+
+| debug | $ make debug                    | Enter debug mode                            |
++-------+---------------------------------+---------------------------------------------+
+
+GDB Debugger Basic Usage
+------------------------------------------------
+GDB, the GNU project debugger, allows you to examine the program while it executes, and it helps catch bugs. Section 1.8 has described how to enter GDB debugger mode, this section illustrates some basic usage of GDB commands. For further information about GDB debugger, click . Table 1\-3 describes commonly used instructions and their functions, and specific usage can be found in \ ``GDB User Manual``\  of website .
+
+Table \- GDB debugger command list
+
++---------------------------------+-------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Usage                           | Command     | Description                                                                                                                                                               |
++=================================+=============+===========================================================================================================================================================================+
+| Breakpoint                      | $ break     | Breakpoints are set with the break command (abbreviated b).                                                                                                               |
+|                                 |             |                                                                                                                                                                           |
+|                                 |             | The usage can be found at \ ``Setting Breakpoints``\  section.                                                                                                            |
++---------------------------------+-------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Watchpoint                      | $ watch     | You can use a watchpoint to stop execution whenever the value of an expression changes. The related commands include watch, rwatch, and awatch.                           |
+|                                 |             |                                                                                                                                                                           |
+|                                 |             | The usage of these commands can be found at \ ``Setting Watchpoints``\  section.                                                                                          |
+|                                 |             |                                                                                                                                                                           |
+|                                 |             | .. image:: ../_static/gcc_build_environment_rst/20f92e22ade6f926e5dee79c585d34a703340b4e.png                                                                              |
+|                                 |             |    :height: 44                                                                                                                                                            |
+|                                 |             |    :width: 114                                                                                                                                                            |
+|                                 |             |    :align: center                                                                                                                                                         |
+|                                 |             |                                                                                                                                                                           |
+|                                 |             |                                                                                                                                                                           |
+|                                 |             | .. note::                                                                                                                                                                 |
+|                                 |             |    Keep the range of watchpoints less than 20 bytes.                                                                                                                      |
++---------------------------------+-------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Print breakpoints & watchpoints | $ info      | To print a table of all breakpoints, watchpoints set and not deleted, use the info command. You can simply type info to know its usage.                                   |
++---------------------------------+-------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Delete breakpoints              | $ delete    | To eliminate the breakpoints, use the delete command (abbreviated d).                                                                                                     |
+|                                 |             |                                                                                                                                                                           |
+|                                 |             | The usage can be found at \ ``Deleting Breakpoints``\  section.                                                                                                           |
++---------------------------------+-------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Continue                        | $ continue  | To resume program execution, use the continue command (abbreviated c).                                                                                                    |
+|                                 |             |                                                                                                                                                                           |
+|                                 |             | The usage can be found at \ ``Continue and Stepping``\  section.                                                                                                          |
++---------------------------------+-------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Step                            | $ step      | To step into a function call, use the step command (abbreviated s). It will continue running your program until the control reaches a different source line.              |
+|                                 |             |                                                                                                                                                                           |
+|                                 |             | The usage can be found at \ ``Continue and Stepping``\  section.                                                                                                          |
++---------------------------------+-------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Next                            | $ next      | To step through the program, use the next command (abbreviated n). The execution will stop when the control reaches a different line of code at the original stack level. |
+|                                 |             |                                                                                                                                                                           |
+|                                 |             | The usage can be found at \ ``Continue and Stepping``\  section.                                                                                                          |
++---------------------------------+-------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Quit                            | $ quit      | To exit GDB debugger, use the quit command (abbreviated q), or type an end\-of\-file character (usually Ctrl\-d). The usage can be found at \ ``Quitting GDB``\  section. |
++---------------------------------+-------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Backtrace                       | $ backtrace | A backtrace is a summary of how your program got where it is. You can use backtrace command (abbreviated bt) to print a backtrace of the entire stack.                    |
+|                                 |             |                                                                                                                                                                           |
+|                                 |             | The usage can be found a \ ``Backtraces``\  section.                                                                                                                      |
++---------------------------------+-------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Print source lines              | $ list      | To print lines from a source file, use the list command (abbreviated l).                                                                                                  |
+|                                 |             |                                                                                                                                                                           |
+|                                 |             | The usage can be found at \ ``P``\ \ ``rinting Source Lines``\  section.                                                                                                  |
++---------------------------------+-------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Examine data                    | $ print     | To examine data in your program, you can use print command (abbreviated p). It evaluates and prints the value of an expression.                                           |
+|                                 |             |                                                                                                                                                                           |
+|                                 |             | The usage can be found at \ ``Examining Data``\  section.                                                                                                                 |
++---------------------------------+-------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+Q & A <internal>
+--------------------------------
+Revision History
+--------------------------------
++------------+---------+------------+------------------------------------------------------+
+| Date       | Version | Author     | Change                                               |
++============+=========+============+======================================================+
+|            |         |            |                                                      |
++------------+---------+------------+------------------------------------------------------+
+| 2023/07/07 | R003    | leann_wang | Update Figures in Linux of section 1.6.2.2           |
++------------+---------+------------+------------------------------------------------------+
+| 2023/05/31 | R002    | leann_wang | Add section 1.3 to describe how to install toolchain |
++------------+---------+------------+------------------------------------------------------+
+| 2023/05/23 | R001    | leann_wang | Draft                                                |
++------------+---------+------------+------------------------------------------------------+
+
+

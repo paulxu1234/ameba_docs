@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SDK Examples &mdash; AmebaDocs  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            AmebaDocs
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">SDK Examples</a><ul>
+<li><a class="reference internal" href="#application-example">Application Example</a></li>
+<li><a class="reference internal" href="#peripheral-example">Peripheral Example</a></li>
+<li><a class="reference internal" href="#revision-history">Revision History</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AmebaDocs</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">SDK Examples</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/application_note/sdk_example.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="sdk-examples">
+<h1>SDK Examples<a class="headerlink" href="#sdk-examples" title="Link to this heading"></a></h1>
+<p>There are two kinds of examples in the SDK of &lt;$$CHIP_NAME&gt;: application examples and peripheral examples. This chapter illustrates the contents of examples and how to build example source code. The path and description of SDK examples are listed in Table 1-1.</p>
+<p>Table 1-1 Examples in SDK</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Items</p></th>
+<th class="head"><p>Path</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Application example</p></td>
+<td><p>{SDK}componentexample</p></td>
+<td><p>xml, ssl, …</p></td>
+</tr>
+<tr class="row-odd"><td><p>Peripheral example</p></td>
+<td><p>{SDK}componentexampleperipheral</p></td>
+<td><p>ADC, UART, I2C, SPI, Timer, …</p></td>
+</tr>
+</tbody>
+</table>
+<section id="application-example">
+<h2>Application Example<a class="headerlink" href="#application-example" title="Link to this heading"></a></h2>
+<p>In each folder of application example, there are C source files, header files and README.txt. You should check for detailed configurations of the example according to README.txt.</p>
+<a class="reference internal image-reference" href="../_images/20f92e22ade6f926e5dee79c585d34a703340b4e1.png"><img alt="../_images/20f92e22ade6f926e5dee79c585d34a703340b4e1.png" class="align-center" src="../_images/20f92e22ade6f926e5dee79c585d34a703340b4e1.png" style="width: 114px; height: 44px;" /></a>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The application examples are shared by all Realtek SoC, so you need to refer to README.txt for detailed information of &lt;$$CHIP_NAME&gt;.</p>
+</div>
+<p>The application examples normally run on KM4. The entry function of application example is app_example() in <code class="docutils literal notranslate"><span class="pre">main.c</span></code> under <code class="docutils literal notranslate"><span class="pre">{SDK}</span></code><code class="docutils literal notranslate"><span class="pre">\</span></code> <code class="docutils literal notranslate"><span class="pre">amebadplus_gcc_project</span></code><code class="docutils literal notranslate"><span class="pre">\</span></code><code class="docutils literal notranslate"><span class="pre">project_km4</span></code><code class="docutils literal notranslate"><span class="pre">\</span></code><code class="docutils literal notranslate"><span class="pre">src</span></code>. Each application example has its own app_example(), and the app_example() in <code class="docutils literal notranslate"><span class="pre">main.c</span></code> will be replaced automatically when the application example is built.</p>
+<a class="reference internal image-reference" href="../_images/25a5147b5a9e3fc69169961460ab167ab5b68b20.png"><img alt="../_images/25a5147b5a9e3fc69169961460ab167ab5b68b20.png" class="align-center" src="../_images/25a5147b5a9e3fc69169961460ab167ab5b68b20.png" style="width: 241px; height: 151px;" /></a>
+<p>Figure 1-2 Entry function of application example</p>
+<p>To run application example, you only need to:</p>
+<ol class="arabic simple">
+<li><p>Check software and hardware settings in README.txt of the example.</p></li>
+<li><p>Add compile options “<code class="docutils literal notranslate"><span class="pre">EXAMPLE</span></code><code class="docutils literal notranslate"><span class="pre">\=</span></code><code class="docutils literal notranslate"><span class="pre">{</span></code><code class="docutils literal notranslate"><span class="pre">example</span></code>`` <code class="docutils literal notranslate"><span class="pre">\</span> <span class="pre">\</span> <span class="pre">``folder</span></code> <code class="docutils literal notranslate"><span class="pre">name}</span></code>“ when building the project, and replace <code class="docutils literal notranslate"><span class="pre">{example</span></code> <code class="docutils literal notranslate"><span class="pre">folder</span></code> <code class="docutils literal notranslate"><span class="pre">name}</span></code> with the specific folder name of this example.</p></li>
+</ol>
+<p>For example, if you want to build xml example to start an xml example thread, you need to set the macro in SDK according to README.txt in <code class="docutils literal notranslate"><span class="pre">{SDK}</span></code><code class="docutils literal notranslate"><span class="pre">\component\example\</span></code><code class="docutils literal notranslate"><span class="pre">x</span></code><code class="docutils literal notranslate"><span class="pre">ml</span></code>. Then enter “<code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">EXAM</span></code><code class="docutils literal notranslate"><span class="pre">PLE\=</span></code><code class="docutils literal notranslate"><span class="pre">xml</span></code>“ for KM4 on MSYS2 MinGW 64-bit (Windows) or terminal (Linux).</p>
+<a class="reference internal image-reference" href="../_images/5609433edd23d6866671138b31d8ba392edfc78f.png"><img alt="../_images/5609433edd23d6866671138b31d8ba392edfc78f.png" class="align-center" src="../_images/5609433edd23d6866671138b31d8ba392edfc78f.png" style="width: 894px; height: 414px;" /></a>
+<p>Figure 1-3 Building XML application example</p>
+</section>
+<section id="peripheral-example">
+<h2>Peripheral Example<a class="headerlink" href="#peripheral-example" title="Link to this heading"></a></h2>
+<p>The peripheral examples are demos of peripherals. Most examples consist of raw and mbed folders, you can choose raw or mbed demos as you like.</p>
+<p>Table 1-2 Comparison of raw and mbed examples</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Items</p></th>
+<th class="head"><p>Path</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>mbed</p></td>
+<td><p>{SDK}componentexampleperipheral{peripheral}mbed</p></td>
+<td><p>mbed APIs are used.</p></td>
+</tr>
+<tr class="row-odd"><td><p>raw</p></td>
+<td><p>{SDK}componentexampleperipheral{peripheral}raw</p></td>
+<td><p>Low-level driver APIs are used.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Each example folder has main.c and README.txt. There are example descriptions, required components, HW connection and expected behavior in README.txt.</p>
+<p>The peripheral examples normally run on KM4. To run peripheral examples, you only need to:</p>
+<ol class="arabic simple">
+<li><p>Check software and hardware settings in README.txt of the example.</p></li>
+<li><p>Replace the original <code class="docutils literal notranslate"><span class="pre">main.c</span></code> under <code class="docutils literal notranslate"><span class="pre">{SDK}</span></code><code class="docutils literal notranslate"><span class="pre">\</span></code><code class="docutils literal notranslate"><span class="pre">amebadplus_gcc_project</span></code><code class="docutils literal notranslate"><span class="pre">\</span></code><code class="docutils literal notranslate"><span class="pre">project_km4\</span></code><code class="docutils literal notranslate"><span class="pre">src</span></code> with <code class="docutils literal notranslate"><span class="pre">main.c</span></code> in the example directory.</p></li>
+<li><p>(Optional) Copy other header files that are depicted in the README.txt to <code class="docutils literal notranslate"><span class="pre">{SDK}\</span></code><code class="docutils literal notranslate"><span class="pre">amebadplus_gcc_project</span></code><code class="docutils literal notranslate"><span class="pre">\project_km4\</span></code><code class="docutils literal notranslate"><span class="pre">src</span></code> if needed.</p></li>
+<li><p>Re-build the project by command “<code class="docutils literal notranslate"><span class="pre">make</span></code>“.</p></li>
+</ol>
+</section>
+<section id="revision-history">
+<h2>Revision History<a class="headerlink" href="#revision-history" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Date</p></th>
+<th class="head"><p>Revision</p></th>
+<th class="head"><p>Author</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>2023/05/25</p></td>
+<td><p>R001</p></td>
+<td><p>leann_wang</p></td>
+<td><p>Draft</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, claire_wang.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
