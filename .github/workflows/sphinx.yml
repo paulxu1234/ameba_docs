@@ -44,7 +44,7 @@ jobs:
 
       run: |
      
-        make html
+        make
 
       working-directory: ./source/application_note  # 假设文档在docs目录下
  
