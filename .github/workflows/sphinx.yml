@@ -46,7 +46,7 @@ jobs:
         pwd
         make html
 
-      working-directory: ./source/application_note  # 假设文档在docs目录下
+      working-directory: .
  
     - name: Deploy to GitHub Pages
 
@@ -56,4 +56,4 @@ jobs:
 
         github_token: ${{ secrets.GITHUB_TOKEN }}
 
-        publish_dir: ../../build/html  # 构建的 HTML 文件目录
+        publish_dir: ./build/html  # 构建的 HTML 文件目录
