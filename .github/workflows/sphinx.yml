@@ -46,7 +46,7 @@ jobs:
      
         make html
 
-      working-directory: ../../source/application_note  # 假设文档在docs目录下
+      working-directory: ./source/application_note  # 假设文档在docs目录下
  
     - name: Deploy to GitHub Pages
 
