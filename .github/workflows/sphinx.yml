@@ -48,7 +48,7 @@ jobs:
         make html
         touch docs/.nojekeyll
         echo "COPPPPPPPPPPPPPPPPP"
-        cp -rf build/html/* docs/
+        cp -rfv build/html/* docs/
         
       working-directory: .
                
