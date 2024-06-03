@@ -1,4 +1,4 @@
-Application Note
+Application Note 嘻嘻嘻嘻嘻嘻嘻嘻寻寻寻寻寻寻寻寻寻寻寻寻寻
 =========================================
 
 .. toctree::
