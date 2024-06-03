@@ -22,15 +22,15 @@ jobs:
 
     - name: Checkout to main branch
 
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4.1.5
  
     - name: Set up Python
 
-      uses: actions/setup-python@v3
+      uses: actions/setup-python@v5.1.0
 
       with:
 
-        python-version: '3.x'  # 使用合适的 Python 版本
+        python-version: '3.10'  # 使用合适的 Python 版本
  
     - name: Install dependencies
 
@@ -39,21 +39,21 @@ jobs:
         python -m pip install --upgrade pip
 
         pip install sphinx
+        pip install sphinx_rtd_theme
  
     - name: Build Sphinx documentation
 
       run: |
-     
+        pwd
         make html
 
-      working-directory: ../../source/application_note  # 假设文档在docs目录下
- 
+      working-directory: ./docs
+               
     - name: Deploy to GitHub Pages
-
       uses: peaceiris/actions-gh-pages@v3
-
       with:
-
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-
-        publish_dir: ../../build/html  # 构建的 HTML 文件目录
+         publish_branch: gh_pages
+         github_token: ${{ secrets.GITHUB_TOKEN }}
+         publish_dir: ./docs/build/html
+         force_orphan: true
+              
