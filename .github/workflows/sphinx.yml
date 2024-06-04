@@ -9,6 +9,10 @@ on:
       - main  # 你可以根据实际情况调整分支名称
 
   pull_request:
+
+permissions:
+
+  contents: write
  
 jobs:
 
