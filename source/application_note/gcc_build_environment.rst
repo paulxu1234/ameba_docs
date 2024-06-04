@@ -21,9 +21,9 @@ For Windows, use MSYS2 and MinGW as the GCC environment.
 
 The steps to prepare GCC environment are as follows:
 
-1. Download MSYS2 from its official website .
+1. Download MSYS2 from its official website.
 
-2. Run the installer. MSYS2 requires 64\-bit Windows 7 or newer.
+2. Run the installer. MSYS2 requires 64-bit Windows 7 or newer.
 
 3. Enter your desired \ ``Installation Folder``\ \ `` ``\ (ASCII, no accents, spaces nor symlinks, short path)
 
