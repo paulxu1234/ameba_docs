@@ -1,5 +1,5 @@
-Build Environment
-==================================
+Build Environment 端午节放假啦~~~
+=================================================================================================================
 Introduction
 ------------------------
 This chapter illustrates how to build Realtek's SDK under GCC environment. It focuses on both Windows platform and Linux distribution. The build and download procedures are quite similar between Windows and Linux operating systems.
