@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MP Image &mdash; AmebaDocs  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Boot Process" href="boot_process.html" />
+    <link rel="prev" title="OTA Firmware Update" href="ota.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            AmebaDocs
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Application Note</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="gcc_build_environment.html">Build Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sdk_example.html">SDK Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mpu_cache.html">MPU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mpu_cache.html#cache">Cache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flash_memory_layout.html">Flash Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flash_memory_layout.html#memory-layout">Memory Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_system.html">Virtual File System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ota.html">OTA Firmware Update</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">MP Image</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-build-mp-image">How to Build MP Image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-combine-images">How to Combine Images</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#boot-flow">Boot Flow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-switch-image">How to Switch Image</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="boot_process.html">Boot Process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_config.html">User Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="power_save.html">Power Saving</a></li>
+<li class="toctree-l2"><a class="reference internal" href="template_rst_syntax.html">RST语法</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AmebaDocs</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Application Note</a></li>
+      <li class="breadcrumb-item active">MP Image</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/application_note/mp_image.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="mp-image">
+<span id="id1"></span><h1>MP Image<a class="headerlink" href="#mp-image" title="Link to this heading"></a></h1>
+<p>The MP image is used for Wi-Fi &amp; BT performance verification and Wi-Fi &amp; BT parameters calibration in massive production. This chapter mainly illustrates how to build and use the MP image.</p>
+<p>Refer to the MP document for more details about MP flow.</p>
+<section id="how-to-build-mp-image">
+<h2>How to Build MP Image<a class="headerlink" href="#how-to-build-mp-image" title="Link to this heading"></a></h2>
+<p>The steps of building MP image are depcited below:</p>
+<ol class="arabic simple" start="3">
+<li><p>Switch to work directory <code class="docutils literal notranslate"><span class="pre">{SDK}\amebadplus_gcc_project</span></code>.</p></li>
+<li><p>Use command <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">make</span> <span class="pre">menuconfig</span></code> to modify the configurations.</p>
+<ol class="loweralpha simple" start="3">
+<li><p>Enable MP</p></li>
+<li><p>Enable Wi-Fi, and configure KM4 as AP core and KM0 as NP core.</p></li>
+<li><p>Enable BT.</p></li>
+<li><p>Save and exit the menuconfig.</p></li>
+</ol>
+</li>
+<li><p>Use command <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">make</span> <span class="pre">all</span></code> to rebuild the projects of KM0 and KM4.</p></li>
+</ol>
+<p>The MP image (km0_km4_app_mp.bin) will be generated in <code class="docutils literal notranslate"><span class="pre">{SDK}\amebadplus_gcc_project</span></code> and all the images releated to the MP image can be found in the paths below:</p>
+<ul class="simple">
+<li><p>{SDK}amebadplus_gcc_projectproject_km4asdkimage_mp</p></li>
+<li><p>{SDK}amebadplus_gcc_projectproject_km0asdkimage_mp</p></li>
+</ul>
+</section>
+<section id="how-to-combine-images">
+<h2>How to Combine Images<a class="headerlink" href="#how-to-combine-images" title="Link to this heading"></a></h2>
+<p>Before downloading images into the chip, the MP image needs to be combined with normal image. In massive production, the MP image is used to calibrate the parameters first. After calibration, you can use the command illustrated in Section 1.4 to switch to the normal image and boot from it. Since the chip boots from OTA1 by default when both OTA1 and OTA2 images are valid and with the same version number, the MP image should be located in the OTA1 field.</p>
+<p>The steps of combining images are depcited below:</p>
+<ol class="arabic simple" start="8">
+<li><p>Check if both the normal image and MP image are valid.</p></li>
+<li><p>Use the Image Tool to combine all the images, including km4_boot_all.bin, km0_km4_app_mp.bin and km0_km4_app.bin, which are located in <code class="docutils literal notranslate"><span class="pre">{SDK}\amebadplus_gcc_project</span></code>.</p>
+<ol class="loweralpha simple" start="3">
+<li><p>Set the image offsets in Image Tool according to the Flash layout, which can be found in <code class="docutils literal notranslate"><span class="pre">{SDK}\component\soc\</span></code> <code class="docutils literal notranslate"><span class="pre">amebadplus\usrcfg\ameba_flashcfg.c</span></code>.</p>
+<ul class="simple">
+<li><p>Set km0_km4_app_mp.bin in <code class="docutils literal notranslate"><span class="pre">IMG_APP_OTA1</span></code> section</p></li>
+<li><p>Set km0_km4_app.bin in <code class="docutils literal notranslate"><span class="pre">IMG_APP_OTA2</span></code> section</p></li>
+</ul>
+</li>
+<li><p>Click <code class="docutils literal notranslate"><span class="pre">Generate</span></code> button in Image Tool, and save the combined image named Image_All.bin.</p></li>
+</ol>
+</li>
+</ol>
+<a class="reference internal image-reference" href="static/mp_image_rst/e2ffa39d854d8b2ac51d8eaa0ae4e198c1ce9f17.png"><img alt="static/mp_image_rst/e2ffa39d854d8b2ac51d8eaa0ae4e198c1ce9f17.png" class="align-center" src="static/mp_image_rst/e2ffa39d854d8b2ac51d8eaa0ae4e198c1ce9f17.png" style="width: 961px;" /></a>
+<ol class="arabic simple" start="10">
+<li><p>Download the Image_All.bin into the device after the combination is finished.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The normal image (km0_km4_app.bin) is built with MP disabled. Check the normal image in <code class="docutils literal notranslate"><span class="pre">{SDK}\amebadplus_gcc_project</span></code>. All the images related to normal image can be found in paths below:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>{SDK}amebadplus_gcc_projectproject_km4asdkimage</p></li>
+<li><p>{SDK}amebadplus_gcc_projectproject_km0asdkimage</p></li>
+</ul>
+</div></blockquote>
+</div>
+</section>
+<section id="boot-flow">
+<h2>Boot Flow<a class="headerlink" href="#boot-flow" title="Link to this heading"></a></h2>
+<ol class="arabic simple" start="11">
+<li><p>Reset the device after downloading image is finished.</p></li>
+<li><p>Check if the device boots from MP image successfully.</p></li>
+</ol>
+<a class="reference internal image-reference" href="static/mp_image_rst/a3bdfe153f651887b4a5b63b4174805c2aa718d6.png"><img alt="static/mp_image_rst/a3bdfe153f651887b4a5b63b4174805c2aa718d6.png" class="align-center" src="static/mp_image_rst/a3bdfe153f651887b4a5b63b4174805c2aa718d6.png" style="width: 1025px;" /></a>
+<ol class="arabic simple" start="13">
+<li><p>Start the massive production flow if the device boots from MP image successfully.</p></li>
+</ol>
+</section>
+<section id="how-to-switch-image">
+<h2>How to Switch Image<a class="headerlink" href="#how-to-switch-image" title="Link to this heading"></a></h2>
+<p>When MP is finished, you need to switch the image from MP image to the normal image to verify the application.</p>
+<ol class="arabic simple">
+<li><p>Use command “ATSC” from serial terminal to clear the signature of MP image in order to assign the MP image invalid.</p></li>
+</ol>
+<a class="reference internal image-reference" href="static/mp_image_rst/89cf3beccbe736165c7fc5dbb761feeb08b4c48b.png"><img alt="static/mp_image_rst/89cf3beccbe736165c7fc5dbb761feeb08b4c48b.png" class="align-center" src="static/mp_image_rst/89cf3beccbe736165c7fc5dbb761feeb08b4c48b.png" style="width: 830px;" /></a>
+<ol class="arabic simple" start="2">
+<li><p>Reset the device, then the device will boot from the normal image located in OTA2 field.</p></li>
+</ol>
+<a class="reference internal image-reference" href="static/mp_image_rst/0fe015c7a88fe15784611d5966b9e639d7cef61d.png"><img alt="static/mp_image_rst/0fe015c7a88fe15784611d5966b9e639d7cef61d.png" class="align-center" src="static/mp_image_rst/0fe015c7a88fe15784611d5966b9e639d7cef61d.png" style="width: 807px;" /></a>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ota.html" class="btn btn-neutral float-left" title="OTA Firmware Update" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="boot_process.html" class="btn btn-neutral float-right" title="Boot Process" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, claire_wang.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

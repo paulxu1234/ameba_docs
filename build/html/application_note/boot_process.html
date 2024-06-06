@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Boot Process &mdash; AmebaDocs  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Secure Boot" href="secure_boot.html" />
+    <link rel="prev" title="MP Image" href="mp_image.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            AmebaDocs
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Application Note</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="gcc_build_environment.html">Build Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sdk_example.html">SDK Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mpu_cache.html">MPU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mpu_cache.html#cache">Cache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flash_memory_layout.html">Flash Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flash_memory_layout.html#memory-layout">Memory Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_system.html">Virtual File System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ota.html">OTA Firmware Update</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mp_image.html">MP Image</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Boot Process</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#features">Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#boot-address">Boot Address</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pin-description">Pin Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#boot-flow">Boot Flow</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#boot-api">Boot API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_config.html">User Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="power_save.html">Power Saving</a></li>
+<li class="toctree-l2"><a class="reference internal" href="template_rst_syntax.html">RST语法</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AmebaDocs</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Application Note</a></li>
+      <li class="breadcrumb-item active">Boot Process</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/application_note/boot_process.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="boot-process">
+<span id="id1"></span><h1>Boot Process<a class="headerlink" href="#boot-process" title="Link to this heading"></a></h1>
+<section id="features">
+<h2>Features<a class="headerlink" href="#features" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>On-chip boot ROM</p></li>
+<li><p>Contains the bootloader with In-System Programming (ISP) facility</p></li>
+<li><p>Secure boot process with multiple cryptographic algorithms of hardware or software engine</p></li>
+<li><p>Suspend resume process</p></li>
+<li><p>Boot from NOR flash</p></li>
+<li><p>PSRAM as a memory</p></li>
+</ul>
+</section>
+<section id="boot-address">
+<h2>Boot Address<a class="headerlink" href="#boot-address" title="Link to this heading"></a></h2>
+<p>After reset, CPU will boot from the vector table start address, which is fixed by hardware. Both KM4 and KM0 boot from address 0x0000_0000.</p>
+<p>Table 1-1 Boot address</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>CPU</p></th>
+<th class="head"><p>Address</p></th>
+<th class="head"><p>Type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>KM4</p></td>
+<td><p>0x0000_0000</p></td>
+<td><p>KM4 ITCM ROM</p></td>
+</tr>
+<tr class="row-odd"><td><p>KM0</p></td>
+<td><p>0x0000_0000</p></td>
+<td><p>KM0 ITCM ROM</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="pin-description">
+<h2>Pin Description<a class="headerlink" href="#pin-description" title="Link to this heading"></a></h2>
+<p>The <a href="#id2"><span class="problematic" id="id3">|CHIP_NAME|</span></a> supports ISP via LOGUART (PB4 &amp; PB5). The ISP mode, given in Table 1-2, is determined by the state of PB5 when boot.</p>
+<p>Table 1-2 ISP mode</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Boot Mode</p></th>
+<th class="head"><p>PB5 (UART_DOWNLOAD)</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>No ISP</p></td>
+<td><p>HIGH</p></td>
+<td><p>ISP bypassed. Part attempts to boot from Flash.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISP</p></td>
+<td><p>LOW</p></td>
+<td><p>Part enters ISP via LOGUART.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="boot-flow">
+<h2>Boot Flow<a class="headerlink" href="#boot-flow" title="Link to this heading"></a></h2>
+<p>The boot flow of <a href="#id4"><span class="problematic" id="id5">|CHIP_NAME|</span></a> is illustrated in Figure 1-1. After a power-up or hardware reset, the hardware will boot KM4 at 150MHz. The boot process is handled by the on-chip boot ROM and is always executed by the KM4. After the KM4 bootloader code, the KM4 will set up the environment for the KM0.</p>
+<ul class="simple">
+<li><p>KM4 boots ROM</p></li>
+<li><p>KM4 secure boot (optional)</p></li>
+<li><p>KM4 boots to SRAM</p></li>
+<li><p>KM4 helps KM0 load images and check the signature (optional)</p></li>
+</ul>
+<p>Figure 1-1 Boot flow</p>
+<p>The immutable ROM provides ISP service, which could be initial programming of a blank device, erasing and re-programming of a previously programmed device.</p>
+<p>When the rising edge on RESET pin is generated, the trap pin (PB5) will be sampled to determine whether to continue the boot process or ISP service. If the trap pin is sampled LOW, the external hardware requests to start the ISP service. Otherwise, the chip boots normally.</p>
+</section>
+<section id="boot-api">
+<h2>Boot API<a class="headerlink" href="#boot-api" title="Link to this heading"></a></h2>
+<p>The boot API is used to obtain the cause of the chip boot, and the function prototype is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">u32</span> <span class="n">BOOT_Reason</span><span class="p">(</span><span class="n">void</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The default return value of this API is 0 when initially powered on, and return vaule of re-boot caused by other reasons can be found in the following table. Users can found macro-definitions about return value in file <code class="docutils literal notranslate"><span class="pre">sysreg_aon.h</span></code>.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Items</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Introduction</p></td>
+<td><p>Get boot reason</p></td>
+</tr>
+<tr class="row-odd"><td><p>Parameters</p></td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-even"><td><p>Return</p></td>
+<td><p>Boot reason. It can be any of the following values or combinations:</p>
+<ul class="simple">
+<li><p>AON_BIT_RSTF_OCP: entering deep-sleep mode when OCP happens</p></li>
+<li><p>AON_BIT_RSTF_KM0_SYS: KM0 system reset</p></li>
+<li><p>AON_BIT_RSTF_KM4_SYS: KM4 system reset</p></li>
+<li><p>AON_BIT_RSTF_IWDG: KM0 Independent watchdog reset</p></li>
+<li><p>AON_BIT_RSTF_WDG0: KM0 watchdog reset</p></li>
+<li><p>AON_BIT_RSTF_WDG1: KM4 secure watchdog reset</p></li>
+<li><p>AON_BIT_RSTF_WDG2: KM4 non-secure watchdog reset</p></li>
+<li><p>AON_BIT_RSTF_WARM_KM42PERI: KM4 warm reset</p></li>
+<li><p>AON_BIT_RSTF_WARM_KM02PERI: KM0 warm reset</p></li>
+<li><p>AON_BIT_RSTF_DSLP: Wakeup from deep-sleep mode</p></li>
+<li><p>AON_BIT_RSTF_BOR: BOR Reset</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="mp_image.html" class="btn btn-neutral float-left" title="MP Image" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="secure_boot.html" class="btn btn-neutral float-right" title="Secure Boot" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, claire_wang.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

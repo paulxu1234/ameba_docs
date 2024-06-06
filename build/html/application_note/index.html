@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Application Note &mdash; AmebaDocs  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Build Environment" href="gcc_build_environment.html" />
+    <link rel="prev" title="AmebaDPlus Application Note" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            AmebaDocs
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Application Note</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="gcc_build_environment.html">Build Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sdk_example.html">SDK Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mpu_cache.html">MPU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mpu_cache.html#cache">Cache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flash_memory_layout.html">Flash Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flash_memory_layout.html#memory-layout">Memory Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_system.html">Virtual File System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ota.html">OTA Firmware Update</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mp_image.html">MP Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="boot_process.html">Boot Process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_config.html">User Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="power_save.html">Power Saving</a></li>
+<li class="toctree-l2"><a class="reference internal" href="template_rst_syntax.html">RST语法</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AmebaDocs</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Application Note</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/application_note/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="application-note">
+<h1>Application Note<a class="headerlink" href="#application-note" title="Link to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="gcc_build_environment.html">Build Environment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="gcc_build_environment.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gcc_build_environment.html#preparing-gcc-environment">Preparing GCC Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gcc_build_environment.html#installing-toolchain">Installing Toolchain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gcc_build_environment.html#configuring-sdk">Configuring SDK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gcc_build_environment.html#building-code">Building Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gcc_build_environment.html#setting-debugger">Setting Debugger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gcc_build_environment.html#downloading-image-to-flash">Downloading Image to Flash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gcc_build_environment.html#entering-debug-mode">Entering Debug Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gcc_build_environment.html#command-lists">Command Lists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gcc_build_environment.html#gdb-debugger-basic-usage">GDB Debugger Basic Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sdk_example.html">SDK Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sdk_example.html#application-example">Application Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sdk_example.html#peripheral-example">Peripheral Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mpu_cache.html">MPU</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mpu_cache.html#functional-description">Functional Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mpu_cache.html#mpu-apis">MPU APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mpu_cache.html#usage">Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mpu_cache.html#cache">Cache</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mpu_cache.html#id3">Functional Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mpu_cache.html#cache-apis">Cache APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mpu_cache.html#how-to-define-a-non-cacheable-data-buffer">How to Define a Non-cacheable Data Buffer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mpu_cache.html#cache-consistency-when-using-dma">Cache Consistency When Using DMA</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="flash_memory_layout.html">Flash Layout</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="flash_memory_layout.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flash_memory_layout.html#memory-management-unit-mmu">Memory Management Unit (MMU)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flash_memory_layout.html#how-to-modify-flash-layout">How to Modify Flash Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flash_memory_layout.html#flash-protect-enable">Flash Protect Enable</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="flash_memory_layout.html#memory-layout">Memory Layout</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="flash_memory_layout.html#ram-layout">RAM Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flash_memory_layout.html#how-to-modify-memory-layout">How to Modify Memory Layout</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="file_system.html">Virtual File System</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="file_system.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_system.html#vfs-initialization">VFS Initialization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_system.html#usage-of-vfs">Usage of VFS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ota.html">OTA Firmware Update</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ota.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ota.html#bootloader">Bootloader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ota.html#application">Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ota.html#building-ota-image">Building OTA Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ota.html#updating-from-local-server">Updating from Local Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ota.html#ota-demo">OTA Demo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ota.html#ota-firmware-swap">OTA Firmware Swap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ota.html#user-configuration">User Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mp_image.html">MP Image</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mp_image.html#how-to-build-mp-image">How to Build MP Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mp_image.html#how-to-combine-images">How to Combine Images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mp_image.html#boot-flow">Boot Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mp_image.html#how-to-switch-image">How to Switch Image</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="boot_process.html">Boot Process</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="boot_process.html#features">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="boot_process.html#boot-address">Boot Address</a></li>
+<li class="toctree-l2"><a class="reference internal" href="boot_process.html#pin-description">Pin Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="boot_process.html#boot-flow">Boot Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="boot_process.html#boot-api">Boot API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user_config.html">User Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_config.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_config.html#soc-clock-switch">SoC Clock Switch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_config.html#flash-clock-switch">Flash Clock Switch</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="power_save.html">Power Saving</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="power_save.html#power-saving-mode">Power-Saving Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="power_save.html#wakeup-source">Wakeup Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="power_save.html#entering-sleep-mode">Entering Sleep Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="power_save.html#entering-deep-sleep-mode">Entering Deep-Sleep Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="power_save.html#power-saving-configuration">Power-Saving Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="power_save.html#power-saving-related-apis">Power-Saving Related APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="power_save.html#wi-fi-power-saving">Wi-Fi Power Saving</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="template_rst_syntax.html">RST语法</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="template_rst_syntax.html#x">一级标题x</a></li>
+<li class="toctree-l2"><a class="reference internal" href="template_rst_syntax.html#id5">RST架构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="template_rst_syntax.html#id8">RST基础</a></li>
+<li class="toctree-l2"><a class="reference internal" href="template_rst_syntax.html#id19">行内标记</a></li>
+<li class="toctree-l2"><a class="reference internal" href="template_rst_syntax.html#id30">列表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="template_rst_syntax.html#id44">表格</a></li>
+<li class="toctree-l2"><a class="reference internal" href="template_rst_syntax.html#id56">图片</a></li>
+<li class="toctree-l2"><a class="reference internal" href="template_rst_syntax.html#id59">词汇表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="template_rst_syntax.html#id60">代码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="template_rst_syntax.html#id62">内联标记</a></li>
+<li class="toctree-l2"><a class="reference internal" href="template_rst_syntax.html#id76">指令</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="AmebaDPlus Application Note" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="gcc_build_environment.html" class="btn btn-neutral float-right" title="Build Environment" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, claire_wang.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
