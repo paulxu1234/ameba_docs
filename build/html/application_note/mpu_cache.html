@@ -322,7 +322,7 @@
 <section id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h2>
 <p>Follow these steps to set a MPU region:</p>
-<ol class="arabic simple" start="4">
+<ol class="arabic simple">
 <li><p>Define a new variable and struct</p>
 <ul class="simple">
 <li><p>Variable to store MPU entry index</p></li>
@@ -610,13 +610,13 @@
 <section id="cache-consistency-when-using-dma">
 <h2>Cache Consistency When Using DMA<a class="headerlink" href="#cache-consistency-when-using-dma" title="Link to this heading"></a></h2>
 <p>When DMA is used to migrate data from/to memory buffers, the start and end address of the buffer must be aligned with the cache line to avoid inconsistencies between cache data and memory data. For example, if the start address of a buffer is in the middle of the cache line and the first half is occupied by other programs, when other programs invalidate or clean the current cache line, this operation will affect the entire cache line, resulting in inconsistent cache and memory data of the current buffer.</p>
-<a class="reference internal image-reference" href="static/mpu_cache_rst/6a31598acac3832c2b8f68f873f6fa0b6a4c02f8.png"><img alt="static/mpu_cache_rst/6a31598acac3832c2b8f68f873f6fa0b6a4c02f8.png" class="align-center" src="static/mpu_cache_rst/6a31598acac3832c2b8f68f873f6fa0b6a4c02f8.png" style="width: 144px;" /></a>
+<a class="reference internal image-reference" href="../_images/6a31598acac3832c2b8f68f873f6fa0b6a4c02f81.png"><img alt="../_images/6a31598acac3832c2b8f68f873f6fa0b6a4c02f81.png" class="align-center" src="../_images/6a31598acac3832c2b8f68f873f6fa0b6a4c02f81.png" style="width: 144px;" /></a>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The DMA operation address requires exclusive ownership of a complete cache line. You can define the buffer using malloc() or ALIGNMTO(CACHE_LINE_SIZE) u8 op_buffer[CACHE_LINE_ALIGMENT(op_buffer_size)].</p>
 </div>
 <p>DMA Tx Flow:</p>
-<ol class="arabic simple" start="14">
+<ol class="arabic simple">
 <li><p>CPU allocates Tx buffer</p></li>
 <li><p>CPU writes Tx buffer</p></li>
 <li><p>Realtek recommends: DCache_Clean</p></li>
@@ -624,26 +624,26 @@
 <li><p>DMA Tx Interrupt</p></li>
 </ol>
 <p>DMA Rx Flow:</p>
-<ol class="arabic simple" start="3">
+<ol class="arabic simple">
 <li><p>CPU allocates Rx buffer</p></li>
 <li><p>DCache_Clean (if the Rx buffer is in a clean state, this step can be)</p></li>
 </ol>
-<a class="reference internal image-reference" href="static/mpu_cache_rst/6a31598acac3832c2b8f68f873f6fa0b6a4c02f8.png"><img alt="static/mpu_cache_rst/6a31598acac3832c2b8f68f873f6fa0b6a4c02f8.png" class="align-center" src="static/mpu_cache_rst/6a31598acac3832c2b8f68f873f6fa0b6a4c02f8.png" style="width: 144px;" /></a>
+<a class="reference internal image-reference" href="../_images/6a31598acac3832c2b8f68f873f6fa0b6a4c02f81.png"><img alt="../_images/6a31598acac3832c2b8f68f873f6fa0b6a4c02f81.png" class="align-center" src="../_images/6a31598acac3832c2b8f68f873f6fa0b6a4c02f81.png" style="width: 144px;" /></a>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If the Rx buffer is in a dirty state in the cache, the CPU may write the Rx buffer back to memory from the cache when CPU’s D-Cache becomes full, which could overwrite content that DMA Rx has already written.</p>
 </div>
-<ol class="arabic simple" start="5">
+<ol class="arabic simple" start="3">
 <li><p>DMA Rx Config</p></li>
 <li><p>DMA Rx interrupt</p></li>
 <li><p>DCache_Invalidate (this step is mandatory)</p></li>
 </ol>
-<a class="reference internal image-reference" href="static/mpu_cache_rst/6a31598acac3832c2b8f68f873f6fa0b6a4c02f8.png"><img alt="static/mpu_cache_rst/6a31598acac3832c2b8f68f873f6fa0b6a4c02f8.png" class="align-center" src="static/mpu_cache_rst/6a31598acac3832c2b8f68f873f6fa0b6a4c02f8.png" style="width: 144px;" /></a>
+<a class="reference internal image-reference" href="../_images/6a31598acac3832c2b8f68f873f6fa0b6a4c02f81.png"><img alt="../_images/6a31598acac3832c2b8f68f873f6fa0b6a4c02f81.png" class="align-center" src="../_images/6a31598acac3832c2b8f68f873f6fa0b6a4c02f81.png" style="width: 144px;" /></a>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Prevents the CPU from reading old values into the cache during DMA processing.</p>
 </div>
-<ol class="arabic simple" start="8">
+<ol class="arabic simple" start="6">
 <li><p>CPU reads Rx buffer (the value returned by DMA Rx)</p></li>
 </ol>
 </section>

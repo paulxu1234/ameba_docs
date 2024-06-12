@@ -144,14 +144,14 @@ The method is to modify the address of \ ``IMG_BOOT_OTA2``\  in \ ``{SDK}\compon
     
 
 
-.. image:: ../static/flash_memory_layout_rst/a8921a4f08d70fca0ef51dd3cf89af03c828f1e5.png
+.. image:: ../_static/flash_memory_layout_rst/a8921a4f08d70fca0ef51dd3cf89af03c828f1e5.png
    :width: 1091
    :align: center
  
 
 If the anti\-rollback function is enabled to ensure that the version of the Bootloader can only be incrementing but cannot be rolled back, the version of the Bootloader needs to be changed before compiling. That is, IMG_VER in \ ``{SDK}\amebadplus_gcc_project\manifest.json``\  needs to be modified.
 
-.. image:: ../static/flash_memory_layout_rst/bf0452ef5426e69a5bed57e287657aacdd7fb09c.png
+.. image:: ../_static/flash_memory_layout_rst/bf0452ef5426e69a5bed57e287657aacdd7fb09c.png
    :width: 365
    :align: center
 
@@ -168,18 +168,18 @@ APP OTA1
 ****************
 Follow the steps to modify the location of APP OTA1:
 
-4. Modify the address of IMG_APP_OTA1 in \ ``{SDK}\component\soc\amebadplus\usrcfg\ameba_flashcfg.c``\ .
+1. Modify the address of IMG_APP_OTA1 in \ ``{SDK}\component\soc\amebadplus\usrcfg\ameba_flashcfg.c``\ .
 
-.. image:: ../static/flash_memory_layout_rst/1b23f396dfc1e8f895577c1286fce88d55447c93.png
+.. image:: ../_static/flash_memory_layout_rst/1b23f396dfc1e8f895577c1286fce88d55447c93.png
    :width: 1163
    :align: center
 
 
-5. Re\-build the project to generate the Bootloader and APP OTA1.
+2. Re\-build the project to generate the Bootloader and APP OTA1.
 
-6. Modify the address of \ ``km0_km4_app.bin``\  if you update the location of APP OTA1 through ImageTool, and download the new Bootloader and APP OTA1.
+3. Modify the address of \ ``km0_km4_app.bin``\  if you update the location of APP OTA1 through ImageTool, and download the new Bootloader and APP OTA1.
 
-.. image:: ../static/flash_memory_layout_rst/d0357ca252c907fe084a97606147dd5ec1c0a404.png
+.. image:: ../_static/flash_memory_layout_rst/d0357ca252c907fe084a97606147dd5ec1c0a404.png
    :width: 1414
    :align: center
 
@@ -192,7 +192,7 @@ APP OTA2
 
 2. Re\-build and download the new Bootloader and APP OTA2 as described in section 1.3.2.1 step (2)~(3).
 
-.. image:: ../static/flash_memory_layout_rst/85e2ba3eda65b3e93392cc252d88ef84e537b095.png
+.. image:: ../_static/flash_memory_layout_rst/85e2ba3eda65b3e93392cc252d88ef84e537b095.png
    :width: 1092
    :align: center
 
@@ -205,7 +205,7 @@ Modifying FTL/VFS Location
 
 2. Update the application image.
 
-.. image:: ../static/flash_memory_layout_rst/c69810c4d2f35aa46f86d2b86c75751116554a8d.png
+.. image:: ../_static/flash_memory_layout_rst/c69810c4d2f35aa46f86d2b86c75751116554a8d.png
    :width: 1093
    :align: center
 
@@ -232,7 +232,7 @@ Before loading APP IMG, the Bootloader will read the Status Register from Flash.
 
 
 
-.. image:: ../static/flash_memory_layout_rst/06ad55f13b1f04b9cba13d7d3f568a946e88b336.png
+.. image:: ../_static/flash_memory_layout_rst/06ad55f13b1f04b9cba13d7d3f568a946e88b336.png
    :width: 1128
    :align: center
 
@@ -410,25 +410,25 @@ If you need to enlarge the size of KM4_BOOT_RAM_S, the modified KM4_BOOT_RAM_S s
 
 Follow the steps to modify the size of Bootloader:
 
-10. Modify the CONFIG Link Option in menuconfig to choose whether to place the Bootloader (IMG1) on FLASH or SRAM. When SRAM is selected, the size of KM4_BOOTLOADER_RAM_S is 24K; when FLASH is selected, the size of KM4_BOOTLOADER_RAM_S is 4K.
+1. Modify the CONFIG Link Option in menuconfig to choose whether to place the Bootloader (IMG1) on FLASH or SRAM. When SRAM is selected, the size of KM4_BOOTLOADER_RAM_S is 24K; when FLASH is selected, the size of KM4_BOOTLOADER_RAM_S is 4K.
 
-.. image:: ../static/flash_memory_layout_rst/317a7635d2df4eaa61d78e8bd0fb8e748bbaa79a.png
+.. image:: ../_static/flash_memory_layout_rst/317a7635d2df4eaa61d78e8bd0fb8e748bbaa79a.png
    :width: 455
    :align: center
 
 
-11. By modifying KM4_IMG1_SIZE in \ ``{SDK}\amebadplus_gcc_project\amebaDplus_layout.ld``\ , users can change the size of the KM4 BOOTLOADER RAM S.
+2. By modifying KM4_IMG1_SIZE in \ ``{SDK}\amebadplus_gcc_project\amebaDplus_layout.ld``\ , users can change the size of the KM4 BOOTLOADER RAM S.
 
-.. image:: ../static/flash_memory_layout_rst/a27a4eb43a21e2e823270f1862da74effe17d3e5.png
+.. image:: ../_static/flash_memory_layout_rst/a27a4eb43a21e2e823270f1862da74effe17d3e5.png
    :width: 408
    :align: center
 
 
-12. Re\-build the project to generate the Bootloader.
+3. Re\-build the project to generate the Bootloader.
 
-13. Modify the end address of km4_boot_all.bin if Bootloader is too large, and download the new Bootloader.
+4. Modify the end address of km4_boot_all.bin if Bootloader is too large, and download the new Bootloader.
 
-.. image:: ../static/flash_memory_layout_rst/4ed6c24886cfdf50ebec90c4fe8a899a6883167d.png
+.. image:: ../_static/flash_memory_layout_rst/4ed6c24886cfdf50ebec90c4fe8a899a6883167d.png
    :width: 1821
    :align: center
 
@@ -441,7 +441,7 @@ Follow the steps to modify the size of KM4 BD RAM:
 
 1. Users can change the KM4 BD RAM size by modifying RAM_KM0_IMG2_SIZE in \ ``{SDK}\amebadplus_gcc_project\amebaDplus_``\  \ ``layout.ld``\  to change the end address of KM4_BD_RAM.
 
-.. image:: ../static/flash_memory_layout_rst/c014baacb7498076fda32fee1380dce15b8f3d39.png
+.. image:: ../_static/flash_memory_layout_rst/c014baacb7498076fda32fee1380dce15b8f3d39.png
    :width: 399
    :align: center
 
@@ -452,7 +452,7 @@ Modifying BD_PSRAM Size
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 If user wants to modify the KM4 BD PSRAM size, please modify the running position of IMG2 in menuconfig first. Any option with PSRAM is acceptable. Then modify PSRAM_KM4_IMG2_SIZE in \ ``{SDK}\amebadplus_gcc_project\amebaDplus_layout.ld``\  to change the end address of KM4_BD_PSRAM.
 
-.. image:: ../static/flash_memory_layout_rst/68e1672a9be0e0bdb3ec171e30264a4bddbe51ae.png
+.. image:: ../_static/flash_memory_layout_rst/68e1672a9be0e0bdb3ec171e30264a4bddbe51ae.png
    :width: 985
    :align: center
 
@@ -461,7 +461,7 @@ Extending Heap Size
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The heap size consists of multi\-blocks and is passed to the operating system by the os_heap_init() function in component\os\freertos\ freertos_heap5_config.c. By default, PSRAM_HEAP1_START is invalid address and PSRAM_HEAP1_SIZE is 0.
 
-.. image:: ../static/flash_memory_layout_rst/a92d39c85a6c25045fb56f51b199e3ca3bc25a9f.png
+.. image:: ../_static/flash_memory_layout_rst/a92d39c85a6c25045fb56f51b199e3ca3bc25a9f.png
    :width: 1020
    :align: center
  

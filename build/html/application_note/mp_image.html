@@ -101,10 +101,10 @@
 <section id="how-to-build-mp-image">
 <h2>How to Build MP Image<a class="headerlink" href="#how-to-build-mp-image" title="Link to this heading"></a></h2>
 <p>The steps of building MP image are depcited below:</p>
-<ol class="arabic simple" start="3">
+<ol class="arabic simple">
 <li><p>Switch to work directory <code class="docutils literal notranslate"><span class="pre">{SDK}\amebadplus_gcc_project</span></code>.</p></li>
 <li><p>Use command <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">make</span> <span class="pre">menuconfig</span></code> to modify the configurations.</p>
-<ol class="loweralpha simple" start="3">
+<ol class="loweralpha simple">
 <li><p>Enable MP</p></li>
 <li><p>Enable Wi-Fi, and configure KM4 as AP core and KM0 as NP core.</p></li>
 <li><p>Enable BT.</p></li>
@@ -123,10 +123,10 @@
 <h2>How to Combine Images<a class="headerlink" href="#how-to-combine-images" title="Link to this heading"></a></h2>
 <p>Before downloading images into the chip, the MP image needs to be combined with normal image. In massive production, the MP image is used to calibrate the parameters first. After calibration, you can use the command illustrated in Section 1.4 to switch to the normal image and boot from it. Since the chip boots from OTA1 by default when both OTA1 and OTA2 images are valid and with the same version number, the MP image should be located in the OTA1 field.</p>
 <p>The steps of combining images are depcited below:</p>
-<ol class="arabic simple" start="8">
+<ol class="arabic simple">
 <li><p>Check if both the normal image and MP image are valid.</p></li>
 <li><p>Use the Image Tool to combine all the images, including km4_boot_all.bin, km0_km4_app_mp.bin and km0_km4_app.bin, which are located in <code class="docutils literal notranslate"><span class="pre">{SDK}\amebadplus_gcc_project</span></code>.</p>
-<ol class="loweralpha simple" start="3">
+<ol class="loweralpha simple">
 <li><p>Set the image offsets in Image Tool according to the Flash layout, which can be found in <code class="docutils literal notranslate"><span class="pre">{SDK}\component\soc\</span></code> <code class="docutils literal notranslate"><span class="pre">amebadplus\usrcfg\ameba_flashcfg.c</span></code>.</p>
 <ul class="simple">
 <li><p>Set km0_km4_app_mp.bin in <code class="docutils literal notranslate"><span class="pre">IMG_APP_OTA1</span></code> section</p></li>
@@ -137,8 +137,8 @@
 </ol>
 </li>
 </ol>
-<a class="reference internal image-reference" href="static/mp_image_rst/e2ffa39d854d8b2ac51d8eaa0ae4e198c1ce9f17.png"><img alt="static/mp_image_rst/e2ffa39d854d8b2ac51d8eaa0ae4e198c1ce9f17.png" class="align-center" src="static/mp_image_rst/e2ffa39d854d8b2ac51d8eaa0ae4e198c1ce9f17.png" style="width: 961px;" /></a>
-<ol class="arabic simple" start="10">
+<a class="reference internal image-reference" href="../_images/e2ffa39d854d8b2ac51d8eaa0ae4e198c1ce9f17.png"><img alt="../_images/e2ffa39d854d8b2ac51d8eaa0ae4e198c1ce9f17.png" class="align-center" src="../_images/e2ffa39d854d8b2ac51d8eaa0ae4e198c1ce9f17.png" style="width: 961px;" /></a>
+<ol class="arabic simple" start="3">
 <li><p>Download the Image_All.bin into the device after the combination is finished.</p></li>
 </ol>
 <div class="admonition note">
@@ -154,12 +154,12 @@
 </section>
 <section id="boot-flow">
 <h2>Boot Flow<a class="headerlink" href="#boot-flow" title="Link to this heading"></a></h2>
-<ol class="arabic simple" start="11">
+<ol class="arabic simple">
 <li><p>Reset the device after downloading image is finished.</p></li>
 <li><p>Check if the device boots from MP image successfully.</p></li>
 </ol>
-<a class="reference internal image-reference" href="static/mp_image_rst/a3bdfe153f651887b4a5b63b4174805c2aa718d6.png"><img alt="static/mp_image_rst/a3bdfe153f651887b4a5b63b4174805c2aa718d6.png" class="align-center" src="static/mp_image_rst/a3bdfe153f651887b4a5b63b4174805c2aa718d6.png" style="width: 1025px;" /></a>
-<ol class="arabic simple" start="13">
+<a class="reference internal image-reference" href="../_images/a3bdfe153f651887b4a5b63b4174805c2aa718d6.png"><img alt="../_images/a3bdfe153f651887b4a5b63b4174805c2aa718d6.png" class="align-center" src="../_images/a3bdfe153f651887b4a5b63b4174805c2aa718d6.png" style="width: 1025px;" /></a>
+<ol class="arabic simple" start="3">
 <li><p>Start the massive production flow if the device boots from MP image successfully.</p></li>
 </ol>
 </section>
@@ -169,11 +169,11 @@
 <ol class="arabic simple">
 <li><p>Use command “ATSC” from serial terminal to clear the signature of MP image in order to assign the MP image invalid.</p></li>
 </ol>
-<a class="reference internal image-reference" href="static/mp_image_rst/89cf3beccbe736165c7fc5dbb761feeb08b4c48b.png"><img alt="static/mp_image_rst/89cf3beccbe736165c7fc5dbb761feeb08b4c48b.png" class="align-center" src="static/mp_image_rst/89cf3beccbe736165c7fc5dbb761feeb08b4c48b.png" style="width: 830px;" /></a>
+<a class="reference internal image-reference" href="../_images/89cf3beccbe736165c7fc5dbb761feeb08b4c48b.png"><img alt="../_images/89cf3beccbe736165c7fc5dbb761feeb08b4c48b.png" class="align-center" src="../_images/89cf3beccbe736165c7fc5dbb761feeb08b4c48b.png" style="width: 830px;" /></a>
 <ol class="arabic simple" start="2">
 <li><p>Reset the device, then the device will boot from the normal image located in OTA2 field.</p></li>
 </ol>
-<a class="reference internal image-reference" href="static/mp_image_rst/0fe015c7a88fe15784611d5966b9e639d7cef61d.png"><img alt="static/mp_image_rst/0fe015c7a88fe15784611d5966b9e639d7cef61d.png" class="align-center" src="static/mp_image_rst/0fe015c7a88fe15784611d5966b9e639d7cef61d.png" style="width: 807px;" /></a>
+<a class="reference internal image-reference" href="../_images/0fe015c7a88fe15784611d5966b9e639d7cef61d.png"><img alt="../_images/0fe015c7a88fe15784611d5966b9e639d7cef61d.png" class="align-center" src="../_images/0fe015c7a88fe15784611d5966b9e639d7cef61d.png" style="width: 807px;" /></a>
 </section>
 </section>
 

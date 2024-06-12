@@ -161,19 +161,19 @@ Entering Sleep Mode
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Sleep mode is based on FreeRTOS tickless, thus it is recommended to enter sleep mode by releasing the wakelock.
 
-6. Initialize the specific peripheral.
+1. Initialize the specific peripheral.
 
-7. Enable and register the peripheral's interrupt.
+2. Enable and register the peripheral's interrupt.
 
-8. Set sleep_wevent_config[] in ambea_sleepcfg.c, and the interrupt should be registered on the same CPU selected by sleep_wevent_config[].
+3. Set sleep_wevent_config[] in ambea_sleepcfg.c, and the interrupt should be registered on the same CPU selected by sleep_wevent_config[].
 
-9. For peripherals that need special clock settings, set ps_config[] in ameba_sleepcfg.c if needed.
+4. For peripherals that need special clock settings, set ps_config[] in ameba_sleepcfg.c if needed.
 
-10. Register sleep/wakeup callback if needed.
+5. Register sleep/wakeup callback if needed.
 
-11. Enter sleep mode by releasing the wakelock in KM4 (PMU_OS needs to be released since it is acquired by default when boot).
+6. Enter sleep mode by releasing the wakelock in KM4 (PMU_OS needs to be released since it is acquired by default when boot).
 
-12. Clear the peripheral's interrupt when wakeup.
+7. Clear the peripheral's interrupt when wakeup.
 
 
 For peripherals that need specific clock settings, such as UART and LOGUART, their setting flows are described in 1.3.1 and 1.3.2.
@@ -187,17 +187,17 @@ UART
 
 Configuration:
 
-11. Initialize UART and enable its interrupt.
+1. Initialize UART and enable its interrupt.
 
-12. Set the related wakeup source (WAKE_SRC_UART0/WAKE_SRC_UART1/WAKE_SRC_UART2_BT) in sleep_wevent_ config[] to WAKEUP_KM4 or WAKEUP_KM0 (based on which CPU you want to wake). The interrupt should be registered on the same CPU selected by sleep_wevent_config[].
+2. Set the related wakeup source (WAKE_SRC_UART0/WAKE_SRC_UART1/WAKE_SRC_UART2_BT) in sleep_wevent_ config[] to WAKEUP_KM4 or WAKEUP_KM0 (based on which CPU you want to wake). The interrupt should be registered on the same CPU selected by sleep_wevent_config[].
 
-13. Set the corresponding entry of uart_config[] in ameba_sleepcfg.c to "ENABLE".
+3. Set the corresponding entry of uart_config[] in ameba_sleepcfg.c to "ENABLE".
 
-14. Set keep_OSC4M_on in ps_config[] to "TRUE" to keep OSC4M enabled during sleep mode.
+4. Set keep_OSC4M_on in ps_config[] to "TRUE" to keep OSC4M enabled during sleep mode.
 
-15. Enter sleep mode by releasing the wakelock in KM4 (PMU_OS needs to be released since it is acquired by default when boot).
+5. Enter sleep mode by releasing the wakelock in KM4 (PMU_OS needs to be released since it is acquired by default when boot).
 
-16. Clear the UART interrupt when wakeup.
+6. Clear the UART interrupt when wakeup.
 
 LOGUART
 ^^^^^^^^^^^^^^
@@ -206,15 +206,15 @@ When using LOGUART as a wakeup source, XTAL should not be closed during sleep.
 
 Configuration:
 
-14. Initialize LOGUART and enable its interrupt.
+1. Initialize LOGUART and enable its interrupt.
 
-15. Set WAKE_SRC_UART_LOG in sleep_wevent_config[] to WAKEUP_KM4 or WAKEUP_KM0 (based on which CPU you want to wake). The interrupt should be registered on the same CPU selected by sleep_wevent_config[].
+2. Set WAKE_SRC_UART_LOG in sleep_wevent_config[] to WAKEUP_KM4 or WAKEUP_KM0 (based on which CPU you want to wake). The interrupt should be registered on the same CPU selected by sleep_wevent_config[].
 
-16. Set xtal_mode_in_sleep to XTAL_Normal in ps_config[].
+3. Set xtal_mode_in_sleep to XTAL_Normal in ps_config[].
 
-17. Enter sleep mode by releasing the wakelock in KM4 (PMU_OS needs to be released since it is acquired by default when boot).
+4. Enter sleep mode by releasing the wakelock in KM4 (PMU_OS needs to be released since it is acquired by default when boot).
 
-18. Clear the LOGUART interrupt when wakeup.
+5. Clear the LOGUART interrupt when wakeup.
 
 Entering Deep\-Sleep Mode
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -226,11 +226,11 @@ When the system boots, KM4 holds the deepwakelock PMU_OS, thus freertos_ready_to
 
 Configuration:
 
-9. Initialize the related peripheral and enable its interrupt.
+1. Initialize the related peripheral and enable its interrupt.
 
-10. Set sleep_wakepin_config[] in ameba_sleepcfg.c when using AON wakepin as a wakeup source.
+2. Set sleep_wakepin_config[] in ameba_sleepcfg.c when using AON wakepin as a wakeup source.
 
-11. Enter deep\-sleep mode by releasing the deepwakelock and wakelock in KM4.
+3. Enter deep\-sleep mode by releasing the deepwakelock and wakelock in KM4.
 
 Power\-Saving Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -633,7 +633,7 @@ WLAN driver acquires the wakelock to avoid the system entering sleep mode when W
 
 IEEE 802.11 power management allows the station to enter power\-saving mode. The station cannot receive any frame during power saving. Thus AP needs to buffer these frames and requires the station to periodically wake up to check the beacon which has the information of buffered frames.
 
-.. image:: ../static/power_save_rst/4bd9d8f37d0040ab8c65cdb22167bcb3a613e0f1.png
+.. image:: ../_static/power_save_rst/4bd9d8f37d0040ab8c65cdb22167bcb3a613e0f1.png
    :width: 1482
    :align: center
 

@@ -27,7 +27,7 @@ In each folder of application example, there are C source files, header files an
 
 The application examples normally run on KM4. The entry function of application example is app_example() in \ ``main.c``\  under \ ``{SDK}\``\  \ ``amebadplus_gcc_project\project_km4\src``\ . Each application example has its own app_example(), and the app_example() in \ ``main.c``\  will be replaced automatically when the application example is built.
 
-.. image:: ../static/sdk_example_rst/25a5147b5a9e3fc69169961460ab167ab5b68b20.png
+.. image:: ../_static/sdk_example_rst/25a5147b5a9e3fc69169961460ab167ab5b68b20.png
    :width: 241
    :align: center
 
@@ -43,7 +43,7 @@ To run application example, you only need to:
 
 For example, if you want to build xml example to start an xml example thread, you need to set the macro in SDK according to README.txt in \ ``{SDK}\component\example\xml``\ . Then enter "\ ``make EXAMPLE\=xml``\ " for KM4 on MSYS2 MinGW 64\-bit (Windows) or terminal (Linux).
 
-.. image:: ../static/sdk_example_rst/5609433edd23d6866671138b31d8ba392edfc78f.png
+.. image:: ../_static/sdk_example_rst/5609433edd23d6866671138b31d8ba392edfc78f.png
    :width: 894
    :align: center
 

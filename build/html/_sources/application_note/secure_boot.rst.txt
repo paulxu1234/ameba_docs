@@ -32,21 +32,21 @@
 
     The images validation process is as follows:
     
-    4. KM4 Boot ROM validates KM4 bootloader.
+    1. KM4 Boot ROM validates KM4 bootloader.
     
-    5. KM4 bootloader validates the key certificate.
+    2. KM4 bootloader validates the key certificate.
     
     .. only:: RTL8721D
         
         
-        6. KM4 bootloader validates the KM0 & KM4 application image, which includes NSPE image (KM0 & KM4 non\-secure image) and SPE image (KM4 secure image) separately.
+        3. KM4 bootloader validates the KM0 & KM4 application image, which includes NSPE image (KM0 & KM4 non\-secure image) and SPE image (KM4 secure image) separately.
         
     
     
     .. only:: RTL8711D
         
         
-        7. KM4 bootloader validates the KM0 & KM4 application image (NSPE image).
+        4. KM4 bootloader validates the KM0 & KM4 application image (NSPE image).
         
     
     
@@ -231,7 +231,7 @@
     
     The hash value is from "public key hash" of boot field in\ `` ``\ manifest\ ``.json``\  file, as follows:
     
-    .. image:: ../static/secure_boot_rst/45a9595e0ef78386e6e7c34f560cc28437463cb4.png
+    .. image:: ../_static/secure_boot_rst/45a9595e0ef78386e6e7c34f560cc28437463cb4.png
        :width: 659
        :align: center
     
@@ -252,7 +252,7 @@
     
     The HMAC key is from \ ``manifest.json ``\ file, as follows:
     
-    .. image:: ../static/secure_boot_rst/03721978a8cb98a901b79a84e22dbe5cdab3ead5.png
+    .. image:: ../_static/secure_boot_rst/03721978a8cb98a901b79a84e22dbe5cdab3ead5.png
        :width: 599
        :align: center
     
@@ -277,7 +277,7 @@
     .. code::
     
        efuse rmap
-    .. image:: ../static/secure_boot_rst/23ba2d1698addd19270e7f03d496f22a9120b470.png
+    .. image:: ../_static/secure_boot_rst/23ba2d1698addd19270e7f03d496f22a9120b470.png
        :width: 603
        :align: center
     
@@ -290,7 +290,7 @@
     .. code::
     
        efuse rraw
-    .. image:: ../static/secure_boot_rst/394c9a596e20ef4e8d9d6b9cf37f5145dd55b12d.png
+    .. image:: ../_static/secure_boot_rst/394c9a596e20ef4e8d9d6b9cf37f5145dd55b12d.png
        :width: 493
        :align: center
     
@@ -340,7 +340,7 @@
     
        g. Fill in HMAC_KEY if step b) selects hmac256, or hmac384, or hmac512.
     
-    .. image:: ../static/secure_boot_rst/4055c60d28b492d1581d07fc8e43b12243bf791c.png
+    .. image:: ../_static/secure_boot_rst/4055c60d28b492d1581d07fc8e43b12243bf791c.png
        :width: 583
        :align: center
     

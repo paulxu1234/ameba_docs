@@ -198,7 +198,7 @@
 <h2>Building OTA Image<a class="headerlink" href="#building-ota-image" title="Link to this heading"></a></h2>
 <section id="modifying-configurations">
 <h3>Modifying Configurations<a class="headerlink" href="#modifying-configurations" title="Link to this heading"></a></h3>
-<ol class="arabic simple" start="3">
+<ol class="arabic simple">
 <li><p>Modify the version number in configuration file: <code class="docutils literal notranslate"><span class="pre">manifest.json</span></code>.</p></li>
 </ol>
 <table class="docutils align-default">
@@ -227,8 +227,8 @@
 <li><p>Modify the version number for bootloader.</p></li>
 </ol>
 </div></blockquote>
-<a class="reference internal image-reference" href="static/ota_rst/11cb3d15604e4979f14b1cc38b0c6259772a0798.png"><img alt="static/ota_rst/11cb3d15604e4979f14b1cc38b0c6259772a0798.png" class="align-center" src="static/ota_rst/11cb3d15604e4979f14b1cc38b0c6259772a0798.png" style="width: 372px;" /></a>
-<ol class="arabic simple" start="4">
+<a class="reference internal image-reference" href="../_images/11cb3d15604e4979f14b1cc38b0c6259772a0798.png"><img alt="../_images/11cb3d15604e4979f14b1cc38b0c6259772a0798.png" class="align-center" src="../_images/11cb3d15604e4979f14b1cc38b0c6259772a0798.png" style="width: 372px;" /></a>
+<ol class="arabic simple" start="2">
 <li><p>Change the bootloader version of anti-rollback and enable anti-rollback if necessary.</p>
 <ol class="loweralpha simple">
 <li><p>Change the bootloader version of anti-rollback</p></li>
@@ -268,7 +268,7 @@
 <li><p>If bootloader and application do not use the same anti-rollback version, modify BOOT_OTA_GetCertRollbackVer() in <code class="docutils literal notranslate"><span class="pre">{SDK}\component\soc\amebadplus\bootloader\boot_ota_km4.c</span></code> and define another anti-rollback version in OTP for the application.</p></li>
 </ul>
 </div>
-<ol class="arabic simple" start="5">
+<ol class="arabic simple" start="3">
 <li><p>Write the bootloader OTA2 address into OTP if users need to upgrade the bootloader, which sets the bootloader OTA2 address according to Flash_Layout in <code class="docutils literal notranslate"><span class="pre">{SDK}\component\soc\amebadplus\usrcfg\ameba_flashcfg.c</span></code>, refer to 1.8.</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">EFUSE</span> <span class="n">wraw</span> <span class="mi">36</span><span class="n">C</span> <span class="mi">2</span> <span class="mi">6082</span>
@@ -282,11 +282,11 @@
 <li><p>The above commands are used in the serial terminal tool.</p></li>
 </ul>
 </div>
-<ol class="arabic simple" start="6">
+<ol class="arabic simple" start="4">
 <li><p>Rebuild the project using “make all” command to generate the signed images.</p></li>
 <li><p>Download the images into Flash, and reset the board.</p></li>
 </ol>
-<a class="reference internal image-reference" href="static/ota_rst/873ba40b44e77b94f2642cd3e9f5f7ea1cab1652.png"><img alt="static/ota_rst/873ba40b44e77b94f2642cd3e9f5f7ea1cab1652.png" class="align-center" src="static/ota_rst/873ba40b44e77b94f2642cd3e9f5f7ea1cab1652.png" style="width: 641px;" /></a>
+<a class="reference internal image-reference" href="../_images/873ba40b44e77b94f2642cd3e9f5f7ea1cab1652.png"><img alt="../_images/873ba40b44e77b94f2642cd3e9f5f7ea1cab1652.png" class="align-center" src="../_images/873ba40b44e77b94f2642cd3e9f5f7ea1cab1652.png" style="width: 641px;" /></a>
 </section>
 <section id="generating-ota-image-automatically">
 <h3>Generating OTA Image Automatically<a class="headerlink" href="#generating-ota-image-automatically" title="Link to this heading"></a></h3>
@@ -381,7 +381,7 @@
 <section id="ota-flow">
 <h3>OTA Flow<a class="headerlink" href="#ota-flow" title="Link to this heading"></a></h3>
 <p>The OTA demo locates in <code class="docutils literal notranslate"><span class="pre">{SDK}\component\soc\amebadplus\misc\ameba_ota.c</span></code>. The image upgrade is implemented in the following steps:</p>
-<ol class="arabic simple" start="3">
+<ol class="arabic simple">
 <li><p>Connect to the server. The IP address, port and OTA type are needed.</p></li>
 <li><p>Acquire the older firmware address to be upgraded according to the MMU setting. If the address is re-mapping to OTA1 space by MMU, the OTA2 address would be selected to upgrade. Otherwise, the OTA1 address would be selected.</p></li>
 <li><p>Receive the firmware file header to get the target OTA image information, such as image number, image length and image ID.</p></li>
@@ -449,7 +449,7 @@
 <section id="user-configuration">
 <h2>User Configuration<a class="headerlink" href="#user-configuration" title="Link to this heading"></a></h2>
 <p>Modify the memory layout in <code class="docutils literal notranslate"><span class="pre">{SDK}\component\soc\amebadplus</span></code>\ <code class="docutils literal notranslate"><span class="pre">usrcfg\ameba_flashcfg.c</span></code> if needed.</p>
-<a class="reference internal image-reference" href="static/ota_rst/b122cd1ded7d01a4f992c800b441ba8c373cc04e.png"><img alt="static/ota_rst/b122cd1ded7d01a4f992c800b441ba8c373cc04e.png" class="align-center" src="static/ota_rst/b122cd1ded7d01a4f992c800b441ba8c373cc04e.png" style="width: 1614px;" /></a>
+<a class="reference internal image-reference" href="../_images/b122cd1ded7d01a4f992c800b441ba8c373cc04e.png"><img alt="../_images/b122cd1ded7d01a4f992c800b441ba8c373cc04e.png" class="align-center" src="../_images/b122cd1ded7d01a4f992c800b441ba8c373cc04e.png" style="width: 1614px;" /></a>
 <p>Figure - Flash layout</p>
 </section>
 </section>

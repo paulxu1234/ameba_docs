@@ -130,7 +130,7 @@ Building OTA Image
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Modifying Configurations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-3. Modify the version number in configuration file: \ ``manifest.json``\ .
+1. Modify the version number in configuration file: \ ``manifest.json``\ .
 
 +---------------+------+-------------------------------------------------------------------+------------------------------+
 | File          | Tag  | Description                                                       | Path                         |
@@ -142,19 +142,19 @@ Modifying Configurations
 
    a. Modify the version number for bootloader.
 
-.. image:: ../static/ota_rst/76c80f63927f9569d753a29cc021bd6a8a9e01f1.png
+.. image:: ../_static/ota_rst/76c80f63927f9569d753a29cc021bd6a8a9e01f1.png
    :width: 384
    :align: center
 
 
    b. Modify the version number for certificate and application.
 
-.. image:: ../static/ota_rst/11cb3d15604e4979f14b1cc38b0c6259772a0798.png
+.. image:: ../_static/ota_rst/11cb3d15604e4979f14b1cc38b0c6259772a0798.png
    :width: 372
    :align: center
 
 
-4. Change the bootloader version of anti\-rollback and enable anti\-rollback if necessary.
+2. Change the bootloader version of anti\-rollback and enable anti\-rollback if necessary.
 
    a. Change the bootloader version of anti\-rollback
 
@@ -186,7 +186,7 @@ Users can program OTP by the following command to enable anti\-rollback.
          - If bootloader and application do not use the same anti\-rollback version, modify BOOT_OTA_GetCertRollbackVer() in \ ``{SDK}\component\soc\amebadplus\bootloader\boot_ota_km4.c``\  and define another anti\-rollback version in OTP for the application.
 
 
-5. Write the bootloader OTA2 address into OTP if users need to upgrade the bootloader, which sets the bootloader OTA2 address according to Flash_Layout in \ ``{SDK}\component\soc\amebadplus\usrcfg\ameba_flashcfg.c``\ , refer to 1.8.
+3. Write the bootloader OTA2 address into OTP if users need to upgrade the bootloader, which sets the bootloader OTA2 address according to Flash_Layout in \ ``{SDK}\component\soc\amebadplus\usrcfg\ameba_flashcfg.c``\ , refer to 1.8.
 
 .. code::
 
@@ -201,11 +201,11 @@ Users can program OTP by the following command to enable anti\-rollback.
          - The above commands are used in the serial terminal tool.
 
 
-6. Rebuild the project using "make all" command to generate the signed images.
+4. Rebuild the project using "make all" command to generate the signed images.
 
-7. Download the images into Flash, and reset the board.
+5. Download the images into Flash, and reset the board.
 
-.. image:: ../static/ota_rst/873ba40b44e77b94f2642cd3e9f5f7ea1cab1652.png
+.. image:: ../_static/ota_rst/873ba40b44e77b94f2642cd3e9f5f7ea1cab1652.png
    :width: 641
    :align: center
 
@@ -278,21 +278,21 @@ OTA Flow
 ^^^^^^^^^^^^^^^^
 The OTA demo locates in \ ``{SDK}\component\soc\amebadplus\misc\ameba_ota.c``\ . The image upgrade is implemented in the following steps:
 
-3. Connect to the server. The IP address, port and OTA type are needed.
+1. Connect to the server. The IP address, port and OTA type are needed.
 
-4. Acquire the older firmware address to be upgraded according to the MMU setting. If the address is re\-mapping to OTA1 space by MMU, the OTA2 address would be selected to upgrade. Otherwise, the OTA1 address would be selected.
+2. Acquire the older firmware address to be upgraded according to the MMU setting. If the address is re\-mapping to OTA1 space by MMU, the OTA2 address would be selected to upgrade. Otherwise, the OTA1 address would be selected.
 
-5. Receive the firmware file header to get the target OTA image information, such as image number, image length and image ID.
+3. Receive the firmware file header to get the target OTA image information, such as image number, image length and image ID.
 
-6. Download the new firmware from server.
+4. Download the new firmware from server.
 
-7. Erase the Flash space for new firmware and write it into Flash except Manifest structure.
+5. Erase the Flash space for new firmware and write it into Flash except Manifest structure.
 
-8. Verify the checksum. If the checksum is error, OTA fails.
+6. Verify the checksum. If the checksum is error, OTA fails.
 
-9. If the checksum is ok, write Manifest structure to the upgraded firmware region to indicate boot from a new firmware next time.
+7. If the checksum is ok, write Manifest structure to the upgraded firmware region to indicate boot from a new firmware next time.
 
-10. OTA is finished and reset the device. Then it would boot from the new firmware.
+8. OTA is finished and reset the device. Then it would boot from the new firmware.
 
 
 
@@ -357,7 +357,7 @@ User Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Modify the memory layout in \ ``{SDK}\component\soc\amebadplus``\ \\ ``usrcfg\ameba_flashcfg.c``\  if needed.
 
-.. image:: ../static/ota_rst/b122cd1ded7d01a4f992c800b441ba8c373cc04e.png
+.. image:: ../_static/ota_rst/b122cd1ded7d01a4f992c800b441ba8c373cc04e.png
    :width: 1614
    :align: center
 

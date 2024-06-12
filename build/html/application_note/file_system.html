@@ -158,7 +158,7 @@ return;</p>
 <section id="vfs-on-flash">
 <h3>VFS on Flash<a class="headerlink" href="#vfs-on-flash" title="Link to this heading"></a></h3>
 <p>Adjust the Flash partitions appropriately if the VFS interfaces are set to the Flash, and modify VFS1 in Flash_Layout[] in`` {SDK}componentsocamebadplususrcfgameba_flashcfg.c.``</p>
-<a class="reference internal image-reference" href="static/file_system_rst/d6a33371781ab678574ad92e18bf314cc56dbf4f.png"><img alt="static/file_system_rst/d6a33371781ab678574ad92e18bf314cc56dbf4f.png" class="align-center" src="static/file_system_rst/d6a33371781ab678574ad92e18bf314cc56dbf4f.png" style="width: 1545px;" /></a>
+<a class="reference internal image-reference" href="../_images/d6a33371781ab678574ad92e18bf314cc56dbf4f.png"><img alt="../_images/d6a33371781ab678574ad92e18bf314cc56dbf4f.png" class="align-center" src="../_images/d6a33371781ab678574ad92e18bf314cc56dbf4f.png" style="width: 1545px;" /></a>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The VFS1 region must exist, and its size should always be larger than 128KB.</p>
@@ -385,12 +385,12 @@ return;</p>
 <p>If data needs to be placed in the Flash in advance, VFS bin file can be generated on PC. After generating the bin file, it should be downloaded to VFS1 region according to the Flash layout.</p>
 <section id="littlefs-bin-file-generation">
 <h4>LittleFS Bin File Generation<a class="headerlink" href="#littlefs-bin-file-generation" title="Link to this heading"></a></h4>
-<ol class="arabic simple" start="4">
+<ol class="arabic simple">
 <li><p>Prepare a needed object folder including files before generating LittleFS bin files. For example:</p></li>
 </ol>
-<a class="reference internal image-reference" href="static/file_system_rst/92135436b0fe4840749a09a4fdd302bde789def7.png"><img alt="static/file_system_rst/92135436b0fe4840749a09a4fdd302bde789def7.png" class="align-center" src="static/file_system_rst/92135436b0fe4840749a09a4fdd302bde789def7.png" style="width: 172px;" /></a>
+<a class="reference internal image-reference" href="../_images/92135436b0fe4840749a09a4fdd302bde789def7.png"><img alt="../_images/92135436b0fe4840749a09a4fdd302bde789def7.png" class="align-center" src="../_images/92135436b0fe4840749a09a4fdd302bde789def7.png" style="width: 172px;" /></a>
 <p><code class="docutils literal notranslate"><span class="pre">AUDIO</span></code> and <code class="docutils literal notranslate"><span class="pre">KV</span></code> directories will be LittleFS directory in the Flash.</p>
-<ol class="arabic simple" start="5">
+<ol class="arabic simple" start="2">
 <li><p>Use the command <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">./mklittlefs</span></code> <code class="docutils literal notranslate"><span class="pre">\-b</span> <span class="pre">4096</span> <span class="pre">\-p</span> <span class="pre">256</span> <span class="pre">\-c</span> <span class="pre">test</span></code> <code class="docutils literal notranslate"><span class="pre">image_littlefs.bin</span></code> in <code class="docutils literal notranslate"><span class="pre">mklittlefs</span> <span class="pre">``\</span> <span class="pre">tool</span> <span class="pre">located</span> <span class="pre">at</span> <span class="pre">\</span> <span class="pre">``\tools\littlefs</span></code> to generate LittleFS bin files.</p></li>
 </ol>
 <p>Where:</p>
@@ -403,12 +403,12 @@ return;</p>
 <li><p>&lt;Image_littlefs.bin&gt;: LittleFS bin file name</p></li>
 </ul>
 </div></blockquote>
-<a class="reference internal image-reference" href="static/file_system_rst/f09e1335f4cbef907268ced019246a45afe4ae15.png"><img alt="static/file_system_rst/f09e1335f4cbef907268ced019246a45afe4ae15.png" class="align-center" src="static/file_system_rst/f09e1335f4cbef907268ced019246a45afe4ae15.png" style="width: 663px;" /></a>
+<a class="reference internal image-reference" href="../_images/f09e1335f4cbef907268ced019246a45afe4ae15.png"><img alt="../_images/f09e1335f4cbef907268ced019246a45afe4ae15.png" class="align-center" src="../_images/f09e1335f4cbef907268ced019246a45afe4ae15.png" style="width: 663px;" /></a>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>“-b 4096” and “-p 256” are default configurations, users should adapt the configuration according to “block_size” and “cache_size” of lfs_config in <code class="docutils literal notranslate"><span class="pre">{SDK}\component\file_system\littlefs\littlefs_adapter.c.</span></code> “-s 0x20000” is according to VFS1 region mentioned in section 1.3.1.</p>
 </div>
-<ol class="arabic simple" start="3">
+<ol class="arabic simple">
 <li><p>Download the image to the Flash.</p></li>
 </ol>
 <p>The start address of image should be VFS1 Flash region address mentioned in section 1.3.1. Test logs are shown below:</p>

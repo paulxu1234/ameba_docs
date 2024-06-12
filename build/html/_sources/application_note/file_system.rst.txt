@@ -61,7 +61,7 @@ VFS on Flash
 ^^^^^^^^^^^^^^^^^^^^^^^^
 Adjust the Flash partitions appropriately if the VFS interfaces are set to the Flash, and modify VFS1 in Flash_Layout[] in\ `` {SDK}\ component\soc\amebadplus\usrcfg\ameba_flashcfg.c.``\ 
 
-.. image:: ../static/file_system_rst/d6a33371781ab678574ad92e18bf314cc56dbf4f.png
+.. image:: ../_static/file_system_rst/d6a33371781ab678574ad92e18bf314cc56dbf4f.png
    :width: 1545
    :align: center
 
@@ -236,16 +236,16 @@ If data needs to be placed in the Flash in advance, VFS bin file can be generate
 
 LittleFS Bin File Generation
 ********************************************************
-4. Prepare a needed object folder including files before generating LittleFS bin files. For example:
+1. Prepare a needed object folder including files before generating LittleFS bin files. For example:
 
-.. image:: ../static/file_system_rst/92135436b0fe4840749a09a4fdd302bde789def7.png
+.. image:: ../_static/file_system_rst/92135436b0fe4840749a09a4fdd302bde789def7.png
    :width: 172
    :align: center
 
 
 \ ``AUDIO``\  and \ ``KV``\  directories will be LittleFS directory in the Flash.
 
-5. Use the command \ ``$ ./mklittlefs``\  \ ``\-b 4096 \-p 256 \-c test``\  \ ``image_littlefs.bin``\  in \ ``mklittlefs ``\ tool located at \ ``\tools\littlefs``\  to generate LittleFS bin files.
+2. Use the command \ ``$ ./mklittlefs``\  \ ``\-b 4096 \-p 256 \-c test``\  \ ``image_littlefs.bin``\  in \ ``mklittlefs ``\ tool located at \ ``\tools\littlefs``\  to generate LittleFS bin files.
 
 Where:
 
@@ -259,7 +259,7 @@ Where:
 
    - <Image_littlefs.bin>: LittleFS bin file name
 
-.. image:: ../static/file_system_rst/f09e1335f4cbef907268ced019246a45afe4ae15.png
+.. image:: ../_static/file_system_rst/f09e1335f4cbef907268ced019246a45afe4ae15.png
    :width: 663
    :align: center
 
@@ -270,7 +270,7 @@ Where:
    "\-b 4096" and "\-p 256" are default configurations, users should adapt the configuration according to "block_size" and "cache_size" of lfs_config in \ ``{SDK}\component\file_system\littlefs\littlefs_adapter.c.``\  "\-s 0x20000" is according to VFS1 region mentioned in section 1.3.1.
 
 
-3. Download the image to the Flash.
+1. Download the image to the Flash.
 
 The start address of image should be VFS1 Flash region address mentioned in section 1.3.1. Test logs are shown below:
 

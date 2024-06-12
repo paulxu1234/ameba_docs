@@ -149,9 +149,9 @@
 <h3>Modifying Bootloader OTA2 Location<a class="headerlink" href="#modifying-bootloader-ota2-location" title="Link to this heading"></a></h3>
 <p>The location of Bootloader OTA2 can be modified but requires 4KB alignment. The Bootloader OTA2 is disabled by default. If you want to enable Bootloader OTA2, shift the start address of Bootloader OTA2 right by 12 bits, then burn it to the OTP 0x36C~0x36D.</p>
 <p>The method is to modify the address of <code class="docutils literal notranslate"><span class="pre">IMG_BOOT_OTA2</span></code> in <code class="docutils literal notranslate"><span class="pre">{SDK}\component\soc\amebadplus\usrcfg\ameba_flashcfg.c</span></code>. After burning the Bootloader OTA2 into Flash through OTA, Boot ROM will decide whether to use Bootloader OTA1 or Bootloader OTA2 according to the version number.</p>
-<a class="reference internal image-reference" href="static/flash_memory_layout_rst/a8921a4f08d70fca0ef51dd3cf89af03c828f1e5.png"><img alt="static/flash_memory_layout_rst/a8921a4f08d70fca0ef51dd3cf89af03c828f1e5.png" class="align-center" src="static/flash_memory_layout_rst/a8921a4f08d70fca0ef51dd3cf89af03c828f1e5.png" style="width: 1091px;" /></a>
+<a class="reference internal image-reference" href="../_images/a8921a4f08d70fca0ef51dd3cf89af03c828f1e5.png"><img alt="../_images/a8921a4f08d70fca0ef51dd3cf89af03c828f1e5.png" class="align-center" src="../_images/a8921a4f08d70fca0ef51dd3cf89af03c828f1e5.png" style="width: 1091px;" /></a>
 <p>If the anti-rollback function is enabled to ensure that the version of the Bootloader can only be incrementing but cannot be rolled back, the version of the Bootloader needs to be changed before compiling. That is, IMG_VER in <code class="docutils literal notranslate"><span class="pre">{SDK}\amebadplus_gcc_project\manifest.json</span></code> needs to be modified.</p>
-<a class="reference internal image-reference" href="static/flash_memory_layout_rst/bf0452ef5426e69a5bed57e287657aacdd7fb09c.png"><img alt="static/flash_memory_layout_rst/bf0452ef5426e69a5bed57e287657aacdd7fb09c.png" class="align-center" src="static/flash_memory_layout_rst/bf0452ef5426e69a5bed57e287657aacdd7fb09c.png" style="width: 365px;" /></a>
+<a class="reference internal image-reference" href="../_images/bf0452ef5426e69a5bed57e287657aacdd7fb09c.png"><img alt="../_images/bf0452ef5426e69a5bed57e287657aacdd7fb09c.png" class="align-center" src="../_images/bf0452ef5426e69a5bed57e287657aacdd7fb09c.png" style="width: 365px;" /></a>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The location of Bootloader OTA1 is fixed to 0x0800_0000, and cannot be modified.</p>
@@ -162,15 +162,15 @@
 <section id="app-ota1">
 <h4>APP OTA1<a class="headerlink" href="#app-ota1" title="Link to this heading"></a></h4>
 <p>Follow the steps to modify the location of APP OTA1:</p>
-<ol class="arabic simple" start="4">
+<ol class="arabic simple">
 <li><p>Modify the address of IMG_APP_OTA1 in <code class="docutils literal notranslate"><span class="pre">{SDK}\component\soc\amebadplus\usrcfg\ameba_flashcfg.c</span></code>.</p></li>
 </ol>
-<a class="reference internal image-reference" href="static/flash_memory_layout_rst/1b23f396dfc1e8f895577c1286fce88d55447c93.png"><img alt="static/flash_memory_layout_rst/1b23f396dfc1e8f895577c1286fce88d55447c93.png" class="align-center" src="static/flash_memory_layout_rst/1b23f396dfc1e8f895577c1286fce88d55447c93.png" style="width: 1163px;" /></a>
-<ol class="arabic simple" start="5">
+<a class="reference internal image-reference" href="../_images/1b23f396dfc1e8f895577c1286fce88d55447c93.png"><img alt="../_images/1b23f396dfc1e8f895577c1286fce88d55447c93.png" class="align-center" src="../_images/1b23f396dfc1e8f895577c1286fce88d55447c93.png" style="width: 1163px;" /></a>
+<ol class="arabic simple" start="2">
 <li><p>Re-build the project to generate the Bootloader and APP OTA1.</p></li>
 <li><p>Modify the address of <code class="docutils literal notranslate"><span class="pre">km0_km4_app.bin</span></code> if you update the location of APP OTA1 through ImageTool, and download the new Bootloader and APP OTA1.</p></li>
 </ol>
-<a class="reference internal image-reference" href="static/flash_memory_layout_rst/d0357ca252c907fe084a97606147dd5ec1c0a404.png"><img alt="static/flash_memory_layout_rst/d0357ca252c907fe084a97606147dd5ec1c0a404.png" class="align-center" src="static/flash_memory_layout_rst/d0357ca252c907fe084a97606147dd5ec1c0a404.png" style="width: 1414px;" /></a>
+<a class="reference internal image-reference" href="../_images/d0357ca252c907fe084a97606147dd5ec1c0a404.png"><img alt="../_images/d0357ca252c907fe084a97606147dd5ec1c0a404.png" class="align-center" src="../_images/d0357ca252c907fe084a97606147dd5ec1c0a404.png" style="width: 1414px;" /></a>
 <p>After that, Bootloader will load the image from the new location of APP OTA1 if the version of APP OTA1 is bigger.</p>
 </section>
 <section id="app-ota2">
@@ -179,7 +179,7 @@
 <li><p>Modify the address of <code class="docutils literal notranslate"><span class="pre">IMG_APP_OTA2</span></code> in <code class="docutils literal notranslate"><span class="pre">{SDK}\component\soc\amebadplus\usrcfg\ameba_flashcfg.c</span></code>.</p></li>
 <li><p>Re-build and download the new Bootloader and APP OTA2 as described in section 1.3.2.1 step (2)~(3).</p></li>
 </ol>
-<a class="reference internal image-reference" href="static/flash_memory_layout_rst/85e2ba3eda65b3e93392cc252d88ef84e537b095.png"><img alt="static/flash_memory_layout_rst/85e2ba3eda65b3e93392cc252d88ef84e537b095.png" class="align-center" src="static/flash_memory_layout_rst/85e2ba3eda65b3e93392cc252d88ef84e537b095.png" style="width: 1092px;" /></a>
+<a class="reference internal image-reference" href="../_images/85e2ba3eda65b3e93392cc252d88ef84e537b095.png"><img alt="../_images/85e2ba3eda65b3e93392cc252d88ef84e537b095.png" class="align-center" src="../_images/85e2ba3eda65b3e93392cc252d88ef84e537b095.png" style="width: 1092px;" /></a>
 <p>After burning the APP OTA2 into Flash through OTA, Bootloader will load the image from the new location of APP OTA2 if the version of APP OTA2 is bigger.</p>
 </section>
 </section>
@@ -189,7 +189,7 @@
 <li><p>Modify the addresses of FTL and VFS1 in <code class="docutils literal notranslate"><span class="pre">{SDK}\component\soc\amebadplus\usrcfg\ameba_flashcfg.c</span></code>.</p></li>
 <li><p>Update the application image.</p></li>
 </ol>
-<a class="reference internal image-reference" href="static/flash_memory_layout_rst/c69810c4d2f35aa46f86d2b86c75751116554a8d.png"><img alt="static/flash_memory_layout_rst/c69810c4d2f35aa46f86d2b86c75751116554a8d.png" class="align-center" src="static/flash_memory_layout_rst/c69810c4d2f35aa46f86d2b86c75751116554a8d.png" style="width: 1093px;" /></a>
+<a class="reference internal image-reference" href="../_images/c69810c4d2f35aa46f86d2b86c75751116554a8d.png"><img alt="../_images/c69810c4d2f35aa46f86d2b86c75751116554a8d.png" class="align-center" src="../_images/c69810c4d2f35aa46f86d2b86c75751116554a8d.png" style="width: 1093px;" /></a>
 </section>
 </section>
 <section id="flash-protect-enable">
@@ -199,7 +199,7 @@
 <p class="admonition-title">Note</p>
 <p>By default, setting the QE bit will unlock all the Block Protect Bits. To avoid this operation, set Block Protect bits corresponding to Status_mask in Flash_AVL to 0. For example, change the Status_mask of Winbond in the Flash_AVL to 0x000043C0.</p>
 </div>
-<a class="reference internal image-reference" href="static/flash_memory_layout_rst/06ad55f13b1f04b9cba13d7d3f568a946e88b336.png"><img alt="static/flash_memory_layout_rst/06ad55f13b1f04b9cba13d7d3f568a946e88b336.png" class="align-center" src="static/flash_memory_layout_rst/06ad55f13b1f04b9cba13d7d3f568a946e88b336.png" style="width: 1128px;" /></a>
+<a class="reference internal image-reference" href="../_images/06ad55f13b1f04b9cba13d7d3f568a946e88b336.png"><img alt="../_images/06ad55f13b1f04b9cba13d7d3f568a946e88b336.png" class="align-center" src="../_images/06ad55f13b1f04b9cba13d7d3f568a946e88b336.png" style="width: 1128px;" /></a>
 <p>In order to avoid the image being damaged due to improper operation when using LittleFS to write user data, it is recommended to modify the location of FTL/LittleFS to the last 64KB area of Flash, and set the Block Protect Bit in the Status Register of Flash at the same time.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -321,19 +321,19 @@
 <h3>Modifying Bootloader Size<a class="headerlink" href="#modifying-bootloader-size" title="Link to this heading"></a></h3>
 <p>If you need to enlarge the size of KM4_BOOT_RAM_S, the modified KM4_BOOT_RAM_S size should be 4KB aligned because the MPC protection is protected in unit 4KB.</p>
 <p>Follow the steps to modify the size of Bootloader:</p>
-<ol class="arabic simple" start="10">
+<ol class="arabic simple">
 <li><p>Modify the CONFIG Link Option in menuconfig to choose whether to place the Bootloader (IMG1) on FLASH or SRAM. When SRAM is selected, the size of KM4_BOOTLOADER_RAM_S is 24K; when FLASH is selected, the size of KM4_BOOTLOADER_RAM_S is 4K.</p></li>
 </ol>
-<a class="reference internal image-reference" href="static/flash_memory_layout_rst/317a7635d2df4eaa61d78e8bd0fb8e748bbaa79a.png"><img alt="static/flash_memory_layout_rst/317a7635d2df4eaa61d78e8bd0fb8e748bbaa79a.png" class="align-center" src="static/flash_memory_layout_rst/317a7635d2df4eaa61d78e8bd0fb8e748bbaa79a.png" style="width: 455px;" /></a>
-<ol class="arabic simple" start="11">
+<a class="reference internal image-reference" href="../_images/317a7635d2df4eaa61d78e8bd0fb8e748bbaa79a.png"><img alt="../_images/317a7635d2df4eaa61d78e8bd0fb8e748bbaa79a.png" class="align-center" src="../_images/317a7635d2df4eaa61d78e8bd0fb8e748bbaa79a.png" style="width: 455px;" /></a>
+<ol class="arabic simple" start="2">
 <li><p>By modifying KM4_IMG1_SIZE in <code class="docutils literal notranslate"><span class="pre">{SDK}\amebadplus_gcc_project\amebaDplus_layout.ld</span></code>, users can change the size of the KM4 BOOTLOADER RAM S.</p></li>
 </ol>
-<a class="reference internal image-reference" href="static/flash_memory_layout_rst/a27a4eb43a21e2e823270f1862da74effe17d3e5.png"><img alt="static/flash_memory_layout_rst/a27a4eb43a21e2e823270f1862da74effe17d3e5.png" class="align-center" src="static/flash_memory_layout_rst/a27a4eb43a21e2e823270f1862da74effe17d3e5.png" style="width: 408px;" /></a>
-<ol class="arabic simple" start="12">
+<a class="reference internal image-reference" href="../_images/a27a4eb43a21e2e823270f1862da74effe17d3e5.png"><img alt="../_images/a27a4eb43a21e2e823270f1862da74effe17d3e5.png" class="align-center" src="../_images/a27a4eb43a21e2e823270f1862da74effe17d3e5.png" style="width: 408px;" /></a>
+<ol class="arabic simple" start="3">
 <li><p>Re-build the project to generate the Bootloader.</p></li>
 <li><p>Modify the end address of km4_boot_all.bin if Bootloader is too large, and download the new Bootloader.</p></li>
 </ol>
-<a class="reference internal image-reference" href="static/flash_memory_layout_rst/4ed6c24886cfdf50ebec90c4fe8a899a6883167d.png"><img alt="static/flash_memory_layout_rst/4ed6c24886cfdf50ebec90c4fe8a899a6883167d.png" class="align-center" src="static/flash_memory_layout_rst/4ed6c24886cfdf50ebec90c4fe8a899a6883167d.png" style="width: 1821px;" /></a>
+<a class="reference internal image-reference" href="../_images/4ed6c24886cfdf50ebec90c4fe8a899a6883167d.png"><img alt="../_images/4ed6c24886cfdf50ebec90c4fe8a899a6883167d.png" class="align-center" src="../_images/4ed6c24886cfdf50ebec90c4fe8a899a6883167d.png" style="width: 1821px;" /></a>
 <p>After that, Boot ROM will load the new Bootloader if the version of new Bootloader is bigger.</p>
 </section>
 <section id="modifying-bd-ram-size">
@@ -342,7 +342,7 @@
 <ol class="arabic simple">
 <li><p>Users can change the KM4 BD RAM size by modifying RAM_KM0_IMG2_SIZE in <code class="docutils literal notranslate"><span class="pre">{SDK}\amebadplus_gcc_project\amebaDplus_</span></code> <code class="docutils literal notranslate"><span class="pre">layout.ld</span></code> to change the end address of KM4_BD_RAM.</p></li>
 </ol>
-<a class="reference internal image-reference" href="static/flash_memory_layout_rst/c014baacb7498076fda32fee1380dce15b8f3d39.png"><img alt="static/flash_memory_layout_rst/c014baacb7498076fda32fee1380dce15b8f3d39.png" class="align-center" src="static/flash_memory_layout_rst/c014baacb7498076fda32fee1380dce15b8f3d39.png" style="width: 399px;" /></a>
+<a class="reference internal image-reference" href="../_images/c014baacb7498076fda32fee1380dce15b8f3d39.png"><img alt="../_images/c014baacb7498076fda32fee1380dce15b8f3d39.png" class="align-center" src="../_images/c014baacb7498076fda32fee1380dce15b8f3d39.png" style="width: 399px;" /></a>
 <ol class="arabic simple" start="2">
 <li><p>Re-build and download the new Bootloader and IMG2 OTA2 as described in Section 1.3.2.1 step (2)~(3).</p></li>
 </ol>
@@ -350,12 +350,12 @@
 <section id="modifying-bd-psram-size">
 <h3>Modifying BD_PSRAM Size<a class="headerlink" href="#modifying-bd-psram-size" title="Link to this heading"></a></h3>
 <p>If user wants to modify the KM4 BD PSRAM size, please modify the running position of IMG2 in menuconfig first. Any option with PSRAM is acceptable. Then modify PSRAM_KM4_IMG2_SIZE in <code class="docutils literal notranslate"><span class="pre">{SDK}\amebadplus_gcc_project\amebaDplus_layout.ld</span></code> to change the end address of KM4_BD_PSRAM.</p>
-<a class="reference internal image-reference" href="static/flash_memory_layout_rst/68e1672a9be0e0bdb3ec171e30264a4bddbe51ae.png"><img alt="static/flash_memory_layout_rst/68e1672a9be0e0bdb3ec171e30264a4bddbe51ae.png" class="align-center" src="static/flash_memory_layout_rst/68e1672a9be0e0bdb3ec171e30264a4bddbe51ae.png" style="width: 985px;" /></a>
+<a class="reference internal image-reference" href="../_images/68e1672a9be0e0bdb3ec171e30264a4bddbe51ae.png"><img alt="../_images/68e1672a9be0e0bdb3ec171e30264a4bddbe51ae.png" class="align-center" src="../_images/68e1672a9be0e0bdb3ec171e30264a4bddbe51ae.png" style="width: 985px;" /></a>
 </section>
 <section id="extending-heap-size">
 <h3>Extending Heap Size<a class="headerlink" href="#extending-heap-size" title="Link to this heading"></a></h3>
 <p>The heap size consists of multi-blocks and is passed to the operating system by the os_heap_init() function in componentosfreertosfreertos_heap5_config.c. By default, PSRAM_HEAP1_START is invalid address and PSRAM_HEAP1_SIZE is 0.</p>
-<a class="reference internal image-reference" href="static/flash_memory_layout_rst/a92d39c85a6c25045fb56f51b199e3ca3bc25a9f.png"><img alt="static/flash_memory_layout_rst/a92d39c85a6c25045fb56f51b199e3ca3bc25a9f.png" class="align-center" src="static/flash_memory_layout_rst/a92d39c85a6c25045fb56f51b199e3ca3bc25a9f.png" style="width: 1020px;" /></a>
+<a class="reference internal image-reference" href="../_images/a92d39c85a6c25045fb56f51b199e3ca3bc25a9f.png"><img alt="../_images/a92d39c85a6c25045fb56f51b199e3ca3bc25a9f.png" class="align-center" src="../_images/a92d39c85a6c25045fb56f51b199e3ca3bc25a9f.png" style="width: 1020px;" /></a>
 <p>If the heap of KM4 is not enough, define Heap Start and Heap Size for some unused areas in amebaDplus_layout.ld, and then use the os_heap_add function to add the area to the heap array. The address shall be a valid value in PSRAM, then re-build and download the new image to let KM4 use the extended heap.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">bool</span> <span class="n">os_heap_add</span><span class="p">(</span><span class="n">u8</span> <span class="o">*</span><span class="n">start_addr</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">heap_size</span><span class="p">);</span>
 </pre></div>

@@ -335,7 +335,7 @@
 <section id="entering-sleep-mode">
 <h2>Entering Sleep Mode<a class="headerlink" href="#entering-sleep-mode" title="Link to this heading"></a></h2>
 <p>Sleep mode is based on FreeRTOS tickless, thus it is recommended to enter sleep mode by releasing the wakelock.</p>
-<ol class="arabic simple" start="6">
+<ol class="arabic simple">
 <li><p>Initialize the specific peripheral.</p></li>
 <li><p>Enable and register the peripheral’s interrupt.</p></li>
 <li><p>Set sleep_wevent_config[] in ambea_sleepcfg.c, and the interrupt should be registered on the same CPU selected by sleep_wevent_config[].</p></li>
@@ -352,7 +352,7 @@
 <li><p>When the baudrate is larger than 115200, it is not recommended to use UART as a wakeup source.</p></li>
 </ul>
 <p>Configuration:</p>
-<ol class="arabic simple" start="11">
+<ol class="arabic simple">
 <li><p>Initialize UART and enable its interrupt.</p></li>
 <li><p>Set the related wakeup source (WAKE_SRC_UART0/WAKE_SRC_UART1/WAKE_SRC_UART2_BT) in <a href="#id10"><span class="problematic" id="id11">sleep_wevent_</span></a> config[] to WAKEUP_KM4 or WAKEUP_KM0 (based on which CPU you want to wake). The interrupt should be registered on the same CPU selected by sleep_wevent_config[].</p></li>
 <li><p>Set the corresponding entry of uart_config[] in ameba_sleepcfg.c to “ENABLE”.</p></li>
@@ -365,7 +365,7 @@
 <h3>LOGUART<a class="headerlink" href="#loguart" title="Link to this heading"></a></h3>
 <p>When using LOGUART as a wakeup source, XTAL should not be closed during sleep.</p>
 <p>Configuration:</p>
-<ol class="arabic simple" start="14">
+<ol class="arabic simple">
 <li><p>Initialize LOGUART and enable its interrupt.</p></li>
 <li><p>Set WAKE_SRC_UART_LOG in sleep_wevent_config[] to WAKEUP_KM4 or WAKEUP_KM0 (based on which CPU you want to wake). The interrupt should be registered on the same CPU selected by sleep_wevent_config[].</p></li>
 <li><p>Set xtal_mode_in_sleep to XTAL_Normal in ps_config[].</p></li>
@@ -379,7 +379,7 @@
 <p>Deep-sleep can also be entered from FreeRTOS tickless flow.</p>
 <p>When the system boots, KM4 holds the deepwakelock PMU_OS, thus freertos_ready_to_dsleep() will be checked fail and the system does not enter deep-sleep mode in idle task by default. Since freertos_ready_to_dsleep() will be checked only after freertos_ready_to_sleep() is checked pass, both the wakelock and deepwakelock need to be released for entering deep-sleep mode.</p>
 <p>Configuration:</p>
-<ol class="arabic simple" start="9">
+<ol class="arabic simple">
 <li><p>Initialize the related peripheral and enable its interrupt.</p></li>
 <li><p>Set sleep_wakepin_config[] in ameba_sleepcfg.c when using AON wakepin as a wakeup source.</p></li>
 <li><p>Enter deep-sleep mode by releasing the deepwakelock and wakelock in KM4.</p></li>
@@ -839,7 +839,7 @@ PMU_MAX</p>
 <p>IEEE 802.11 power save management allows the station to enter its own sleep state. It defines that the station needs to keep awake at a certain timestamp and enter a sleep state otherwise.</p>
 <p>WLAN driver acquires the wakelock to avoid the system entering sleep mode when WLAN needs to keep awake. And it releases the wakelock when it is permitted to enter the sleep state.</p>
 <p>IEEE 802.11 power management allows the station to enter power-saving mode. The station cannot receive any frame during power saving. Thus AP needs to buffer these frames and requires the station to periodically wake up to check the beacon which has the information of buffered frames.</p>
-<a class="reference internal image-reference" href="static/power_save_rst/4bd9d8f37d0040ab8c65cdb22167bcb3a613e0f1.png"><img alt="static/power_save_rst/4bd9d8f37d0040ab8c65cdb22167bcb3a613e0f1.png" class="align-center" src="static/power_save_rst/4bd9d8f37d0040ab8c65cdb22167bcb3a613e0f1.png" style="width: 1482px;" /></a>
+<a class="reference internal image-reference" href="../_images/4bd9d8f37d0040ab8c65cdb22167bcb3a613e0f1.png"><img alt="../_images/4bd9d8f37d0040ab8c65cdb22167bcb3a613e0f1.png" class="align-center" src="../_images/4bd9d8f37d0040ab8c65cdb22167bcb3a613e0f1.png" style="width: 1482px;" /></a>
 <p>Figure 1-6 Timeline of power saving</p>
 <p>When the system is active, and Wi-Fi is connected and enters IEEE 802.11 power management mechanism, this is called LPS in SDK; if the system enters sleep mode when Wi-Fi is connected, we call it WoWLAN mode.</p>
 <p>In WoWLAN mode, a timer with a period of about 102ms will be set in the suspend function, and KM0 will wake up every 102ms to receive the beacon to maintain the connection.</p>

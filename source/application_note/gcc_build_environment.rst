@@ -1,3 +1,5 @@
+.. |CHIP_NAME| replace:: AmeabDPlus
+
 .. _build_environment:
 
 Build Environment
@@ -42,7 +44,7 @@ When "Proceed with installation? [Y/n]" is displayed, type "Y" and continue unti
 
 
 
-.. image:: ../static/gcc_build_environment_rst/03b36142a17d370d5dc82679a28dead21a1d5f06.png
+.. image:: ../_static/gcc_build_environment_rst/03b36142a17d370d5dc82679a28dead21a1d5f06.png
    :width: 144
    :align: center
 
@@ -68,7 +70,7 @@ When "Proceed with installation? [Y/n]" is displayed, type "Y" and continue unti
    pacman -Syu
 When "Proceed with installation? [Y/n]" is displayed, type "Y" and continue until the package installation is done.
 
-.. image:: ../static/gcc_build_environment_rst/570687cf2f8026e90eb349c00760d8257841d38f.png
+.. image:: ../_static/gcc_build_environment_rst/570687cf2f8026e90eb349c00760d8257841d38f.png
    :width: 579
    :align: center
 
@@ -139,21 +141,21 @@ Starting from Ubuntu 6.10, dash is used by default instead of bash. You can use 
 
    - If the system shell is bash, continue to do the subsequent operations.
 
-.. image:: ../static/gcc_build_environment_rst/981b1876be32820503a2cb56f6dcd3b73932dc57.png
+.. image:: ../_static/gcc_build_environment_rst/981b1876be32820503a2cb56f6dcd3b73932dc57.png
    :width: 891
    :align: center
 
 
 - \ ``$``\  \ ``make \-v``\ 
 
-.. image:: ../static/gcc_build_environment_rst/e71390dc1eb5172b2df7fa87c842a7bc8fea4e39.png
+.. image:: ../_static/gcc_build_environment_rst/e71390dc1eb5172b2df7fa87c842a7bc8fea4e39.png
    :width: 705
    :align: center
 
 
 - \ ``$``\  \ ``sudo``\  \ ``apt\-get install``\  \ ``libssl\-dev``\ 
 
-.. image:: ../static/gcc_build_environment_rst/46814da9a2a450dc380db80bdcd1ebca2020d1df.png
+.. image:: ../_static/gcc_build_environment_rst/46814da9a2a450dc380db80bdcd1ebca2020d1df.png
    :width: 1039
    :align: center
 
@@ -162,7 +164,7 @@ Starting from Ubuntu 6.10, dash is used by default instead of bash. You can use 
 
 Use \ ``ld``\  \ ``\-v``\  command to check if binutils has been installed. If not, the following error may occur.
 
-.. image:: ../static/gcc_build_environment_rst/6d675afc5542fb6e3bd158a5bd557c0972e4d854.png
+.. image:: ../_static/gcc_build_environment_rst/6d675afc5542fb6e3bd158a5bd557c0972e4d854.png
    :width: 1155
    :align: center
 
@@ -191,14 +193,14 @@ This section introduces the steps to prepare the toolchain environment.
 
 For example, if your MSYS2 installation path is as set in section 1.2.1 step (3), the \ ``rtk\-toolchain``\  should be in \ ``C:\msys64\opt``\ .
 
-.. image:: ../static/gcc_build_environment_rst/22f030f8961c57b130296f000622620755228734.png
+.. image:: ../_static/gcc_build_environment_rst/22f030f8961c57b130296f000622620755228734.png
    :width: 202
    :align: center
 
 
 3. Unzip \ ``asdk\-10.3.x``\ \-\ ``mingw32\-newlib\-build\-xxxx.zip``\  and place the toolchain folder \ ``asdk\-10.3.x``\  to the folder \ ``rtk\-toolchain``\  created in step (2).
 
-.. image:: ../static/gcc_build_environment_rst/0ff7a5efd195823cafdd080ad0f2510849d9f11a.png
+.. image:: ../_static/gcc_build_environment_rst/0ff7a5efd195823cafdd080ad0f2510849d9f11a.png
    :width: 388
    :align: center
 
@@ -219,14 +221,14 @@ This section introduces the steps to prepare the toolchain environment.
 
 2. Create a new directory \ ``rtk\-toolchain``\  under the path \ ``/opt.``\ 
 
-.. image:: ../static/gcc_build_environment_rst/92fe2af04ddff6b8f199fbe7bb6e6da206c76525.png
+.. image:: ../_static/gcc_build_environment_rst/92fe2af04ddff6b8f199fbe7bb6e6da206c76525.png
    :width: 841
    :align: center
 
 
 3. Unzip \ ``asdk\-10.3.x\-linux\-newlib\-build\-xxxx.tar.bz2``\  to \ ``/opt/rtk\-toolchain``\  , then you can get the directory below:
 
-.. image:: ../static/gcc_build_environment_rst/e04dbe47db18cb25c644ef8e078dbd7fef1af47d.png
+.. image:: ../_static/gcc_build_environment_rst/e04dbe47db18cb25c644ef8e078dbd7fef1af47d.png
    :width: 518
    :align: center
 
@@ -315,28 +317,28 @@ For example, you can type \ ``$ cd``\  \ ``{SDK}\amebadplus_gcc_project\project_
 
    - For KM0 project, if the terminal contains “target_img2.axf” and “Image manipulating end” message (see Figure 1\-4), it means that KM0 image has been built successfully. You can find it under \ ``\amebadplus_gcc_project\project_km0\asdk\image``\ , as shown in Figure 1\-5.
 
-.. image:: ../static/gcc_build_environment_rst/de6ff35ea78866f121782953644dfaaaddb070d9.png
+.. image:: ../_static/gcc_build_environment_rst/de6ff35ea78866f121782953644dfaaaddb070d9.png
    :width: 1373
    :align: center
 
 
 Figure 1\-2 KM4 project make all
 
-.. image:: ../static/gcc_build_environment_rst/600cf88515837e768418cb60c3901eba302ff2bd.png
+.. image:: ../_static/gcc_build_environment_rst/600cf88515837e768418cb60c3901eba302ff2bd.png
    :width: 457
    :align: center
 
 
 Figure 1\-3 KM4 image generation
 
-.. image:: ../static/gcc_build_environment_rst/4c521532fcd62d43810f56398086be334a66be52.png
+.. image:: ../_static/gcc_build_environment_rst/4c521532fcd62d43810f56398086be334a66be52.png
    :width: 1364
    :align: center
 
 
 Figure 1\-4 KM0 project make all
 
-.. image:: ../static/gcc_build_environment_rst/12d2d05411c2875752bcad6da0df243f6ed968ba.png
+.. image:: ../_static/gcc_build_environment_rst/12d2d05411c2875752bcad6da0df243f6ed968ba.png
    :width: 609
    :align: center
 
@@ -351,14 +353,14 @@ In order to improve the efficiency of building SDK, you can also execute \ ``$ m
 
 - If somehow failed, type \ ``$ make clean``\  to clean and then redo the make procedure.
 
-.. image:: ../static/gcc_build_environment_rst/2b6c497fafe1f17ab59dd26e23d468a9255e0fe3.png
+.. image:: ../_static/gcc_build_environment_rst/2b6c497fafe1f17ab59dd26e23d468a9255e0fe3.png
    :width: 1369
    :align: center
 
 
 Figure 1\-6 KM4 & KM0 projects make all
 
-.. image:: ../static/gcc_build_environment_rst/e590ac02d9dd56e8ae7d1fe0e0a96c5e0e74bf64.png
+.. image:: ../_static/gcc_build_environment_rst/e590ac02d9dd56e8ae7d1fe0e0a96c5e0e74bf64.png
    :width: 485
    :align: center
 
@@ -406,7 +408,7 @@ Setting Debugger
        The default path of Probe driver in RTL_Probe_cm4.bat file is C:\RLX\PROBE\rlx_probe_driver.exe, you may have to change the path according to your own settings.
     
     
-    .. image:: ../static/gcc_build_environment_rst/2484831eaddc35fb96a02fdfd6b15850aed8256d.png
+    .. image:: ../_static/gcc_build_environment_rst/2484831eaddc35fb96a02fdfd6b15850aed8256d.png
        :width: 1522
        :align: center
     
@@ -419,7 +421,7 @@ Setting Debugger
     
        b. On the MSYS2 terminal, type $ \ ``make setup GDB_SERVER\=probe ``\ command to select Probe debugger, as Figure 1\-10 shows.
     
-    .. image:: ../static/gcc_build_environment_rst/f70edcf4a31f1be6787196496d025d68f4bc84a0.png
+    .. image:: ../_static/gcc_build_environment_rst/f70edcf4a31f1be6787196496d025d68f4bc84a0.png
        :width: 1247
        :align: center
     
@@ -441,7 +443,7 @@ Setting Debugger
     
     The started Probe server looks like Figure 1\-11. This window should NOT be closed if you want to download the image or enter debug mode.
     
-    .. image:: ../static/gcc_build_environment_rst/61e38375cf378beddcbf59164b47b0deba89db40.png
+    .. image:: ../_static/gcc_build_environment_rst/61e38375cf378beddcbf59164b47b0deba89db40.png
        :width: 1011
        :align: center
     
@@ -452,7 +454,7 @@ Setting Debugger
     
     On the MSYS2 terminal, type \ ``$ make setup GDB_SERVER\=probe ``\ command to select Probe debugger, as Figure 1\-12 shows.
     
-    .. image:: ../static/gcc_build_environment_rst/d5fe2324d384d2773cb3c71fa1a8bc61dd1e12f7.png
+    .. image:: ../_static/gcc_build_environment_rst/d5fe2324d384d2773cb3c71fa1a8bc61dd1e12f7.png
        :width: 1347
        :align: center
     
@@ -505,7 +507,7 @@ Double\-click the\ `` cm4_jlink.bat ``\ under\ `` {SDK}\amebadplus_gcc_project\u
 
 The started J\-Link GDB server looks like Figure 1\-14. This window should NOT be closed if you want to download the image or enter debug mode.
 
-.. image:: ../static/gcc_build_environment_rst/6a31598acac3832c2b8f68f873f6fa0b6a4c02f8.png
+.. image:: ../_static/gcc_build_environment_rst/6a31598acac3832c2b8f68f873f6fa0b6a4c02f8.png
    :width: 144
    :align: center
 
@@ -514,7 +516,7 @@ The started J\-Link GDB server looks like Figure 1\-14. This window should NOT b
    Keep this window active to download the images to target.
 
 
-.. image:: ../static/gcc_build_environment_rst/530288efba004fd02c2840bd74ef68df7d18a6b9.png
+.. image:: ../_static/gcc_build_environment_rst/530288efba004fd02c2840bd74ef68df7d18a6b9.png
    :width: 631
    :align: center
 
@@ -527,7 +529,7 @@ Figure 1\-14 KM4 J\-Link GDB server connection under Windows
 
    b. On the MSYS2 terminal, type \ ``$ make setup GDB_SERVER\=jlink ``\ command before selecting J\-Link debugger, as Figure 1\-15 shows.
 
-.. image:: ../static/gcc_build_environment_rst/86ff2a499d3ae5112c163cbfa88952b3254ce533.png
+.. image:: ../_static/gcc_build_environment_rst/86ff2a499d3ae5112c163cbfa88952b3254ce533.png
    :width: 716
    :align: center
 
@@ -543,7 +545,7 @@ Double\-click the \ ``cm0_jlink.bat``\  under \ ``{SDK}\amebadplus_gcc_project\u
 
 The started J\-Link GDB server looks like Figure 1\-16. This window should NOT be closed if you want to download the image or enter debug mode. Because KM4 will download all the images, you don't need to connect J\-Link to KM0 when downloading images. J\-Link can connect to KM0 when debugging.
 
-.. image:: ../static/gcc_build_environment_rst/c7f47aa89f3e0e81009ad5b1be2713e2b3125e46.png
+.. image:: ../_static/gcc_build_environment_rst/c7f47aa89f3e0e81009ad5b1be2713e2b3125e46.png
    :width: 625
    :align: center
 
@@ -556,7 +558,7 @@ Figure 1\-16 KM0 J\-Link GDB server connection under Windows
 
    b. On the Cygwin terminal, type \ ``$ make setup GDB_SERVER\=jlink ``\ command to select J\-Link debugger.
 
-.. image:: ../static/gcc_build_environment_rst/ca5ea7b14e7f9a050d5ebd859311fbd870d95679.png
+.. image:: ../_static/gcc_build_environment_rst/ca5ea7b14e7f9a050d5ebd859311fbd870d95679.png
    :width: 717
    :align: center
 
@@ -587,7 +589,7 @@ KM4 Setup
 
    b. Type \ ``$ /opt/SEGGER/JLink/JLinkGDBServer``\  \ ``\-select USB \-device``\  \ ``Cortex\-M33 \-if SWD \-scriptfile AP2_KM4.JLinkScript``\  \ ``port 2335``\ .
 
-.. image:: ../static/gcc_build_environment_rst/3a73ffdefc959b62a5ac63904c79428981efe209.png
+.. image:: ../_static/gcc_build_environment_rst/3a73ffdefc959b62a5ac63904c79428981efe209.png
    :width: 716
    :align: center
 
@@ -596,7 +598,7 @@ Figure 1\-18 KM4 J\-Link GDB server connection setting under Linux
 
 If the connection is successful, the log is shown as Figure 1\-19. This terminal should NOT be closed if you want to download software or enter GDB debugger mode.
 
-.. image:: ../static/gcc_build_environment_rst/59dad1832b731545f9c929206bcd561972ebe31a.png
+.. image:: ../_static/gcc_build_environment_rst/59dad1832b731545f9c929206bcd561972ebe31a.png
    :width: 501
    :align: center
 
@@ -609,7 +611,7 @@ Figure 1\-19 KM4 J\-Link GDB server connection success under Linux
 
    b. Type \ ``$ make setup GDB_SERVER\=jlink``\  command before using J\-Link to download software or enter GDB debugger.
 
-.. image:: ../static/gcc_build_environment_rst/58a0327b3fc8cd10f2969037fde9046de033207c.png
+.. image:: ../_static/gcc_build_environment_rst/58a0327b3fc8cd10f2969037fde9046de033207c.png
    :width: 717
    :align: center
 
@@ -624,7 +626,7 @@ KM0 Setup
 
    b. Type \ ``$ /opt/SEGGER/JLink/JLinkGDBServer``\  \ ``\-select USB \-device Cortex\-M23 \-if SWD \-scriptfile``\  \ ``AP1_KM0.JLinkScript port 2331``\ .
 
-.. image:: ../static/gcc_build_environment_rst/ee44c486fd43a440e27ec196a1496641edff6846.png
+.. image:: ../_static/gcc_build_environment_rst/ee44c486fd43a440e27ec196a1496641edff6846.png
    :width: 716
    :align: center
 
@@ -633,7 +635,7 @@ Figure 1\-21 KM0 J\-Link connection setting under Linux
 
 If the connection is successful, the log is shown below.
 
-.. image:: ../static/gcc_build_environment_rst/cf73ef0ffcab9249ce56be33bacf5d317500b3be.png
+.. image:: ../_static/gcc_build_environment_rst/cf73ef0ffcab9249ce56be33bacf5d317500b3be.png
    :width: 537
    :align: center
 
@@ -646,7 +648,7 @@ Figure 1\-22 KM0 J\-Link GDB server connection success under Linux
 
    b. Type \ ``$ make setup GDB_SERVER\=jlink``\  command before using J\-Link to download software or enter GDB debugger.
 
-.. image:: ../static/gcc_build_environment_rst/c9db42ae3cd7dd4af333959cf05be0aa9243a1b0.png
+.. image:: ../_static/gcc_build_environment_rst/c9db42ae3cd7dd4af333959cf05be0aa9243a1b0.png
    :width: 716
    :align: center
 
@@ -671,12 +673,12 @@ To download software into Device Board, make sure the steps mentioned in Section
 Images are downloaded only under KM4 by this command. This command downloads the software into Flash and it will take several seconds to finish, as shown in Figure 1\-24.
 
 
-.. image:: ../static/gcc_build_environment_rst/ce2c821e3d19d1204e359a47f589c27704981ca9.png
+.. image:: ../_static/gcc_build_environment_rst/ce2c821e3d19d1204e359a47f589c27704981ca9.png
    :width: 1056
    :align: center
 
 
-.. image:: ../static/gcc_build_environment_rst/3e27fcc724d1e62a3069c644a6aee6b1a1b2e4bf.png
+.. image:: ../_static/gcc_build_environment_rst/3e27fcc724d1e62a3069c644a6aee6b1a1b2e4bf.png
    :width: 613
    :align: center
 
@@ -685,7 +687,7 @@ Figure 1\-24 Download codes success log
 
 To check whether the image is downloaded correctly into memory, you can select "verify download" before downloading images, and during image download process, "verified OK" log will be shown.
 
-.. image:: ../static/gcc_build_environment_rst/87c6625c823cb92441389600b0994979bc6c985d.png
+.. image:: ../_static/gcc_build_environment_rst/87c6625c823cb92441389600b0994979bc6c985d.png
    :width: 1038
    :align: center
 

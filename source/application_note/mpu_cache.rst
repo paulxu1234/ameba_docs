@@ -139,17 +139,17 @@ Usage
 ~~~~~~~~~~
 Follow these steps to set a MPU region:
 
-4. Define a new variable and struct
+1. Define a new variable and struct
 
    - Variable to store MPU entry index
 
    - Struct mpu_region_config to store the region memory attribute
 
-5. Call mpu_entry_alloc() to allocate a free MPU entry
+2. Call mpu_entry_alloc() to allocate a free MPU entry
 
-6. Set the struct of region memory attribute
+3. Set the struct of region memory attribute
 
-7. Call mpu_region_cfg() to configure MPU region memory attribute
+4. Call mpu_region_cfg() to configure MPU region memory attribute
 
 
 
@@ -330,7 +330,7 @@ When DMA is used to migrate data from/to memory buffers, the start and end addre
 
 
 
-.. image:: ../static/mpu_cache_rst/6a31598acac3832c2b8f68f873f6fa0b6a4c02f8.png
+.. image:: ../_static/mpu_cache_rst/6a31598acac3832c2b8f68f873f6fa0b6a4c02f8.png
    :width: 144
    :align: center
 
@@ -341,23 +341,23 @@ When DMA is used to migrate data from/to memory buffers, the start and end addre
 
 DMA Tx Flow:
 
-14. CPU allocates Tx buffer
+1. CPU allocates Tx buffer
 
-15. CPU writes Tx buffer
+2. CPU writes Tx buffer
 
-16. Realtek recommends: DCache_Clean
+3. Realtek recommends: DCache_Clean
 
-17. DMA Tx Config
+4. DMA Tx Config
 
-18. DMA Tx Interrupt
+5. DMA Tx Interrupt
 
 DMA Rx Flow:
 
-3. CPU allocates Rx buffer
+1. CPU allocates Rx buffer
 
-4. DCache_Clean (if the Rx buffer is in a clean state, this step can be)
+2. DCache_Clean (if the Rx buffer is in a clean state, this step can be)
 
-.. image:: ../static/mpu_cache_rst/6a31598acac3832c2b8f68f873f6fa0b6a4c02f8.png
+.. image:: ../_static/mpu_cache_rst/6a31598acac3832c2b8f68f873f6fa0b6a4c02f8.png
    :width: 144
    :align: center
 
@@ -377,13 +377,13 @@ DMA Rx Flow:
    If the Rx buffer is in a dirty state in the cache, the CPU may write the Rx buffer back to memory from the cache when CPU's D\-Cache becomes full, which could overwrite content that DMA Rx has already written.
 
 
-5. DMA Rx Config
+3. DMA Rx Config
 
-6. DMA Rx interrupt
+4. DMA Rx interrupt
 
-7. DCache_Invalidate (this step is mandatory)
+5. DCache_Invalidate (this step is mandatory)
 
-.. image:: ../static/mpu_cache_rst/6a31598acac3832c2b8f68f873f6fa0b6a4c02f8.png
+.. image:: ../_static/mpu_cache_rst/6a31598acac3832c2b8f68f873f6fa0b6a4c02f8.png
    :width: 144
    :align: center
 
@@ -403,14 +403,14 @@ DMA Rx Flow:
    Prevents the CPU from reading old values into the cache during DMA processing.
 
 
-8. CPU reads Rx buffer (the value returned by DMA Rx)
+6. CPU reads Rx buffer (the value returned by DMA Rx)
 
 .. only:: internal
     
     
     这是CA32和DSP特有的。
     
-    .. image:: ../static/mpu_cache_rst/6a31598acac3832c2b8f68f873f6fa0b6a4c02f8.png
+    .. image:: ../_static/mpu_cache_rst/6a31598acac3832c2b8f68f873f6fa0b6a4c02f8.png
        :width: 144
        :align: center
     

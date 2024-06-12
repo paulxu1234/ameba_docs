@@ -35,24 +35,24 @@ SoC Clock Switch
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Flow
 ^^^^^^^^
-3. (Optional) Find out the speed limit of PSRAM device embedded in |CHIP_NAME| if not sure.
+1. (Optional) Find out the speed limit of PSRAM device embedded in |CHIP_NAME| if not sure.
 
-   c. Print the value of ChipInfo_BDNum() function, which will get the chip info from OTP.
+   a. Print the value of ChipInfo_BDNum() function, which will get the chip info from OTP.
 
-   d. Refer to PSRAM type in Chip_Info[] in \ ``{SDK}\component\soc\amebadplus\lib\ram_common\ameba_chipinfo_lib.c``\ .
+   b. Refer to PSRAM type in Chip_Info[] in \ ``{SDK}\component\soc\amebadplus\lib\ram_common\ameba_chipinfo_lib.c``\ .
 
 For Now, This step can be skipped because wb955 is only used.
 
-4. Check the value of Boot_SocClk_Info_Idx and SocClk_Info[] in \ ``{SDK}\component\soc\amebadplus\usrcfg\ameba_``\  \ ``bootcfg.c``\ .
+2. Check the value of Boot_SocClk_Info_Idx and SocClk_Info[] in \ ``{SDK}\component\soc\amebadplus\usrcfg\ameba_``\  \ ``bootcfg.c``\ .
 
-.. image:: ../static/user_config_rst/418472eafdc889c9bfa2a32acb00e811f3748ec1.png
+.. image:: ../_static/user_config_rst/418472eafdc889c9bfa2a32acb00e811f3748ec1.png
    :width: 1046
    :align: center
 
 
-5. Check the BOOT_ChipInfo_ClkInfoIdx() function in \ ``{SDK}\component\soc\amebadplus\bootloader\bootloader_km4.c``\ .
+3. Check the BOOT_ChipInfo_ClkInfoIdx() function in \ ``{SDK}\component\soc\amebadplus\bootloader\bootloader_km4.c``\ .
 
-.. image:: ../static/user_config_rst/5b5354622e7be590f629af9c1c610ea6f8fc4d5e.png
+.. image:: ../_static/user_config_rst/5b5354622e7be590f629af9c1c610ea6f8fc4d5e.png
    :width: 869
    :align: center
 
@@ -77,7 +77,7 @@ No Limitation by PSRAM Divice , so BootLoader will set the SoC clock defined by 
 |            |             |                            |                                                               | PSRASM: PLL/1/2 |
 +------------+-------------+----------------------------+---------------------------------------------------------------+-----------------+
 
-6. Refer to one of the following methods to change the SoC clock if needed.
+4. Refer to one of the following methods to change the SoC clock if needed.
 
    - Modify SocClk_Info[0] in\ `` {SDK}\component\soc\amebadplus\usrcfg\ameba_bootcfg.c``\ , refer to 1.2.2 step (2) for details.
 
@@ -89,20 +89,20 @@ No Limitation by PSRAM Divice , so BootLoader will set the SoC clock defined by 
    Consider the limitations of the hardware and do not set the clock info illogically.
 
 
-7. Rebuild the project and download the new image again.
+5. Rebuild the project and download the new image again.
 
 Example
 ^^^^^^^^^^^^^^
-4. Refer to 1.2.1 step (1) to find out the speed limit of PSRAM device if not sure (suppose the maximum speed is 200MHz).
+1. Refer to 1.2.1 step (1) to find out the speed limit of PSRAM device if not sure (suppose the maximum speed is 200MHz).
 
-5. Change KM4_CKD of SocClk_Info[0] to CLKDIV(3) if KM4 is wanted to run at 520MHz/3.
+2. Change KM4_CKD of SocClk_Info[0] to CLKDIV(3) if KM4 is wanted to run at 520MHz/3.
 
-.. image:: ../static/user_config_rst/e927169908a31ff5b16b5f6533e407a864aceabf.png
+.. image:: ../_static/user_config_rst/e927169908a31ff5b16b5f6533e407a864aceabf.png
    :width: 1060
    :align: center
  
 
-6. Rebuild the project and download the new image.
+3. Rebuild the project and download the new image.
 
 Now, the clock of KM4 is 173.3MHz, KM0 is 86.6MHz, PSRAM controller is 260MHz (twice the PSRAM), and core power is 0.9V. The clocks of left modules in |CHIP_NAME| will be set to a reasonable value by software automatically based on their maximum speeds.
 
@@ -110,7 +110,7 @@ Flash Clock Switch
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Flash runs half as fast as the SPI Flash controller. By default, the speed of the SPI Flash controller is divided by the PLL, and the speed of the SPI Flash controller shall be less than SPIC_CLK_LIMIT (208MHz). If the Flash needs to run slower, change the value of Flash_Speed (SPIC0) or Data_Flash_Speed (SPIC1) in \ ``{SDK}\component\soc\amebadplus\usrcfg\ameba_flashcfg.c.``\ 
 
-.. image:: ../static/user_config_rst/3d0d60a1a7055593ecb53c72afea651c98c71040.png
+.. image:: ../_static/user_config_rst/3d0d60a1a7055593ecb53c72afea651c98c71040.png
    :width: 647
    :align: center
 
