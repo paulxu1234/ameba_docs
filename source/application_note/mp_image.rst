@@ -2,7 +2,7 @@
 
 MP Image
 ----------------
-The MP image is used for Wi\-Fi & BT performance verification and Wi\-Fi & BT parameters calibration in massive production. This chapter mainly illustrates how to build and use the MP image.
+The MP image is used for Wi-Fi & BT performance verification and Wi-Fi & BT parameters calibration in massive production. This chapter mainly illustrates how to build and use the MP image.
 
 .. only:: internal
     
@@ -26,7 +26,7 @@ The steps of building MP image are depcited below:
 
 
 
-   b. Enable Wi\-Fi, and configure KM4 as AP core and KM0 as NP core.
+   b. Enable Wi-Fi, and configure KM4 as AP core and KM0 as NP core.
 
 
 
@@ -156,7 +156,7 @@ When MP is finished, you need to switch the image from MP image to the normal im
     
     Secure Boot Enable
     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    When secure boot is enabled and you need to switch from normal image to MP image, MP image must be re\-built with secure boot enabled. The steps are shown below:
+    When secure boot is enabled and you need to switch from normal image to MP image, MP image must be re-built with secure boot enabled. The steps are shown below:
     
     1. Modidy manifest.json located in \ ``{SDK}\amebadplus_gcc_project``\ .
     
@@ -167,7 +167,7 @@ When MP is finished, you need to switch the image from MP image to the normal im
        :align: center
     
     
-    2. Re\-build MP image as described in section 1.1.
+    2. Re-build MP image as described in section 1.1.
     
     3. Combine encrypted MP image with encrypted normal image as described in Section 1.2.
     
@@ -175,7 +175,7 @@ When MP is finished, you need to switch the image from MP image to the normal im
     
     RSIP Enable
     ^^^^^^^^^^^^^^^^^^^^^^
-    When RSIP is enabled and you need to switch from normal image to MP image, MP image must be re\-built with RSIP enabled. The steps are shown below:
+    When RSIP is enabled and you need to switch from normal image to MP image, MP image must be re-built with RSIP enabled. The steps are shown below:
     
     1. Modify manifest.json located in \ ``{SDK}\amebadplus_gcc_project.``\ 
     
@@ -186,7 +186,7 @@ When MP is finished, you need to switch the image from MP image to the normal im
        :align: center
     
     
-    2. Re\-build MP image as described in section 1.1.
+    2. Re-build MP image as described in section 1.1.
     
     3. Combine encrypted MP image with encrypted normal image as described in section 1.2.
     
@@ -196,7 +196,7 @@ When MP is finished, you need to switch the image from MP image to the normal im
         
         RDP Enable
         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-        When RDP is enabled and you need to switch from normal image to MP image, MP image must be re\-built with both RDP and TrustZone enabled. The steps are shown below:
+        When RDP is enabled and you need to switch from normal image to MP image, MP image must be re-built with both RDP and TrustZone enabled. The steps are shown below:
         
         1. Modidy manifest.json located in \ ``{SDK}\amebadplus_gcc_project``\ .
         
@@ -211,7 +211,7 @@ When MP is finished, you need to switch the image from MP image to the normal im
         
         
         
-        3. Re\-build MP image as described in section 1.1.
+        3. Re-build MP image as described in section 1.1.
         
         4. Combine encrypted MP image with encrypted normal image as described in section 1.2.
         

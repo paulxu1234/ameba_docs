@@ -12,14 +12,14 @@
     Users do not need to implement the secure boot code themselves, which is already contained in the SDK.
     
 
-    To generate the Public Key and signature of bootloader, we provide an image operation tool named "elf2bin". With the tool, users can generate and append signature\-related information to images. Refer to the following sections for operation details.
+    To generate the Public Key and signature of bootloader, we provide an image operation tool named "elf2bin". With the tool, users can generate and append signature-related information to images. Refer to the following sections for operation details.
     
 
-    The principle of secure boot is illustrated in Figure 1\-1. With elf2bin tool, the public key, signature, image hash and other fields are generated in the manifest.
+    The principle of secure boot is illustrated in Figure 1-1. With elf2bin tool, the public key, signature, image hash and other fields are generated in the manifest.
     
     
     
-    Figure \- Secure boot diagram
+    Figure - Secure boot diagram
     
     The manifest (4KB) is located at the beginning of the image. Each of the following images has a manifest:
     
@@ -39,7 +39,7 @@
     .. only:: RTL8721D
         
         
-        3. KM4 bootloader validates the KM0 & KM4 application image, which includes NSPE image (KM0 & KM4 non\-secure image) and SPE image (KM4 secure image) separately.
+        3. KM4 bootloader validates the KM0 & KM4 application image, which includes NSPE image (KM0 & KM4 non-secure image) and SPE image (KM4 secure image) separately.
         
     
     
@@ -127,11 +127,11 @@
     |                      |                     |        |                                               |
     |                      |                     |        | - 0x2: SHA 512                                |
     |                      |                     |        |                                               |
-    |                      |                     |        | - 0x3: HMAC\-SHA256                           |
+    |                      |                     |        | - 0x3: HMAC-SHA256                            |
     |                      |                     |        |                                               |
-    |                      |                     |        | - 0x4: HMAC\-SHA384                           |
+    |                      |                     |        | - 0x4: HMAC-SHA384                            |
     |                      |                     |        |                                               |
-    |                      |                     |        | - 0x5: HMAC\-SHA512                           |
+    |                      |                     |        | - 0x5: HMAC-SHA512                            |
     +----------------------+---------------------+--------+-----------------------------------------------+
 
     
@@ -160,7 +160,7 @@
     
     1. Calculate the hash of the image.
     
-    For EdDSA, the hash algorithm is determined by the manifest, which can be SHA256/384/512 or HMAC\-SHA256/384/512.
+    For EdDSA, the hash algorithm is determined by the manifest, which can be SHA256/384/512 or HMAC-SHA256/384/512.
     
     2. Fill the hash value into the manifest.
     
@@ -170,7 +170,7 @@
     
     
     
-    Figure \- Image signing flow
+    Figure - Image signing flow
     
     How to Use Secure Boot
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -184,7 +184,7 @@
        $ ./elf2bin keypair <auth_alg> <output_filename>
     The \ ``auth_alg``\  can be ED25519.
     
-    For example, you can type the following command to generate ED25519 key\-pair file, named \ ``keypair.json``\ :
+    For example, you can type the following command to generate ED25519 key-pair file, named \ ``keypair.json``\ :
     
     .. code::
     
@@ -272,7 +272,7 @@
     
        c. Secure Boot Enable bit
     
-          - When in device\-development stage, it is recommended to program SECURE_BOOT_EN_LOG bit, which can be disabled afterward. Use efuse rmap first to check value in 0x3, then enable SECURE_BOOT_EN_LOG bit (0x3 bit2).
+          - When in device-development stage, it is recommended to program SECURE_BOOT_EN_LOG bit, which can be disabled afterward. Use efuse rmap first to check value in 0x3, then enable SECURE_BOOT_EN_LOG bit (0x3 bit2).
     
     .. code::
     
@@ -285,7 +285,7 @@
     .. code::
     
        efuse wmap 0x3 1 e4
-          - When in device\-MP stage, you should program the SECURE_BOOT_EN_PHY bit to enable secure boot permanently.
+          - When in device-MP stage, you should program the SECURE_BOOT_EN_PHY bit to enable secure boot permanently.
     
     .. code::
     
@@ -298,9 +298,9 @@
     .. code::
     
        efuse wraw 0x368 1 F7
-       d. Other security\-related bits
+       d. Other security-related bits
     
-    For MP devices, you should also program some other security\-related bits for security reasons, such as key read/write protection bits, SECURE_BOOT_AUTH/HASH_ALG bits, etc.
+    For MP devices, you should also program some other security-related bits for security reasons, such as key read/write protection bits, SECURE_BOOT_AUTH/HASH_ALG bits, etc.
     
     4. Modify the manifest configuration file.
     
@@ -345,7 +345,7 @@
        :align: center
     
     
-    5. Generate signed image\-tool flashloader binary by using "\ ``make gen_imgtool_floader RTLNAME\=xxx``\ " command under \ ``{SDK}\amebadplus_gcc_project ``\ folder if you are going to download images with ImageTool. Then copy the following binary to the ImageTool folder to overwrite the original one: \ ``{SDK}\amebadplus_gcc_project\floader_amebadplus.bin``\ .
+    5. Generate signed image-tool flashloader binary by using "\ ``make gen_imgtool_floader RTLNAME=xxx``\ " command under \ ``{SDK}\amebadplus_gcc_project ``\ folder if you are going to download images with ImageTool. Then copy the following binary to the ImageTool folder to overwrite the original one: \ ``{SDK}\amebadplus_gcc_project\floader_amebadplus.bin``\ .
     
     
     
@@ -443,7 +443,7 @@
         - manifest.json提供加密的AES key和RSIP_IV
         
 
-        需要注意的是，RDP加密使用的IV是由 APP中的RSIP_IV \+ RDP_IV
+        需要注意的是，RDP加密使用的IV是由 APP中的RSIP_IV + RDP_IV
         
 
         4 cert生成

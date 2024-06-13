@@ -20,9 +20,7 @@
         <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="MP Image" href="mp_image.html" />
-    <link rel="prev" title="Virtual File System" href="file_system.html" /> 
+    <link rel="search" title="Search" href="../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -44,56 +42,42 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Application Note</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="gcc_build_environment.html">Build Environment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sdk_example.html">SDK Examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mpu_cache.html">MPU</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mpu_cache.html#cache">Cache</a></li>
-<li class="toctree-l2"><a class="reference internal" href="flash_memory_layout.html">Flash Layout</a></li>
-<li class="toctree-l2"><a class="reference internal" href="flash_memory_layout.html#memory-layout">Memory Layout</a></li>
-<li class="toctree-l2"><a class="reference internal" href="file_system.html">Virtual File System</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">OTA Firmware Update</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#image-slot">Image Slot</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#version-number">Version Number</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#anti-rollback">Anti-rollback</a></li>
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">OTA Firmware Update</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a><ul>
+<li><a class="reference internal" href="#image-slot">Image Slot</a></li>
+<li><a class="reference internal" href="#version-number">Version Number</a></li>
+<li><a class="reference internal" href="#anti-rollback">Anti-rollback</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#bootloader">Bootloader</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#ota-image">OTA Image</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#ota-select-flow">OTA Select Flow</a></li>
+<li><a class="reference internal" href="#bootloader">Bootloader</a><ul>
+<li><a class="reference internal" href="#ota-image">OTA Image</a></li>
+<li><a class="reference internal" href="#ota-select-flow">OTA Select Flow</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#application">Application</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id2">OTA Image</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id3">OTA Select Flow</a></li>
+<li><a class="reference internal" href="#application">Application</a><ul>
+<li><a class="reference internal" href="#id2">OTA Image</a></li>
+<li><a class="reference internal" href="#id3">OTA Select Flow</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#building-ota-image">Building OTA Image</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#modifying-configurations">Modifying Configurations</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#generating-ota-image-automatically">Generating OTA Image Automatically</a></li>
+<li><a class="reference internal" href="#building-ota-image">Building OTA Image</a><ul>
+<li><a class="reference internal" href="#modifying-configurations">Modifying Configurations</a></li>
+<li><a class="reference internal" href="#generating-ota-image-automatically">Generating OTA Image Automatically</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#updating-from-local-server">Updating from Local Server</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#firmware-format">Firmware Format</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#ota-flow">OTA Flow</a></li>
+<li><a class="reference internal" href="#updating-from-local-server">Updating from Local Server</a><ul>
+<li><a class="reference internal" href="#firmware-format">Firmware Format</a></li>
+<li><a class="reference internal" href="#ota-flow">OTA Flow</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#ota-demo">OTA Demo</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#ota-firmware-swap">OTA Firmware Swap</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#user-configuration">User Configuration</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="mp_image.html">MP Image</a></li>
-<li class="toctree-l2"><a class="reference internal" href="boot_process.html">Boot Process</a></li>
-<li class="toctree-l2"><a class="reference internal" href="user_config.html">User Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="power_save.html">Power Saving</a></li>
-<li class="toctree-l2"><a class="reference internal" href="template_rst_syntax.html">RST语法</a></li>
+<li><a class="reference internal" href="#ota-demo">OTA Demo</a></li>
+<li><a class="reference internal" href="#ota-firmware-swap">OTA Firmware Swap</a></li>
+<li><a class="reference internal" href="#user-configuration">User Configuration</a></li>
 </ul>
 </li>
 </ul>
-
+</div>
         </div>
       </div>
     </nav>
@@ -108,7 +92,6 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="index.html">Application Note</a></li>
       <li class="breadcrumb-item active">OTA Firmware Update</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/application_note/ota.rst.txt" rel="nofollow"> View page source</a>
@@ -254,7 +237,7 @@
 </table>
 <p>The bootloader version of anti-rollback is 0 by default. Users can change the number of ‘0’ bit to enlarge the bootloader version. For example, users can program the bootloader version of anti-rollback to 1 by the following command:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">EFUSE</span> <span class="n">wraw</span> <span class="mi">36</span><span class="n">E</span> <span class="mi">2</span> <span class="n">FFFE</span>
-<span class="n">b</span><span class="o">.</span> <span class="n">Enable</span> <span class="n">anti</span>\<span class="o">-</span><span class="n">rollback</span>
+<span class="n">b</span><span class="o">.</span> <span class="n">Enable</span> <span class="n">anti</span><span class="o">-</span><span class="n">rollback</span>
 </pre></div>
 </div>
 <p>Users can program OTP by the following command to enable anti-rollback.</p>
@@ -457,10 +440,7 @@
 
            </div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="file_system.html" class="btn btn-neutral float-left" title="Virtual File System" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="mp_image.html" class="btn btn-neutral float-right" title="MP Image" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
+          <footer>
 
   <hr/>
 

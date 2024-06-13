@@ -20,9 +20,7 @@
         <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="OTA Firmware Update" href="ota.html" />
-    <link rel="prev" title="Flash Layout" href="flash_memory_layout.html" /> 
+    <link rel="search" title="Search" href="../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -44,38 +42,28 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Application Note</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="gcc_build_environment.html">Build Environment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sdk_example.html">SDK Examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mpu_cache.html">MPU</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mpu_cache.html#cache">Cache</a></li>
-<li class="toctree-l2"><a class="reference internal" href="flash_memory_layout.html">Flash Layout</a></li>
-<li class="toctree-l2"><a class="reference internal" href="flash_memory_layout.html#memory-layout">Memory Layout</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Virtual File System</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#vfs-initialization">VFS Initialization</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#usage-of-vfs">Usage of VFS</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#vfs-on-flash">VFS on Flash</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#common-file-operation">Common File Operation</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#key-value-operation">Key-Value Operation</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#code-conversion">Code Conversion</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#vfs-encryption">VFS Encryption</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#vfs-bin-file-generation">VFS Bin File Generation</a></li>
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Virtual File System</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#vfs-initialization">VFS Initialization</a></li>
+<li><a class="reference internal" href="#usage-of-vfs">Usage of VFS</a><ul>
+<li><a class="reference internal" href="#vfs-on-flash">VFS on Flash</a></li>
+<li><a class="reference internal" href="#common-file-operation">Common File Operation</a></li>
+<li><a class="reference internal" href="#key-value-operation">Key-Value Operation</a></li>
+<li><a class="reference internal" href="#code-conversion">Code Conversion</a></li>
+<li><a class="reference internal" href="#vfs-encryption">VFS Encryption</a></li>
+<li><a class="reference internal" href="#vfs-bin-file-generation">VFS Bin File Generation</a><ul>
+<li><a class="reference internal" href="#littlefs-bin-file-generation">LittleFS Bin File Generation</a></li>
+<li><a class="reference internal" href="#fatfs-bin-file-generation">FatFS Bin File Generation</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="ota.html">OTA Firmware Update</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mp_image.html">MP Image</a></li>
-<li class="toctree-l2"><a class="reference internal" href="boot_process.html">Boot Process</a></li>
-<li class="toctree-l2"><a class="reference internal" href="user_config.html">User Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="power_save.html">Power Saving</a></li>
-<li class="toctree-l2"><a class="reference internal" href="template_rst_syntax.html">RST语法</a></li>
 </ul>
 </li>
 </ul>
-
+</div>
         </div>
       </div>
     </nav>
@@ -90,7 +78,6 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="index.html">Application Note</a></li>
       <li class="breadcrumb-item active">Virtual File System</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/application_note/file_system.rst.txt" rel="nofollow"> View page source</a>
@@ -105,7 +92,7 @@
 <span id="id1"></span><h1>Virtual File System<a class="headerlink" href="#virtual-file-system" title="Link to this heading"></a></h1>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
-<p>This section introduces how to run Virtual File System (VFS) on <a href="#id2"><span class="problematic" id="id3">|CHIP_NAME|</span></a>, including FatFS and LittleFS as the underlying implementation. Users can ignore the differences between different file systems by using VFS. The VFS provides common file operation interfaces like fopen, fclose, fwrite, fread, etc. The Key-Value (KV) interfaces are based on these common file operations. The architecture of VFS is illustrated in Figure 1-1.</p>
+<p>This section introduces how to run Virtual File System (VFS) on <a href="#id60"><span class="problematic" id="id61">|CHIP_NAME|</span></a>, including FatFS and LittleFS as the underlying implementation. Users can ignore the differences between different file systems by using VFS. The VFS provides common file operation interfaces like fopen, fclose, fwrite, fread, etc. The Key-Value (KV) interfaces are based on these common file operations. The architecture of VFS is illustrated in Figure 1-1.</p>
 <p>Figure 1-1 Architecture of VFS</p>
 </section>
 <section id="vfs-initialization">
@@ -177,39 +164,39 @@ return;</p>
 <tbody>
 <tr class="row-even"><td><p>fopen</p></td>
 <td><ul class="simple">
-<li><p>const char *filename</p></li>
-<li><p>const char *mode</p></li>
+<li><p>const char <a href="#id2"><span class="problematic" id="id3">*</span></a>filename</p></li>
+<li><p>const char <a href="#id4"><span class="problematic" id="id5">*</span></a>mode</p></li>
 </ul>
 </td>
 <td><p>Open the filename pointed to, by filename using the given mode</p></td>
 </tr>
 <tr class="row-odd"><td><p>fclose</p></td>
-<td><p>FILE *stream</p></td>
+<td><p>FILE <a href="#id6"><span class="problematic" id="id7">*</span></a>stream</p></td>
 <td><p>Close the stream</p></td>
 </tr>
 <tr class="row-even"><td><p>fread</p></td>
 <td><ul class="simple">
-<li><p>void *ptr</p></li>
+<li><p>void <a href="#id8"><span class="problematic" id="id9">*</span></a>ptr</p></li>
 <li><p>size_t size</p></li>
 <li><p>size_t count</p></li>
-<li><p>FILE *stream</p></li>
+<li><p>FILE <a href="#id10"><span class="problematic" id="id11">*</span></a>stream</p></li>
 </ul>
 </td>
 <td><p>Read data from the given stream by ptr into the array pointed to</p></td>
 </tr>
 <tr class="row-odd"><td><p>fwrite</p></td>
 <td><ul class="simple">
-<li><p>const void *ptr</p></li>
+<li><p>const void <a href="#id12"><span class="problematic" id="id13">*</span></a>ptr</p></li>
 <li><p>size_t size</p></li>
 <li><p>size_t count</p></li>
-<li><p>FILE *stream</p></li>
+<li><p>FILE <a href="#id14"><span class="problematic" id="id15">*</span></a>stream</p></li>
 </ul>
 </td>
 <td><p>Write data from the array pointed to by ptr to the given stream</p></td>
 </tr>
 <tr class="row-even"><td><p>fseek</p></td>
 <td><ul class="simple">
-<li><p>FILE *stream</p></li>
+<li><p>FILE <a href="#id16"><span class="problematic" id="id17">*</span></a>stream</p></li>
 <li><p>long int offset</p></li>
 <li><p>int origin</p></li>
 </ul>
@@ -217,80 +204,80 @@ return;</p>
 <td><p>Set the file position of the stream to the given offset</p></td>
 </tr>
 <tr class="row-odd"><td><p>rewind</p></td>
-<td><p>FILE *stream</p></td>
+<td><p>FILE <a href="#id18"><span class="problematic" id="id19">*</span></a>stream</p></td>
 <td><p>Set the file position to the beginning of the file of the given stream</p></td>
 </tr>
 <tr class="row-even"><td><p>fgetpos</p></td>
 <td><ul class="simple">
-<li><p>FILE *stream</p></li>
-<li><p>fpos_t *p</p></li>
+<li><p>FILE <a href="#id20"><span class="problematic" id="id21">*</span></a>stream</p></li>
+<li><p>fpos_t <a href="#id22"><span class="problematic" id="id23">*</span></a>p</p></li>
 </ul>
 </td>
 <td><p>Get the current file position of the stream and writes it to pos</p></td>
 </tr>
 <tr class="row-odd"><td><p>fsetpos</p></td>
 <td><ul class="simple">
-<li><p>FILE *stream</p></li>
-<li><p>fpos_t *p</p></li>
+<li><p>FILE <a href="#id24"><span class="problematic" id="id25">*</span></a>stream</p></li>
+<li><p>fpos_t <a href="#id26"><span class="problematic" id="id27">*</span></a>p</p></li>
 </ul>
 </td>
 <td><p>Set the file position of the given stream to the given position</p></td>
 </tr>
 <tr class="row-even"><td><p>fflush</p></td>
-<td><p>FILE *stream</p></td>
+<td><p>FILE <a href="#id28"><span class="problematic" id="id29">*</span></a>stream</p></td>
 <td><p>Flush the output buffer of a stream</p></td>
 </tr>
 <tr class="row-odd"><td><p>remove</p></td>
-<td><p>const char *filename</p></td>
+<td><p>const char <a href="#id30"><span class="problematic" id="id31">*</span></a>filename</p></td>
 <td><p>Delete the given filename so that it is no longer accessible</p></td>
 </tr>
 <tr class="row-even"><td><p>rename</p></td>
 <td><ul class="simple">
-<li><p>const char *oldname</p></li>
-<li><p>const char *newname</p></li>
+<li><p>const char <a href="#id32"><span class="problematic" id="id33">*</span></a>oldname</p></li>
+<li><p>const char <a href="#id34"><span class="problematic" id="id35">*</span></a>newname</p></li>
 </ul>
 </td>
 <td><p>Cause the filename referred to from old_filename to new_filename</p></td>
 </tr>
 <tr class="row-odd"><td><p>feof</p></td>
-<td><p>FILE *stream</p></td>
+<td><p>FILE <a href="#id36"><span class="problematic" id="id37">*</span></a>stream</p></td>
 <td><p>Test the end-of-file indicator for the given stream</p></td>
 </tr>
 <tr class="row-even"><td><p>ferror</p></td>
-<td><p>FILE *stream</p></td>
+<td><p>FILE <a href="#id38"><span class="problematic" id="id39">*</span></a>stream</p></td>
 <td><p>Test the error indicator for the given stream</p></td>
 </tr>
 <tr class="row-odd"><td><p>ftell</p></td>
-<td><p>FILE *stream</p></td>
+<td><p>FILE <a href="#id40"><span class="problematic" id="id41">*</span></a>stream</p></td>
 <td><p>Return the current file position of the given stream</p></td>
 </tr>
 <tr class="row-even"><td><p>ftruncate</p></td>
 <td><ul class="simple">
-<li><p>FILE *stream</p></li>
+<li><p>FILE <a href="#id42"><span class="problematic" id="id43">*</span></a>stream</p></li>
 <li><p>off_t length</p></li>
 </ul>
 </td>
 <td><p>Truncate a file to a specified length</p></td>
 </tr>
 <tr class="row-odd"><td><p>opendir</p></td>
-<td><p>const char *name</p></td>
+<td><p>const char <a href="#id44"><span class="problematic" id="id45">*</span></a>name</p></td>
 <td><p>Open a directory</p></td>
 </tr>
 <tr class="row-even"><td><p>readdir</p></td>
-<td><p>DIR *pdir</p></td>
+<td><p>DIR <a href="#id46"><span class="problematic" id="id47">*</span></a>pdir</p></td>
 <td><p>Read a directory</p></td>
 </tr>
 <tr class="row-odd"><td><p>closedir</p></td>
-<td><p>DIR *dirp</p></td>
+<td><p>DIR <a href="#id48"><span class="problematic" id="id49">*</span></a>dirp</p></td>
 <td><p>Close a directory</p></td>
 </tr>
 <tr class="row-even"><td><p>rmdir</p></td>
-<td><p>const char *path</p></td>
+<td><p>const char <a href="#id50"><span class="problematic" id="id51">*</span></a>path</p></td>
 <td><p>Remove a directory</p></td>
 </tr>
 <tr class="row-odd"><td><p>mkdir</p></td>
 <td><ul class="simple">
-<li><p>const char *pathname</p></li>
+<li><p>const char <a href="#id52"><span class="problematic" id="id53">*</span></a>pathname</p></li>
 <li><p>mode_t mode</p></li>
 </ul>
 </td>
@@ -298,7 +285,7 @@ return;</p>
 </tr>
 <tr class="row-even"><td><p>access</p></td>
 <td><ul class="simple">
-<li><p>const char *pathname</p></li>
+<li><p>const char <a href="#id54"><span class="problematic" id="id55">*</span></a>pathname</p></li>
 <li><p>int mode</p></li>
 </ul>
 </td>
@@ -306,15 +293,15 @@ return;</p>
 </tr>
 <tr class="row-odd"><td><p>stat</p></td>
 <td><ul class="simple">
-<li><p>const char *path</p></li>
-<li><p>struct stat *buf</p></li>
+<li><p>const char <a href="#id56"><span class="problematic" id="id57">*</span></a>path</p></li>
+<li><p>struct stat <a href="#id58"><span class="problematic" id="id59">*</span></a>buf</p></li>
 </ul>
 </td>
 <td><p>Get file status</p></td>
 </tr>
 </tbody>
 </table>
-<p>Users can rebuild the project by “<code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">all</span> <span class="pre">EXAMPLE\=vfs</span></code>“ to test how common file operations work. Test logs should be like below:</p>
+<p>Users can rebuild the project by “<code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">all</span> <span class="pre">EXAMPLE=vfs</span></code>“ to test how common file operations work. Test logs should be like below:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[example_vfs_thread] fwrite success!!!
 [example_vfs_thread] fread success!!!
 </pre></div>
@@ -326,7 +313,7 @@ return;</p>
 </section>
 <section id="key-value-operation">
 <h3>Key-Value Operation<a class="headerlink" href="#key-value-operation" title="Link to this heading"></a></h3>
-<p>Simple KV interfaces are also provided for users. All KV APIs are placed in`` {SDK}componentfile_systemkvkv.c.`` Users can rebuild the project by “<code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">all</span> <span class="pre">EXAMPLE\=kv</span></code>“ to test how KV APIs work. Test logs should be like below:</p>
+<p>Simple KV interfaces are also provided for users. All KV APIs are placed in`` {SDK}componentfile_systemkvkv.c.`` Users can rebuild the project by “<code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">all</span> <span class="pre">EXAMPLE=kv</span></code>“ to test how KV APIs work. Test logs should be like below:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rt_kv_set</span> <span class="n">success</span><span class="p">,</span> <span class="n">write</span> <span class="mi">28</span> <span class="n">letters</span><span class="o">.</span>
 <span class="n">rt_kv_get</span> <span class="n">success</span><span class="p">,</span> <span class="n">read</span> <span class="mi">28</span> <span class="n">letters</span><span class="o">.</span>
 <span class="n">rt_kv_delett</span> <span class="n">success</span><span class="o">.</span>
@@ -369,7 +356,7 @@ return;</p>
 </section>
 <section id="vfs-encryption">
 <h3>VFS Encryption<a class="headerlink" href="#vfs-encryption" title="Link to this heading"></a></h3>
-<p>For special storage security needs, users can configure encryption and decryption interfaces of vfs. Specific interface usage instructions are listed in <code class="docutils literal notranslate"><span class="pre">{SDK}\component\example\storage\vfs_encrypt\readme.txt</span></code>. Users can rebuild the project by “<code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">all</span> <span class="pre">EXAMPLE\=vfs_encrypt</span></code>“ to test how KV APIs work. Test logs should be like below:</p>
+<p>For special storage security needs, users can configure encryption and decryption interfaces of vfs. Specific interface usage instructions are listed in <code class="docutils literal notranslate"><span class="pre">{SDK}\component\example\storage\vfs_encrypt\readme.txt</span></code>. Users can rebuild the project by “<code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">all</span> <span class="pre">EXAMPLE=vfs_encrypt</span></code>“ to test how KV APIs work. Test logs should be like below:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[example_vfs_encrypt_thread] fwrite succeeded !!!
 [example_vfs_encrypt_thread] fread succeeded !!!
 [example_vfs_encrypt_thread] remove file succeeded !!!
@@ -391,7 +378,7 @@ return;</p>
 <a class="reference internal image-reference" href="../_images/92135436b0fe4840749a09a4fdd302bde789def7.png"><img alt="../_images/92135436b0fe4840749a09a4fdd302bde789def7.png" class="align-center" src="../_images/92135436b0fe4840749a09a4fdd302bde789def7.png" style="width: 172px;" /></a>
 <p><code class="docutils literal notranslate"><span class="pre">AUDIO</span></code> and <code class="docutils literal notranslate"><span class="pre">KV</span></code> directories will be LittleFS directory in the Flash.</p>
 <ol class="arabic simple" start="2">
-<li><p>Use the command <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">./mklittlefs</span></code> <code class="docutils literal notranslate"><span class="pre">\-b</span> <span class="pre">4096</span> <span class="pre">\-p</span> <span class="pre">256</span> <span class="pre">\-c</span> <span class="pre">test</span></code> <code class="docutils literal notranslate"><span class="pre">image_littlefs.bin</span></code> in <code class="docutils literal notranslate"><span class="pre">mklittlefs</span> <span class="pre">``\</span> <span class="pre">tool</span> <span class="pre">located</span> <span class="pre">at</span> <span class="pre">\</span> <span class="pre">``\tools\littlefs</span></code> to generate LittleFS bin files.</p></li>
+<li><p>Use the command <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">./mklittlefs</span></code> <code class="docutils literal notranslate"><span class="pre">-b</span> <span class="pre">4096</span> <span class="pre">-p</span> <span class="pre">256</span> <span class="pre">-c</span> <span class="pre">test</span></code> <code class="docutils literal notranslate"><span class="pre">image_littlefs.bin</span></code> in <code class="docutils literal notranslate"><span class="pre">mklittlefs</span> <span class="pre">``\</span> <span class="pre">tool</span> <span class="pre">located</span> <span class="pre">at</span> <span class="pre">\</span> <span class="pre">``\tools\littlefs</span></code> to generate LittleFS bin files.</p></li>
 </ol>
 <p>Where:</p>
 <blockquote>
@@ -422,8 +409,8 @@ return;</p>
 <h4>FatFS Bin File Generation<a class="headerlink" href="#fatfs-bin-file-generation" title="Link to this heading"></a></h4>
 <p>The steps to generate FatFS bin files are listed below:</p>
 <ol class="arabic simple">
-<li><p>Use command <code class="docutils literal notranslate"><span class="pre">root&#64;ubuntu</span></code> <code class="docutils literal notranslate"><span class="pre">#</span></code> <code class="docutils literal notranslate"><span class="pre">dd</span></code> <code class="docutils literal notranslate"><span class="pre">if\=/dev/zero</span> <span class="pre">of\=test.bin</span></code> <code class="docutils literal notranslate"><span class="pre">count\=64</span></code> <code class="docutils literal notranslate"><span class="pre">bs\=1KB</span></code> to create <code class="docutils literal notranslate"><span class="pre">test.bin</span></code> that has 64 blocks and each block is 1KB.</p></li>
-<li><p>Use command <code class="docutils literal notranslate"><span class="pre">root&#64;ubuntu</span></code> <code class="docutils literal notranslate"><span class="pre">#</span></code> <code class="docutils literal notranslate"><span class="pre">mkfs.fat</span></code> <code class="docutils literal notranslate"><span class="pre">\-S</span> <span class="pre">512\-F</span> <span class="pre">12</span></code> <code class="docutils literal notranslate"><span class="pre">test.bin</span></code> to build a FAT file system.</p></li>
+<li><p>Use command <code class="docutils literal notranslate"><span class="pre">root&#64;ubuntu</span></code> <code class="docutils literal notranslate"><span class="pre">#</span></code> <code class="docutils literal notranslate"><span class="pre">dd</span></code> <code class="docutils literal notranslate"><span class="pre">if=/dev/zero</span> <span class="pre">of=test.bin</span></code> <code class="docutils literal notranslate"><span class="pre">count=64</span></code> <code class="docutils literal notranslate"><span class="pre">bs=1KB</span></code> to create <code class="docutils literal notranslate"><span class="pre">test.bin</span></code> that has 64 blocks and each block is 1KB.</p></li>
+<li><p>Use command <code class="docutils literal notranslate"><span class="pre">root&#64;ubuntu</span></code> <code class="docutils literal notranslate"><span class="pre">#</span></code> <code class="docutils literal notranslate"><span class="pre">mkfs.fat</span></code> <code class="docutils literal notranslate"><span class="pre">-S</span> <span class="pre">512-F</span> <span class="pre">12</span></code> <code class="docutils literal notranslate"><span class="pre">test.bin</span></code> to build a FAT file system.</p></li>
 <li><p>Use command <code class="docutils literal notranslate"><span class="pre">root&#64;ubuntu</span></code> <code class="docutils literal notranslate"><span class="pre">#</span></code> <code class="docutils literal notranslate"><span class="pre">sudo</span></code> <code class="docutils literal notranslate"><span class="pre">mount</span></code> <code class="docutils literal notranslate"><span class="pre">test.bin</span></code> <code class="docutils literal notranslate"><span class="pre">./fs</span></code> to mount <code class="docutils literal notranslate"><span class="pre">test.bin</span></code> to file folder fs.</p></li>
 <li><p>Use command <code class="docutils literal notranslate"><span class="pre">root&#64;ubuntu</span></code> <code class="docutils literal notranslate"><span class="pre">#</span></code> <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">cp</span> <span class="pre">hello.txt</span> <span class="pre">./fs</span></code> to copy the files that users want to store into <code class="docutils literal notranslate"><span class="pre">test.bin</span></code>.</p></li>
 </ol>
@@ -440,10 +427,7 @@ return;</p>
 
            </div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="flash_memory_layout.html" class="btn btn-neutral float-left" title="Flash Layout" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="ota.html" class="btn btn-neutral float-right" title="OTA Firmware Update" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
+          <footer>
 
   <hr/>
 

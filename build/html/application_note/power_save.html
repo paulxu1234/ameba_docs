@@ -20,9 +20,7 @@
         <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="RST语法" href="template_rst_syntax.html" />
-    <link rel="prev" title="User Configuration" href="user_config.html" /> 
+    <link rel="search" title="Search" href="../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -44,54 +42,54 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Application Note</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="gcc_build_environment.html">Build Environment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sdk_example.html">SDK Examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mpu_cache.html">MPU</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mpu_cache.html#cache">Cache</a></li>
-<li class="toctree-l2"><a class="reference internal" href="flash_memory_layout.html">Flash Layout</a></li>
-<li class="toctree-l2"><a class="reference internal" href="flash_memory_layout.html#memory-layout">Memory Layout</a></li>
-<li class="toctree-l2"><a class="reference internal" href="file_system.html">Virtual File System</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ota.html">OTA Firmware Update</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mp_image.html">MP Image</a></li>
-<li class="toctree-l2"><a class="reference internal" href="boot_process.html">Boot Process</a></li>
-<li class="toctree-l2"><a class="reference internal" href="user_config.html">User Configuration</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Power Saving</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#power-saving-mode">Power-Saving Mode</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#summary">Summary</a></li>
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Power Saving</a><ul>
+<li><a class="reference internal" href="#power-saving-mode">Power-Saving Mode</a><ul>
+<li><a class="reference internal" href="#summary">Summary</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#wakeup-source">Wakeup Source</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#entering-sleep-mode">Entering Sleep Mode</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#uart">UART</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#loguart">LOGUART</a></li>
+<li><a class="reference internal" href="#wakeup-source">Wakeup Source</a></li>
+<li><a class="reference internal" href="#entering-sleep-mode">Entering Sleep Mode</a><ul>
+<li><a class="reference internal" href="#uart">UART</a></li>
+<li><a class="reference internal" href="#loguart">LOGUART</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#entering-deep-sleep-mode">Entering Deep-Sleep Mode</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#power-saving-configuration">Power-Saving Configuration</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#wakeup-mask-setup">Wakeup Mask Setup</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#aon-wakepin-configuration">AON Wakepin Configuration</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#clock-and-voltage-configuration">Clock and Voltage Configuration</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#sleep-type-configuration">Sleep Type Configuration</a></li>
+<li><a class="reference internal" href="#entering-deep-sleep-mode">Entering Deep-Sleep Mode</a></li>
+<li><a class="reference internal" href="#power-saving-configuration">Power-Saving Configuration</a><ul>
+<li><a class="reference internal" href="#wakeup-mask-setup">Wakeup Mask Setup</a></li>
+<li><a class="reference internal" href="#aon-wakepin-configuration">AON Wakepin Configuration</a></li>
+<li><a class="reference internal" href="#clock-and-voltage-configuration">Clock and Voltage Configuration</a></li>
+<li><a class="reference internal" href="#sleep-type-configuration">Sleep Type Configuration</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#power-saving-related-apis">Power-Saving Related APIs</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#wakelock-apis">Wakelock APIs</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pmu-set-sysactive-time">pmu_set_sysactive_time</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#sleep-wake-callback-apis">Sleep/Wake Callback APIs</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pmu-set-max-sleep-time">pmu_set_max_sleep_time</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#wakeup-reason-apis">Wakeup Reason APIs</a></li>
+<li><a class="reference internal" href="#power-saving-related-apis">Power-Saving Related APIs</a><ul>
+<li><a class="reference internal" href="#wakelock-apis">Wakelock APIs</a><ul>
+<li><a class="reference internal" href="#pmu-acquire-wakelock">pmu_acquire_wakelock</a></li>
+<li><a class="reference internal" href="#pmu-release-wakelock">pmu_release_wakelock</a></li>
+<li><a class="reference internal" href="#pmu-acquire-deepwakelock">pmu_acquire_deepwakelock</a></li>
+<li><a class="reference internal" href="#pmu-release-deepwakelock">pmu_release_deepwakelock</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#wi-fi-power-saving">Wi-Fi Power Saving</a></li>
+<li><a class="reference internal" href="#pmu-set-sysactive-time">pmu_set_sysactive_time</a></li>
+<li><a class="reference internal" href="#sleep-wake-callback-apis">Sleep/Wake Callback APIs</a><ul>
+<li><a class="reference internal" href="#pmu-register-sleep-callback">pmu_register_sleep_callback</a></li>
+<li><a class="reference internal" href="#pmu-unregister-sleep-callback">pmu_unregister_sleep_callback</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="template_rst_syntax.html">RST语法</a></li>
+<li><a class="reference internal" href="#pmu-set-max-sleep-time">pmu_set_max_sleep_time</a></li>
+<li><a class="reference internal" href="#wakeup-reason-apis">Wakeup Reason APIs</a><ul>
+<li><a class="reference internal" href="#socps-aonwakereason">SOCPS_AONWakeReason</a></li>
+<li><a class="reference internal" href="#wak-status0">WAK_STATUS0</a></li>
 </ul>
 </li>
 </ul>
-
+</li>
+<li><a class="reference internal" href="#wi-fi-power-saving">Wi-Fi Power Saving</a></li>
+</ul>
+</li>
+</ul>
+</div>
         </div>
       </div>
     </nav>
@@ -106,7 +104,6 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="index.html">Application Note</a></li>
       <li class="breadcrumb-item active">Power Saving</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/application_note/power_save.rst.txt" rel="nofollow"> View page source</a>
@@ -943,10 +940,7 @@ PMU_MAX</p>
 
            </div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="user_config.html" class="btn btn-neutral float-left" title="User Configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="template_rst_syntax.html" class="btn btn-neutral float-right" title="RST语法" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
+          <footer>
 
   <hr/>
 

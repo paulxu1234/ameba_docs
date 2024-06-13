@@ -4,29 +4,29 @@ OTA Firmware Update
 --------------------------------------
 Introduction
 ~~~~~~~~~~~~~~~~~~~~~~~~
-Over\-the\-air (OTA) programming provides a methodology of updating device firmware remotely via TCP/IP network. For OTA via TCP/IP network, the |CHIP_NAME| provides solutions to implement OTA firmware upgrade from local server or cloud.
+Over-the-air (OTA) programming provides a methodology of updating device firmware remotely via TCP/IP network. For OTA via TCP/IP network, the |CHIP_NAME| provides solutions to implement OTA firmware upgrade from local server or cloud.
 
 Image Slot
 ^^^^^^^^^^^^^^^^^^^^
-There are two slots for all the images in the Flash layout as shown in Figure 1\-1, which named OTA1 and OTA2 respectively. Each image can be chosen to boot from OTA1 or OTA2.
+There are two slots for all the images in the Flash layout as shown in Figure 1-1, which named OTA1 and OTA2 respectively. Each image can be chosen to boot from OTA1 or OTA2.
 
 
 
-Figure \- OTA1 and OTA2 position
+Figure - OTA1 and OTA2 position
 
 Version Number
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The device boot from OTA1 or OTA2 mainly depends on the version number in certificate and manifest. As shown in Figure 1\-2, there is a 2\-byte major version and 2\-byte minor version in manifest and certificate.
+The device boot from OTA1 or OTA2 mainly depends on the version number in certificate and manifest. As shown in Figure 1-2, there is a 2-byte major version and 2-byte minor version in manifest and certificate.
 
 
-The combination of major version and minor version is the 4\-byte version number. OTA select flow checks the whole version number.
+The combination of major version and minor version is the 4-byte version number. OTA select flow checks the whole version number.
 
 .. code::
 
    Version number = (Major version << 16) | Minor version
 
 
-Figure \- Major and minor version
+Figure - Major and minor version
 
 
 
@@ -65,28 +65,28 @@ The following items must be checked for each image:
 
 
 
-Figure \- OTA select diagram
+Figure - OTA select diagram
 
-Anti\-rollback
+Anti-rollback
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
-Anti\-rollback is the function to prevent version rollback attack. When the anti\-rollback is enabled, the version number in certificate or manifest must not be smaller than the anti\-rollback version stored in OTP. Otherwise, this image will be regarded as invalid and the chip will not boot from invalid image. Normally, if OTA update is security\-related, user can program a bigger anti\-rollback version number in OTP and update image with a bigger major version at the same time to prevent rollback attack.
+Anti-rollback is the function to prevent version rollback attack. When the anti-rollback is enabled, the version number in certificate or manifest must not be smaller than the anti-rollback version stored in OTP. Otherwise, this image will be regarded as invalid and the chip will not boot from invalid image. Normally, if OTA update is security-related, user can program a bigger anti-rollback version number in OTP and update image with a bigger major version at the same time to prevent rollback attack.
 
 
-The anti\-rollback flow is shown in Figure 1\-4. Once the anti\-rollback is enabled, the device will compare the major version numbers got from OTA1 and OTA2 images respectively with the anti\-rollback version number in OTP. If the major version number in the image is smaller than the anti\-rollback version number, this image will be regarded as invalid.
+The anti-rollback flow is shown in Figure 1-4. Once the anti-rollback is enabled, the device will compare the major version numbers got from OTA1 and OTA2 images respectively with the anti-rollback version number in OTP. If the major version number in the image is smaller than the anti-rollback version number, this image will be regarded as invalid.
 
 
 
-Figure \- Anti\-rollback flow
+Figure - Anti-rollback flow
 
 Bootloader
 ~~~~~~~~~~~~~~~~~~~~
 OTA Image
 ^^^^^^^^^^^^^^^^^^
-The KM4 bootloader image named km4_boot_all.bin can be updated through OTA, which can be chosen to boot from OTA1 or OTA2. The layout of KM4 bootloader image is illustrated in Figure 1\-5.
+The KM4 bootloader image named km4_boot_all.bin can be updated through OTA, which can be chosen to boot from OTA1 or OTA2. The layout of KM4 bootloader image is illustrated in Figure 1-5.
 
 
 
-Figure \- Layout of KM4 bootloader image
+Figure - Layout of KM4 bootloader image
 
 OTA Select Flow
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -94,7 +94,7 @@ The KM4 ROM will select OTA image according to the image version number in bootl
 
 
 
-Figure \- KM4 bootloader OTA select flow
+Figure - KM4 bootloader OTA select flow
 
 Application
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -103,28 +103,28 @@ OTA Image
 .. only:: RTL8721D
     
     
-    The application image named km0_km4_app.bin, including KM0, KM4 non\-secure application image and KM4 secure image, can be updated through OTA, which can be chosen to boot from OTA1 or OTA2. The layout of the whole application image is illustrated in Figure 1\-7.
+    The application image named km0_km4_app.bin, including KM0, KM4 non-secure application image and KM4 secure image, can be updated through OTA, which can be chosen to boot from OTA1 or OTA2. The layout of the whole application image is illustrated in Figure 1-7.
     
 
 
 .. only:: RTL8711D
     
     
-    The application image named km0_km4_app.bin can be updated through OTA, which can be chosen to boot from OTA1 or OTA2. The layout of the whole application image is illustrated in Figure 1\-7.
+    The application image named km0_km4_app.bin can be updated through OTA, which can be chosen to boot from OTA1 or OTA2. The layout of the whole application image is illustrated in Figure 1-7.
     
 
 
 
 
-Figure \- Layout of application image
+Figure - Layout of application image
 
 OTA Select Flow
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The application image OTA select flow is illustrated in Figure 1\-8.
+The application image OTA select flow is illustrated in Figure 1-8.
 
 
 
-Figure \- Application image OTA select flow
+Figure - Application image OTA select flow
 
 Building OTA Image
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -154,26 +154,26 @@ Modifying Configurations
    :align: center
 
 
-2. Change the bootloader version of anti\-rollback and enable anti\-rollback if necessary.
+2. Change the bootloader version of anti-rollback and enable anti-rollback if necessary.
 
-   a. Change the bootloader version of anti\-rollback
+   a. Change the bootloader version of anti-rollback
 
-By default, all images use the same anti\-rollback version in OTP as threshold to prevent anti\-rollback attack.
+By default, all images use the same anti-rollback version in OTP as threshold to prevent anti-rollback attack.
 
-+--------------------+----------------------+---------+------------------------------------------+
-| Name               | OTP address          | Length  | Description                              |
-+====================+======================+=========+==========================================+
-| BOOTLOADER_VERSION | Physical 0x36E~0x36F | 16 bits | The bootloader version of anti\-rollback |
-+--------------------+----------------------+---------+------------------------------------------+
++--------------------+----------------------+---------+-----------------------------------------+
+| Name               | OTP address          | Length  | Description                             |
++====================+======================+=========+=========================================+
+| BOOTLOADER_VERSION | Physical 0x36E~0x36F | 16 bits | The bootloader version of anti-rollback |
++--------------------+----------------------+---------+-----------------------------------------+
 
-The bootloader version of anti\-rollback is 0 by default. Users can change the number of '0' bit to enlarge the bootloader version. For example, users can program the bootloader version of anti\-rollback to 1 by the following command:
+The bootloader version of anti-rollback is 0 by default. Users can change the number of '0' bit to enlarge the bootloader version. For example, users can program the bootloader version of anti-rollback to 1 by the following command:
 
 .. code::
 
    EFUSE wraw 36E 2 FFFE
-   b. Enable anti\-rollback
+   b. Enable anti-rollback
 
-Users can program OTP by the following command to enable anti\-rollback.
+Users can program OTP by the following command to enable anti-rollback.
 
 .. code::
 
@@ -181,9 +181,9 @@ Users can program OTP by the following command to enable anti\-rollback.
 
 
 .. note::
-         - Once anti\-rollback is enabled, it cannot be disabled.
+         - Once anti-rollback is enabled, it cannot be disabled.
 
-         - If bootloader and application do not use the same anti\-rollback version, modify BOOT_OTA_GetCertRollbackVer() in \ ``{SDK}\component\soc\amebadplus\bootloader\boot_ota_km4.c``\  and define another anti\-rollback version in OTP for the application.
+         - If bootloader and application do not use the same anti-rollback version, modify BOOT_OTA_GetCertRollbackVer() in \ ``{SDK}\component\soc\amebadplus\bootloader\boot_ota_km4.c``\  and define another anti-rollback version in OTP for the application.
 
 
 3. Write the bootloader OTA2 address into OTP if users need to upgrade the bootloader, which sets the bootloader OTA2 address according to Flash_Layout in \ ``{SDK}\component\soc\amebadplus\usrcfg\ameba_flashcfg.c``\ , refer to 1.8.
@@ -194,7 +194,7 @@ Users can program OTP by the following command to enable anti\-rollback.
 
 
 .. note::
-         - The address of bootloader OTA2 is the value of OTP 0x36C with 12\-bit left shifted, or is the value of OTP 0x36C \* 4K.
+         - The address of bootloader OTA2 is the value of OTP 0x36C with 12-bit left shifted, or is the value of OTP 0x36C * 4K.
 
          - If the address of bootloader OTA2 is 0xFFFFFFFF by default, the bootloader won't be upgraded when in OTA upgrade and the device always boots from bootloader OTA1.
 
@@ -220,7 +220,7 @@ The OTA image will be generated automatically when building the project.
 
    a. Type command "make menuconfig" under \ ``{SDK}\amebadplus_gcc_project``\  and choose:
 
-CONFIG OTA OPTION \-> Upgrade Bootloader, save and exit.
+CONFIG OTA OPTION -> Upgrade Bootloader, save and exit.
 
    b. Modify the bootloader related configurations as described in 1.4.1.
 
@@ -228,27 +228,27 @@ CONFIG OTA OPTION \-> Upgrade Bootloader, save and exit.
 
 Updating from Local Server
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-This section introduces the design principles and usage of OTA from local server. It has well\-transportability to porting to OTA applications from cloud.
+This section introduces the design principles and usage of OTA from local server. It has well-transportability to porting to OTA applications from cloud.
 
 
-The OTA from local server shows how the device updates the image from a local download server. The local download server sends the image to the device based on the network socket, as Figure 1\-9 shows.
+The OTA from local server shows how the device updates the image from a local download server. The local download server sends the image to the device based on the network socket, as Figure 1-9 shows.
 
 
 Make sure both the device and the PC are connecting to the same local network.
 
 
 
-Figure \- OTA update diagram via network
+Figure - OTA update diagram via network
 
 Firmware Format
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The firmware format is illustrated in Figure 1\-10.
+The firmware format is illustrated in Figure 1-10.
 
 
 
-Figure \- Firmware format
+Figure - Firmware format
 
-Table \- Firmware header
+Table - Firmware header
 
 +---------------+----------------+---------+-------------------------------------------------------------------+
 | Items         | Address offset | Size    | Description                                                       |
@@ -280,7 +280,7 @@ The OTA demo locates in \ ``{SDK}\component\soc\amebadplus\misc\ameba_ota.c``\ .
 
 1. Connect to the server. The IP address, port and OTA type are needed.
 
-2. Acquire the older firmware address to be upgraded according to the MMU setting. If the address is re\-mapping to OTA1 space by MMU, the OTA2 address would be selected to upgrade. Otherwise, the OTA1 address would be selected.
+2. Acquire the older firmware address to be upgraded according to the MMU setting. If the address is re-mapping to OTA1 space by MMU, the OTA2 address would be selected to upgrade. Otherwise, the OTA1 address would be selected.
 
 3. Receive the firmware file header to get the target OTA image information, such as image number, image length and image ID.
 
@@ -296,7 +296,7 @@ The OTA demo locates in \ ``{SDK}\component\soc\amebadplus\misc\ameba_ota.c``\ .
 
 
 
-Figure \- OTA operation flow
+Figure - OTA operation flow
 
 OTA Demo
 ~~~~~~~~~~~~~~~~
@@ -316,7 +316,7 @@ Follow these steps to run the OTA demo to update from local server:
 .. code::
 
    ret = ota_update_init(ctx, (char *)host, PORT, (char *)resource, OTA_LOCAL);
-2. Rebuild the project with the command "make all EXAMPLE\=ota" and download the images to the device.
+2. Rebuild the project with the command "make all EXAMPLE=ota" and download the images to the device.
 
 3. Modify the major and minor version number in Manifest to a bigger version as described in Section 1.1.2.
 
@@ -330,9 +330,9 @@ Follow these steps to run the OTA demo to update from local server:
 
 5. Edit \ ``{SDK}\tools\DownloadServer\start.bat``\ .
 
-   c. port \= 8082
+   c. port = 8082
 
-   d. file name \= OTA_All.bin
+   d. file name = OTA_All.bin
 
 .. code::
 
@@ -347,11 +347,11 @@ Follow these steps to run the OTA demo to update from local server:
 
 OTA Firmware Swap
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The Figure 1\-12 shows the firmware swap procedure after OTA upgrade.
+The Figure 1-12 shows the firmware swap procedure after OTA upgrade.
 
 
 
-Figure \- OTA firmware swap procedure
+Figure - OTA firmware swap procedure
 
 User Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -362,5 +362,5 @@ Modify the memory layout in \ ``{SDK}\component\soc\amebadplus``\ \\ ``usrcfg\am
    :align: center
 
 
-Figure \- Flash layout
+Figure - Flash layout
 

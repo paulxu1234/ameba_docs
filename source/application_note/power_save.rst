@@ -2,73 +2,73 @@
 
 Power Saving
 ------------------------
-Power\-Saving Mode
+Power-Saving Mode
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Summary
 ^^^^^^^^^^^^^^
-The |CHIP_NAME| has an advanced Power Management Controller (PMC), which can flexibly power up different power domains of the chip, to achieve the best balance between chip performance and power consumption. AON, SYSON, SOC are three main power domains in digital system. Functions in different power domains will be turned off differently in different power\-saving modes.
+The |CHIP_NAME| has an advanced Power Management Controller (PMC), which can flexibly power up different power domains of the chip, to achieve the best balance between chip performance and power consumption. AON, SYSON, SOC are three main power domains in digital system. Functions in different power domains will be turned off differently in different power-saving modes.
 
 
 
-Figure 1\-1 FreeRTOS tickless in an idle task
+Figure 1-1 FreeRTOS tickless in an idle task
 
-To simplify the power management for typical scenarios, |CHIP_NAME| supports two low\-power modes, which are sleep mode and deep\-sleep mode. Tickless is a FreeRTOS low power feature, which just gates the CPU (no clock or power be turned off) when it has nothing to do. Sleep mode flow and deep\-sleep mode flow are based on Tickless. \ *Table*\  \ *1\-1*\  explains power\-saving related terms.
+To simplify the power management for typical scenarios, |CHIP_NAME| supports two low-power modes, which are sleep mode and deep-sleep mode. Tickless is a FreeRTOS low power feature, which just gates the CPU (no clock or power be turned off) when it has nothing to do. Sleep mode flow and deep-sleep mode flow are based on Tickless. \ *Table*\  \ *1-1*\  explains power-saving related terms.
 
-Table 1\-1 Power\-saving mode
+Table 1-1 Power-saving mode
 
-+-------------+------------+--------------+------------------------------+---------------------------------------------------------------------------------------------------------------------+
-| Mode        | AON domain | SYSON domain | SOC domain                   | Description                                                                                                         |
-+=============+============+==============+==============================+=====================================================================================================================+
-| Tickless    | ON         | ON           | ON                           | - FreeRTOS low power feature                                                                                        |
-|             |            |              |                              |                                                                                                                     |
-|             |            |              |                              | - CPU periodically enters WFI, and exits WFI when interrupts happen.                                                |
-|             |            |              |                              |                                                                                                                     |
-|             |            |              |                              | - Radio status can be configured off/periodically on/always on, which depends on the application.                   |
-+-------------+------------+--------------+------------------------------+---------------------------------------------------------------------------------------------------------------------+
-| Sleep       | ON         | ON           | Clock\-gated or power\-gated | - A power saving mode on chip level, including clock\-gating mode and power\-gating mode.                           |
-|             |            |              |                              |                                                                                                                     |
-|             |            |              |                              | - CPU can restore stack status when the system exits from sleep mode.                                               |
-|             |            |              |                              |                                                                                                                     |
-|             |            |              |                              | - The system RAM will be retained, and the data in system RAM will not be lost.                                     |
-+-------------+------------+--------------+------------------------------+---------------------------------------------------------------------------------------------------------------------+
-| Deep\-sleep | ON         | OFF          | OFF                          | - A more power\-saving mode on chip\-level.                                                                         |
-|             |            |              |                              |                                                                                                                     |
-|             |            |              |                              | - CPU cannot restore stack status. When the system exits from deep\-sleep mode, the CPU follows the reboot process. |
-|             |            |              |                              |                                                                                                                     |
-|             |            |              |                              | - The system RAM will not be retained.                                                                              |
-|             |            |              |                              |                                                                                                                     |
-|             |            |              |                              | - The retention SRAM will not be power off.                                                                         |
-+-------------+------------+--------------+------------------------------+---------------------------------------------------------------------------------------------------------------------+
++------------+------------+--------------+----------------------------+--------------------------------------------------------------------------------------------------------------------+
+| Mode       | AON domain | SYSON domain | SOC domain                 | Description                                                                                                        |
++============+============+==============+============================+====================================================================================================================+
+| Tickless   | ON         | ON           | ON                         | - FreeRTOS low power feature                                                                                       |
+|            |            |              |                            |                                                                                                                    |
+|            |            |              |                            | - CPU periodically enters WFI, and exits WFI when interrupts happen.                                               |
+|            |            |              |                            |                                                                                                                    |
+|            |            |              |                            | - Radio status can be configured off/periodically on/always on, which depends on the application.                  |
++------------+------------+--------------+----------------------------+--------------------------------------------------------------------------------------------------------------------+
+| Sleep      | ON         | ON           | Clock-gated or power-gated | - A power saving mode on chip level, including clock-gating mode and power-gating mode.                            |
+|            |            |              |                            |                                                                                                                    |
+|            |            |              |                            | - CPU can restore stack status when the system exits from sleep mode.                                              |
+|            |            |              |                            |                                                                                                                    |
+|            |            |              |                            | - The system RAM will be retained, and the data in system RAM will not be lost.                                    |
++------------+------------+--------------+----------------------------+--------------------------------------------------------------------------------------------------------------------+
+| Deep-sleep | ON         | OFF          | OFF                        | - A more power-saving mode on chip-level.                                                                          |
+|            |            |              |                            |                                                                                                                    |
+|            |            |              |                            | - CPU cannot restore stack status. When the system exits from deep-sleep mode, the CPU follows the reboot process. |
+|            |            |              |                            |                                                                                                                    |
+|            |            |              |                            | - The system RAM will not be retained.                                                                             |
+|            |            |              |                            |                                                                                                                    |
+|            |            |              |                            | - The retention SRAM will not be power off.                                                                        |
++------------+------------+--------------+----------------------------+--------------------------------------------------------------------------------------------------------------------+
 
 
 Peripherals are also divided into different power domains in order to achieve better power consumption.
 
 - SOC power domain: including peripherals such as GDMA, SPI, I2C, SDIO, PWM, QSPI, PPE, LEDC, etc.
 
-- SYSON power domain: mainly including peripherals which support wakeup, such as Basic Timer, GPIO, UART, Key\-Scan, Cap\-Touch, etc.
+- SYSON power domain: mainly including peripherals which support wakeup, such as Basic Timer, GPIO, UART, Key-Scan, Cap-Touch, etc.
 
 For peripherals in SOC domain, note that they need to be reinitialized after wakeup from PG since the power domain they are on has been power gated during sleep.
 
 
-FreeRTOS supports a low\-power feature called tickless. It is implemented in an idle task which has the lowest priority. That is, it is invoked when there is no other task under running. Note that unlike the original FreeRTOS, the |CHIP_NAME| does not wake up based on the "xEpectedIdleTime" in Figure 1\-2.
+FreeRTOS supports a low-power feature called tickless. It is implemented in an idle task which has the lowest priority. That is, it is invoked when there is no other task under running. Note that unlike the original FreeRTOS, the |CHIP_NAME| does not wake up based on the "xEpectedIdleTime" in Figure 1-2.
 
 
-Figure 1\-2 shows idle task code flow. In idle task, it will check sleep conditions (wakelock, sysactive_time, details in 1.6.1, 1.6.2) to determine whether needs to enter sleep mode or not.
+Figure 1-2 shows idle task code flow. In idle task, it will check sleep conditions (wakelock, sysactive_time, details in 1.6.1, 1.6.2) to determine whether needs to enter sleep mode or not.
 
 - If not, the CPU will execute an ARM instruction “WFI” (wait for interrupt) which makes the CPU suspend until the interrupt happens. Normally systick interrupt resumes it. This is the software tickless.
 
-- If yes, it will execute the function freertos_pre_sleep_processing() to enter sleep mode or deep\-sleep mode.
+- If yes, it will execute the function freertos_pre_sleep_processing() to enter sleep mode or deep-sleep mode.
 
 
 
-Figure 1\-2 FreeRTOS tickless in an idle task
+Figure 1-2 FreeRTOS tickless in an idle task
 
 
 
 .. note::
       - Even FreeRTOS time control like software timer or vTaskDelay is set, it still enters the sleep mode if meeting the requirement as long as the idle task is executed.
 
-      - configUSE_TICKLESS_IDLE must be enabled for power\-saving application because sleep mode flow is based on tickless.
+      - configUSE_TICKLESS_IDLE must be enabled for power-saving application because sleep mode flow is based on tickless.
 
 .. only:: nda
     
@@ -80,82 +80,82 @@ Figure 1\-2 FreeRTOS tickless in an idle task
     Since the CPU is in SOC domain, sleep PG will need to back up and restore the CPU status, thus PG will consume a bit more time during sleep and wakeup flow than CG.
     
 
-    KM0 and KM4 support both CG or both PG since they are in the same power domain. KM4 is normally used as Application Processor (AP), and KM0 is normally used as Network Processor (NP) for Wi\-Fi driver and Wi\-Fi firmware, thus KM0 can enter sleep mode only if KM4 requests to enter sleep mode first.
+    KM0 and KM4 support both CG or both PG since they are in the same power domain. KM4 is normally used as Application Processor (AP), and KM0 is normally used as Network Processor (NP) for Wi-Fi driver and Wi-Fi firmware, thus KM0 can enter sleep mode only if KM4 requests to enter sleep mode first.
     
-    - For sleep PG, if a wakeup event occurs, PMC will turn on the SOC domain's power and clock. KM0 will first start from the reset handler, and check the flag to see if it wakes from PG. If so, KM0 will restore the CPU status, continue to execute from where it sleeps, and then check wakeup reasons to see if this wake source is for KM4, then decide whether to release KM4's clock to resume KM4. Figure 1\-3 shows the sleep and wake flow of PG.
+    - For sleep PG, if a wakeup event occurs, PMC will turn on the SOC domain's power and clock. KM0 will first start from the reset handler, and check the flag to see if it wakes from PG. If so, KM0 will restore the CPU status, continue to execute from where it sleeps, and then check wakeup reasons to see if this wake source is for KM4, then decide whether to release KM4's clock to resume KM4. Figure 1-3 shows the sleep and wake flow of PG.
     
-    - For sleep CG, if a wakeup event occurs, PMC will turn on the SOC domain's clock. Since KM0 is not power\-gated in sleep CG, it will wake up and continue to execute from where it sleeps, and then check wakeup reasons to see if need to resume KM4. Figure 1\-4 shows the sleep and wake flow of CG.
-    
-    
-    
-    Figure 1\-3 Sleep and wake flow of PG
+    - For sleep CG, if a wakeup event occurs, PMC will turn on the SOC domain's clock. Since KM0 is not power-gated in sleep CG, it will wake up and continue to execute from where it sleeps, and then check wakeup reasons to see if need to resume KM4. Figure 1-4 shows the sleep and wake flow of CG.
     
     
     
-    Figure 1\-4 Sleep and wake flow of CG
+    Figure 1-3 Sleep and wake flow of PG
+    
+    
+    
+    Figure 1-4 Sleep and wake flow of CG
     
 .. only:: nda
     
-    Deep\-Sleep Mode
+    Deep-Sleep Mode
     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    Deep\-sleep mode has a lower power consumption as only the AON domain is on while the SYSON and SOC domains are off. So only peripherals in the AON domain can wake up the chip. 
+    Deep-sleep mode has a lower power consumption as only the AON domain is on while the SYSON and SOC domains are off. So only peripherals in the AON domain can wake up the chip. 
     
 
-    When the chip wakes up from deep\-sleep mode, it will do the boot process. As system SRAM and CPU are shut down in deep\-sleep mode, the corresponding interrupt of the peripheral which is set as the wake source should be registered again after wakeup to process the interrupt handler. Figure 1\-5 shows deep\-sleep mode flow.
+    When the chip wakes up from deep-sleep mode, it will do the boot process. As system SRAM and CPU are shut down in deep-sleep mode, the corresponding interrupt of the peripheral which is set as the wake source should be registered again after wakeup to process the interrupt handler. Figure 1-5 shows deep-sleep mode flow.
     
     
     
-    Figure 1\-5 Deep\-sleep mode flow
+    Figure 1-5 Deep-sleep mode flow
     
 Wakeup Source
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
-Table 1\-2 lists the wakeup sources that can be used to wake up the system under different power modes.
+Table 1-2 lists the wakeup sources that can be used to wake up the system under different power modes.
 
-Table 1\-2 Wakeup source
+Table 1-2 Wakeup source
 
-+----------------+----------+----------+-------------+----------------------------------------------------------------------------------------------------+
-| Wakeup source  | Sleep CG | Sleep PG | Deep\-sleep | Comment                                                                                            |
-+================+==========+==========+=============+====================================================================================================+
-| WLAN           | √        | √        | X           |                                                                                                    |
-+----------------+----------+----------+-------------+----------------------------------------------------------------------------------------------------+
-| BT             | √        | √        | X           |                                                                                                    |
-+----------------+----------+----------+-------------+----------------------------------------------------------------------------------------------------+
-| IWDG           | √        | √        | X           |                                                                                                    |
-+----------------+----------+----------+-------------+----------------------------------------------------------------------------------------------------+
-| IPC            | √        | √        | X           | Only KM0 can use IPC to wake up KM4                                                                |
-+----------------+----------+----------+-------------+----------------------------------------------------------------------------------------------------+
-| Basic Timer4~7 | √        | √        | X           |                                                                                                    |
-+----------------+----------+----------+-------------+----------------------------------------------------------------------------------------------------+
-| PMC Timer      | √        | √        | X           | For internal usage                                                                                 |
-+----------------+----------+----------+-------------+----------------------------------------------------------------------------------------------------+
-| UART0~2        | √        | √        | X           | Need to keep OSC4M on during sleep, not recommended to use when the baudrate is larger than 115200 |
-+----------------+----------+----------+-------------+----------------------------------------------------------------------------------------------------+
-| LOGUART        | √        | √        | X           | Need to keep XTAL on during sleep                                                                  |
-+----------------+----------+----------+-------------+----------------------------------------------------------------------------------------------------+
-| GPIO           | √        | √        | X           |                                                                                                    |
-+----------------+----------+----------+-------------+----------------------------------------------------------------------------------------------------+
-| I2C            | √        | √        | X           |                                                                                                    |
-+----------------+----------+----------+-------------+----------------------------------------------------------------------------------------------------+
-| Cap\-Touch     | √        | √        | X           |                                                                                                    |
-+----------------+----------+----------+-------------+----------------------------------------------------------------------------------------------------+
-| ADC            | √        | √        | X           |                                                                                                    |
-+----------------+----------+----------+-------------+----------------------------------------------------------------------------------------------------+
-| ADC comparator | √        | √        | X           |                                                                                                    |
-+----------------+----------+----------+-------------+----------------------------------------------------------------------------------------------------+
-| SDIO           | √        | √        | X           |                                                                                                    |
-+----------------+----------+----------+-------------+----------------------------------------------------------------------------------------------------+
-| Key\-Scan      | √        | √        | X           |                                                                                                    |
-+----------------+----------+----------+-------------+----------------------------------------------------------------------------------------------------+
-| BOR            | √        | √        | X           |                                                                                                    |
-+----------------+----------+----------+-------------+----------------------------------------------------------------------------------------------------+
-| PWR_DOWN       | √        | √        | √           |                                                                                                    |
-+----------------+----------+----------+-------------+----------------------------------------------------------------------------------------------------+
-| AON_TIMER      | √        | √        | √           |                                                                                                    |
-+----------------+----------+----------+-------------+----------------------------------------------------------------------------------------------------+
-| AON_WAKEPIN    | √        | √        | √           |                                                                                                    |
-+----------------+----------+----------+-------------+----------------------------------------------------------------------------------------------------+
-| RTC            | √        | √        | √           |                                                                                                    |
-+----------------+----------+----------+-------------+----------------------------------------------------------------------------------------------------+
++----------------+----------+----------+------------+----------------------------------------------------------------------------------------------------+
+| Wakeup source  | Sleep CG | Sleep PG | Deep-sleep | Comment                                                                                            |
++================+==========+==========+============+====================================================================================================+
+| WLAN           | √        | √        | X          |                                                                                                    |
++----------------+----------+----------+------------+----------------------------------------------------------------------------------------------------+
+| BT             | √        | √        | X          |                                                                                                    |
++----------------+----------+----------+------------+----------------------------------------------------------------------------------------------------+
+| IWDG           | √        | √        | X          |                                                                                                    |
++----------------+----------+----------+------------+----------------------------------------------------------------------------------------------------+
+| IPC            | √        | √        | X          | Only KM0 can use IPC to wake up KM4                                                                |
++----------------+----------+----------+------------+----------------------------------------------------------------------------------------------------+
+| Basic Timer4~7 | √        | √        | X          |                                                                                                    |
++----------------+----------+----------+------------+----------------------------------------------------------------------------------------------------+
+| PMC Timer      | √        | √        | X          | For internal usage                                                                                 |
++----------------+----------+----------+------------+----------------------------------------------------------------------------------------------------+
+| UART0~2        | √        | √        | X          | Need to keep OSC4M on during sleep, not recommended to use when the baudrate is larger than 115200 |
++----------------+----------+----------+------------+----------------------------------------------------------------------------------------------------+
+| LOGUART        | √        | √        | X          | Need to keep XTAL on during sleep                                                                  |
++----------------+----------+----------+------------+----------------------------------------------------------------------------------------------------+
+| GPIO           | √        | √        | X          |                                                                                                    |
++----------------+----------+----------+------------+----------------------------------------------------------------------------------------------------+
+| I2C            | √        | √        | X          |                                                                                                    |
++----------------+----------+----------+------------+----------------------------------------------------------------------------------------------------+
+| Cap-Touch      | √        | √        | X          |                                                                                                    |
++----------------+----------+----------+------------+----------------------------------------------------------------------------------------------------+
+| ADC            | √        | √        | X          |                                                                                                    |
++----------------+----------+----------+------------+----------------------------------------------------------------------------------------------------+
+| ADC comparator | √        | √        | X          |                                                                                                    |
++----------------+----------+----------+------------+----------------------------------------------------------------------------------------------------+
+| SDIO           | √        | √        | X          |                                                                                                    |
++----------------+----------+----------+------------+----------------------------------------------------------------------------------------------------+
+| Key-Scan       | √        | √        | X          |                                                                                                    |
++----------------+----------+----------+------------+----------------------------------------------------------------------------------------------------+
+| BOR            | √        | √        | X          |                                                                                                    |
++----------------+----------+----------+------------+----------------------------------------------------------------------------------------------------+
+| PWR_DOWN       | √        | √        | √          |                                                                                                    |
++----------------+----------+----------+------------+----------------------------------------------------------------------------------------------------+
+| AON_TIMER      | √        | √        | √          |                                                                                                    |
++----------------+----------+----------+------------+----------------------------------------------------------------------------------------------------+
+| AON_WAKEPIN    | √        | √        | √          |                                                                                                    |
++----------------+----------+----------+------------+----------------------------------------------------------------------------------------------------+
+| RTC            | √        | √        | √          |                                                                                                    |
++----------------+----------+----------+------------+----------------------------------------------------------------------------------------------------+
 
 Entering Sleep Mode
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -216,12 +216,12 @@ Configuration:
 
 5. Clear the LOGUART interrupt when wakeup.
 
-Entering Deep\-Sleep Mode
+Entering Deep-Sleep Mode
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Deep\-sleep can also be entered from FreeRTOS tickless flow.
+Deep-sleep can also be entered from FreeRTOS tickless flow.
 
 
-When the system boots, KM4 holds the deepwakelock PMU_OS, thus freertos_ready_to_dsleep() will be checked fail and the system does not enter deep\-sleep mode in idle task by default. Since freertos_ready_to_dsleep() will be checked only after freertos_ready_to_sleep() is checked pass, both the wakelock and deepwakelock need to be released for entering deep\-sleep mode.
+When the system boots, KM4 holds the deepwakelock PMU_OS, thus freertos_ready_to_dsleep() will be checked fail and the system does not enter deep-sleep mode in idle task by default. Since freertos_ready_to_dsleep() will be checked only after freertos_ready_to_sleep() is checked pass, both the wakelock and deepwakelock need to be released for entering deep-sleep mode.
 
 
 Configuration:
@@ -230,9 +230,9 @@ Configuration:
 
 2. Set sleep_wakepin_config[] in ameba_sleepcfg.c when using AON wakepin as a wakeup source.
 
-3. Enter deep\-sleep mode by releasing the deepwakelock and wakelock in KM4.
+3. Enter deep-sleep mode by releasing the deepwakelock and wakelock in KM4.
 
-Power\-Saving Configuration
+Power-Saving Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Wakeup Mask Setup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -323,14 +323,14 @@ KM4 can set sleep mode to CG or PG by calling the function pmu_set_sleep_type(ui
       - Sleep mode is set to PG by default. If users want to change the sleep type, pmu_set_sleep_type() needs to be called before sleep.
 
 
-Power\-Saving Related APIs
+Power-Saving Related APIs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Wakelock APIs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 In some situations, the system needs to keep awake to receive certain events; otherwise, events may be missed when the system is in sleep mode. An idea of wakelock is introduced in that the system cannot enter sleep mode if some module is holding the wakelock.
 
 
-Wakelock is a 32\-bit map. Each module has its own bit in the wakelock bit map (see enum. PMU_DEVICE). Users can also add the wakelock in the enum. If the wakelock bit map equals zero, it means that there is no module holding the wakelock. If the wakelock bit map is larger than zero, it means that some modules are holding the wakelock, and the system is not allowed to enter sleep mode.
+Wakelock is a 32-bit map. Each module has its own bit in the wakelock bit map (see enum. PMU_DEVICE). Users can also add the wakelock in the enum. If the wakelock bit map equals zero, it means that there is no module holding the wakelock. If the wakelock bit map is larger than zero, it means that some modules are holding the wakelock, and the system is not allowed to enter sleep mode.
 
 
 Wakelock is a judging condition in the function freertos_ready_to_sleep(). When the system boots, KM4 holds the wakelock PMU_OS, and KM0 holds the wakelock PMU_OS and PMU_KM4_RUN. Only if all wakelocks are released, KM4 or KM0 is permitted to enter sleep mode. The function freertos_ready_to_sleep() will judge the value of wakelock.
@@ -353,9 +353,9 @@ It is recommended to enter sleep mode by releasing the wakelock. After the wakel
 When the system wakes, it will enter sleep mode again quickly unless it acquires the wakelock.
 
 
-Similar to the wakelock for sleep mode, there is a 32\-bit deepwakelock map for deep\-sleep mode. If the deepwakelock bit map is larger than zero, it means that some modules are holding the deepwakelock, and the system is not allowed to enter deep\-sleep mode. When the system boots, KM4 holds the deepwakelock PMU_OS.
+Similar to the wakelock for sleep mode, there is a 32-bit deepwakelock map for deep-sleep mode. If the deepwakelock bit map is larger than zero, it means that some modules are holding the deepwakelock, and the system is not allowed to enter deep-sleep mode. When the system boots, KM4 holds the deepwakelock PMU_OS.
 
-Deepwakelock is a judging condition in the function freertos_ready_to_dsleep(). After the deepwakelock PMU_OS of KM4 is released, and all wakelocks of KM4 are released, KM4 will be allowed to enter deep\-sleep mode and send IPC to KM0 in idle task. KM0 will send a deep\-sleep request and let the chip finally enter deep\-sleep mode.
+Deepwakelock is a judging condition in the function freertos_ready_to_dsleep(). After the deepwakelock PMU_OS of KM4 is released, and all wakelocks of KM4 are released, KM4 will be allowed to enter deep-sleep mode and send IPC to KM0 in idle task. KM0 will send a deep-sleep request and let the chip finally enter deep-sleep mode.
 
 APIs in the following sections are provided to control the wakelock or deepwakelock.
 
@@ -547,25 +547,25 @@ Wakeup Reason APIs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 SOCPS_AONWakeReason
 **************************************
-+--------------+-----------------------------------+
-| Items        | Description                       |
-+==============+===================================+
-| Introduction | Get the deep\-sleep wakeup reason |
-+--------------+-----------------------------------+
-| Parameter    | None                              |
-+--------------+-----------------------------------+
-| Return       | Bit[0]: CHIP_EN short press       |
-|              |                                   |
-|              | Bit[1]: CHIP_EN long press        |
-|              |                                   |
-|              | Bit[2]: BOR                       |
-|              |                                   |
-|              | Bit[3]: AON Timer                 |
-|              |                                   |
-|              | Bit[5:4]: AON GPIO                |
-|              |                                   |
-|              | Bit[8]: RTC                       |
-+--------------+-----------------------------------+
++--------------+----------------------------------+
+| Items        | Description                      |
++==============+==================================+
+| Introduction | Get the deep-sleep wakeup reason |
++--------------+----------------------------------+
+| Parameter    | None                             |
++--------------+----------------------------------+
+| Return       | Bit[0]: CHIP_EN short press      |
+|              |                                  |
+|              | Bit[1]: CHIP_EN long press       |
+|              |                                  |
+|              | Bit[2]: BOR                      |
+|              |                                  |
+|              | Bit[3]: AON Timer                |
+|              |                                  |
+|              | Bit[5:4]: AON GPIO               |
+|              |                                  |
+|              | Bit[8]: RTC                      |
++--------------+----------------------------------+
 
 WAK_STATUS0
 **********************
@@ -599,7 +599,7 @@ The following register can be used to get the sleep wakeup reason.
 |             |                          |
 |             | Bit[19:18]:I2C0~1        |
 |             |                          |
-|             | Bit[20]: Cap\-Touch      |
+|             | Bit[20]: Cap-Touch       |
 |             |                          |
 |             | Bit[21]: RTC             |
 |             |                          |
@@ -611,7 +611,7 @@ The following register can be used to get the sleep wakeup reason.
 |             |                          |
 |             | Bit[25]: PWR_DOWN        |
 |             |                          |
-|             | Bit[26]: Key\-Scan       |
+|             | Bit[26]: Key-Scan        |
 |             |                          |
 |             | Bit[27]: AON_Timer       |
 |             |                          |
@@ -623,7 +623,7 @@ The following register can be used to get the sleep wakeup reason.
 
 Note that when wakeup, the corresponding peripheral interrupt will be raised; when clearing the interrupt, the corresponding bit in wakeup reason will also be cleared. Thus it is not possible to get the wakeup reason after the interrupt is cleared.
 
-Wi\-Fi Power Saving
+Wi-Fi Power Saving
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 IEEE 802.11 power save management allows the station to enter its own sleep state. It defines that the station needs to keep awake at a certain timestamp and enter a sleep state otherwise.
 
@@ -631,56 +631,56 @@ IEEE 802.11 power save management allows the station to enter its own sleep stat
 WLAN driver acquires the wakelock to avoid the system entering sleep mode when WLAN needs to keep awake. And it releases the wakelock when it is permitted to enter the sleep state.
 
 
-IEEE 802.11 power management allows the station to enter power\-saving mode. The station cannot receive any frame during power saving. Thus AP needs to buffer these frames and requires the station to periodically wake up to check the beacon which has the information of buffered frames.
+IEEE 802.11 power management allows the station to enter power-saving mode. The station cannot receive any frame during power saving. Thus AP needs to buffer these frames and requires the station to periodically wake up to check the beacon which has the information of buffered frames.
 
 .. image:: ../_static/power_save_rst/4bd9d8f37d0040ab8c65cdb22167bcb3a613e0f1.png
    :width: 1482
    :align: center
 
 
-Figure 1\-6 Timeline of power saving
+Figure 1-6 Timeline of power saving
 
-When the system is active, and Wi\-Fi is connected and enters IEEE 802.11 power management mechanism, this is called LPS in SDK; if the system enters sleep mode when Wi\-Fi is connected, we call it WoWLAN mode.
+When the system is active, and Wi-Fi is connected and enters IEEE 802.11 power management mechanism, this is called LPS in SDK; if the system enters sleep mode when Wi-Fi is connected, we call it WoWLAN mode.
 
 
 In WoWLAN mode, a timer with a period of about 102ms will be set in the suspend function, and KM0 will wake up every 102ms to receive the beacon to maintain the connection. 
 
 
-Except LPS and WoWLAN modes, there is also an IPS mode, which can be used when Wi\-Fi is not connected. Table 1\-3 lists all three power\-saving modes for Wi\-Fi. Table 1\-4 describes the relationship between power modes of the system and Wi\-Fi.
+Except LPS and WoWLAN modes, there is also an IPS mode, which can be used when Wi-Fi is not connected. Table 1-3 lists all three power-saving modes for Wi-Fi. Table 1-4 describes the relationship between power modes of the system and Wi-Fi.
 
-Table 1\-3 Wi\-Fi power\-saving modes
+Table 1-3 Wi-Fi power-saving modes
 
-+--------+----------------+----------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------+
-| Mode   | Wi\-Fi status  | Wi\-Fi status                          | Description                                                                               | SDK                                                                                  |
-+========+================+========================================+===========================================================================================+======================================================================================+
-| IPS    | Not associated | RF/BB/MAC OFF                          | Wi\-Fi driver automatically turns Wi\-Fi off to save power.                               | IPS mode is enabled in SDK by default and is not recommended to be disabled.         |
-+--------+----------------+----------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------+
-| LPS    | Associated     | - RF periodically ON/OFF               | LPS mode is used to implement IEEE 802.11 power management.                               | LPS mode is enabled in SDK by default but can be disabled through API in Table 1\-5. |
-|        |                |                                        |                                                                                           |                                                                                      |
-|        |                | - MAC/BB always ON                     | NP will control RF ON/OFF based on TSF and TIM IE in the beacon.                          |                                                                                      |
-+--------+----------------+----------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------+
-| WoWLAN | Associated     | - RF and BB periodically ON/OFF        | NP is waked up at each beacon early interrupt to receive a beacon from the associated AP. | WoWLAN mode is enabled in SDK by default.                                            |
-|        |                |                                        |                                                                                           |                                                                                      |
-|        |                | - MAC periodically enters/ exits CG/PG | NP will wake up AP when receiving a data packet.                                          |                                                                                      |
-+--------+----------------+----------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------+
++--------+----------------+----------------------------------------+-------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
+| Mode   | Wi-Fi status   | Wi-Fi status                           | Description                                                                               | SDK                                                                                 |
++========+================+========================================+===========================================================================================+=====================================================================================+
+| IPS    | Not associated | RF/BB/MAC OFF                          | Wi-Fi driver automatically turns Wi-Fi off to save power.                                 | IPS mode is enabled in SDK by default and is not recommended to be disabled.        |
++--------+----------------+----------------------------------------+-------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
+| LPS    | Associated     | - RF periodically ON/OFF               | LPS mode is used to implement IEEE 802.11 power management.                               | LPS mode is enabled in SDK by default but can be disabled through API in Table 1-5. |
+|        |                |                                        |                                                                                           |                                                                                     |
+|        |                | - MAC/BB always ON                     | NP will control RF ON/OFF based on TSF and TIM IE in the beacon.                          |                                                                                     |
++--------+----------------+----------------------------------------+-------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
+| WoWLAN | Associated     | - RF and BB periodically ON/OFF        | NP is waked up at each beacon early interrupt to receive a beacon from the associated AP. | WoWLAN mode is enabled in SDK by default.                                           |
+|        |                |                                        |                                                                                           |                                                                                     |
+|        |                | - MAC periodically enters/ exits CG/PG | NP will wake up AP when receiving a data packet.                                          |                                                                                     |
++--------+----------------+----------------------------------------+-------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
 
-Table 1\-4 Relationship between power modes of system and Wi\-Fi
+Table 1-4 Relationship between power modes of system and Wi-Fi
 
-+-------------------+-------------------+--------------------------------------------------------------------------+
-| System power mode | Wi\-Fi power mode | Description                                                              |
-+===================+===================+==========================================================================+
-| Active            | IPS               | Wi\-Fi is on, but not connected                                          |
-+-------------------+-------------------+--------------------------------------------------------------------------+
-| Active            | LPS               | Wi\-Fi is connected and enters IEEE 802.11 power management mechanism    |
-+-------------------+-------------------+--------------------------------------------------------------------------+
-| Sleep             | Wi\-Fi OFF/IPS    |                                                                          |
-+-------------------+-------------------+--------------------------------------------------------------------------+
-| Sleep             | WoWLAN            | Wi\-Fi keeps associating.                                                |
-+-------------------+-------------------+--------------------------------------------------------------------------+
-| Deep\-sleep       | Wi\-Fi OFF        | Deep\-sleep is not recommended if Wi\-Fi needs to keep on or associated. |
-+-------------------+-------------------+--------------------------------------------------------------------------+
++-------------------+------------------+------------------------------------------------------------------------+
+| System power mode | Wi-Fi power mode | Description                                                            |
++===================+==================+========================================================================+
+| Active            | IPS              | Wi-Fi is on, but not connected                                         |
++-------------------+------------------+------------------------------------------------------------------------+
+| Active            | LPS              | Wi-Fi is connected and enters IEEE 802.11 power management mechanism   |
++-------------------+------------------+------------------------------------------------------------------------+
+| Sleep             | Wi-Fi OFF/IPS    |                                                                        |
++-------------------+------------------+------------------------------------------------------------------------+
+| Sleep             | WoWLAN           | Wi-Fi keeps associating.                                               |
++-------------------+------------------+------------------------------------------------------------------------+
+| Deep-sleep        | Wi-Fi OFF        | Deep-sleep is not recommended if Wi-Fi needs to keep on or associated. |
++-------------------+------------------+------------------------------------------------------------------------+
 
-Table 1\-5 API to enable/disable LPS
+Table 1-5 API to enable/disable LPS
 
 +------------------------------------+----------------------+
 | API                                | Parameters           |
@@ -693,5 +693,5 @@ Table 1\-5 API to enable/disable LPS
 +------------------------------------+----------------------+
 
 
-When Wi\-Fi is connected and the system enters sleep mode, WoWLAN mode will be entered automatically, and KM0 will periodically wake up to receive the beacon to maintain the connection, this will consume some power. If you are more concerned about the system power consumption during sleep mode, and Wi\-Fi is not a necessary function in your application, it is recommended to set Wi\-Fi off or choose Wi\-Fi IPS mode.
+When Wi-Fi is connected and the system enters sleep mode, WoWLAN mode will be entered automatically, and KM0 will periodically wake up to receive the beacon to maintain the connection, this will consume some power. If you are more concerned about the system power consumption during sleep mode, and Wi-Fi is not a necessary function in your application, it is recommended to set Wi-Fi off or choose Wi-Fi IPS mode.
 

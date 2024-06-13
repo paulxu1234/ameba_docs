@@ -20,9 +20,7 @@
         <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="MPU" href="mpu_cache.html" />
-    <link rel="prev" title="Build Environment" href="gcc_build_environment.html" /> 
+    <link rel="search" title="Search" href="../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -44,29 +42,15 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Application Note</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="gcc_build_environment.html">Build Environment</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">SDK Examples</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#application-example">Application Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#peripheral-example">Peripheral Example</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="mpu_cache.html">MPU</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mpu_cache.html#cache">Cache</a></li>
-<li class="toctree-l2"><a class="reference internal" href="flash_memory_layout.html">Flash Layout</a></li>
-<li class="toctree-l2"><a class="reference internal" href="flash_memory_layout.html#memory-layout">Memory Layout</a></li>
-<li class="toctree-l2"><a class="reference internal" href="file_system.html">Virtual File System</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ota.html">OTA Firmware Update</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mp_image.html">MP Image</a></li>
-<li class="toctree-l2"><a class="reference internal" href="boot_process.html">Boot Process</a></li>
-<li class="toctree-l2"><a class="reference internal" href="user_config.html">User Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="power_save.html">Power Saving</a></li>
-<li class="toctree-l2"><a class="reference internal" href="template_rst_syntax.html">RST语法</a></li>
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">SDK Examples</a><ul>
+<li><a class="reference internal" href="#application-example">Application Example</a></li>
+<li><a class="reference internal" href="#peripheral-example">Peripheral Example</a></li>
 </ul>
 </li>
 </ul>
-
+</div>
         </div>
       </div>
     </nav>
@@ -81,7 +65,6 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="index.html">Application Note</a></li>
       <li class="breadcrumb-item active">SDK Examples</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/application_note/sdk_example.rst.txt" rel="nofollow"> View page source</a>
@@ -127,9 +110,9 @@
 <p>To run application example, you only need to:</p>
 <ol class="arabic simple">
 <li><p>Check software and hardware settings in README.txt of the example.</p></li>
-<li><p>Add compile options “<code class="docutils literal notranslate"><span class="pre">EXAMPLE\={example</span> <span class="pre">folder</span></code> <code class="docutils literal notranslate"><span class="pre">name}</span></code>“ when building the project, and replace <code class="docutils literal notranslate"><span class="pre">{example</span></code> <code class="docutils literal notranslate"><span class="pre">folder</span></code> <code class="docutils literal notranslate"><span class="pre">name}</span></code> with the specific folder name of this example.</p></li>
+<li><p>Add compile options “<code class="docutils literal notranslate"><span class="pre">EXAMPLE={example</span> <span class="pre">folder</span></code> <code class="docutils literal notranslate"><span class="pre">name}</span></code>“ when building the project, and replace <code class="docutils literal notranslate"><span class="pre">{example</span></code> <code class="docutils literal notranslate"><span class="pre">folder</span></code> <code class="docutils literal notranslate"><span class="pre">name}</span></code> with the specific folder name of this example.</p></li>
 </ol>
-<p>For example, if you want to build xml example to start an xml example thread, you need to set the macro in SDK according to README.txt in <code class="docutils literal notranslate"><span class="pre">{SDK}\component\example\xml</span></code>. Then enter “<code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">EXAMPLE\=xml</span></code>“ for KM4 on MSYS2 MinGW 64-bit (Windows) or terminal (Linux).</p>
+<p>For example, if you want to build xml example to start an xml example thread, you need to set the macro in SDK according to README.txt in <code class="docutils literal notranslate"><span class="pre">{SDK}\component\example\xml</span></code>. Then enter “<code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">EXAMPLE=xml</span></code>“ for KM4 on MSYS2 MinGW 64-bit (Windows) or terminal (Linux).</p>
 <a class="reference internal image-reference" href="../_images/5609433edd23d6866671138b31d8ba392edfc78f.png"><img alt="../_images/5609433edd23d6866671138b31d8ba392edfc78f.png" class="align-center" src="../_images/5609433edd23d6866671138b31d8ba392edfc78f.png" style="width: 894px;" /></a>
 <p>Figure 1-3 Building XML application example</p>
 </section>
@@ -169,10 +152,7 @@
 
            </div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="gcc_build_environment.html" class="btn btn-neutral float-left" title="Build Environment" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="mpu_cache.html" class="btn btn-neutral float-right" title="MPU" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
+          <footer>
 
   <hr/>
 

@@ -20,9 +20,7 @@
         <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="SDK Examples" href="sdk_example.html" />
-    <link rel="prev" title="Application Note" href="index.html" /> 
+    <link rel="search" title="Search" href="../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -44,57 +42,59 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Application Note</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Build Environment</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#preparing-gcc-environment">Preparing GCC Environment</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#windows">Windows</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#linux">Linux</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Build Environment</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#preparing-gcc-environment">Preparing GCC Environment</a><ul>
+<li><a class="reference internal" href="#windows">Windows</a></li>
+<li><a class="reference internal" href="#linux">Linux</a></li>
+<li><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#installing-toolchain">Installing Toolchain</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id6">Windows</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id7">Linux</a></li>
+<li><a class="reference internal" href="#installing-toolchain">Installing Toolchain</a><ul>
+<li><a class="reference internal" href="#id6">Windows</a></li>
+<li><a class="reference internal" href="#id7">Linux</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#configuring-sdk">Configuring SDK</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#building-code">Building Code</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#build-one-by-one">Build One by One</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#build-together">Build Together</a></li>
+<li><a class="reference internal" href="#configuring-sdk">Configuring SDK</a></li>
+<li><a class="reference internal" href="#building-code">Building Code</a><ul>
+<li><a class="reference internal" href="#build-one-by-one">Build One by One</a></li>
+<li><a class="reference internal" href="#build-together">Build Together</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#setting-debugger">Setting Debugger</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#j-link">J-Link</a></li>
+<li><a class="reference internal" href="#setting-debugger">Setting Debugger</a><ul>
+<li><a class="reference internal" href="#j-link">J-Link</a><ul>
+<li><a class="reference internal" href="#id16">Windows</a><ul>
+<li><a class="reference internal" href="#id17">KM4 Setup</a></li>
+<li><a class="reference internal" href="#km0-setup">KM0 Setup</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#downloading-image-to-flash">Downloading Image to Flash</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#entering-debug-mode">Entering Debug Mode</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#gdb-server">GDB Server</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id29">J-Link</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#command-lists">Command Lists</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#gdb-debugger-basic-usage">GDB Debugger Basic Usage</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="sdk_example.html">SDK Examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mpu_cache.html">MPU</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mpu_cache.html#cache">Cache</a></li>
-<li class="toctree-l2"><a class="reference internal" href="flash_memory_layout.html">Flash Layout</a></li>
-<li class="toctree-l2"><a class="reference internal" href="flash_memory_layout.html#memory-layout">Memory Layout</a></li>
-<li class="toctree-l2"><a class="reference internal" href="file_system.html">Virtual File System</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ota.html">OTA Firmware Update</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mp_image.html">MP Image</a></li>
-<li class="toctree-l2"><a class="reference internal" href="boot_process.html">Boot Process</a></li>
-<li class="toctree-l2"><a class="reference internal" href="user_config.html">User Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="power_save.html">Power Saving</a></li>
-<li class="toctree-l2"><a class="reference internal" href="template_rst_syntax.html">RST语法</a></li>
+<li><a class="reference internal" href="#id26">Linux</a><ul>
+<li><a class="reference internal" href="#id27">KM4 Setup</a></li>
+<li><a class="reference internal" href="#id28">KM0 Setup</a></li>
 </ul>
 </li>
 </ul>
-
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#downloading-image-to-flash">Downloading Image to Flash</a></li>
+<li><a class="reference internal" href="#entering-debug-mode">Entering Debug Mode</a><ul>
+<li><a class="reference internal" href="#gdb-server">GDB Server</a></li>
+<li><a class="reference internal" href="#id29">J-Link</a><ul>
+<li><a class="reference internal" href="#steps">Steps</a></li>
+<li><a class="reference internal" href="#commands">Commands</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#command-lists">Command Lists</a></li>
+<li><a class="reference internal" href="#gdb-debugger-basic-usage">GDB Debugger Basic Usage</a></li>
+</ul>
+</li>
+</ul>
+</div>
         </div>
       </div>
     </nav>
@@ -109,7 +109,6 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="index.html">Application Note</a></li>
       <li class="breadcrumb-item active">Build Environment</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/application_note/gcc_build_environment.rst.txt" rel="nofollow"> View page source</a>
@@ -163,10 +162,10 @@
 <li><p>MSYS2 MSYS</p></li>
 </ul>
 </div></blockquote>
-<p>Because the toolchain release will base on 64-bit MinGW, choose <code class="docutils literal notranslate"><span class="pre">MSYS2</span></code> <code class="docutils literal notranslate"><span class="pre">MinGW</span></code> <code class="docutils literal notranslate"><span class="pre">64\-bit</span></code> when starting the MinGW terminal.</p>
+<p>Because the toolchain release will base on 64-bit MinGW, choose <code class="docutils literal notranslate"><span class="pre">MSYS2</span></code> <code class="docutils literal notranslate"><span class="pre">MinGW</span></code> <code class="docutils literal notranslate"><span class="pre">64-bit</span></code> when starting the MinGW terminal.</p>
 </div>
 <ol class="arabic simple" start="6">
-<li><p>Run <code class="docutils literal notranslate"><span class="pre">MSYS2</span></code> <code class="docutils literal notranslate"><span class="pre">MinGW</span></code> <code class="docutils literal notranslate"><span class="pre">64\-bit</span></code> from <code class="docutils literal notranslate"><span class="pre">Start</span></code> menu. Update the rest of the base packages with:</p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">MSYS2</span></code> <code class="docutils literal notranslate"><span class="pre">MinGW</span></code> <code class="docutils literal notranslate"><span class="pre">64-bit</span></code> from <code class="docutils literal notranslate"><span class="pre">Start</span></code> menu. Update the rest of the base packages with:</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pacman</span> <span class="o">-</span><span class="n">Syu</span>
 </pre></div>
@@ -199,10 +198,10 @@ pacman -S mingw-w64-x86_64-gcc-libs
 <ol class="arabic simple" start="9">
 <li><p>Remove the file path length limit by editing the registry to allow the file paths longer than 260 characters.</p>
 <ol class="loweralpha simple">
-<li><p>Press <code class="docutils literal notranslate"><span class="pre">Win\+R</span></code> keys to open the <code class="docutils literal notranslate"><span class="pre">Run</span></code> dialog box, then type “<code class="docutils literal notranslate"><span class="pre">regedit</span></code>“ and press <code class="docutils literal notranslate"><span class="pre">Enter</span></code> to open the <code class="docutils literal notranslate"><span class="pre">Registry</span> <span class="pre">Editor</span></code>.</p></li>
+<li><p>Press <code class="docutils literal notranslate"><span class="pre">Win+R</span></code> keys to open the <code class="docutils literal notranslate"><span class="pre">Run</span></code> dialog box, then type “<code class="docutils literal notranslate"><span class="pre">regedit</span></code>“ and press <code class="docutils literal notranslate"><span class="pre">Enter</span></code> to open the <code class="docutils literal notranslate"><span class="pre">Registry</span> <span class="pre">Editor</span></code>.</p></li>
 <li><p>Navigate to the registry key: <code class="docutils literal notranslate"><span class="pre">Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem</span></code>.</p></li>
 <li><p>Search and check if the “LongPathsEnabled” item exists. If not, continue to step d); otherwise, go to step e).</p></li>
-<li><p>Right-click on an empty space in the right pane, then select <code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">&gt;</span> <span class="pre">DWORD</span> <span class="pre">(32\-bit)</span> <span class="pre">Value</span></code>, and name it “<code class="docutils literal notranslate"><span class="pre">LongPathsEnabled</span></code>“.</p></li>
+<li><p>Right-click on an empty space in the right pane, then select <code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">&gt;</span> <span class="pre">DWORD</span> <span class="pre">(32-bit)</span> <span class="pre">Value</span></code>, and name it “<code class="docutils literal notranslate"><span class="pre">LongPathsEnabled</span></code>“.</p></li>
 <li><p>Double-click on “<code class="docutils literal notranslate"><span class="pre">LongPathsEnabled</span></code>“ and set its value to 1, then click <code class="docutils literal notranslate"><span class="pre">OK</span></code> to save.</p></li>
 </ol>
 </li>
@@ -217,34 +216,34 @@ pacman -S mingw-w64-x86_64-gcc-libs
 <li><p><code class="docutils literal notranslate"><span class="pre">libncurses5</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">bash</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">make</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">libssl\-dev</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">libssl-dev</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">binutils</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">python3</span></code></p></li>
 </ul>
 <p>Some of the packages above may have been pre-installed in your operating system. You can either use package manager or type the corresponding version command on terminal to check whether these packages have already existed. If not, make them installed.</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">$</span></code> <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">\-l</span> <span class="pre">/bin/sh</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span></code> <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-l</span> <span class="pre">/bin/sh</span></code></p></li>
 </ul>
-<p>Starting from Ubuntu 6.10, dash is used by default instead of bash. You can use <code class="docutils literal notranslate"><span class="pre">$</span></code> <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">\-l</span> <span class="pre">/bin/sh</span></code> command to check whether the system shell is bash or dash.</p>
+<p>Starting from Ubuntu 6.10, dash is used by default instead of bash. You can use <code class="docutils literal notranslate"><span class="pre">$</span></code> <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-l</span> <span class="pre">/bin/sh</span></code> command to check whether the system shell is bash or dash.</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>(Optional) If the system shell is dash, use <code class="docutils literal notranslate"><span class="pre">$</span></code> <code class="docutils literal notranslate"><span class="pre">sudo</span></code> <code class="docutils literal notranslate"><span class="pre">dpkg\-reconfigure</span></code> <code class="docutils literal notranslate"><span class="pre">dash</span></code> command to switch from dash to bash.</p></li>
+<li><p>(Optional) If the system shell is dash, use <code class="docutils literal notranslate"><span class="pre">$</span></code> <code class="docutils literal notranslate"><span class="pre">sudo</span></code> <code class="docutils literal notranslate"><span class="pre">dpkg-reconfigure</span></code> <code class="docutils literal notranslate"><span class="pre">dash</span></code> command to switch from dash to bash.</p></li>
 <li><p>If the system shell is bash, continue to do the subsequent operations.</p></li>
 </ul>
 </div></blockquote>
 <a class="reference internal image-reference" href="../_images/981b1876be32820503a2cb56f6dcd3b73932dc57.png"><img alt="../_images/981b1876be32820503a2cb56f6dcd3b73932dc57.png" class="align-center" src="../_images/981b1876be32820503a2cb56f6dcd3b73932dc57.png" style="width: 891px;" /></a>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">$</span></code> <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">\-v</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span></code> <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">-v</span></code></p></li>
 </ul>
 <a class="reference internal image-reference" href="../_images/e71390dc1eb5172b2df7fa87c842a7bc8fea4e39.png"><img alt="../_images/e71390dc1eb5172b2df7fa87c842a7bc8fea4e39.png" class="align-center" src="../_images/e71390dc1eb5172b2df7fa87c842a7bc8fea4e39.png" style="width: 705px;" /></a>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">$</span></code> <code class="docutils literal notranslate"><span class="pre">sudo</span></code> <code class="docutils literal notranslate"><span class="pre">apt\-get</span> <span class="pre">install</span></code> <code class="docutils literal notranslate"><span class="pre">libssl\-dev</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span></code> <code class="docutils literal notranslate"><span class="pre">sudo</span></code> <code class="docutils literal notranslate"><span class="pre">apt-get</span> <span class="pre">install</span></code> <code class="docutils literal notranslate"><span class="pre">libssl-dev</span></code></p></li>
 </ul>
 <a class="reference internal image-reference" href="../_images/46814da9a2a450dc380db80bdcd1ebca2020d1df.png"><img alt="../_images/46814da9a2a450dc380db80bdcd1ebca2020d1df.png" class="align-center" src="../_images/46814da9a2a450dc380db80bdcd1ebca2020d1df.png" style="width: 1039px;" /></a>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">binutils</span></code></p></li>
 </ul>
-<p>Use <code class="docutils literal notranslate"><span class="pre">ld</span></code> <code class="docutils literal notranslate"><span class="pre">\-v</span></code> command to check if binutils has been installed. If not, the following error may occur.</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">ld</span></code> <code class="docutils literal notranslate"><span class="pre">-v</span></code> command to check if binutils has been installed. If not, the following error may occur.</p>
 <a class="reference internal image-reference" href="../_images/6d675afc5542fb6e3bd158a5bd557c0972e4d854.png"><img alt="../_images/6d675afc5542fb6e3bd158a5bd557c0972e4d854.png" class="align-center" src="../_images/6d675afc5542fb6e3bd158a5bd557c0972e4d854.png" style="width: 1155px;" /></a>
 </section>
 <section id="troubleshooting">
@@ -253,8 +252,8 @@ pacman -S mingw-w64-x86_64-gcc-libs
 <li><p>MSYS2 pacman is responsible for managing and installing software, which is similar to apt-get in ubuntu. When “bash:XXX:command not found” appears, you can try instruction “pacman -S &lt;package_name&gt;” to install.</p></li>
 <li><p>For detailed information of one package, try “pacman -Si &lt;package_name&gt;”.</p></li>
 <li><p>If system head files are not found when building tool, “No such file or directory” error will show up. You can try “pacman -Fy &lt;FILE_NAME&gt;” to check which package is lost, and install the lost package. If too many packages are lost, look for detailed information about the packages to decide which to install.</p></li>
-<li><p>For multi-version python host, command “<code class="docutils literal notranslate"><span class="pre">update\-alternatives</span> <span class="pre">\-\-install</span> <span class="pre">/usr/bin/python</span> <span class="pre">python</span> <span class="pre">/usr/bin/python3.x</span></code> <code class="docutils literal notranslate"><span class="pre">1</span></code>“ can be used to select python of specific version 3.x, where x represents a desired version number.</p></li>
-<li><p>If the error “<code class="docutils literal notranslate"><span class="pre">command</span> <span class="pre">'python'</span> <span class="pre">not</span> <span class="pre">found</span></code>“ appears during compilation, type command “<code class="docutils literal notranslate"><span class="pre">ln</span> <span class="pre">\-s</span> <span class="pre">/usr/bin/python3</span> <span class="pre">/usr/bin/python</span></code>“ first to make sure that python3 is used when running python.</p></li>
+<li><p>For multi-version python host, command “<code class="docutils literal notranslate"><span class="pre">update-alternatives</span> <span class="pre">--install</span> <span class="pre">/usr/bin/python</span> <span class="pre">python</span> <span class="pre">/usr/bin/python3.x</span></code> <code class="docutils literal notranslate"><span class="pre">1</span></code>“ can be used to select python of specific version 3.x, where x represents a desired version number.</p></li>
+<li><p>If the error “<code class="docutils literal notranslate"><span class="pre">command</span> <span class="pre">'python'</span> <span class="pre">not</span> <span class="pre">found</span></code>“ appears during compilation, type command “<code class="docutils literal notranslate"><span class="pre">ln</span> <span class="pre">-s</span> <span class="pre">/usr/bin/python3</span> <span class="pre">/usr/bin/python</span></code>“ first to make sure that python3 is used when running python.</p></li>
 </ul>
 </section>
 </section>
@@ -264,13 +263,13 @@ pacman -S mingw-w64-x86_64-gcc-libs
 <h3>Windows<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
 <p>This section introduces the steps to prepare the toolchain environment.</p>
 <ol class="arabic simple">
-<li><p>Acquire the zip files of AmeabDPlus toolchain from Realtek.</p></li>
-<li><p>Create a new directory <code class="docutils literal notranslate"><span class="pre">rtk\-toolchain</span></code> under the path <code class="docutils literal notranslate"><span class="pre">{MSYS2_path}\opt</span></code>.</p></li>
+<li><p>Acquire the zip files of <a href="#id38"><span class="problematic" id="id39">|CHIP_NAME|</span></a> toolchain from Realtek.</p></li>
+<li><p>Create a new directory <code class="docutils literal notranslate"><span class="pre">rtk-toolchain</span></code> under the path <code class="docutils literal notranslate"><span class="pre">{MSYS2_path}\opt</span></code>.</p></li>
 </ol>
-<p>For example, if your MSYS2 installation path is as set in section 1.2.1 step (3), the <code class="docutils literal notranslate"><span class="pre">rtk\-toolchain</span></code> should be in <code class="docutils literal notranslate"><span class="pre">C:\msys64\opt</span></code>.</p>
+<p>For example, if your MSYS2 installation path is as set in section 1.2.1 step (3), the <code class="docutils literal notranslate"><span class="pre">rtk-toolchain</span></code> should be in <code class="docutils literal notranslate"><span class="pre">C:\msys64\opt</span></code>.</p>
 <a class="reference internal image-reference" href="../_images/22f030f8961c57b130296f000622620755228734.png"><img alt="../_images/22f030f8961c57b130296f000622620755228734.png" class="align-center" src="../_images/22f030f8961c57b130296f000622620755228734.png" style="width: 202px;" /></a>
 <ol class="arabic simple" start="3">
-<li><p>Unzip <code class="docutils literal notranslate"><span class="pre">asdk\-10.3.x</span></code>-<code class="docutils literal notranslate"><span class="pre">mingw32\-newlib\-build\-xxxx.zip</span></code> and place the toolchain folder <code class="docutils literal notranslate"><span class="pre">asdk\-10.3.x</span></code> to the folder <code class="docutils literal notranslate"><span class="pre">rtk\-toolchain</span></code> created in step (2).</p></li>
+<li><p>Unzip <code class="docutils literal notranslate"><span class="pre">asdk-10.3.x</span></code>-<code class="docutils literal notranslate"><span class="pre">mingw32-newlib-build-xxxx.zip</span></code> and place the toolchain folder <code class="docutils literal notranslate"><span class="pre">asdk-10.3.x</span></code> to the folder <code class="docutils literal notranslate"><span class="pre">rtk-toolchain</span></code> created in step (2).</p></li>
 </ol>
 <a class="reference internal image-reference" href="../_images/0ff7a5efd195823cafdd080ad0f2510849d9f11a.png"><img alt="../_images/0ff7a5efd195823cafdd080ad0f2510849d9f11a.png" class="align-center" src="../_images/0ff7a5efd195823cafdd080ad0f2510849d9f11a.png" style="width: 388px;" /></a>
 <div class="admonition note">
@@ -285,12 +284,12 @@ pacman -S mingw-w64-x86_64-gcc-libs
 <h3>Linux<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
 <p>This section introduces the steps to prepare the toolchain environment.</p>
 <ol class="arabic simple">
-<li><p>Acquire the zip files of AmeabDPlus toolchain from Realtek.</p></li>
-<li><p>Create a new directory <code class="docutils literal notranslate"><span class="pre">rtk\-toolchain</span></code> under the path <code class="docutils literal notranslate"><span class="pre">/opt.</span></code></p></li>
+<li><p>Acquire the zip files of <a href="#id40"><span class="problematic" id="id41">|CHIP_NAME|</span></a> toolchain from Realtek.</p></li>
+<li><p>Create a new directory <code class="docutils literal notranslate"><span class="pre">rtk-toolchain</span></code> under the path <code class="docutils literal notranslate"><span class="pre">/opt.</span></code></p></li>
 </ol>
 <a class="reference internal image-reference" href="../_images/92fe2af04ddff6b8f199fbe7bb6e6da206c76525.png"><img alt="../_images/92fe2af04ddff6b8f199fbe7bb6e6da206c76525.png" class="align-center" src="../_images/92fe2af04ddff6b8f199fbe7bb6e6da206c76525.png" style="width: 841px;" /></a>
 <ol class="arabic simple" start="3">
-<li><p>Unzip <code class="docutils literal notranslate"><span class="pre">asdk\-10.3.x\-linux\-newlib\-build\-xxxx.tar.bz2</span></code> to <code class="docutils literal notranslate"><span class="pre">/opt/rtk\-toolchain</span></code> , then you can get the directory below:</p></li>
+<li><p>Unzip <code class="docutils literal notranslate"><span class="pre">asdk-10.3.x-linux-newlib-build-xxxx.tar.bz2</span></code> to <code class="docutils literal notranslate"><span class="pre">/opt/rtk-toolchain</span></code> , then you can get the directory below:</p></li>
 </ol>
 <a class="reference internal image-reference" href="../_images/e04dbe47db18cb25c644ef8e078dbd7fef1af47d.png"><img alt="../_images/e04dbe47db18cb25c644ef8e078dbd7fef1af47d.png" class="align-center" src="../_images/e04dbe47db18cb25c644ef8e078dbd7fef1af47d.png" style="width: 518px;" /></a>
 <div class="admonition note">
@@ -396,22 +395,22 @@ pacman -S mingw-w64-x86_64-gcc-libs
 <h2>Setting Debugger<a class="headerlink" href="#setting-debugger" title="Link to this heading"></a></h2>
 <section id="j-link">
 <h3>J-Link<a class="headerlink" href="#j-link" title="Link to this heading"></a></h3>
-<p>The AmeabDPlus supports J-Link debugger. Before setting J-Link debugger, you need to do some hardware configuration and download images to the AmeabDPlus device first.</p>
+<p>The <a href="#id50"><span class="problematic" id="id51">|CHIP_NAME|</span></a> supports J-Link debugger. Before setting J-Link debugger, you need to do some hardware configuration and download images to the <a href="#id52"><span class="problematic" id="id53">|CHIP_NAME|</span></a> device first.</p>
 <ol class="arabic simple">
-<li><p>Connect J-Link to the SWD of AmeabDPlus.</p>
+<li><p>Connect J-Link to the SWD of <a href="#id54"><span class="problematic" id="id55">|CHIP_NAME|</span></a>.</p>
 <ol class="loweralpha simple">
-<li><p>Refer to Figure 1-13 to connect SWCLK pin of J-Link to SWD CLK pin of AmeabDPlus, and SWDIO pin of J-Link to SWD DATA pin of AmeabDPlus.</p></li>
-<li><p>Connect the AmeabDPlus device to PC after finishing these configurations.</p></li>
+<li><p>Refer to Figure 1-13 to connect SWCLK pin of J-Link to SWD CLK pin of <a href="#id56"><span class="problematic" id="id57">|CHIP_NAME|</span></a>, and SWDIO pin of J-Link to SWD DATA pin of <a href="#id58"><span class="problematic" id="id59">|CHIP_NAME|</span></a>.</p></li>
+<li><p>Connect the <a href="#id60"><span class="problematic" id="id61">|CHIP_NAME|</span></a> device to PC after finishing these configurations.</p></li>
 </ol>
 </li>
 </ol>
 <p>Figure 1-13 Wiring diagram of connecting J-Link to SWD</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>For AmeabDPlus, the J-Link version must be v9 or higher. If Virtual Machine (VM) is used as your platform, make sure that the USB connection setting between VM host and client is correct, so that the VM host can detect the device.</p>
+<p>For <a href="#id62"><span class="problematic" id="id63">|CHIP_NAME|</span></a>, the J-Link version must be v9 or higher. If Virtual Machine (VM) is used as your platform, make sure that the USB connection setting between VM host and client is correct, so that the VM host can detect the device.</p>
 </div>
 <ol class="arabic simple" start="2">
-<li><p>Download images to the AmeabDPlus device via ImageTool.</p></li>
+<li><p>Download images to the <a href="#id64"><span class="problematic" id="id65">|CHIP_NAME|</span></a> device via ImageTool.</p></li>
 </ol>
 <p>ImageTool is a software tool provided by Realtek. For more information, refer to <code class="docutils literal notranslate"><span class="pre">错误!未找到引用源。</span></code>.</p>
 <section id="id16">
@@ -485,7 +484,7 @@ pacman -S mingw-w64-x86_64-gcc-libs
 <li><p>Connect to KM4</p>
 <ol class="loweralpha simple">
 <li><p>Open a new terminal under directory`` /amebadplus_gcc_project/utils/jlink_script``.</p></li>
-<li><p>Type <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">/opt/SEGGER/JLink/JLinkGDBServer</span></code> <code class="docutils literal notranslate"><span class="pre">\-select</span> <span class="pre">USB</span> <span class="pre">\-device</span></code> <code class="docutils literal notranslate"><span class="pre">Cortex\-M33</span> <span class="pre">\-if</span> <span class="pre">SWD</span> <span class="pre">\-scriptfile</span> <span class="pre">AP2_KM4.JLinkScript</span></code> <code class="docutils literal notranslate"><span class="pre">port</span> <span class="pre">2335</span></code>.</p></li>
+<li><p>Type <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">/opt/SEGGER/JLink/JLinkGDBServer</span></code> <code class="docutils literal notranslate"><span class="pre">-select</span> <span class="pre">USB</span> <span class="pre">-device</span></code> <code class="docutils literal notranslate"><span class="pre">Cortex-M33</span> <span class="pre">-if</span> <span class="pre">SWD</span> <span class="pre">-scriptfile</span> <span class="pre">AP2_KM4.JLinkScript</span></code> <code class="docutils literal notranslate"><span class="pre">port</span> <span class="pre">2335</span></code>.</p></li>
 </ol>
 </li>
 </ol>
@@ -498,7 +497,7 @@ pacman -S mingw-w64-x86_64-gcc-libs
 <li><p>Setup J-Link for KM4</p>
 <ol class="loweralpha simple">
 <li><p>Open a new terminal under project_km4 folder.</p></li>
-<li><p>Type <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">make</span> <span class="pre">setup</span> <span class="pre">GDB_SERVER\=jlink</span></code> command before using J-Link to download software or enter GDB debugger.</p></li>
+<li><p>Type <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">make</span> <span class="pre">setup</span> <span class="pre">GDB_SERVER=jlink</span></code> command before using J-Link to download software or enter GDB debugger.</p></li>
 </ol>
 </li>
 </ol>
@@ -511,7 +510,7 @@ pacman -S mingw-w64-x86_64-gcc-libs
 <li><p>Connect to KM0</p>
 <ol class="loweralpha simple">
 <li><p>Open a new terminal under directory <code class="docutils literal notranslate"><span class="pre">/amebadplus_gcc_project/utils/jlink_script</span></code>.</p></li>
-<li><p>Type <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">/opt/SEGGER/JLink/JLinkGDBServer</span></code> <code class="docutils literal notranslate"><span class="pre">\-select</span> <span class="pre">USB</span> <span class="pre">\-device</span> <span class="pre">Cortex\-M23</span> <span class="pre">\-if</span> <span class="pre">SWD</span> <span class="pre">\-scriptfile</span></code> <code class="docutils literal notranslate"><span class="pre">AP1_KM0.JLinkScript</span> <span class="pre">port</span> <span class="pre">2331</span></code>.</p></li>
+<li><p>Type <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">/opt/SEGGER/JLink/JLinkGDBServer</span></code> <code class="docutils literal notranslate"><span class="pre">-select</span> <span class="pre">USB</span> <span class="pre">-device</span> <span class="pre">Cortex-M23</span> <span class="pre">-if</span> <span class="pre">SWD</span> <span class="pre">-scriptfile</span></code> <code class="docutils literal notranslate"><span class="pre">AP1_KM0.JLinkScript</span> <span class="pre">port</span> <span class="pre">2331</span></code>.</p></li>
 </ol>
 </li>
 </ol>
@@ -524,7 +523,7 @@ pacman -S mingw-w64-x86_64-gcc-libs
 <li><p>Setup J-Link for KM0</p>
 <ol class="loweralpha simple">
 <li><p>Open a new terminal under project_km0.</p></li>
-<li><p>Type <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">make</span> <span class="pre">setup</span> <span class="pre">GDB_SERVER\=jlink</span></code> command before using J-Link to download software or enter GDB debugger.</p></li>
+<li><p>Type <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">make</span> <span class="pre">setup</span> <span class="pre">GDB_SERVER=jlink</span></code> command before using J-Link to download software or enter GDB debugger.</p></li>
 </ol>
 </li>
 </ol>
@@ -571,7 +570,7 @@ pacman -S mingw-w64-x86_64-gcc-libs
 <section id="steps">
 <h4>Steps<a class="headerlink" href="#steps" title="Link to this heading"></a></h4>
 <ol class="arabic simple">
-<li><p>Press ⊞<code class="docutils literal notranslate"><span class="pre">Win\+R</span> <span class="pre">``\</span> <span class="pre">on</span> <span class="pre">your</span> <span class="pre">keyboard.</span> <span class="pre">Hold</span> <span class="pre">down</span> <span class="pre">the</span> <span class="pre">Windows</span> <span class="pre">key</span> <span class="pre">on</span> <span class="pre">your</span> <span class="pre">keyboard,</span> <span class="pre">and</span> <span class="pre">press</span> <span class="pre">the</span> <span class="pre">&quot;R&quot;</span> <span class="pre">button.</span> <span class="pre">This</span> <span class="pre">will</span> <span class="pre">open</span> <span class="pre">the</span> <span class="pre">&quot;Run&quot;</span> <span class="pre">tool</span> <span class="pre">in</span> <span class="pre">a</span> <span class="pre">new</span> <span class="pre">pop\-up</span> <span class="pre">window.</span> <span class="pre">Alternatively,</span> <span class="pre">you</span> <span class="pre">can</span> <span class="pre">find</span> <span class="pre">and</span> <span class="pre">click</span> <span class="pre">\</span> <span class="pre">``Run</span></code> on the Start menu.</p></li>
+<li><p>Press ⊞<code class="docutils literal notranslate"><span class="pre">Win+R</span> <span class="pre">``\</span> <span class="pre">on</span> <span class="pre">your</span> <span class="pre">keyboard.</span> <span class="pre">Hold</span> <span class="pre">down</span> <span class="pre">the</span> <span class="pre">Windows</span> <span class="pre">key</span> <span class="pre">on</span> <span class="pre">your</span> <span class="pre">keyboard,</span> <span class="pre">and</span> <span class="pre">press</span> <span class="pre">the</span> <span class="pre">&quot;R&quot;</span> <span class="pre">button.</span> <span class="pre">This</span> <span class="pre">will</span> <span class="pre">open</span> <span class="pre">the</span> <span class="pre">&quot;Run&quot;</span> <span class="pre">tool</span> <span class="pre">in</span> <span class="pre">a</span> <span class="pre">new</span> <span class="pre">pop-up</span> <span class="pre">window.</span> <span class="pre">Alternatively,</span> <span class="pre">you</span> <span class="pre">can</span> <span class="pre">find</span> <span class="pre">and</span> <span class="pre">click</span> <span class="pre">\</span> <span class="pre">``Run</span></code> on the Start menu.</p></li>
 <li><p>Type <code class="docutils literal notranslate"><span class="pre">cmd</span></code> in the Run window. This shortcut will open the Command Prompt terminal.</p></li>
 <li><p>Click <a href="#id30"><span class="problematic" id="id31">``</span></a>OK <a href="#id32"><span class="problematic" id="id33">``</span></a>in the Run window. This will run your shortcut command, and open the Command Prompt terminal in a new window.</p></li>
 <li><p>Copy the J-Link script command below for specific target:</p></li>
@@ -671,7 +670,7 @@ pacman -S mingw-w64-x86_64-gcc-libs
 </tr>
 <tr class="row-odd"><td><p>clean</p></td>
 <td><p>$ make clean</p></td>
-<td><p>Remove compile file (*.bin, *.o, …)</p></td>
+<td><p>Remove compile file (<a href="#id34"><span class="problematic" id="id35">*</span></a>.bin, <a href="#id36"><span class="problematic" id="id37">*</span></a>.o, …)</p></td>
 </tr>
 <tr class="row-even"><td><p>debug</p></td>
 <td><p>$ make debug</p></td>
@@ -766,10 +765,7 @@ pacman -S mingw-w64-x86_64-gcc-libs
 
            </div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="index.html" class="btn btn-neutral float-left" title="Application Note" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="sdk_example.html" class="btn btn-neutral float-right" title="SDK Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
+          <footer>
 
   <hr/>
 

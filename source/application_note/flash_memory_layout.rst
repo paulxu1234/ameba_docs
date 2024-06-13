@@ -6,13 +6,13 @@ This chapter introduces the default Flash layout of |CHIP_NAME| and how to modif
 
 Introduction
 ~~~~~~~~~~~~~~~~~~~~~~~~
-The default Flash layout used in SDK is illustrated in Figure 1\-1 and Table 1\-1. The layout takes the 8MB Flash as an example. The start address of boot manifest is fixed to 0x0800_0000, and other start addresses can be configured by users flexibly.
+The default Flash layout used in SDK is illustrated in Figure 1-1 and Table 1-1. The layout takes the 8MB Flash as an example. The start address of boot manifest is fixed to 0x0800_0000, and other start addresses can be configured by users flexibly.
 
 
 
-Figure 1\-1 Flash layout
+Figure 1-1 Flash layout
 
-Table 1\-1 Flash layout
+Table 1-1 Flash layout
 
 .. only:: RTL8721D
     
@@ -32,7 +32,7 @@ Table 1\-1 Flash layout
     |                              |                  |           |                                                                                                       |           |
     |                              |                  |           | - KM0_IMG: KM0 image (code/data), mapped to the virtual address 0x0C00_0000.                          |           |
     |                              |                  |           |                                                                                                       |           |
-    |                              |                  |           | - KM4_IMG2: KM4 non\-secure image (code/data), mapped to the virtual address 0x0E00_0000.             |           |
+    |                              |                  |           | - KM4_IMG2: KM4 non-secure image (code/data), mapped to the virtual address 0x0E00_0000.              |           |
     |                              |                  |           |                                                                                                       |           |
     |                              |                  |           | - KM4_IMG3: secure image (code/data)                                                                  |           |
     +------------------------------+------------------+-----------+-------------------------------------------------------------------------------------------------------+-----------+
@@ -48,7 +48,7 @@ Table 1\-1 Flash layout
     |                              |                  |           |                                                                                                       |           |
     |                              |                  |           | - KM0_IMG: KM0 image (code/data), mapped to the virtual address 0x0C00_0000.                          |           |
     |                              |                  |           |                                                                                                       |           |
-    |                              |                  |           | - KM4_IMG2: KM4 non\-secure image (code/data), mapped to the virtual address 0x0E00_0000.             |           |
+    |                              |                  |           | - KM4_IMG2: KM4 non-secure image (code/data), mapped to the virtual address 0x0E00_0000.              |           |
     |                              |                  |           |                                                                                                       |           |
     |                              |                  |           | - KM4_IMG3: secure image (code/data)                                                                  |           |
     +------------------------------+------------------+-----------+-------------------------------------------------------------------------------------------------------+-----------+
@@ -108,11 +108,11 @@ Table 1\-1 Flash layout
 
 Memory Management Unit (MMU)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-To achieve flexibility of image and for image encryption when RSIP is enabled (the fixed address is needed by IV when doing image encryption, refer to RSIP for more information), Flash MMU is applied by default. The default MMU layout used in SDK is illustrated in Figure 1\-2.
+To achieve flexibility of image and for image encryption when RSIP is enabled (the fixed address is needed by IV when doing image encryption, refer to RSIP for more information), Flash MMU is applied by default. The default MMU layout used in SDK is illustrated in Figure 1-2.
 
 
 
-Figure 1\-2 Flash MMU layout
+Figure 1-2 Flash MMU layout
 
 How to Modify Flash Layout
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -149,7 +149,7 @@ The method is to modify the address of \ ``IMG_BOOT_OTA2``\  in \ ``{SDK}\compon
    :align: center
  
 
-If the anti\-rollback function is enabled to ensure that the version of the Bootloader can only be incrementing but cannot be rolled back, the version of the Bootloader needs to be changed before compiling. That is, IMG_VER in \ ``{SDK}\amebadplus_gcc_project\manifest.json``\  needs to be modified.
+If the anti-rollback function is enabled to ensure that the version of the Bootloader can only be incrementing but cannot be rolled back, the version of the Bootloader needs to be changed before compiling. That is, IMG_VER in \ ``{SDK}\amebadplus_gcc_project\manifest.json``\  needs to be modified.
 
 .. image:: ../_static/flash_memory_layout_rst/bf0452ef5426e69a5bed57e287657aacdd7fb09c.png
    :width: 365
@@ -175,7 +175,7 @@ Follow the steps to modify the location of APP OTA1:
    :align: center
 
 
-2. Re\-build the project to generate the Bootloader and APP OTA1.
+2. Re-build the project to generate the Bootloader and APP OTA1.
 
 3. Modify the address of \ ``km0_km4_app.bin``\  if you update the location of APP OTA1 through ImageTool, and download the new Bootloader and APP OTA1.
 
@@ -190,7 +190,7 @@ APP OTA2
 ****************
 1. Modify the address of \ ``IMG_APP_OTA2``\  in \ ``{SDK}\component\soc\amebadplus\usrcfg\ameba_flashcfg.c``\ .
 
-2. Re\-build and download the new Bootloader and APP OTA2 as described in section 1.3.2.1 step (2)~(3).
+2. Re-build and download the new Bootloader and APP OTA2 as described in section 1.3.2.1 step (2)~(3).
 
 .. image:: ../_static/flash_memory_layout_rst/85e2ba3eda65b3e93392cc252d88ef84e537b095.png
    :width: 1092
@@ -255,61 +255,61 @@ This chapter introduces the default memory layout of |CHIP_NAME| and how to modi
 
 RAM Layout
 ~~~~~~~~~~~~~~~~~~~~
-In total, there are 512KB SRAM on chip, and the size of PSRAM can be 0MB/4MB/8MB/16MB…, which is decided by users. The RAM layout is illustrated in Figure 2\-1.
+In total, there are 512KB SRAM on chip, and the size of PSRAM can be 0MB/4MB/8MB/16MB…, which is decided by users. The RAM layout is illustrated in Figure 2-1.
 
 
 
-Figure 2\-1 RAM layout
+Figure 2-1 RAM layout
 
 SRAM0 (First 40KB) Layout
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The first 40KB SRAM0 layout is illustrated in Table 2\-1Figure 2\-2 and Table 2\-1. It is the same for all situations.
+The first 40KB SRAM0 layout is illustrated in Table 2-1Figure 2-2 and Table 2-1. It is the same for all situations.
 
 
 
-Figure 2\-2 SRAM0 (first 40KB) layout
+Figure 2-2 SRAM0 (first 40KB) layout
 
-Table 2\-1 SRAM0 (first 40KB) layout
+Table 2-1 SRAM0 (first 40KB) layout
 
-+----------------------+---------------+--------+-------------------------------------------+-----------+
-| Items                | Start address | Size   | Description                               | Mandatory |
-+======================+===============+========+===========================================+===========+
-| KM0_ROM_BSS_RAM      | 0x2000_0000   | 4KB    | KM0 ROM BSS                               | √         |
-+----------------------+---------------+--------+-------------------------------------------+-----------+
-| KM0_MSP_RAM          | 0x2000_1000   | 4KB    | KM0 Main Stack Pointer                    | √         |
-+----------------------+---------------+--------+-------------------------------------------+-----------+
-| KM0_STDLIB_HEAP_NS   | 0x2000_2000   | 4KB    | KM0 ROM STDLIB heap                       | √         |
-+----------------------+---------------+--------+-------------------------------------------+-----------+
-| KM4_MSP_NS           | 0x2000_3000   | 4KB    | KM4 non\-secure Main Stack Pointer        | √         |
-+----------------------+---------------+--------+-------------------------------------------+-----------+
-| KM4_ROM_BSS_COMMON   | 0x2000_4000   | 3.25KB | KM4 ROM secure and non\-secure common BSS | √         |
-+----------------------+---------------+--------+-------------------------------------------+-----------+
-| KM0_BOOT_RAM         | 0x2000_4D00   | 64B    | KM0 IMG2 entry                            | √         |
-+----------------------+---------------+--------+-------------------------------------------+-----------+
-| KM0_IPC_RAM          | 0x2000_4E00   | 512B   | Exchange messages between cores           | √         |
-+----------------------+---------------+--------+-------------------------------------------+-----------+
-| KM4_ROM_BSS_NS       | 0x2000_5000   | 4KB    | KM4 ROM non\-secure common BSS            | √         |
-+----------------------+---------------+--------+-------------------------------------------+-----------+
-| KM4_STDLIB_HEAP_NS   | 0x2000_6000   | 4KB    | KM4 ROM non\-secure STDLIB heap           | √         |
-+----------------------+---------------+--------+-------------------------------------------+-----------+
-| KM4_ROM_BSS_S        | 0x3000_7000   | 4KB    | KM4 ROM secure\-only BSS                  | √         |
-+----------------------+---------------+--------+-------------------------------------------+-----------+
-| KM0_RTOS_STATIC_0_NS | 0x2000_8000   | 4KB    | KM0 RTOS static pool position             | √         |
-+----------------------+---------------+--------+-------------------------------------------+-----------+
-| KM4_MSP_S            | 0x3000_9000   | 4KB    | KM4 secure Main Stack Pointer             | √         |
-+----------------------+---------------+--------+-------------------------------------------+-----------+
++----------------------+---------------+--------+------------------------------------------+-----------+
+| Items                | Start address | Size   | Description                              | Mandatory |
++======================+===============+========+==========================================+===========+
+| KM0_ROM_BSS_RAM      | 0x2000_0000   | 4KB    | KM0 ROM BSS                              | √         |
++----------------------+---------------+--------+------------------------------------------+-----------+
+| KM0_MSP_RAM          | 0x2000_1000   | 4KB    | KM0 Main Stack Pointer                   | √         |
++----------------------+---------------+--------+------------------------------------------+-----------+
+| KM0_STDLIB_HEAP_NS   | 0x2000_2000   | 4KB    | KM0 ROM STDLIB heap                      | √         |
++----------------------+---------------+--------+------------------------------------------+-----------+
+| KM4_MSP_NS           | 0x2000_3000   | 4KB    | KM4 non-secure Main Stack Pointer        | √         |
++----------------------+---------------+--------+------------------------------------------+-----------+
+| KM4_ROM_BSS_COMMON   | 0x2000_4000   | 3.25KB | KM4 ROM secure and non-secure common BSS | √         |
++----------------------+---------------+--------+------------------------------------------+-----------+
+| KM0_BOOT_RAM         | 0x2000_4D00   | 64B    | KM0 IMG2 entry                           | √         |
++----------------------+---------------+--------+------------------------------------------+-----------+
+| KM0_IPC_RAM          | 0x2000_4E00   | 512B   | Exchange messages between cores          | √         |
++----------------------+---------------+--------+------------------------------------------+-----------+
+| KM4_ROM_BSS_NS       | 0x2000_5000   | 4KB    | KM4 ROM non-secure common BSS            | √         |
++----------------------+---------------+--------+------------------------------------------+-----------+
+| KM4_STDLIB_HEAP_NS   | 0x2000_6000   | 4KB    | KM4 ROM non-secure STDLIB heap           | √         |
++----------------------+---------------+--------+------------------------------------------+-----------+
+| KM4_ROM_BSS_S        | 0x3000_7000   | 4KB    | KM4 ROM secure-only BSS                  | √         |
++----------------------+---------------+--------+------------------------------------------+-----------+
+| KM0_RTOS_STATIC_0_NS | 0x2000_8000   | 4KB    | KM0 RTOS static pool position            | √         |
++----------------------+---------------+--------+------------------------------------------+-----------+
+| KM4_MSP_S            | 0x3000_9000   | 4KB    | KM4 secure Main Stack Pointer            | √         |
++----------------------+---------------+--------+------------------------------------------+-----------+
 
 .. only:: RTL8721D
     
     RAM & PSRAM Layout
     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    There are 288KB SRAM for KM4 and 96KB SRAM for KM0, which can be used for Power Management Controller (PMC) code and performance\-cared text and data. Figure 2\-4 and Table 2\-3 illustrate the RAM layout with PSRAM.
+    There are 288KB SRAM for KM4 and 96KB SRAM for KM0, which can be used for Power Management Controller (PMC) code and performance-cared text and data. Figure 2-4 and Table 2-3 illustrate the RAM layout with PSRAM.
     
     
     
-    Figure 2\-3 RAM layout (with PSRAM)
+    Figure 2-3 RAM layout (with PSRAM)
     
-    Table 2\-2 RAM layout (with PSRAM)
+    Table 2-2 RAM layout (with PSRAM)
     
     +----------------+---------------+-----------+-------------------------------------------------------------------+-----------+
     | Item           | Start address | Size (KB) | Description                                                       | Mandatory |
@@ -337,13 +337,13 @@ Table 2\-1 SRAM0 (first 40KB) layout
     
     RAM & PSRAM Layout
     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    There are 352KB SRAM for KM4 and 96KB SRAM for KM0, which can be used for Power Management Controller (PMC) code and performance\-cared text and data. Figure 2\-5 and Table 2\-4 illustrate the RAM layout with PSRAM.
+    There are 352KB SRAM for KM4 and 96KB SRAM for KM0, which can be used for Power Management Controller (PMC) code and performance-cared text and data. Figure 2-5 and Table 2-4 illustrate the RAM layout with PSRAM.
     
     
     
-    Figure 2\-4 RAM layout (with PSRAM)
+    Figure 2-4 RAM layout (with PSRAM)
     
-    Table 2\-3 RAM layout (with PSRAM)
+    Table 2-3 RAM layout (with PSRAM)
     
     +----------------+---------------+-----------+-------------------------------------------------------------------+-----------+
     | Item           | Start address | Size (KB) | Description                                                       | Mandatory |
@@ -369,21 +369,21 @@ Table 2\-1 SRAM0 (first 40KB) layout
     
     TrustZone Layout
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    There are only eight SAU entries to set memory to non\-secure or non\-secure callable attribution. To maintain the flexibility of the system, we resolve the problem of insufficient SAU entries through the method described below:
+    There are only eight SAU entries to set memory to non-secure or non-secure callable attribution. To maintain the flexibility of the system, we resolve the problem of insufficient SAU entries through the method described below:
     
-    - IDAU partitions the address space of adjacent 512MB into two parts, secure and non\-secure, according to the address bit[28].
+    - IDAU partitions the address space of adjacent 512MB into two parts, secure and non-secure, according to the address bit[28].
     
-    - The two secure/non\-secure address spaces are mapped to the same physical memory, which is address aliasing. Secure address space provides the window of secure access to this physical memory, and non\-secure address space provides the window of non\-secure access to it.
-    
-    
-    
-    Figure 2\-5 Result of IDAU conjunction with SAU
-    
-    Figure 2\-7 illustrates the TrustZone layout. Refer to User Manual for more information about TrustZone.
+    - The two secure/non-secure address spaces are mapped to the same physical memory, which is address aliasing. Secure address space provides the window of secure access to this physical memory, and non-secure address space provides the window of non-secure access to it.
     
     
     
-    Figure 2\-6 TrustZone layout
+    Figure 2-5 Result of IDAU conjunction with SAU
+    
+    Figure 2-7 illustrates the TrustZone layout. Refer to User Manual for more information about TrustZone.
+    
+    
+    
+    Figure 2-6 TrustZone layout
     
     
     
@@ -424,7 +424,7 @@ Follow the steps to modify the size of Bootloader:
    :align: center
 
 
-3. Re\-build the project to generate the Bootloader.
+3. Re-build the project to generate the Bootloader.
 
 4. Modify the end address of km4_boot_all.bin if Bootloader is too large, and download the new Bootloader.
 
@@ -446,7 +446,7 @@ Follow the steps to modify the size of KM4 BD RAM:
    :align: center
 
 
-2. Re\-build and download the new Bootloader and IMG2 OTA2 as described in Section 1.3.2.1 step (2)~(3).
+2. Re-build and download the new Bootloader and IMG2 OTA2 as described in Section 1.3.2.1 step (2)~(3).
 
 Modifying BD_PSRAM Size
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -459,14 +459,14 @@ If user wants to modify the KM4 BD PSRAM size, please modify the running positio
 
 Extending Heap Size
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The heap size consists of multi\-blocks and is passed to the operating system by the os_heap_init() function in component\os\freertos\ freertos_heap5_config.c. By default, PSRAM_HEAP1_START is invalid address and PSRAM_HEAP1_SIZE is 0.
+The heap size consists of multi-blocks and is passed to the operating system by the os_heap_init() function in component\os\freertos\ freertos_heap5_config.c. By default, PSRAM_HEAP1_START is invalid address and PSRAM_HEAP1_SIZE is 0.
 
 .. image:: ../_static/flash_memory_layout_rst/a92d39c85a6c25045fb56f51b199e3ca3bc25a9f.png
    :width: 1020
    :align: center
  
 
-If the heap of KM4 is not enough, define Heap Start and Heap Size for some unused areas in amebaDplus_layout.ld, and then use the os_heap_add function to add the area to the heap array. The address shall be a valid value in PSRAM, then re\-build and download the new image to let KM4 use the extended heap.
+If the heap of KM4 is not enough, define Heap Start and Heap Size for some unused areas in amebaDplus_layout.ld, and then use the os_heap_add function to add the area to the heap array. The address shall be a valid value in PSRAM, then re-build and download the new image to let KM4 use the extended heap.
 
 .. code::
 

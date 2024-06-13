@@ -7,9 +7,9 @@ Functional Description
 The Memory Protection Unit (MPU) is a component provided by Arm and is used to provide hardware protection by software definition. The code in SDK provides the mpu_region_config struct to set the region memory attribute of MPU.
 
 
-Table 1\-1 shows the member variables of the mpu_region_config struct.
+Table 1-1 shows the member variables of the mpu_region_config struct.
 
-Table \- mpu_region_config struct
+Table - mpu_region_config struct
 
 +----------------------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------+
 | Member variable name | Type     | Description                                                                                                                                      |
@@ -36,7 +36,7 @@ Table \- mpu_region_config struct
 +----------------------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------+
 | sh                   | uint8_t  | Share ability for Normal memory                                                                                                                  |
 |                      |          |                                                                                                                                                  |
-|                      |          | - MPU_NON_SHAREABLE: Non\-shareable                                                                                                              |
+|                      |          | - MPU_NON_SHAREABLE: Non-shareable                                                                                                               |
 |                      |          |                                                                                                                                                  |
 |                      |          | - MPU_OUT_SHAREABLE: Outer shareable                                                                                                             |
 |                      |          |                                                                                                                                                  |
@@ -46,13 +46,13 @@ Table \- mpu_region_config struct
 |                      |          |                                                                                                                                                  |
 |                      |          | This parameter can be a value of 0 ~ 7, the detailed attribute is defined in mpu_init() and is customized. The typical definition is as follows: |
 |                      |          |                                                                                                                                                  |
-|                      |          | - 0: MPU_MEM_ATTR_IDX_NC, defines memory attribute of Normal memory with non\-cacheable.                                                         |
+|                      |          | - 0: MPU_MEM_ATTR_IDX_NC, defines memory attribute of Normal memory with non-cacheable.                                                          |
 |                      |          |                                                                                                                                                  |
-|                      |          | - 1: MPU_MEM_ATTR_IDX_WT_T_RA, defines memory attribute of Normal memory with write\-through transient, read allocation.                         |
+|                      |          | - 1: MPU_MEM_ATTR_IDX_WT_T_RA, defines memory attribute of Normal memory with write-through transient, read allocation.                          |
 |                      |          |                                                                                                                                                  |
-|                      |          | - 2: MPU_MEM_ATTR_IDX_WB_T_RWA, defines memory attribute of Normal memory with write\-back transient, read and write allocation.                 |
+|                      |          | - 2: MPU_MEM_ATTR_IDX_WB_T_RWA, defines memory attribute of Normal memory with write-back transient, read and write allocation.                  |
 |                      |          |                                                                                                                                                  |
-|                      |          | - 3 ~ 7: MPU_MEM_ATTR_IDX_DEVICE, defines memory attribute of Device memory with non\-gathering, non\-recording, non\-early Write Acknowledge.   |
+|                      |          | - 3 ~ 7: MPU_MEM_ATTR_IDX_DEVICE, defines memory attribute of Device memory with non-gathering, non-recording, non-early Write Acknowledge.      |
 +----------------------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------+
 
 MPU APIs
@@ -132,7 +132,7 @@ mpu_entry_alloc
 |              |                           |
 |              | - KM4_S: 0 ~ 3            |
 |              |                           |
-|              | - Fail: \-1               |
+|              | - Fail: -1                |
 +--------------+---------------------------+
 
 Usage
@@ -159,29 +159,29 @@ Cache
 ----------
 Functional Description
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The Cache of |CHIP_NAME| supports Enable/Disable, Flush and Clean operation, as Table 2\-1 lists.
+The Cache of |CHIP_NAME| supports Enable/Disable, Flush and Clean operation, as Table 2-1 lists.
 
-Table \- Enable/Disable, Flush and Clean operation supported by Cache
+Table - Enable/Disable, Flush and Clean operation supported by Cache
 
-+--------------------+---------------------------------------------------------------------------------+----------+----------+
-| Operation          | Description                                                                     | I\-Cache | D\-Cache |
-+====================+=================================================================================+==========+==========+
-| Enable/Disable     | Enable or Disable Cache function                                                | √        | √        |
-+--------------------+---------------------------------------------------------------------------------+----------+----------+
-| Flush (Invalidate) | - Flush Cache                                                                   | √        | √        |
-|                    |                                                                                 |          |          |
-|                    | - D\-Cache can be flushed by address                                            |          |          |
-|                    |                                                                                 |          |          |
-|                    | - Can be used after DMA Rx, and CPU reads DMA data from DMA buffer for D\-Cache |          |          |
-+--------------------+---------------------------------------------------------------------------------+----------+----------+
-| Clean              | - Clean D\-Cache                                                                | x        | √        |
-|                    |                                                                                 |          |          |
-|                    | - D\-Cache will be write back to memory                                         |          |          |
-|                    |                                                                                 |          |          |
-|                    | - D\-Cache can be cleaned by address                                            |          |          |
-|                    |                                                                                 |          |          |
-|                    | - Can be used before DMA Tx, after CPU writes data to DMA buffer for D\-Cache   |          |          |
-+--------------------+---------------------------------------------------------------------------------+----------+----------+
++--------------------+--------------------------------------------------------------------------------+---------+---------+
+| Operation          | Description                                                                    | I-Cache | D-Cache |
++====================+================================================================================+=========+=========+
+| Enable/Disable     | Enable or Disable Cache function                                               | √       | √       |
++--------------------+--------------------------------------------------------------------------------+---------+---------+
+| Flush (Invalidate) | - Flush Cache                                                                  | √       | √       |
+|                    |                                                                                |         |         |
+|                    | - D-Cache can be flushed by address                                            |         |         |
+|                    |                                                                                |         |         |
+|                    | - Can be used after DMA Rx, and CPU reads DMA data from DMA buffer for D-Cache |         |         |
++--------------------+--------------------------------------------------------------------------------+---------+---------+
+| Clean              | - Clean D-Cache                                                                | x       | √       |
+|                    |                                                                                |         |         |
+|                    | - D-Cache will be write back to memory                                         |         |         |
+|                    |                                                                                |         |         |
+|                    | - D-Cache can be cleaned by address                                            |         |         |
+|                    |                                                                                |         |         |
+|                    | - Can be used before DMA Tx, after CPU writes data to DMA buffer for D-Cache   |         |         |
++--------------------+--------------------------------------------------------------------------------+---------+---------+
 
 
 
@@ -197,129 +197,129 @@ Cache APIs
 ~~~~~~~~~~~~~~~~~~~~
 ICache_Enable
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
-+--------------+-----------------+
-| Items        | Description     |
-+==============+=================+
-| Introduction | Enable I\-Cache |
-+--------------+-----------------+
-| Parameters   | None            |
-+--------------+-----------------+
-| Return       | None            |
-+--------------+-----------------+
++--------------+----------------+
+| Items        | Description    |
++==============+================+
+| Introduction | Enable I-Cache |
++--------------+----------------+
+| Parameters   | None           |
++--------------+----------------+
+| Return       | None           |
++--------------+----------------+
 
 ICache_Disable
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-+--------------+------------------+
-| Items        | Description      |
-+==============+==================+
-| Introduction | Disable I\-Cache |
-+--------------+------------------+
-| Parameters   | None             |
-+--------------+------------------+
-| Return       | None             |
-+--------------+------------------+
-
-ICache_Invalidate
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-+--------------+---------------------+
-| Items        | Description         |
-+==============+=====================+
-| Introduction | Invalidate I\-Cache |
-+--------------+---------------------+
-| Parameters   | None                |
-+--------------+---------------------+
-| Return       | None                |
-+--------------+---------------------+
-
-DCache_IsEnabled
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-+--------------+-------------------------------+
-| Items        | Description                   |
-+==============+===============================+
-| Introduction | Check D\-Cache enabled or not |
-+--------------+-------------------------------+
-| Parameters   | None                          |
-+--------------+-------------------------------+
-| Return       | D\-Cache enable status:       |
-|              |                               |
-|              | - 1: Enable                   |
-|              |                               |
-|              | - 0: Disable                  |
-+--------------+-------------------------------+
-
-DCache_Enable
-^^^^^^^^^^^^^^^^^^^^^^^^^^
 +--------------+-----------------+
 | Items        | Description     |
 +==============+=================+
-| Introduction | Enable D\-Cache |
+| Introduction | Disable I-Cache |
 +--------------+-----------------+
 | Parameters   | None            |
 +--------------+-----------------+
 | Return       | None            |
 +--------------+-----------------+
 
+ICache_Invalidate
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++--------------+--------------------+
+| Items        | Description        |
++==============+====================+
+| Introduction | Invalidate I-Cache |
++--------------+--------------------+
+| Parameters   | None               |
++--------------+--------------------+
+| Return       | None               |
++--------------+--------------------+
+
+DCache_IsEnabled
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++--------------+------------------------------+
+| Items        | Description                  |
++==============+==============================+
+| Introduction | Check D-Cache enabled or not |
++--------------+------------------------------+
+| Parameters   | None                         |
++--------------+------------------------------+
+| Return       | D-Cache enable status:       |
+|              |                              |
+|              | - 1: Enable                  |
+|              |                              |
+|              | - 0: Disable                 |
++--------------+------------------------------+
+
+DCache_Enable
+^^^^^^^^^^^^^^^^^^^^^^^^^^
++--------------+----------------+
+| Items        | Description    |
++==============+================+
+| Introduction | Enable D-Cache |
++--------------+----------------+
+| Parameters   | None           |
++--------------+----------------+
+| Return       | None           |
++--------------+----------------+
+
 DCache_Disable
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-+--------------+------------------+
-| Items        | Description      |
-+==============+==================+
-| Introduction | Disable D\-Cache |
-+--------------+------------------+
-| Parameters   | None             |
-+--------------+------------------+
-| Return       | None             |
-+--------------+------------------+
++--------------+-----------------+
+| Items        | Description     |
++==============+=================+
+| Introduction | Disable D-Cache |
++--------------+-----------------+
+| Parameters   | None            |
++--------------+-----------------+
+| Return       | None            |
++--------------+-----------------+
 
 DCache_Invalidate
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-+--------------+---------------------------------------------------------------+
-| Items        | Description                                                   |
-+==============+===============================================================+
-| Introduction | Invalidate D\-Cache by address                                |
-+--------------+---------------------------------------------------------------+
-| Parameters   | - Address: Invalidated address (aligned to 32\-byte boundary) |
-|              |                                                               |
-|              | - Bytes: Size of memory block (in number of bytes)            |
-+--------------+---------------------------------------------------------------+
-| Return       | None                                                          |
-+--------------+---------------------------------------------------------------+
-
-DCache_Clean
-^^^^^^^^^^^^^^^^^^^^^^^^
 +--------------+--------------------------------------------------------------+
 | Items        | Description                                                  |
 +==============+==============================================================+
-| Introduction | Clean D\-Cache by address                                    |
+| Introduction | Invalidate D-Cache by address                                |
 +--------------+--------------------------------------------------------------+
-| Parameters   | - Address: Clean address (aligned to 32\-byte boundary)      |
+| Parameters   | - Address: Invalidated address (aligned to 32-byte boundary) |
 |              |                                                              |
-|              | - Bytes: size of memory block (in number of bytes)           |
-|              |                                                              |
-|              | - Note: Address set 0xFFFFFFFF is used to clean all D\-Cache |
+|              | - Bytes: Size of memory block (in number of bytes)           |
 +--------------+--------------------------------------------------------------+
 | Return       | None                                                         |
 +--------------+--------------------------------------------------------------+
 
+DCache_Clean
+^^^^^^^^^^^^^^^^^^^^^^^^
++--------------+-------------------------------------------------------------+
+| Items        | Description                                                 |
++==============+=============================================================+
+| Introduction | Clean D-Cache by address                                    |
++--------------+-------------------------------------------------------------+
+| Parameters   | - Address: Clean address (aligned to 32-byte boundary)      |
+|              |                                                             |
+|              | - Bytes: size of memory block (in number of bytes)          |
+|              |                                                             |
+|              | - Note: Address set 0xFFFFFFFF is used to clean all D-Cache |
++--------------+-------------------------------------------------------------+
+| Return       | None                                                        |
++--------------+-------------------------------------------------------------+
+
 DCache_CleanInvalidate
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-+--------------+-------------------------------------------------------------------------+
-| Items        | Description                                                             |
-+==============+=========================================================================+
-| Introduction | Clean and invalidate D\-Cache by address                                |
-+--------------+-------------------------------------------------------------------------+
-| Parameters   | - Address: Clean and invalidated address (aligned to 32\-byte boundary) |
-|              |                                                                         |
-|              | - Bytes: size of memory block (in number of bytes)                      |
-|              |                                                                         |
-|              | - Note: Address set 0xFFFFFFFF is used to clean and flush all D\-Cache  |
-+--------------+-------------------------------------------------------------------------+
-| Return       | None                                                                    |
-+--------------+-------------------------------------------------------------------------+
++--------------+------------------------------------------------------------------------+
+| Items        | Description                                                            |
++==============+========================================================================+
+| Introduction | Clean and invalidate D-Cache by address                                |
++--------------+------------------------------------------------------------------------+
+| Parameters   | - Address: Clean and invalidated address (aligned to 32-byte boundary) |
+|              |                                                                        |
+|              | - Bytes: size of memory block (in number of bytes)                     |
+|              |                                                                        |
+|              | - Note: Address set 0xFFFFFFFF is used to clean and flush all D-Cache  |
++--------------+------------------------------------------------------------------------+
+| Return       | None                                                                   |
++--------------+------------------------------------------------------------------------+
 
-How to Define a Non\-cacheable Data Buffer
+How to Define a Non-cacheable Data Buffer
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Add SRAM_NOCACHE_DATA_SECTION before the buffer definition to define a data buffer with non\-cacheable attribute.
+Add SRAM_NOCACHE_DATA_SECTION before the buffer definition to define a data buffer with non-cacheable attribute.
 
 .. code::
 
@@ -368,13 +368,13 @@ DMA Rx Flow:
     这是CA32特有的。
     
     .. note::
-       If the Rx buffer is in a dirty state in the cache, executing DCache_Invalidate on Cortex\-A32 will perform both a clean and invalidate operation. The clean operation may lead to unexpected write behavior to memory.
+       If the Rx buffer is in a dirty state in the cache, executing DCache_Invalidate on Cortex-A32 will perform both a clean and invalidate operation. The clean operation may lead to unexpected write behavior to memory.
     
 
 
 
 .. note::
-   If the Rx buffer is in a dirty state in the cache, the CPU may write the Rx buffer back to memory from the cache when CPU's D\-Cache becomes full, which could overwrite content that DMA Rx has already written.
+   If the Rx buffer is in a dirty state in the cache, the CPU may write the Rx buffer back to memory from the cache when CPU's D-Cache becomes full, which could overwrite content that DMA Rx has already written.
 
 
 3. DMA Rx Config
@@ -394,7 +394,7 @@ DMA Rx Flow:
     这是CA32特有的。
     
     .. note::
-       For CPUs with automatic data prefetching and monitoring capabilities, such as Cortex\-A32/DSP, e.g., Cortex\-A32 reads the contents of adjacent addresses of the Rx buffer, Cortex\-A32 starts line fills in the background to bring the old values of the Rx buffer back into the cache.
+       For CPUs with automatic data prefetching and monitoring capabilities, such as Cortex-A32/DSP, e.g., Cortex-A32 reads the contents of adjacent addresses of the Rx buffer, Cortex-A32 starts line fills in the background to bring the old values of the Rx buffer back into the cache.
     
 
 
@@ -416,7 +416,7 @@ DMA Rx Flow:
     
     
     .. note::
-       DCache_Clean/DCache_CleanInvalidate operations write entire cache lines to memory. When two CPUs (with different cache line sizes) communicate using a shared memory region, this shared memory must be aligned with the larger of the two cache line sizes. e.g., if the shared memory is only 32 bytes, CPU0 with a 32\-byte cache line will only write 32 bytes each time it cleans, while CPU1 with a 64\-byte cache line will write 64 bytes each time it cleans, potentially overwriting other data of CPU0.
+       DCache_Clean/DCache_CleanInvalidate operations write entire cache lines to memory. When two CPUs (with different cache line sizes) communicate using a shared memory region, this shared memory must be aligned with the larger of the two cache line sizes. e.g., if the shared memory is only 32 bytes, CPU0 with a 32-byte cache line will only write 32 bytes each time it cleans, while CPU1 with a 64-byte cache line will write 64 bytes each time it cleans, potentially overwriting other data of CPU0.
     
 
 

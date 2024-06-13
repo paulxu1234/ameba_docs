@@ -2,9 +2,9 @@
 
 SDK Examples
 ------------------------
-There are two kinds of examples in the SDK of |CHIP_NAME|: application examples and peripheral examples. This chapter illustrates the contents of examples and how to build example source code. The path and description of SDK examples are listed in Table 1\-1.
+There are two kinds of examples in the SDK of |CHIP_NAME|: application examples and peripheral examples. This chapter illustrates the contents of examples and how to build example source code. The path and description of SDK examples are listed in Table 1-1.
 
-Table 1\-1 Examples in SDK
+Table 1-1 Examples in SDK
 
 +---------------------+------------------------------------+-------------------------------+
 | Items               | Path                               | Description                   |
@@ -32,37 +32,37 @@ The application examples normally run on KM4. The entry function of application 
    :align: center
 
 
-Figure 1\-2 Entry function of application example
+Figure 1-2 Entry function of application example
 
 To run application example, you only need to:
 
 1. Check software and hardware settings in README.txt of the example.
 
-2. Add compile options "\ ``EXAMPLE\={example folder``\  \ ``name}``\ " when building the project, and replace \ ``{example``\  \ ``folder``\  \ ``name}``\  with the specific folder name of this example.
+2. Add compile options "\ ``EXAMPLE={example folder``\  \ ``name}``\ " when building the project, and replace \ ``{example``\  \ ``folder``\  \ ``name}``\  with the specific folder name of this example.
 
 
-For example, if you want to build xml example to start an xml example thread, you need to set the macro in SDK according to README.txt in \ ``{SDK}\component\example\xml``\ . Then enter "\ ``make EXAMPLE\=xml``\ " for KM4 on MSYS2 MinGW 64\-bit (Windows) or terminal (Linux).
+For example, if you want to build xml example to start an xml example thread, you need to set the macro in SDK according to README.txt in \ ``{SDK}\component\example\xml``\ . Then enter "\ ``make EXAMPLE=xml``\ " for KM4 on MSYS2 MinGW 64-bit (Windows) or terminal (Linux).
 
 .. image:: ../_static/sdk_example_rst/5609433edd23d6866671138b31d8ba392edfc78f.png
    :width: 894
    :align: center
 
 
-Figure 1\-3 Building XML application example
+Figure 1-3 Building XML application example
 
 Peripheral Example
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The peripheral examples are demos of peripherals. Most examples consist of raw and mbed folders, you can choose raw or mbed demos as you like.
 
-Table 1\-2 Comparison of raw and mbed examples
+Table 1-2 Comparison of raw and mbed examples
 
-+-------+------------------------------------------------------+----------------------------------+
-| Items | Path                                                 | Description                      |
-+=======+======================================================+==================================+
-| mbed  | {SDK}\component\example\peripheral\{peripheral}\mbed | mbed APIs are used.              |
-+-------+------------------------------------------------------+----------------------------------+
-| raw   | {SDK}\component\example\peripheral\{peripheral}\raw  | Low\-level driver APIs are used. |
-+-------+------------------------------------------------------+----------------------------------+
++-------+------------------------------------------------------+---------------------------------+
+| Items | Path                                                 | Description                     |
++=======+======================================================+=================================+
+| mbed  | {SDK}\component\example\peripheral\{peripheral}\mbed | mbed APIs are used.             |
++-------+------------------------------------------------------+---------------------------------+
+| raw   | {SDK}\component\example\peripheral\{peripheral}\raw  | Low-level driver APIs are used. |
++-------+------------------------------------------------------+---------------------------------+
 
 
 Each example folder has main.c and README.txt. There are example descriptions, required components, HW connection and expected behavior in README.txt.
@@ -76,5 +76,5 @@ The peripheral examples normally run on KM4. To run peripheral examples, you onl
 
 3. (Optional) Copy other header files that are depicted in the README.txt to \ ``{SDK}\amebadplus_gcc_project\project_km4\src``\  if needed.
 
-4. Re\-build the project by command "\ ``make``\ ".
+4. Re-build the project by command "\ ``make``\ ".
 
