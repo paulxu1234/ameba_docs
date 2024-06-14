@@ -59,7 +59,7 @@ Usage of VFS
 ~~~~~~~~~~~~~~~~~~~~~~~~
 VFS on Flash
 ^^^^^^^^^^^^^^^^^^^^^^^^
-Adjust the Flash partitions appropriately if the VFS interfaces are set to the Flash, and modify VFS1 in Flash_Layout[] in\ `` {SDK}\ component\soc\amebadplus\usrcfg\ameba_flashcfg.c.``\ 
+Adjust the Flash partitions appropriately if the VFS interfaces are set to the Flash, and modify VFS1 in Flash_Layout[] in\ ``{SDK}\component\soc\amebadplus\usrcfg\ameba_flashcfg.c.``\ 
 
 .. image:: ../_static/file_system_rst/d6a33371781ab678574ad92e18bf314cc56dbf4f.png
    :width: 1545
@@ -172,7 +172,11 @@ Users can rebuild the project by "\ ``make all EXAMPLE=vfs``\ " to test how comm
 
 Key-Value Operation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<<<<<<< HEAD
 Simple KV interfaces are also provided for users. All KV APIs are placed in\ `` {SDK}\component\file_system\kv\kv.c.``\  Users can rebuild the project by "\ ``make all EXAMPLE=kv``\ " to test how KV APIs work. Test logs should be like below:
+=======
+Simple KV interfaces are also provided for users. All KV APIs are placed in\ ``{SDK}\component\file_system\kv\kv.c.``\  Users can rebuild the project by "\ ``make all EXAMPLE=kv``\ " to test how KV APIs work. Test logs should be like below:
+>>>>>>> 0e8663f (update files)
 
 .. code::
 
@@ -245,7 +249,11 @@ LittleFS Bin File Generation
 
 \ ``AUDIO``\  and \ ``KV``\  directories will be LittleFS directory in the Flash.
 
+<<<<<<< HEAD
 2. Use the command \ ``$ ./mklittlefs``\  \ ``-b 4096 -p 256 -c test``\  \ ``image_littlefs.bin``\  in \ ``mklittlefs ``\ tool located at \ ``\tools\littlefs``\  to generate LittleFS bin files.
+=======
+2. Use the command \ ``$./mklittlefs -b 4096 -p 256 -c test image_littlefs.bin``\  in \ ``mklittlefs``\ tool located at \ ``\tools\littlefs``\  to generate LittleFS bin files.
+>>>>>>> 0e8663f (update files)
 
 Where:
 
@@ -283,17 +291,23 @@ FatFS Bin File Generation
 **************************************************
 The steps to generate FatFS bin files are listed below:
 
+<<<<<<< HEAD
 1. Use command \ ``root@ubuntu``\  \ ``#``\  \ ``dd``\  \ ``if=/dev/zero of=test.bin``\  \ ``count=64``\  \ ``bs=1KB``\  to create \ ``test.bin``\  that has 64 blocks and each block is 1KB.
 
 2. Use command \ ``root@ubuntu``\  \ ``#``\  \ ``mkfs.fat``\  \ ``-S 512-F 12``\  \ ``test.bin``\  to build a FAT file system.
+=======
+1. Use command \ ``root@ubuntu # dd if=/dev/zero of=test.bin count=64 bs=1KB``\  to create \ ``test.bin``\  that has 64 blocks and each block is 1KB.
 
-3. Use command \ ``root@ubuntu``\  \ ``#``\  \ ``sudo``\  \ ``mount``\  \ ``test.bin``\  \ ``./fs``\  to mount \ ``test.bin``\  to file folder fs.
+2. Use command \ ``root@ubuntu # mkfs.fat -S 512-F 12 test.bin``\  to build a FAT file system.
+>>>>>>> 0e8663f (update files)
 
-4. Use command \ ``root@ubuntu``\  \ ``#``\  \ ``sudo cp hello.txt ./fs``\  to copy the files that users want to store into \ ``test.bin``\ .
+3. Use command \ ``root@ubuntu # sudo mount test.bin ./fs``\  to mount \ ``test.bin``\  to file folder fs.
+
+4. Use command \ ``root@ubuntu # sudocphello.txt ./fs``\  to copy the files that users want to store into \ ``test.bin``\ .
 
 In this step, \ ``hello.txt``\  is stored in \ ``test.bin``\ .
 
-5. Use command \ ``root@ubuntu``\  \ ``#``\  \ ``sudo umount``\  \ ``./fs``\  to generate the FatFS file after unmounting \ ``test.bin``\ .
+5. Use command \ ``root@ubuntu # sudoumount ./fs``\  to generate the FatFS file after unmounting \ ``test.bin``\ .
 
 
 Users should find other related information from the internet, and copy test.bin into user data area of Flash finally.

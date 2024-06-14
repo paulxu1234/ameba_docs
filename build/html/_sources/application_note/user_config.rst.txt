@@ -43,7 +43,11 @@ Flow
 
 For Now, This step can be skipped because wb955 is only used.
 
+<<<<<<< HEAD
 2. Check the value of Boot_SocClk_Info_Idx and SocClk_Info[] in \ ``{SDK}\component\soc\amebadplus\usrcfg\ameba_``\  \ ``bootcfg.c``\ .
+=======
+2. Check the value of Boot_SocClk_Info_Idx and SocClk_Info[] in \ ``{SDK}\component\soc\amebadplus\usrcfg\ameba_ bootcfg.c``\ .
+>>>>>>> 0e8663f (update files)
 
 .. image:: ../_static/user_config_rst/418472eafdc889c9bfa2a32acb00e811f3748ec1.png
    :width: 1046
@@ -79,7 +83,11 @@ No Limitation by PSRAM Divice , so BootLoader will set the SoC clock defined by 
 
 4. Refer to one of the following methods to change the SoC clock if needed.
 
+<<<<<<< HEAD
    - Modify SocClk_Info[0] in\ `` {SDK}\component\soc\amebadplus\usrcfg\ameba_bootcfg.c``\ , refer to 1.2.2 step (2) for details.
+=======
+   - Modify SocClk_Info[0] in\ ``{SDK}\component\soc\amebadplus\usrcfg\ameba_bootcfg.c``\ , refer to 1.2.2 step (2) for details.
+>>>>>>> 0e8663f (update files)
 
    - Modify Boot_SocClk_Info_Idx to [0, sizeof(SocClk_Info)), and then define your own clock info in SocClk_Info [Boot_SocClk_ Info_Idx].
 

@@ -1,0 +1,6 @@
+.. |CHIP_NAME| replace:: AmebaDPlus
+
+Macro
+======
+xxxxxxxxxxxx
+

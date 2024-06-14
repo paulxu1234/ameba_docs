@@ -144,7 +144,11 @@ return;</p>
 <h2>Usage of VFS<a class="headerlink" href="#usage-of-vfs" title="Link to this heading"></a></h2>
 <section id="vfs-on-flash">
 <h3>VFS on Flash<a class="headerlink" href="#vfs-on-flash" title="Link to this heading"></a></h3>
+<<<<<<< HEAD
 <p>Adjust the Flash partitions appropriately if the VFS interfaces are set to the Flash, and modify VFS1 in Flash_Layout[] in`` {SDK}componentsocamebadplususrcfgameba_flashcfg.c.``</p>
+=======
+<p>Adjust the Flash partitions appropriately if the VFS interfaces are set to the Flash, and modify VFS1 in Flash_Layout[] in<code class="docutils literal notranslate"><span class="pre">{SDK}\component\soc\amebadplus\usrcfg\ameba_flashcfg.c.</span></code></p>
+>>>>>>> 0e8663f (update files)
 <a class="reference internal image-reference" href="../_images/d6a33371781ab678574ad92e18bf314cc56dbf4f.png"><img alt="../_images/d6a33371781ab678574ad92e18bf314cc56dbf4f.png" class="align-center" src="../_images/d6a33371781ab678574ad92e18bf314cc56dbf4f.png" style="width: 1545px;" /></a>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -313,7 +317,11 @@ return;</p>
 </section>
 <section id="key-value-operation">
 <h3>Key-Value Operation<a class="headerlink" href="#key-value-operation" title="Link to this heading"></a></h3>
+<<<<<<< HEAD
 <p>Simple KV interfaces are also provided for users. All KV APIs are placed in`` {SDK}componentfile_systemkvkv.c.`` Users can rebuild the project by “<code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">all</span> <span class="pre">EXAMPLE=kv</span></code>“ to test how KV APIs work. Test logs should be like below:</p>
+=======
+<p>Simple KV interfaces are also provided for users. All KV APIs are placed in<code class="docutils literal notranslate"><span class="pre">{SDK}\component\file_system\kv\kv.c.</span></code> Users can rebuild the project by “<code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">all</span> <span class="pre">EXAMPLE=kv</span></code>“ to test how KV APIs work. Test logs should be like below:</p>
+>>>>>>> 0e8663f (update files)
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rt_kv_set</span> <span class="n">success</span><span class="p">,</span> <span class="n">write</span> <span class="mi">28</span> <span class="n">letters</span><span class="o">.</span>
 <span class="n">rt_kv_get</span> <span class="n">success</span><span class="p">,</span> <span class="n">read</span> <span class="mi">28</span> <span class="n">letters</span><span class="o">.</span>
 <span class="n">rt_kv_delett</span> <span class="n">success</span><span class="o">.</span>
@@ -378,7 +386,11 @@ return;</p>
 <a class="reference internal image-reference" href="../_images/92135436b0fe4840749a09a4fdd302bde789def7.png"><img alt="../_images/92135436b0fe4840749a09a4fdd302bde789def7.png" class="align-center" src="../_images/92135436b0fe4840749a09a4fdd302bde789def7.png" style="width: 172px;" /></a>
 <p><code class="docutils literal notranslate"><span class="pre">AUDIO</span></code> and <code class="docutils literal notranslate"><span class="pre">KV</span></code> directories will be LittleFS directory in the Flash.</p>
 <ol class="arabic simple" start="2">
+<<<<<<< HEAD
 <li><p>Use the command <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">./mklittlefs</span></code> <code class="docutils literal notranslate"><span class="pre">-b</span> <span class="pre">4096</span> <span class="pre">-p</span> <span class="pre">256</span> <span class="pre">-c</span> <span class="pre">test</span></code> <code class="docutils literal notranslate"><span class="pre">image_littlefs.bin</span></code> in <code class="docutils literal notranslate"><span class="pre">mklittlefs</span> <span class="pre">``\</span> <span class="pre">tool</span> <span class="pre">located</span> <span class="pre">at</span> <span class="pre">\</span> <span class="pre">``\tools\littlefs</span></code> to generate LittleFS bin files.</p></li>
+=======
+<li><p>Use the command <code class="docutils literal notranslate"><span class="pre">$./mklittlefs</span> <span class="pre">-b</span> <span class="pre">4096</span> <span class="pre">-p</span> <span class="pre">256</span> <span class="pre">-c</span> <span class="pre">test</span> <span class="pre">image_littlefs.bin</span></code> in <code class="docutils literal notranslate"><span class="pre">mklittlefs</span></code>tool located at <code class="docutils literal notranslate"><span class="pre">\tools\littlefs</span></code> to generate LittleFS bin files.</p></li>
+>>>>>>> 0e8663f (update files)
 </ol>
 <p>Where:</p>
 <blockquote>
@@ -409,14 +421,21 @@ return;</p>
 <h4>FatFS Bin File Generation<a class="headerlink" href="#fatfs-bin-file-generation" title="Link to this heading"></a></h4>
 <p>The steps to generate FatFS bin files are listed below:</p>
 <ol class="arabic simple">
+<<<<<<< HEAD
 <li><p>Use command <code class="docutils literal notranslate"><span class="pre">root&#64;ubuntu</span></code> <code class="docutils literal notranslate"><span class="pre">#</span></code> <code class="docutils literal notranslate"><span class="pre">dd</span></code> <code class="docutils literal notranslate"><span class="pre">if=/dev/zero</span> <span class="pre">of=test.bin</span></code> <code class="docutils literal notranslate"><span class="pre">count=64</span></code> <code class="docutils literal notranslate"><span class="pre">bs=1KB</span></code> to create <code class="docutils literal notranslate"><span class="pre">test.bin</span></code> that has 64 blocks and each block is 1KB.</p></li>
 <li><p>Use command <code class="docutils literal notranslate"><span class="pre">root&#64;ubuntu</span></code> <code class="docutils literal notranslate"><span class="pre">#</span></code> <code class="docutils literal notranslate"><span class="pre">mkfs.fat</span></code> <code class="docutils literal notranslate"><span class="pre">-S</span> <span class="pre">512-F</span> <span class="pre">12</span></code> <code class="docutils literal notranslate"><span class="pre">test.bin</span></code> to build a FAT file system.</p></li>
 <li><p>Use command <code class="docutils literal notranslate"><span class="pre">root&#64;ubuntu</span></code> <code class="docutils literal notranslate"><span class="pre">#</span></code> <code class="docutils literal notranslate"><span class="pre">sudo</span></code> <code class="docutils literal notranslate"><span class="pre">mount</span></code> <code class="docutils literal notranslate"><span class="pre">test.bin</span></code> <code class="docutils literal notranslate"><span class="pre">./fs</span></code> to mount <code class="docutils literal notranslate"><span class="pre">test.bin</span></code> to file folder fs.</p></li>
 <li><p>Use command <code class="docutils literal notranslate"><span class="pre">root&#64;ubuntu</span></code> <code class="docutils literal notranslate"><span class="pre">#</span></code> <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">cp</span> <span class="pre">hello.txt</span> <span class="pre">./fs</span></code> to copy the files that users want to store into <code class="docutils literal notranslate"><span class="pre">test.bin</span></code>.</p></li>
+=======
+<li><p>Use command <code class="docutils literal notranslate"><span class="pre">root&#64;ubuntu</span> <span class="pre">#</span> <span class="pre">dd</span> <span class="pre">if=/dev/zero</span> <span class="pre">of=test.bin</span> <span class="pre">count=64</span> <span class="pre">bs=1KB</span></code> to create <code class="docutils literal notranslate"><span class="pre">test.bin</span></code> that has 64 blocks and each block is 1KB.</p></li>
+<li><p>Use command <code class="docutils literal notranslate"><span class="pre">root&#64;ubuntu</span> <span class="pre">#</span> <span class="pre">mkfs.fat</span> <span class="pre">-S</span> <span class="pre">512-F</span> <span class="pre">12</span> <span class="pre">test.bin</span></code> to build a FAT file system.</p></li>
+<li><p>Use command <code class="docutils literal notranslate"><span class="pre">root&#64;ubuntu</span> <span class="pre">#</span> <span class="pre">sudo</span> <span class="pre">mount</span> <span class="pre">test.bin</span> <span class="pre">./fs</span></code> to mount <code class="docutils literal notranslate"><span class="pre">test.bin</span></code> to file folder fs.</p></li>
+<li><p>Use command <code class="docutils literal notranslate"><span class="pre">root&#64;ubuntu</span> <span class="pre">#</span> <span class="pre">sudocphello.txt</span> <span class="pre">./fs</span></code> to copy the files that users want to store into <code class="docutils literal notranslate"><span class="pre">test.bin</span></code>.</p></li>
+>>>>>>> 0e8663f (update files)
 </ol>
 <p>In this step, <code class="docutils literal notranslate"><span class="pre">hello.txt</span></code> is stored in <code class="docutils literal notranslate"><span class="pre">test.bin</span></code>.</p>
 <ol class="arabic simple" start="5">
-<li><p>Use command <code class="docutils literal notranslate"><span class="pre">root&#64;ubuntu</span></code> <code class="docutils literal notranslate"><span class="pre">#</span></code> <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">umount</span></code> <code class="docutils literal notranslate"><span class="pre">./fs</span></code> to generate the FatFS file after unmounting <code class="docutils literal notranslate"><span class="pre">test.bin</span></code>.</p></li>
+<li><p>Use command <code class="docutils literal notranslate"><span class="pre">root&#64;ubuntu</span> <span class="pre">#</span> <span class="pre">sudoumount</span> <span class="pre">./fs</span></code> to generate the FatFS file after unmounting <code class="docutils literal notranslate"><span class="pre">test.bin</span></code>.</p></li>
 </ol>
 <p>Users should find other related information from the internet, and copy test.bin into user data area of Flash finally.</p>
 </section>

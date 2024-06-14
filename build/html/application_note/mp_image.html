@@ -86,7 +86,11 @@
 <p>The steps of building MP image are depcited below:</p>
 <ol class="arabic simple">
 <li><p>Switch to work directory <code class="docutils literal notranslate"><span class="pre">{SDK}\amebadplus_gcc_project</span></code>.</p></li>
+<<<<<<< HEAD
 <li><p>Use command <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">make</span> <span class="pre">menuconfig</span></code> to modify the configurations.</p>
+=======
+<li><p>Use command <code class="docutils literal notranslate"><span class="pre">$make</span> <span class="pre">menuconfig</span></code> to modify the configurations.</p>
+>>>>>>> 0e8663f (update files)
 <ol class="loweralpha simple">
 <li><p>Enable MP</p></li>
 <li><p>Enable Wi-Fi, and configure KM4 as AP core and KM0 as NP core.</p></li>
@@ -94,7 +98,7 @@
 <li><p>Save and exit the menuconfig.</p></li>
 </ol>
 </li>
-<li><p>Use command <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">make</span> <span class="pre">all</span></code> to rebuild the projects of KM0 and KM4.</p></li>
+<li><p>Use command <code class="docutils literal notranslate"><span class="pre">$make</span> <span class="pre">all</span></code> to rebuild the projects of KM0 and KM4.</p></li>
 </ol>
 <p>The MP image (km0_km4_app_mp.bin) will be generated in <code class="docutils literal notranslate"><span class="pre">{SDK}\amebadplus_gcc_project</span></code> and all the images releated to the MP image can be found in the paths below:</p>
 <ul class="simple">
@@ -110,7 +114,11 @@
 <li><p>Check if both the normal image and MP image are valid.</p></li>
 <li><p>Use the Image Tool to combine all the images, including km4_boot_all.bin, km0_km4_app_mp.bin and km0_km4_app.bin, which are located in <code class="docutils literal notranslate"><span class="pre">{SDK}\amebadplus_gcc_project</span></code>.</p>
 <ol class="loweralpha simple">
+<<<<<<< HEAD
 <li><p>Set the image offsets in Image Tool according to the Flash layout, which can be found in <code class="docutils literal notranslate"><span class="pre">{SDK}\component\soc\</span></code> <code class="docutils literal notranslate"><span class="pre">amebadplus\usrcfg\ameba_flashcfg.c</span></code>.</p>
+=======
+<li><p>Set the image offsets in Image Tool according to the Flash layout, which can be found in <code class="docutils literal notranslate"><span class="pre">{SDK}\component\soc\</span> <span class="pre">amebadplus\usrcfg\ameba_flashcfg.c</span></code>.</p>
+>>>>>>> 0e8663f (update files)
 <ul class="simple">
 <li><p>Set km0_km4_app_mp.bin in <code class="docutils literal notranslate"><span class="pre">IMG_APP_OTA1</span></code> section</p></li>
 <li><p>Set km0_km4_app.bin in <code class="docutils literal notranslate"><span class="pre">IMG_APP_OTA2</span></code> section</p></li>

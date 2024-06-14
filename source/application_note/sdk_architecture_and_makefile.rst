@@ -230,7 +230,7 @@ Figure - KM0 makefile architecture
 
 How to Build Library
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The Makefile in \ ``{SDK}\amebadplus_gcc_project\project_km4\asdk\make\project\library``\  is an example to show how to build user library. As shown below, \ ``lib_user.a ``\ will be generated in \ ``{SDK}\amebadplus_gcc_project\project_km4\asdk\lib\application``\ .
+The Makefile in \ ``{SDK}\amebadplus_gcc_project\project_km4\asdk\make\project\library``\  is an example to show how to build user library. As shown below, \ ``lib_user.a``\ will be generated in \ ``{SDK}\amebadplus_gcc_project\project_km4\asdk\lib\application``\ .
 
 .. image:: ../_static/sdk_architecture_and_makefile_rst/12792eb9e23267bf2eb985860534b232c8da8939.png
    :width: 575

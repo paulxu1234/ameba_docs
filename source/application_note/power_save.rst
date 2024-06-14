@@ -12,7 +12,11 @@ The |CHIP_NAME| has an advanced Power Management Controller (PMC), which can fle
 
 Figure 1-1 FreeRTOS tickless in an idle task
 
+<<<<<<< HEAD
 To simplify the power management for typical scenarios, |CHIP_NAME| supports two low-power modes, which are sleep mode and deep-sleep mode. Tickless is a FreeRTOS low power feature, which just gates the CPU (no clock or power be turned off) when it has nothing to do. Sleep mode flow and deep-sleep mode flow are based on Tickless. \ *Table*\  \ *1-1*\  explains power-saving related terms.
+=======
+To simplify the power management for typical scenarios, |CHIP_NAME| supports two low-power modes, which are sleep mode and deep-sleep mode. Tickless is a FreeRTOS low power feature, which just gates the CPU (no clock or power be turned off) when it has nothing to do. Sleep mode flow and deep-sleep mode flow are based on Tickless. \ *Table 1-1*\  explains power-saving related terms.
+>>>>>>> 0e8663f (update files)
 
 Table 1-1 Power-saving mode
 

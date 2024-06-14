@@ -180,15 +180,15 @@
     
     .. code::
     
-       $ cd {SDK}/amebadplus_gcc_project/project_km4/asdk/gnu_utility/image_tool
-       $ ./elf2bin keypair <auth_alg> <output_filename>
+       $cd {SDK}/amebadplus_gcc_project/project_km4/asdk/gnu_utility/image_tool
+       $./elf2bin keypair <auth_alg> <output_filename>
     The \ ``auth_alg``\  can be ED25519.
     
     For example, you can type the following command to generate ED25519 key-pair file, named \ ``keypair.json``\ :
     
     .. code::
     
-       $ ./elf2bin keypair ed25519 keypair.json
+       $./elf2bin keypair ed25519 keypair.json
     The default key pairs used by default SDK locate in \ ``{SDK}\amebadplus_gcc_project\project_km4\asdk\gnu_utility\image_tool``\ .
     
     2. Copy the generated key pairs into boot, cert or app field in \ ``{SDK}\amebadplus_gcc_project\manifest.json``\ .
@@ -223,13 +223,13 @@
 
     
     
-    By default, both the bootloader and key certificate are signed with RoT key, so the contents of boot and cert\ `` ``\ fields in manifest\ ``.json ``\ are the same. Please generate your own key pairs and overwrite them.
+    By default, both the bootloader and key certificate are signed with RoT key, so the contents of boot and cert\ ````\ fields in manifest\ ``.json``\ are the same. Please generate your own key pairs and overwrite them.
     
     3. Program secure boot related OTP bits after the system boots up.
     
        a. ROTPK hash:
     
-    The hash value is from "public key hash" of boot field in\ `` ``\ manifest\ ``.json``\  file, as follows:
+    The hash value is from "public key hash" of boot field in\ ````\ manifest\ ``.json``\  file, as follows:
     
     .. image:: ../_static/secure_boot_rst/45a9595e0ef78386e6e7c34f560cc28437463cb4.png
        :width: 659
@@ -241,7 +241,7 @@
     .. code::
     
        efuse wraw 0x320 20 72B2E1CB0E8F715262AF38DFA0E522C95660D0EBFD920F4B1A229845E599C697
-    If the key pair of signing Key Certificate is different from that of signing bootloader, you should also program the hash value of cert field in manifest\ ``.json ``\ into OTP PK2.
+    If the key pair of signing Key Certificate is different from that of signing bootloader, you should also program the hash value of cert field in manifest\ ``.json``\ into OTP PK2.
     
     .. code::
     
@@ -250,7 +250,7 @@
     
     If using HMAC algorithm instead of SHA to generate the digest of image data, you should program the HMAC key into OTP.
     
-    The HMAC key is from \ ``manifest.json ``\ file, as follows:
+    The HMAC key is from \ ``manifest.json``\ file, as follows:
     
     .. image:: ../_static/secure_boot_rst/03721978a8cb98a901b79a84e22dbe5cdab3ead5.png
        :width: 599
@@ -345,7 +345,11 @@
        :align: center
     
     
+<<<<<<< HEAD
     5. Generate signed image-tool flashloader binary by using "\ ``make gen_imgtool_floader RTLNAME=xxx``\ " command under \ ``{SDK}\amebadplus_gcc_project ``\ folder if you are going to download images with ImageTool. Then copy the following binary to the ImageTool folder to overwrite the original one: \ ``{SDK}\amebadplus_gcc_project\floader_amebadplus.bin``\ .
+=======
+    5. Generate signed image-tool flashloader binary by using "\ ``make gen_imgtool_floader RTLNAME=xxx``\ " command under \ ``{SDK}\amebadplus_gcc_project``\ folder if you are going to download images with ImageTool. Then copy the following binary to the ImageTool folder to overwrite the original one: \ ``{SDK}\amebadplus_gcc_project\floader_amebadplus.bin``\ .
+>>>>>>> 0e8663f (update files)
     
     
     
@@ -388,7 +392,7 @@
         
         .. code::
         
-           $ ./elf2bin manifest <manifest.json> < manifest.json> <img_file> <manifest.bin> [app|boot]
+           $./elf2bin manifest <manifest.json> < manifest.json> <img_file> <manifest.bin> [app|boot]
         其中：
         
         - manifest.json提供version/imgid等讯息，如果enable secure boot，则会使用manifest.json中的key info (algorithm, private key, public key, public key hash)
@@ -406,12 +410,12 @@
         
         .. code::
         
-           $ ./elf2bin.exe manifest $MANIFEST_JSON $MANIFEST_JSON $KM4_IMG_DIR/km0_km4_app.bin $KM4_IMG_DIR/manifest.bin app
+           $./elf2bin.exe manifest $MANIFEST_JSON $MANIFEST_JSON $KM4_IMG_DIR/km0_km4_app.bin $KM4_IMG_DIR/manifest.bin app
         2. RSIP加密
         
         .. code::
         
-           $ ./elf2bin rsip <src.bin> <dst.bin> <virtual_addr> <manifest.json> [app|boot]
+           $./elf2bin rsip <src.bin> <dst.bin> <virtual_addr> <manifest.json> [app|boot]
         其中：
         
         - <src.bin>是需要加密的原始bin文件
@@ -428,12 +432,12 @@
         .. code::
 
         
-           $ ./elf2bin.exe rsip $KM4_IMG_DIR/km0_image2_all.bin $KM4_IMG_DIR/km0_image2_all_en.bin 0x0c000000 $MANIFEST_JSON app
+           $./elf2bin.exe rsip $KM4_IMG_DIR/km0_image2_all.bin $KM4_IMG_DIR/km0_image2_all_en.bin 0x0c000000 $MANIFEST_JSON app
         3. RDP加密
         
         .. code::
         
-           $ ./elf2bin rdp enc <src.bin> <dst.bin> <manifest.json>
+           $./elf2bin rdp enc <src.bin> <dst.bin> <manifest.json>
         其中：
         
         - <src.bin>是需要加密的原始bin文件
@@ -451,7 +455,7 @@
 
         .. code::
         
-           $ ./elf2bin.exe cert <manifest.json> < manifest.json> <out_file> <key_id1> <key1_name> <key_id2> <key2_name>...
+           $./elf2bin.exe cert <manifest.json> < manifest.json> <out_file> <key_id1> <key1_name> <key_id2> <key2_name>...
         其中
         
         - manifest.json提供version/imgid等讯息，如果enable secure boot，则会使用manifest.json中的key info(algorithm, private key, public key, public key hash)，cert的信息app保持一致
@@ -465,7 +469,7 @@
         
         .. code::
     
-       $ ./elf2bin.exe cert $MANIFEST_JSON $MANIFEST_JSON $KM4_IMG_DIR/cert.bin 0 app
+       $./elf2bin.exe cert $MANIFEST_JSON $MANIFEST_JSON $KM4_IMG_DIR/cert.bin 0 app
     About RMA
     ~~~~~~~~~~~~~~~~~~
     During the RMA process, Realtek needs to run its own test code to locate the problem.

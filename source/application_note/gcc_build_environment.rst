@@ -1,3 +1,5 @@
+.. |CHIP_NAME| replace:: AmebaDPlus
+
 .. _build_environment:
 
 Build Environment
@@ -27,7 +29,7 @@ The steps to prepare GCC environment are as follows:
 
 2. Run the installer. MSYS2 requires 64-bit Windows 7 or newer.
 
-3. Enter your desired \ ``Installation Folder ``\ (ASCII, no accents, spaces nor symlinks, short path)
+3. Enter your desired \ ``Installation Folder``\ (ASCII, no accents, spaces nor symlinks, short path)
 
 4. When done, tick \ ``Run MSYS2 now``\ .
 
@@ -58,10 +60,17 @@ When "Proceed with installation? [Y/n]" is displayed, type "Y" and continue unti
 
       - MSYS2 MSYS
 
+<<<<<<< HEAD
    Because the toolchain release will base on 64-bit MinGW, choose \ ``MSYS2``\  \ ``MinGW``\  \ ``64-bit``\  when starting the MinGW terminal.
 
 
 6. Run \ ``MSYS2``\  \ ``MinGW``\  \ ``64-bit``\  from \ ``Start``\  menu. Update the rest of the base packages with:
+=======
+   Because the toolchain release will base on 64-bit MinGW, choose \ ``MSYS2 MinGW 64-bit``\  when starting the MinGW terminal.
+
+
+6. Run \ ``MSYS2 MinGW 64-bit``\  from \ ``Start``\  menu. Update the rest of the base packages with:
+>>>>>>> 0e8663f (update files)
 
 .. code::
 
@@ -131,11 +140,19 @@ The packages listed below should be installed for the GCC environment:
 
 Some of the packages above may have been pre-installed in your operating system. You can either use package manager or type the corresponding version command on terminal to check whether these packages have already existed. If not, make them installed.
 
+<<<<<<< HEAD
 - \ ``$``\  \ ``ls -l /bin/sh``\ 
 
 Starting from Ubuntu 6.10, dash is used by default instead of bash. You can use \ ``$``\  \ ``ls -l /bin/sh``\  command to check whether the system shell is bash or dash.
 
    - (Optional) If the system shell is dash, use \ ``$``\  \ ``sudo``\  \ ``dpkg-reconfigure``\  \ ``dash``\  command to switch from dash to bash.
+=======
+- \ ``$ls -l /bin/sh``\ 
+
+Starting from Ubuntu 6.10, dash is used by default instead of bash. You can use \ ``$ls -l /bin/sh``\  command to check whether the system shell is bash or dash.
+
+   - (Optional) If the system shell is dash, use \ ``$sudo dpkg-reconfigure dash``\  command to switch from dash to bash.
+>>>>>>> 0e8663f (update files)
 
    - If the system shell is bash, continue to do the subsequent operations.
 
@@ -144,14 +161,22 @@ Starting from Ubuntu 6.10, dash is used by default instead of bash. You can use 
    :align: center
 
 
+<<<<<<< HEAD
 - \ ``$``\  \ ``make -v``\ 
+=======
+- \ ``$make -v``\ 
+>>>>>>> 0e8663f (update files)
 
 .. image:: ../_static/gcc_build_environment_rst/e71390dc1eb5172b2df7fa87c842a7bc8fea4e39.png
    :width: 705
    :align: center
 
 
+<<<<<<< HEAD
 - \ ``$``\  \ ``sudo``\  \ ``apt-get install``\  \ ``libssl-dev``\ 
+=======
+- \ ``$sudo apt-get install libssl-dev``\ 
+>>>>>>> 0e8663f (update files)
 
 .. image:: ../_static/gcc_build_environment_rst/46814da9a2a450dc380db80bdcd1ebca2020d1df.png
    :width: 1039
@@ -160,7 +185,11 @@ Starting from Ubuntu 6.10, dash is used by default instead of bash. You can use 
 
 - \ ``binutils``\ 
 
+<<<<<<< HEAD
 Use \ ``ld``\  \ ``-v``\  command to check if binutils has been installed. If not, the following error may occur.
+=======
+Use \ ``ld -v``\  command to check if binutils has been installed. If not, the following error may occur.
+>>>>>>> 0e8663f (update files)
 
 .. image:: ../_static/gcc_build_environment_rst/6d675afc5542fb6e3bd158a5bd557c0972e4d854.png
    :width: 1155
@@ -175,9 +204,15 @@ Troubleshooting
 
 - If system head files are not found when building tool, "No such file or directory" error will show up. You can try "pacman -Fy <FILE_NAME>" to check which package is lost, and install the lost package. If too many packages are lost, look for detailed information about the packages to decide which to install.
 
+<<<<<<< HEAD
 - For multi-version python host, command "\ ``update-alternatives --install /usr/bin/python python /usr/bin/python3.x``\  \ ``1``\ " can be used to select python of specific version 3.x, where x represents a desired version number.
 
 - If the error "\ ``command 'python' not found``\ " appears during compilation, type command "\ ``ln -s /usr/bin/python3 /usr/bin/python``\ " first to make sure that python3 is used when running python.
+=======
+- For multi-version python host, command "\ ``update-alternatives --install /usr/bin/python python /usr/bin/python3.x 1``\ " can be used to select python of specific version 3.x, where x represents a desired version number.
+
+- If the error "\ ``command'python' not found``\ " appears during compilation, type command "\ ``ln -s /usr/bin/python3 /usr/bin/python``\ " first to make sure that python3 is used when running python.
+>>>>>>> 0e8663f (update files)
 
 Installing Toolchain
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -242,16 +277,20 @@ Configuring SDK
 This section illustrates how to change SDK configurations.
 
 
-User can configure SDK options for KM0 and KM4 at the same time through \ ``$ make``\  \ ``menuconfig``\  command.
+User can configure SDK options for KM0 and KM4 at the same time through \ ``$make menuconfig``\  command.
 
 1. Switch to the directory \ ``{SDK}\amebadplus_gcc_project``\ 
 
+<<<<<<< HEAD
 2. Run \ ``$ make``\  \ ``menuconfig``\  command on MSYS2 MinGW 64-bit (Windows) or terminal (Linux)
+=======
+2. Run \ ``$make menuconfig``\  command on MSYS2 MinGW 64-bit (Windows) or terminal (Linux)
+>>>>>>> 0e8663f (update files)
 
 
 
 .. note::
-   \ ``$``\  \ ``make``\  \ ``menuconfig``\  command is only supported under \ ``{SDK}\amebadplus_gcc_project``\ , but not supported under other paths.
+   \ ``$make menuconfig``\  command is only supported under \ ``{SDK}\amebadplus_gcc_project``\ , but not supported under other paths.
 
 
 
@@ -299,17 +338,17 @@ Build One by One
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Follow these steps to build the SDK of KM4 and KM0 project one by one:
 
-1. Use \ ``$ cd``\  command to switch to the project directories of SDK on Windows or Linux.
+1. Use \ ``$cd``\  command to switch to the project directories of SDK on Windows or Linux.
 
-For example, you can type \ ``$ cd``\  \ ``{SDK}\amebadplus_gcc_project\project_km4``\  to switch to the KM4 project, the same operation for the KM0 project.
+For example, you can type \ ``$cd {SDK}\amebadplus_gcc_project\project_km4``\  to switch to the KM4 project, the same operation for the KM0 project.
 
 2. Build SDK under the KM0 or KM4 project directory on Windows or Linux.
 
-   - For normal image, simply use \ ``$ make all``\  command to build SDK.
+   - For normal image, simply use \ ``$make all``\  command to build SDK.
 
    - For MP image, refer to Section \ ``错误!未找到引用源。``\  to build SDK.
 
-3. Check the command execution results. If somehow failed, type \ ``$ make clean``\  to clean and then redo the make procedure.
+3. Check the command execution results. If somehow failed, type \ ``$make clean``\  to clean and then redo the make procedure.
 
    - For KM4 project, if the terminal contains “target_img2.axf” and “Image manipulating end” message (see Figure 1-2), it means that KM4 images have been built successfully. You can find them under \ ``\amebadplus_gcc_project\project_km4\asdk\image``\ , as shown in Figure 1-3.
 
@@ -345,11 +384,11 @@ Figure 1-5 KM0 image generation
 
 Build Together
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-In order to improve the efficiency of building SDK, you can also execute \ ``$ make all``\  command once under \ ``\amebadplus_gcc_project``\ , instead of executing \ ``$ make all``\  command separately under the KM0 project and KM4 project.
+In order to improve the efficiency of building SDK, you can also execute \ ``$make all``\  command once under \ ``\amebadplus_gcc_project``\ , instead of executing \ ``$make all``\  command separately under the KM0 project and KM4 project.
 
 - If the terminal contains “target_img2.axf” and “Image manipulating end” message (see Figure 1-6), it means that all the images have been built successfully. The image files are generated under \ ``\amebadplus_gcc_project``\ , as shown in Figure 1-7. You can also find them under \ ``\amebadplus_gcc_project\project_km0\asdk\image``\  and \ ``\amebadplus_gcc_project\project_km4\asdk\image``\ .
 
-- If somehow failed, type \ ``$ make clean``\  to clean and then redo the make procedure.
+- If somehow failed, type \ ``$make clean``\  to clean and then redo the make procedure.
 
 .. image:: ../_static/gcc_build_environment_rst/2b6c497fafe1f17ab59dd26e23d468a9255e0fe3.png
    :width: 1369
@@ -368,7 +407,7 @@ Figure 1-7 KM4 & KM0 image generation
 
 
 .. note::
-   If you want to search some .map files for debugging, get them under the directory \ ``{SDK}\amebadplus_gcc_project\project_km0\``\  \ ``asdk\image``\  or \ ``{SDK}\amebadplus_gcc_project\project_km4\asdk\image``\ , but not \ ``{SDK}\amebadplus_gcc_project``\ .
+   If you want to search some .map files for debugging, get them under the directory \ ``{SDK}\amebadplus_gcc_project\project_km0\ asdk\image``\  or \ ``{SDK}\amebadplus_gcc_project\project_km4\asdk\image``\ , but not \ ``{SDK}\amebadplus_gcc_project``\ .
 
 
 Setting Debugger
@@ -398,7 +437,11 @@ Setting Debugger
     ******************
     1. Execute the \ ``cm4_RTL``\ _\ ``Probe.bat``\ 
     
+<<<<<<< HEAD
     Execute the \ ``cm4``\ _\ ``RTL_Probe.bat ``\ under \ ``\amebadplus_gcc_project\utils\jlink_script``\ . The started Probe server looks like Figure 1-9. This window should NOT be closed if you want to enter debug mode.
+=======
+    Execute the \ ``cm4``\ _\ ``RTL_Probe.bat``\ under \ ``\amebadplus_gcc_project\utils\jlink_script``\ . The started Probe server looks like Figure 1-9. This window should NOT be closed if you want to enter debug mode.
+>>>>>>> 0e8663f (update files)
     
     
     
@@ -417,7 +460,11 @@ Setting Debugger
     
        a. Change directory to project_hp.
     
+<<<<<<< HEAD
        b. On the MSYS2 terminal, type $ \ ``make setup GDB_SERVER=probe ``\ command to select Probe debugger, as Figure 1-10 shows.
+=======
+       b. On the MSYS2 terminal, type $\ ``make setup GDB_SERVER=probe``\ command to select Probe debugger, as Figure 1-10 shows.
+>>>>>>> 0e8663f (update files)
     
     .. image:: ../_static/gcc_build_environment_rst/f70edcf4a31f1be6787196496d025d68f4bc84a0.png
        :width: 1247
@@ -450,7 +497,11 @@ Setting Debugger
     
     2. Setup Probe for KM0
     
+<<<<<<< HEAD
     On the MSYS2 terminal, type \ ``$ make setup GDB_SERVER=probe ``\ command to select Probe debugger, as Figure 1-12 shows.
+=======
+    On the MSYS2 terminal, type \ ``$make setup GDB_SERVER=probe``\ command to select Probe debugger, as Figure 1-12 shows.
+>>>>>>> 0e8663f (update files)
     
     .. image:: ../_static/gcc_build_environment_rst/d5fe2324d384d2773cb3c71fa1a8bc61dd1e12f7.png
        :width: 1347
@@ -500,7 +551,11 @@ KM4 Setup
 ++++++++++++++++++
 1. Execute the \ ``cm4_jlink.bat``\ 
 
+<<<<<<< HEAD
 Double-click the\ `` cm4_jlink.bat ``\ under\ `` {SDK}\amebadplus_gcc_project\utils\jlink_script``\ . You may have to change the path of JLinkGDBServer.exe and JLink.exe in the \ ``cm4_jlink.bat``\  script according to your own settings.
+=======
+Double-click the\ ``cm4_jlink.bat``\ under\ ``{SDK}\amebadplus_gcc_project\utils\jlink_script``\ . You may have to change the path of JLinkGDBServer.exe and JLink.exe in the \ ``cm4_jlink.bat``\  script according to your own settings.
+>>>>>>> 0e8663f (update files)
 
 
 The started J-Link GDB server looks like Figure 1-14. This window should NOT be closed if you want to download the image or enter debug mode.
@@ -525,7 +580,11 @@ Figure 1-14 KM4 J-Link GDB server connection under Windows
 
    a. Change the working directory to project_km4.
 
+<<<<<<< HEAD
    b. On the MSYS2 terminal, type \ ``$ make setup GDB_SERVER=jlink ``\ command before selecting J-Link debugger, as Figure 1-15 shows.
+=======
+   b. On the MSYS2 terminal, type \ ``$make setup GDB_SERVER=jlink``\ command before selecting J-Link debugger, as Figure 1-15 shows.
+>>>>>>> 0e8663f (update files)
 
 .. image:: ../_static/gcc_build_environment_rst/86ff2a499d3ae5112c163cbfa88952b3254ce533.png
    :width: 716
@@ -554,7 +613,11 @@ Figure 1-16 KM0 J-Link GDB server connection under Windows
 
    a. Change working directory to project_km0.
 
+<<<<<<< HEAD
    b. On the Cygwin terminal, type \ ``$ make setup GDB_SERVER=jlink ``\ command to select J-Link debugger.
+=======
+   b. On the Cygwin terminal, type \ ``$make setup GDB_SERVER=jlink``\ command to select J-Link debugger.
+>>>>>>> 0e8663f (update files)
 
 .. image:: ../_static/gcc_build_environment_rst/ca5ea7b14e7f9a050d5ebd859311fbd870d95679.png
    :width: 717
@@ -572,7 +635,7 @@ Open a new terminal and type the following command to install GDB server. After 
 
 .. code::
 
-   $ dpkg –i jlink_6.0.7_x86_64.deb
+   $dpkg –i jlink_6.0.7_x86_64.deb
 
 
 .. note::
@@ -583,9 +646,13 @@ KM4 Setup
 ++++++++++++++++++
 1. Connect to KM4
 
-   a. Open a new terminal under directory\ `` /amebadplus_gcc_project/utils/jlink_script``\ .
+   a. Open a new terminal under directory\ ``/amebadplus_gcc_project/utils/jlink_script``\ .
 
+<<<<<<< HEAD
    b. Type \ ``$ /opt/SEGGER/JLink/JLinkGDBServer``\  \ ``-select USB -device``\  \ ``Cortex-M33 -if SWD -scriptfile AP2_KM4.JLinkScript``\  \ ``port 2335``\ .
+=======
+   b. Type \ ``$/opt/SEGGER/JLink/JLinkGDBServer -select USB-device Cortex-M33 -if SWD -scriptfileAP2_KM4.JLinkScript port 2335``\ .
+>>>>>>> 0e8663f (update files)
 
 .. image:: ../_static/gcc_build_environment_rst/3a73ffdefc959b62a5ac63904c79428981efe209.png
    :width: 716
@@ -607,7 +674,11 @@ Figure 1-19 KM4 J-Link GDB server connection success under Linux
 
    a. Open a new terminal under project_km4 folder.
 
+<<<<<<< HEAD
    b. Type \ ``$ make setup GDB_SERVER=jlink``\  command before using J-Link to download software or enter GDB debugger.
+=======
+   b. Type \ ``$make setup GDB_SERVER=jlink``\  command before using J-Link to download software or enter GDB debugger.
+>>>>>>> 0e8663f (update files)
 
 .. image:: ../_static/gcc_build_environment_rst/58a0327b3fc8cd10f2969037fde9046de033207c.png
    :width: 717
@@ -622,7 +693,11 @@ KM0 Setup
 
    a. Open a new terminal under directory \ ``/amebadplus_gcc_project/utils/jlink_script``\ .
 
+<<<<<<< HEAD
    b. Type \ ``$ /opt/SEGGER/JLink/JLinkGDBServer``\  \ ``-select USB -device Cortex-M23 -if SWD -scriptfile``\  \ ``AP1_KM0.JLinkScript port 2331``\ .
+=======
+   b. Type \ ``$/opt/SEGGER/JLink/JLinkGDBServer -select USB -device Cortex-M23 -if SWD -scriptfile AP1_KM0.JLinkScript port 2331``\ .
+>>>>>>> 0e8663f (update files)
 
 .. image:: ../_static/gcc_build_environment_rst/ee44c486fd43a440e27ec196a1496641edff6846.png
    :width: 716
@@ -644,7 +719,11 @@ Figure 1-22 KM0 J-Link GDB server connection success under Linux
 
    a. Open a new terminal under project_km0.
 
+<<<<<<< HEAD
    b. Type \ ``$ make setup GDB_SERVER=jlink``\  command before using J-Link to download software or enter GDB debugger.
+=======
+   b. Type \ ``$make setup GDB_SERVER=jlink``\  command before using J-Link to download software or enter GDB debugger.
+>>>>>>> 0e8663f (update files)
 
 .. image:: ../_static/gcc_build_environment_rst/c9db42ae3cd7dd4af333959cf05be0aa9243a1b0.png
    :width: 716
@@ -665,7 +744,7 @@ There are two ways to download image to Flash:
 This section illustrates the second method to download images to Flash.
 
 
-To download software into Device Board, make sure the steps mentioned in Section 1.5 are done, and then type \ ``$ make flash``\  command on MSYS2 (Windows) or terminal (Linux).
+To download software into Device Board, make sure the steps mentioned in Section 1.5 are done, and then type \ ``$make flash``\  command on MSYS2 (Windows) or terminal (Linux).
 
 
 Images are downloaded only under KM4 by this command. This command downloads the software into Flash and it will take several seconds to finish, as shown in Figure 1-24.
@@ -720,17 +799,21 @@ To enter GDB debugger mode, follow the steps below:
 
 1. Make sure that the steps mentioned in Sections 1.4 to 1.6 are finished, then reset the device.
 
-2. Change directory to target project which can be project_km4 or project_km0, and type \ ``$ make debug``\  command on MSYS2 (Windows) or terminal (Linux).
+2. Change directory to target project which can be project_km4 or project_km0, and type \ ``$make debug``\  command on MSYS2 (Windows) or terminal (Linux).
 
 J-Link
 ^^^^^^^^^^^^
 Steps
 **********
+<<<<<<< HEAD
 1. Press ⊞\ ``Win+R ``\ on your keyboard. Hold down the Windows key on your keyboard, and press the "R" button. This will open the "Run" tool in a new pop-up window. Alternatively, you can find and click \ ``Run``\  on the Start menu.
+=======
+1. Press ⊞\ ``Win+R``\ on your keyboard. Hold down the Windows key on your keyboard, and press the "R" button. This will open the "Run" tool in a new pop-up window. Alternatively, you can find and click \ ``Run``\  on the Start menu.
+>>>>>>> 0e8663f (update files)
 
 2. Type \ ``cmd``\  in the Run window. This shortcut will open the Command Prompt terminal.
 
-3. Click \ ``OK ``\ in the Run window. This will run your shortcut command, and open the Command Prompt terminal in a new window.
+3. Click \ ``OK``\ in the Run window. This will run your shortcut command, and open the Command Prompt terminal in a new window.
 
 4. Copy the J-Link script command below for specific target:
 
@@ -751,7 +834,7 @@ For KM0:
 
       - \ ``{Jlink_path}``\ : the path your Segger J-Link installed, the default is "C:\Program Files (x86)\SEGGER\JLink".
 
-      - \ ``{script``\  \ ``path}``\ : {SDK}\amebadplus_gcc_project\utils\jlink_script.
+      - \ ``{script path}``\ : {SDK}\amebadplus_gcc_project\utils\jlink_script.
 
 
 Commands
@@ -790,6 +873,7 @@ The commands mentioned above are listed in Table 1-2.
 
 Table 1-2 Command lists
 
+<<<<<<< HEAD
 +-------+--------------------------------+---------------------------------------------+
 | Usage | Command                        | Description                                 |
 +=======+================================+=============================================+
@@ -803,6 +887,21 @@ Table 1-2 Command lists
 +-------+--------------------------------+---------------------------------------------+
 | debug | $ make debug                   | Enter debug mode                            |
 +-------+--------------------------------+---------------------------------------------+
+=======
++-------+-------------------------------+---------------------------------------------+
+| Usage | Command                       | Description                                 |
++=======+===============================+=============================================+
+| all   | $make all                     | Compile the project to generate ram_all.bin |
++-------+-------------------------------+---------------------------------------------+
+| setup | $make setup GDB_SERVER= jlink | Select GDB_SERVER                           |
++-------+-------------------------------+---------------------------------------------+
+| flash | $make flash                   | Download ram_all.bin to Flash               |
++-------+-------------------------------+---------------------------------------------+
+| clean | $make clean                   | Remove compile file (*.bin, *.o, …)         |
++-------+-------------------------------+---------------------------------------------+
+| debug | $make debug                   | Enter debug mode                            |
++-------+-------------------------------+---------------------------------------------+
+>>>>>>> 0e8663f (update files)
 
 GDB Debugger Basic Usage
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -810,6 +909,7 @@ GDB, the GNU project debugger, allows you to examine the program while it execut
 
 Table 1-3 GDB debugger command list
 
+<<<<<<< HEAD
 +---------------------------------+-------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Usage                           | Command     | Description                                                                                                                                                               |
 +=================================+=============+===========================================================================================================================================================================+
@@ -858,6 +958,56 @@ Table 1-3 GDB debugger command list
 |                                 |             |                                                                                                                                                                           |
 |                                 |             | The usage can be found at \ ``Examining Data``\  section.                                                                                                                 |
 +---------------------------------+-------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+=======
++---------------------------------+------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Usage                           | Command    | Description                                                                                                                                                               |
++=================================+============+===========================================================================================================================================================================+
+| Breakpoint                      | $break     | Breakpoints are set with the break command (abbreviated b).                                                                                                               |
+|                                 |            |                                                                                                                                                                           |
+|                                 |            | The usage can be found at \ ``Setting Breakpoints``\  section.                                                                                                            |
++---------------------------------+------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Watchpoint                      | $watch     | You can use a watchpoint to stop execution whenever the value of an expression changes. The related commands include watch, rwatch, and awatch.                           |
+|                                 |            |                                                                                                                                                                           |
+|                                 |            | The usage of these commands can be found at \ ``Setting Watchpoints``\  section.                                                                                          |
+|                                 |            |                                                                                                                                                                           |
+|                                 |            |                                                                                                                                                                           |
+|                                 |            |                                                                                                                                                                           |
+|                                 |            | .. note::                                                                                                                                                                 |
+|                                 |            |    Keep the range of watchpoints less than 20 bytes.                                                                                                                      |
++---------------------------------+------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Print breakpoints & watchpoints | $info      | To print a table of all breakpoints, watchpoints set and not deleted, use the info command. You can simply type info to know its usage.                                   |
++---------------------------------+------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Delete breakpoints              | $delete    | To eliminate the breakpoints, use the delete command (abbreviated d).                                                                                                     |
+|                                 |            |                                                                                                                                                                           |
+|                                 |            | The usage can be found at \ ``Deleting Breakpoints``\  section.                                                                                                           |
++---------------------------------+------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Continue                        | $continue  | To resume program execution, use the continue command (abbreviated c).                                                                                                    |
+|                                 |            |                                                                                                                                                                           |
+|                                 |            | The usage can be found at \ ``Continue and Stepping``\  section.                                                                                                          |
++---------------------------------+------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Step                            | $step      | To step into a function call, use the step command (abbreviated s). It will continue running your program until the control reaches a different source line.              |
+|                                 |            |                                                                                                                                                                           |
+|                                 |            | The usage can be found at \ ``Continue and Stepping``\  section.                                                                                                          |
++---------------------------------+------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Next                            | $next      | To step through the program, use the next command (abbreviated n). The execution will stop when the control reaches a different line of code at the original stack level. |
+|                                 |            |                                                                                                                                                                           |
+|                                 |            | The usage can be found at \ ``Continue and Stepping``\  section.                                                                                                          |
++---------------------------------+------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Quit                            | $quit      | To exit GDB debugger, use the quit command (abbreviated q), or type an end-of-file character (usually Ctrl-d). The usage can be found at \ ``Quitting GDB``\  section.    |
++---------------------------------+------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Backtrace                       | $backtrace | A backtrace is a summary of how your program got where it is. You can use backtrace command (abbreviated bt) to print a backtrace of the entire stack.                    |
+|                                 |            |                                                                                                                                                                           |
+|                                 |            | The usage can be found a \ ``Backtraces``\  section.                                                                                                                      |
++---------------------------------+------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Print source lines              | $list      | To print lines from a source file, use the list command (abbreviated l).                                                                                                  |
+|                                 |            |                                                                                                                                                                           |
+|                                 |            | The usage can be found at \ ``Printing Source Lines``\  section.                                                                                                          |
++---------------------------------+------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Examine data                    | $print     | To examine data in your program, you can use print command (abbreviated p). It evaluates and prints the value of an expression.                                           |
+|                                 |            |                                                                                                                                                                           |
+|                                 |            | The usage can be found at \ ``Examining Data``\  section.                                                                                                                 |
++---------------------------------+------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+>>>>>>> 0e8663f (update files)
 
 .. only:: internal
     

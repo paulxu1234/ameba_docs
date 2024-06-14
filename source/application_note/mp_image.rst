@@ -20,7 +20,11 @@ The steps of building MP image are depcited below:
 
 1. Switch to work directory \ ``{SDK}\amebadplus_gcc_project``\ .
 
+<<<<<<< HEAD
 2. Use command \ ``$ make menuconfig``\  to modify the configurations.
+=======
+2. Use command \ ``$make menuconfig``\  to modify the configurations.
+>>>>>>> 0e8663f (update files)
 
    a. Enable MP
 
@@ -36,7 +40,11 @@ The steps of building MP image are depcited below:
 
    d. Save and exit the menuconfig.
 
+<<<<<<< HEAD
 3. Use command \ ``$ make all``\  to rebuild the projects of KM0 and KM4.
+=======
+3. Use command \ ``$make all``\  to rebuild the projects of KM0 and KM4.
+>>>>>>> 0e8663f (update files)
 
 
 The MP image (km0_km4_app_mp.bin) will be generated in \ ``{SDK}\amebadplus_gcc_project``\  and all the images releated to the MP image can be found in the paths below:
@@ -56,7 +64,11 @@ The steps of combining images are depcited below:
 
 2. Use the Image Tool to combine all the images, including km4_boot_all.bin, km0_km4_app_mp.bin and km0_km4_app.bin, which are located in \ ``{SDK}\amebadplus_gcc_project``\ .
 
+<<<<<<< HEAD
    a. Set the image offsets in Image Tool according to the Flash layout, which can be found in \ ``{SDK}\component\soc\``\  \ ``amebadplus\usrcfg\ameba_flashcfg.c``\ .
+=======
+   a. Set the image offsets in Image Tool according to the Flash layout, which can be found in \ ``{SDK}\component\soc\ amebadplus\usrcfg\ameba_flashcfg.c``\ .
+>>>>>>> 0e8663f (update files)
 
       - Set km0_km4_app_mp.bin in \ ``IMG_APP_OTA1``\  section
 
@@ -179,7 +191,7 @@ When MP is finished, you need to switch the image from MP image to the normal im
     
     1. Modify manifest.json located in \ ``{SDK}\amebadplus_gcc_project.``\ 
     
-       - Set RSIP_EN\ `` ``\ to 1.
+       - Set RSIP_EN\ ````\ to 1.
     
     .. image:: ../_static/mp_image_rst/425140675ffb016f7b60619a37d2a9f731633ce0.png
        :width: 634

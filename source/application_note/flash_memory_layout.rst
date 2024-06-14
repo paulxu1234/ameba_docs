@@ -1,3 +1,5 @@
+.. |CHIP_NAME| replace:: AmebaDPlus
+
 .. _flash_layout:
 
 Flash Layout
@@ -439,7 +441,7 @@ Modifying BD_RAM Size
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Follow the steps to modify the size of KM4 BD RAM:
 
-1. Users can change the KM4 BD RAM size by modifying RAM_KM0_IMG2_SIZE in \ ``{SDK}\amebadplus_gcc_project\amebaDplus_``\  \ ``layout.ld``\  to change the end address of KM4_BD_RAM.
+1. Users can change the KM4 BD RAM size by modifying RAM_KM0_IMG2_SIZE in \ ``{SDK}\amebadplus_gcc_project\amebaDplus_ layout.ld``\  to change the end address of KM4_BD_RAM.
 
 .. image:: ../_static/flash_memory_layout_rst/c014baacb7498076fda32fee1380dce15b8f3d39.png
    :width: 399

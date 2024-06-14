@@ -42,6 +42,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+<<<<<<< HEAD
               <!-- Local TOC -->
               <div class="local-toc"><ul>
 <li><a class="reference internal" href="#">Flash Layout</a><ul>
@@ -70,10 +71,50 @@
 <li><a class="reference internal" href="#modifying-bd-ram-size">Modifying BD_RAM Size</a></li>
 <li><a class="reference internal" href="#modifying-bd-psram-size">Modifying BD_PSRAM Size</a></li>
 <li><a class="reference internal" href="#extending-heap-size">Extending Heap Size</a></li>
+=======
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="gcc_build_environment.html">Build Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sdk_example.html">SDK Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mpu_cache.html">MPU</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mpu_cache.html#cache">Cache</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Flash Layout</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#memory-management-unit-mmu">Memory Management Unit (MMU)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-modify-flash-layout">How to Modify Flash Layout</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#modifying-bootloader-ota2-location">Modifying Bootloader OTA2 Location</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modifying-app-location">Modifying APP Location</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#app-ota1">APP OTA1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#app-ota2">APP OTA2</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#modifying-ftl-vfs-location">Modifying FTL/VFS Location</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#flash-protect-enable">Flash Protect Enable</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#memory-layout">Memory Layout</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#ram-layout">RAM Layout</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sram0-first-40kb-layout">SRAM0 (First 40KB) Layout</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-modify-memory-layout">How to Modify Memory Layout</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#modifying-bootloader-size">Modifying Bootloader Size</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modifying-bd-ram-size">Modifying BD_RAM Size</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modifying-bd-psram-size">Modifying BD_PSRAM Size</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#extending-heap-size">Extending Heap Size</a></li>
+>>>>>>> 0e8663f (update files)
 </ul>
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="file_system.html">Virtual File System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ota.html">OTA Firmware Update</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mp_image.html">MP Image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="boot_process.html">Boot Process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_config.html">User Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="power_save.html">Power Saving</a></li>
+<li class="toctree-l1"><a class="reference internal" href="template_rst_syntax.html">RST语法</a></li>
 </ul>
 </div>
         </div>
@@ -90,6 +131,10 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+<<<<<<< HEAD
+=======
+          <li class="breadcrumb-item"><a href="index.html">&lt;no title&gt;</a></li>
+>>>>>>> 0e8663f (update files)
       <li class="breadcrumb-item active">Flash Layout</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/application_note/flash_memory_layout.rst.txt" rel="nofollow"> View page source</a>
@@ -102,7 +147,7 @@
              
   <section id="flash-layout">
 <span id="id1"></span><h1>Flash Layout<a class="headerlink" href="#flash-layout" title="Link to this heading"></a></h1>
-<p>This chapter introduces the default Flash layout of <a href="#id4"><span class="problematic" id="id5">|CHIP_NAME|</span></a> and how to modify the Flash layout if needed.</p>
+<p>This chapter introduces the default Flash layout of AmebaDPlus and how to modify the Flash layout if needed.</p>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
 <p>The default Flash layout used in SDK is illustrated in Figure 1-1 and Table 1-1. The layout takes the 8MB Flash as an example. The start address of boot manifest is fixed to 0x0800_0000, and other start addresses can be configured by users flexibly.</p>
@@ -200,7 +245,7 @@
 </section>
 <section id="memory-layout">
 <span id="id2"></span><h1>Memory Layout<a class="headerlink" href="#memory-layout" title="Link to this heading"></a></h1>
-<p>This chapter introduces the default memory layout of <a href="#id6"><span class="problematic" id="id7">|CHIP_NAME|</span></a> and how to modify the memory layout if needed.</p>
+<p>This chapter introduces the default memory layout of AmebaDPlus and how to modify the memory layout if needed.</p>
 <section id="ram-layout">
 <h2>RAM Layout<a class="headerlink" href="#ram-layout" title="Link to this heading"></a></h2>
 <p>In total, there are 512KB SRAM on chip, and the size of PSRAM can be 0MB/4MB/8MB/16MB…, which is decided by users. The RAM layout is illustrated in Figure 2-1.</p>
@@ -328,7 +373,7 @@
 <h3>Modifying BD_RAM Size<a class="headerlink" href="#modifying-bd-ram-size" title="Link to this heading"></a></h3>
 <p>Follow the steps to modify the size of KM4 BD RAM:</p>
 <ol class="arabic simple">
-<li><p>Users can change the KM4 BD RAM size by modifying RAM_KM0_IMG2_SIZE in <code class="docutils literal notranslate"><span class="pre">{SDK}\amebadplus_gcc_project\amebaDplus_</span></code> <code class="docutils literal notranslate"><span class="pre">layout.ld</span></code> to change the end address of KM4_BD_RAM.</p></li>
+<li><p>Users can change the KM4 BD RAM size by modifying RAM_KM0_IMG2_SIZE in <code class="docutils literal notranslate"><span class="pre">{SDK}\amebadplus_gcc_project\amebaDplus_</span> <span class="pre">layout.ld</span></code> to change the end address of KM4_BD_RAM.</p></li>
 </ol>
 <a class="reference internal image-reference" href="../_images/c014baacb7498076fda32fee1380dce15b8f3d39.png"><img alt="../_images/c014baacb7498076fda32fee1380dce15b8f3d39.png" class="align-center" src="../_images/c014baacb7498076fda32fee1380dce15b8f3d39.png" style="width: 399px;" /></a>
 <ol class="arabic simple" start="2">

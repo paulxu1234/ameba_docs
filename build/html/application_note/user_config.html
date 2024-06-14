@@ -141,7 +141,11 @@
 </ol>
 <p>For Now, This step can be skipped because wb955 is only used.</p>
 <ol class="arabic simple" start="2">
+<<<<<<< HEAD
 <li><p>Check the value of Boot_SocClk_Info_Idx and SocClk_Info[] in <code class="docutils literal notranslate"><span class="pre">{SDK}\component\soc\amebadplus\usrcfg\ameba_</span></code> <code class="docutils literal notranslate"><span class="pre">bootcfg.c</span></code>.</p></li>
+=======
+<li><p>Check the value of Boot_SocClk_Info_Idx and SocClk_Info[] in <code class="docutils literal notranslate"><span class="pre">{SDK}\component\soc\amebadplus\usrcfg\ameba_</span> <span class="pre">bootcfg.c</span></code>.</p></li>
+>>>>>>> 0e8663f (update files)
 </ol>
 <a class="reference internal image-reference" href="../_images/418472eafdc889c9bfa2a32acb00e811f3748ec1.png"><img alt="../_images/418472eafdc889c9bfa2a32acb00e811f3748ec1.png" class="align-center" src="../_images/418472eafdc889c9bfa2a32acb00e811f3748ec1.png" style="width: 1046px;" /></a>
 <ol class="arabic simple" start="3">
@@ -186,7 +190,7 @@
 <ol class="arabic simple" start="4">
 <li><p>Refer to one of the following methods to change the SoC clock if needed.</p>
 <ul class="simple">
-<li><p>Modify SocClk_Info[0] in`` {SDK}componentsocamebadplususrcfgameba_bootcfg.c``, refer to 1.2.2 step (2) for details.</p></li>
+<li><p>Modify SocClk_Info[0] in<code class="docutils literal notranslate"><span class="pre">{SDK}\component\soc\amebadplus\usrcfg\ameba_bootcfg.c</span></code>, refer to 1.2.2 step (2) for details.</p></li>
 <li><p>Modify Boot_SocClk_Info_Idx to [0, sizeof(SocClk_Info)), and then define your own clock info in SocClk_Info [<a href="#id8"><span class="problematic" id="id9">Boot_SocClk_</span></a> Info_Idx].</p></li>
 </ul>
 </li>
