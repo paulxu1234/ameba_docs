@@ -1,0 +1,1578 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RST语法 &mdash; AmebaDocs  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Power Saving" href="power_save.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            AmebaDocs
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="gcc_build_environment.html">Build Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sdk_example.html">SDK Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mpu_cache.html">MPU</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mpu_cache.html#cache">Cache</a></li>
+<li class="toctree-l1"><a class="reference internal" href="flash_memory_layout.html">Flash Layout</a></li>
+<li class="toctree-l1"><a class="reference internal" href="flash_memory_layout.html#memory-layout">Memory Layout</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file_system.html">Virtual File System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ota.html">OTA Firmware Update</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mp_image.html">MP Image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="boot_process.html">Boot Process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_config.html">User Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="power_save.html">Power Saving</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">RST语法</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">一级标题</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">二级标题</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">三级标题</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">RST架构</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id7">目录</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">目录树</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id9">RST基础</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id10">段落</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">缩进</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#block">块/block</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id12">文字块</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">注释</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id16">行块</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id17">测试块</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id18">分隔线</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id20">行内标记</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id21">符号标记</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#css">CSS标记</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id30">指令标记</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id31">列表</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id32">有序列表</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id33">无序列表</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id38">常见问题</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id42">定义列表</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id43">字段列表</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id44">参数列表</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id45">表格</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id46">网格表格</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#asciitable">AsciiTable工具</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#csv">CSV表格</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#listtable">Listtable表格</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id56">水平列表</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id57">图片</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id60">词汇表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id61">代码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id63">内联标记</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id65">角色</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id67">交叉引用</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id68">文本引用</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id71">行数引用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id72">节点引用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id73">块引用</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id74">内联替换</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id75">文字替换</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id76">图像替换</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id77">指令</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id78">强调</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id79">选项卡</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id80">折叠</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id81">脚注</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id87">参考</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id89">下载</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id90">超链接</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id91">行内超链接</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id92">多处超链接</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id95">序列图</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AmebaDocs</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">&lt;no title&gt;</a></li>
+      <li class="breadcrumb-item active">RST语法</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/application_note/template_rst_syntax.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="rst">
+<h1>RST语法<a class="headerlink" href="#rst" title="Link to this heading"></a></h1>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#id1" id="id96">一级标题</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id2" id="id97">二级标题</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id6" id="id98">RST架构</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id7" id="id99">目录</a></p></li>
+<li><p><a class="reference internal" href="#id8" id="id100">目录树</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id9" id="id101">RST基础</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id10" id="id102">段落</a></p></li>
+<li><p><a class="reference internal" href="#id11" id="id103">缩进</a></p></li>
+<li><p><a class="reference internal" href="#block" id="id104">块/block</a></p></li>
+<li><p><a class="reference internal" href="#id15" id="id105">注释</a></p></li>
+<li><p><a class="reference internal" href="#id18" id="id106">分隔线</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id20" id="id107">行内标记</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id21" id="id108">符号标记</a></p></li>
+<li><p><a class="reference internal" href="#css" id="id109">CSS标记</a></p></li>
+<li><p><a class="reference internal" href="#id30" id="id110">指令标记</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id31" id="id111">列表</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id32" id="id112">有序列表</a></p></li>
+<li><p><a class="reference internal" href="#id33" id="id113">无序列表</a></p></li>
+<li><p><a class="reference internal" href="#id42" id="id114">定义列表</a></p></li>
+<li><p><a class="reference internal" href="#id43" id="id115">字段列表</a></p></li>
+<li><p><a class="reference internal" href="#id44" id="id116">参数列表</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id45" id="id117">表格</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id46" id="id118">网格表格</a></p></li>
+<li><p><a class="reference internal" href="#csv" id="id119">CSV表格</a></p></li>
+<li><p><a class="reference internal" href="#listtable" id="id120">Listtable表格</a></p></li>
+<li><p><a class="reference internal" href="#id56" id="id121">水平列表</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id57" id="id122">图片</a></p></li>
+<li><p><a class="reference internal" href="#id60" id="id123">词汇表</a></p></li>
+<li><p><a class="reference internal" href="#id61" id="id124">代码</a></p></li>
+<li><p><a class="reference internal" href="#id63" id="id125">内联标记</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id65" id="id126">角色</a></p></li>
+<li><p><a class="reference internal" href="#id67" id="id127">交叉引用</a></p></li>
+<li><p><a class="reference internal" href="#id68" id="id128">文本引用</a></p></li>
+<li><p><a class="reference internal" href="#id74" id="id129">内联替换</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id77" id="id130">指令</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id78" id="id131">强调</a></p></li>
+<li><p><a class="reference internal" href="#id79" id="id132">选项卡</a></p></li>
+<li><p><a class="reference internal" href="#id80" id="id133">折叠</a></p></li>
+<li><p><a class="reference internal" href="#id81" id="id134">脚注</a></p></li>
+<li><p><a class="reference internal" href="#id87" id="id135">参考</a></p></li>
+<li><p><a class="reference internal" href="#id89" id="id136">下载</a></p></li>
+<li><p><a class="reference internal" href="#id90" id="id137">超链接</a></p></li>
+<li><p><a class="reference internal" href="#id95" id="id138">序列图</a></p></li>
+</ul>
+</li>
+</ul>
+</nav>
+<section id="id1">
+<h2><a class="toc-backref" href="#id96" role="doc-backlink">一级标题</a><a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<section id="id2">
+<h3><a class="toc-backref" href="#id97" role="doc-backlink">二级标题</a><a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<section id="id3">
+<h4>三级标题<a class="headerlink" href="#id3" title="Link to this heading"></a></h4>
+<section id="id4">
+<h5>四级标题<a class="headerlink" href="#id4" title="Link to this heading"></a></h5>
+<section id="id5">
+<h6>五级标题<a class="headerlink" href="#id5" title="Link to this heading"></a></h6>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>章节头部由标题名称和符号下线组合创建，推荐统一使用上述样式。</p></li>
+<li><p>各级标题的符号线段依次使用 <code class="docutils literal notranslate"><span class="pre">=</span> <span class="pre">-</span> <span class="pre">~</span> <span class="pre">^</span> <span class="pre">*</span></code> 表示，长度应不小于标题长度。</p>
+<ul>
+<li><p>一级标题 <code class="docutils literal notranslate"><span class="pre">========</span></code></p></li>
+<li><p>二级标题 <code class="docutils literal notranslate"><span class="pre">--------</span></code></p></li>
+<li><p>三级标题 <code class="docutils literal notranslate"><span class="pre">~~~~~~~~</span></code></p></li>
+<li><p>四级标题 <code class="docutils literal notranslate"><span class="pre">^^^^^^^^</span></code></p></li>
+<li><p>五级标题 <code class="docutils literal notranslate"><span class="pre">********</span></code></p></li>
+</ul>
+</li>
+<li><p>每份rst文档内部文档名使用上下线组合的标题样式。</p></li>
+<li><p>HTML只支持最多6级标题，一般已足够使用。</p></li>
+<li><p>标题后续可以直接接正文，不用单独空一行。</p></li>
+</ul>
+</div>
+</section>
+</section>
+</section>
+</section>
+</section>
+<section id="id6">
+<h2><a class="toc-backref" href="#id98" role="doc-backlink">RST架构</a><a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<section id="id7">
+<h3><a class="toc-backref" href="#id99" role="doc-backlink">目录</a><a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">contents::</span></code> 指令添加目录。</p>
+<dl class="simple">
+<dt>参数释义</dt><dd><dl class="field-list simple">
+<dt class="field-odd">local<span class="colon">:</span></dt>
+<dd class="field-odd"><p>只显示当前文件而非整个文档的目录。</p>
+</dd>
+<dt class="field-even">depth<span class="colon">:</span></dt>
+<dd class="field-even"><p>指定目录的深度，默认情况下，除文档名外的所有标题级别都被包括在内。</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">contents</span><span class="p">::</span>
+   <span class="p">:</span><span class="n">local</span><span class="p">:</span>
+   <span class="p">:</span><span class="n">depth</span><span class="p">:</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>目录的位置建议放到文档顶部，置于文档名之后，这样可以生成整篇文档的架构。</p></li>
+<li><p>目录样式已设置悬浮在网页右侧侧边栏显示。</p></li>
+</ul>
+</div>
+</section>
+<section id="id8">
+<h3><a class="toc-backref" href="#id100" role="doc-backlink">目录树</a><a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">toctree::</span></code> 指令定义目录树。</p>
+<dl class="simple">
+<dt>参数释义</dt><dd><dl class="field-list simple">
+<dt class="field-odd">maxdepth<span class="colon">:</span></dt>
+<dd class="field-odd"><p>定义目录深度</p>
+</dd>
+<dt class="field-even">hidden<span class="colon">:</span></dt>
+<dd class="field-even"><p>目录仍会存在于Sphinx的文档结构中，但是不会在当前指令位置显示</p>
+</dd>
+<dt class="field-odd">numbered<span class="colon">:</span></dt>
+<dd class="field-odd"><p>在HTML中为章节编号</p>
+</dd>
+<dt class="field-even">titlesonly<span class="colon">:</span></dt>
+<dd class="field-even"><p>目录里仅出现文档的标题，不出现文中其他同等级的标题行</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">toctree</span><span class="p">::</span>
+   <span class="p">:</span><span class="n">maxdepth</span><span class="p">:</span> <span class="mi">1</span>
+   <span class="p">:</span><span class="n">hidden</span><span class="p">:</span>
+
+   <span class="n">template_rst_syntax</span>
+   <span class="n">RST</span> <span class="n">syntax</span> <span class="n">template</span> <span class="o">&lt;</span><span class="n">template_rst_syntax</span><span class="o">&gt;</span>
+   <span class="n">Glossary</span> <span class="o">&lt;../</span><span class="n">glossary</span><span class="o">/</span><span class="n">glossary</span><span class="o">&gt;</span>
+   <span class="n">Platform</span> <span class="o">&lt;../</span><span class="n">platform</span><span class="o">/</span><span class="n">text_cn</span><span class="o">/</span><span class="n">README</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<div class="admonition-toctree admonition">
+<p class="admonition-title">上述示例中toctree添加文件的几种方式说明</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">rst文件名</span></code> 直接引用当前路径下文件，无需添加格式后缀，显示为文件内部文档名，而非文件名。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">自定义标题</span> <span class="pre">&lt;rst文件名&gt;</span></code> 添加自定义显示名称。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">自定义标题</span> <span class="pre">&lt;文件路径&gt;</span></code> 添加绝对或者相对路径，引用不同文件。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">自定义标题</span> <span class="pre">&lt;其他toctree&gt;</span></code> 添加toctree嵌套，同样生效。</p></li>
+<li><p>原则上所有文件都需出现在某个toctree指令里，否则Sphinx会报出警告，因为该文件没有通过标准导航。</p></li>
+</ul>
+</div>
+</section>
+</section>
+<section id="id9">
+<h2><a class="toc-backref" href="#id101" role="doc-backlink">RST基础</a><a class="headerlink" href="#id9" title="Link to this heading"></a></h2>
+<section id="id10">
+<h3><a class="toc-backref" href="#id102" role="doc-backlink">段落</a><a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<p>段落是rst文件的基本模块，正文的段落用空行分隔，一律顶格书写，行首不得有空格。</p>
+<p>如果没有空行。
+下一行的段落将紧跟上文，被视为连续文本。</p>
+</section>
+<section id="id11">
+<h3><a class="toc-backref" href="#id103" role="doc-backlink">缩进</a><a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<dl>
+<dt>缩进的段落</dt><dd><p>被认为是前面文本的引文。</p>
+<p>保持相同的缩进为同一层级。</p>
+</dd>
+</dl>
+<p>缩进取消，这段文字为新的段落。（不用空行也可以被识别为新的段落）</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>在rst中，缩进非常重要，通过对缩进和空行的把控，可以调整文档的布局和格式。</p></li>
+<li><p>rst对具体缩进量的要求比较宽松，只有一个最小缩进要求，为2个空格。</p>
+<ul>
+<li><p>本文中为了与指令字符的对齐，使用了3个空格缩进，每个层级缩进3个空格。</p></li>
+<li><p>每当缩进量改变时，段落内容就进入了新的缩进层级。</p></li>
+<li><p>请保持（相邻的）同级内容使用同样的缩进量。</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="block">
+<h3><a class="toc-backref" href="#id104" role="doc-backlink">块/block</a><a class="headerlink" href="#block" title="Link to this heading"></a></h3>
+<p>以缩进为级别，整个文档可以看作不同级别的缩进结构内容的排列与嵌套，这些不同的结构可以是做一个块（block）。</p>
+<section id="id12">
+<span id="id13"></span><h4>文字块<a class="headerlink" href="#id12" title="Link to this heading"></a></h4>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">::</span></code> 开头，保持同一缩进即可。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">这是一个文字块</span>
+<span class="n">文字块中的内容与实际显示效果一样</span>
+
+<span class="n">保持相同缩进即可</span>
+</pre></div>
+</div>
+<p>这是新的一行（可以有空行，也可以不用空行，因为顶格没有缩进，该段被视为新的段落）。</p>
+<section id="id14">
+<h5>文字块示例<a class="headerlink" href="#id14" title="Link to this heading"></a></h5>
+<p>SDK目录</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>└── SDK                       SDK开发包
+    ├── bin                   应用程序链接的二进制文件
+    ├── bsp                   板级和硬件相关的文件
+    ├── doc                   文档
+    ├── download_images       快速启动的下载images
+    ├── include               提供接口定义的头文件
+    ├── samples               配置好可直接使用的Keil实例工程
+    ├── subsys                上层和硬件无关的软件协议
+    └── tools                 工具集
+</pre></div>
+</div>
+<p>ble_peripheral示例工程</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>└── Project: peripheral
+    └── secure_only_app
+        └── Device                   存放启动代码
+            ├── startup_rtl.c
+            └── system_rtl.c
+        ├── CMSIS                    存放启动代码
+        ├── CMSIS                    存放CMSIS文件
+        ├── contribute               如何参与项目，贡献与投稿的说明
+        ├── CMSE Library             Non-secure callable lib
+        ├── Lib                      应用程序使用的所有二进制文件
+        ├── Peripheral               应用使用的所有外设驱动和模块代码
+        ├── Profile                  应用使用的BLE profiles或者服务
+        └── APP                      ble peripheral应用的实现
+            ├── sncs.c
+            ├── app_task.c
+            ├── main.c
+            └── peripheral_app.c
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">文件路径统一使用以下形式：</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">BEE4-SDK-Vx.x.x\tools\BeeMPTool_vx.x.x.x\BeeMPTool\tools\flashmap.ini</span></code></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>文字块中的中文标点以及如上示例中一些特殊符号，可能在生成在线文档时会出现报错，此时可以用 <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">highlight::</span> <span class="pre">rst</span></code> <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">highlight::</span> <span class="pre">none</span></code> 两条指令将文字块包含，用来设定代码块的默认语法高亮方式为rst，即可消除告警。</p>
+</div>
+</section>
+</section>
+</section>
+<section id="id15">
+<h3><a class="toc-backref" href="#id105" role="doc-backlink">注释</a><a class="headerlink" href="#id15" title="Link to this heading"></a></h3>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">..</span></code> 开头，后续添加注释内容。</p>
+<p>注释文本要求与<a class="reference internal" href="#id12"><span class="std std-ref">文字块</span></a>相同，缩进取消即为新的段落。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>注释文本紧跟符号 <code class="docutils literal notranslate"><span class="pre">..</span></code> ，文字块文本与 <code class="docutils literal notranslate"><span class="pre">::</span></code> 有一个空白行。</p>
+</div>
+<section id="id16">
+<h4>行块<a class="headerlink" href="#id16" title="Link to this heading"></a></h4>
+<div class="line-block">
+<div class="line">行块使用 <code class="docutils literal notranslate"><span class="pre">|</span></code> 开头，后续文本与之保持一个空格。</div>
+<div class="line">这样可以保证输出的正文和原文件的排列一致。</div>
+<div class="line">与正文段落作区分，减少段落之间的空行。</div>
+</div>
+</section>
+<section id="id17">
+<h4>测试块<a class="headerlink" href="#id17" title="Link to this heading"></a></h4>
+<p>测试块是交互式的Python会话，以 <code class="docutils literal notranslate"><span class="pre">&gt;&gt;&gt;</span></code> 开始，一个空行结束。</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="s2">&quot;This is a doctest block.&quot;</span>
+<span class="go">This is a doctest block.</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id18">
+<span id="id19"></span><h3><a class="toc-backref" href="#id106" role="doc-backlink">分隔线</a><a class="headerlink" href="#id18" title="Link to this heading"></a></h3>
+<p>分隔线使用四个 <code class="docutils literal notranslate"><span class="pre">----</span></code>，效果如下。</p>
+<hr class="docutils" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>分隔线与上下内容之间需要有空行区分。</p></li>
+<li><p>分隔线不能紧贴在大纲标题之前或之后，也不能放在文档最开头。</p></li>
+<li><p>两个分隔线不能紧贴，必须有除了空行之外的内容。</p></li>
+</ul>
+</div>
+</section>
+</section>
+<section id="id20">
+<h2><a class="toc-backref" href="#id107" role="doc-backlink">行内标记</a><a class="headerlink" href="#id20" title="Link to this heading"></a></h2>
+<p>rst通过行内标记对文本定义不同的效果，以下具体说明。</p>
+<section id="id21">
+<h3><a class="toc-backref" href="#id108" role="doc-backlink">符号标记</a><a class="headerlink" href="#id21" title="Link to this heading"></a></h3>
+<p>最基础的符号标记有斜体、加粗、code这三种。</p>
+<div class="line-block">
+<div class="line"><em>斜体</em>   <code class="docutils literal notranslate"><span class="pre">*text*</span></code></div>
+<div class="line"><strong>加粗</strong>   <code class="docutils literal notranslate"><span class="pre">**text**</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">code</span></code>   <code class="docutils literal notranslate"><span class="pre">``text``</span></code></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>行内标记的 <a href="#id22"><span class="problematic" id="id23">:red-text:`文本`</span></a> 不可以用空格开始或结尾，如 <code class="docutils literal notranslate"><span class="pre">*text</span> <span class="pre">*</span></code> <code class="docutils literal notranslate"><span class="pre">*</span> <span class="pre">text*</span></code> 都无法实现效果。</p></li>
+<li><p>行内标记的 <a href="#id24"><span class="problematic" id="id25">:red-text:`符号`</span></a> 前后都必须有空格，有以下两个方式实现：</p>
+<ul>
+<li><p>方式一：直接在符号指令前后文本添加一个空格，此方式较简单，但是在文本中空格会显示出来，特别是中文文档的显示上比较明显。</p></li>
+<li><p>方式二：使用转义字符反斜杠<code class="docutils literal notranslate"><span class="pre">\</span></code>，它可以用于取消一些特殊字符的特殊含义，使其按照普通字符处理。如果需要在连续文本中使用指令，可以用<code class="docutils literal notranslate"><span class="pre">反斜杠+空格</span></code>的方式实现转义，如此处说明文本不显示空格。</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="css">
+<h3><a class="toc-backref" href="#id109" role="doc-backlink">CSS标记</a><a class="headerlink" href="#css" title="Link to this heading"></a></h3>
+<p>基础的行内标记不能嵌套，无法简单地实现“倾斜且加粗”的功能，具体可以借助HTML/CSS功能，当前在线文档已设置了如下两个简单的自定义标记。</p>
+<div class="line-block">
+<div class="line"><a href="#id26"><span class="problematic" id="id27">:red-text:`红色`</span></a>    <code class="docutils literal notranslate"><span class="pre">:red-text:</span></code></div>
+<div class="line"><a href="#id28"><span class="problematic" id="id29">:bolditalic:`粗斜体`</span></a>    <code class="docutils literal notranslate"><span class="pre">:bolditalic:</span></code></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>该指令已通过CSS自定义，后续如果需要实现不同的效果，可自行查阅CSS设置并添加。</p>
+</div>
+</section>
+<section id="id30">
+<h3><a class="toc-backref" href="#id110" role="doc-backlink">指令标记</a><a class="headerlink" href="#id30" title="Link to this heading"></a></h3>
+<p>还有一些指令可以实现不同的行内标记效果。</p>
+<p class="centered">
+<strong>创建居中加粗文本行</strong></p><p>居中加粗指令 <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">centered::</span></code></p>
+<p class="rubric">文档标题</p>
+<p>文档标题指令 <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">rubric::</span></code></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">rubric::</span></code> 指令用来创建文档标题，但是该标题不出现在文档的目录结构，常用作<a class="reference internal" href="#id81"><span class="std std-ref">脚注</span></a>说明。</p>
+</div>
+</section>
+</section>
+<section id="id31">
+<h2><a class="toc-backref" href="#id111" role="doc-backlink">列表</a><a class="headerlink" href="#id31" title="Link to this heading"></a></h2>
+<section id="id32">
+<h3><a class="toc-backref" href="#id112" role="doc-backlink">有序列表</a><a class="headerlink" href="#id32" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>这是一个有序列表</p></li>
+<li><p>这是父列表</p>
+<ol class="arabic simple">
+<li><p>一级嵌套</p></li>
+<li><p>列表子项</p>
+<ol class="arabic simple">
+<li><p>二级嵌套</p></li>
+<li><p>列表子项</p></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>父列表继续</p></li>
+</ol>
+</section>
+<section id="id33">
+<h3><a class="toc-backref" href="#id113" role="doc-backlink">无序列表</a><a class="headerlink" href="#id33" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>这是一个无序列表</p></li>
+<li><p>这是父列表</p>
+<ul>
+<li><p>一级嵌套</p></li>
+<li><p>列表子项</p>
+<ul>
+<li><p>二级嵌套</p></li>
+<li><p>列表子项</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>父列表继续</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>列表使用<span class="menuselection">数字.</span>/<span class="menuselection">* - +</span>后续跟一个<span class="menuselection">空格</span>表示，也可以使用符号<span class="menuselection">#.</span>自动加序号。</p></li>
+<li><p>列表可以嵌套，但是需跟父列表使用<a href="#id34"><span class="problematic" id="id35">:red-text:`空行`</span></a>分隔，同时注意保持<a href="#id36"><span class="problematic" id="id37">:red-text:`缩进`</span></a>。</p></li>
+<li><p><span class="menuselection">空行</span>：先检查一级嵌套与父列表存在空行，为两个段落。</p></li>
+<li><p><span class="menuselection">缩进</span>：再检查有无缩进，此处一级嵌套编号与父列表文本对齐没有缩进，在网页上整个列表呈现为一个整体，多级列表之间没有间隔。</p></li>
+</ul>
+</div>
+<section id="id38">
+<h4>常见问题<a class="headerlink" href="#id38" title="Link to this heading"></a></h4>
+<p>在列表的呈现上，会遇到一些常见的问题，几乎都与空行和缩进有关，在此作说明。</p>
+<section id="id39">
+<h5>问题一<a class="headerlink" href="#id39" title="Link to this heading"></a></h5>
+<ul>
+<li><p>这是一个</p></li>
+<li><p>父列表
+* 一级嵌套
+* 列表子项</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>二级嵌套</p></li>
+<li><p>列表子项</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p><span class="menuselection">空行</span>：先检查一级嵌套与父列表没有空行，是连续的段落。</p></li>
+<li><p><span class="menuselection">缩进</span>：再检查有无缩进，此处一级嵌套编号与父列表文本没有缩进，对齐的段落被解析成连续的文本,<span class="menuselection">*</span>标记紧跟父列表文本，编号定义没有生效，所以在网页上直接显示符号。</p></li>
+<li><p>二级嵌套编号与父列表存在缩进，被解析为父列表的一级嵌套。</p></li>
+</ul>
+</div>
+</section>
+<section id="id40">
+<h5>问题二<a class="headerlink" href="#id40" title="Link to this heading"></a></h5>
+<ul class="simple">
+<li><p>这是一个</p></li>
+<li><dl class="simple">
+<dt>父列表</dt><dd><ul>
+<li><p>一级嵌套</p></li>
+<li><dl class="simple">
+<dt>列表子项</dt><dd><ul>
+<li><p>二级嵌套</p></li>
+<li><p>列表子项</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p><span class="menuselection">空行</span>：先检查一级嵌套与父列表没有空行，是连续的段落。</p></li>
+<li><p><span class="menuselection">缩进</span>：再检查有无缩进，此处一级嵌套编号与父列表文本存在缩进，缩进的段落被解析为上文的引文而单独一行（编号前面没有字符，定义生效），所以在网页上一级嵌套生效并被解读为父列表的引文，同理，二级嵌套被解析为列表子项的引文。</p></li>
+</ul>
+</div>
+</section>
+<section id="id41">
+<h5>问题三<a class="headerlink" href="#id41" title="Link to this heading"></a></h5>
+<ul>
+<li><p>这是一个</p></li>
+<li><p>父列表</p>
+<blockquote>
+<div><ul>
+<li><p>一级嵌套</p></li>
+<li><p>列表子项</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>二级嵌套</p></li>
+<li><p>列表子项</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p><span class="menuselection">空行</span>：先检查一级嵌套与父列表存在空行，为两个段落。</p></li>
+<li><p><span class="menuselection">缩进</span>：再检查有无缩进，此处一级嵌套编号与父列表文本存在缩进，所以在网页上嵌套列表与父列表呈现两个段落，中间有间隔。</p></li>
+</ul>
+</div>
+</section>
+</section>
+</section>
+<section id="id42">
+<h3><a class="toc-backref" href="#id114" role="doc-backlink">定义列表</a><a class="headerlink" href="#id42" title="Link to this heading"></a></h3>
+<p>定义列表可以用于名词解释。</p>
+<dl class="simple">
+<dt>功能</dt><dd><p>这是一个功能描述。</p>
+</dd>
+<dt>注意事项</dt><dd><p>这是注意事项描述。</p>
+</dd>
+</dl>
+</section>
+<section id="id43">
+<h3><a class="toc-backref" href="#id115" role="doc-backlink">字段列表</a><a class="headerlink" href="#id43" title="Link to this heading"></a></h3>
+<p>字段列表可以用于函数说明。</p>
+<dl class="field-list simple">
+<dt class="field-odd">Function Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ADC_DeInit</p>
+</dd>
+<dt class="field-even">Function Prototype<span class="colon">:</span></dt>
+<dd class="field-even"><p>void ADC_DeInit(void)</p>
+</dd>
+<dt class="field-odd">Function Description<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Function Description</p>
+</dd>
+<dt class="field-even">Input Parameter<span class="colon">:</span></dt>
+<dd class="field-even"><p>ADCx: Base Address of ADCx pointing to the ADC module selected</p>
+</dd>
+<dt class="field-odd">Output Parameter<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+<dt class="field-even">Return Value<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Prerequisite<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+<dt class="field-even">Functions Called<span class="colon">:</span></dt>
+<dd class="field-even"><p>RCC_PeriphClockCmd Function</p>
+</dd>
+</dl>
+</section>
+<section id="id44">
+<h3><a class="toc-backref" href="#id116" role="doc-backlink">参数列表</a><a class="headerlink" href="#id44" title="Link to this heading"></a></h3>
+<p>参数列表可以用于参数说明。</p>
+<dl class="option-list">
+<dt><kbd><span class="option">-V</span></kbd></dt>
+<dd><p>简单参数</p>
+</dd>
+<dt><kbd><span class="option">-h</span>, <span class="option">--help</span></kbd></dt>
+<dd><p>以逗号分隔的参数</p>
+</dd>
+<dt><kbd><span class="option">-c <var>docname</var></span></kbd></dt>
+<dd><p>带空格的参数</p>
+</dd>
+<dt><kbd><span class="option">--file=<var>flag</var></span></kbd></dt>
+<dd><p>带等号的参数</p>
+</dd>
+<dt><kbd><span class="option">--an-longer-arg</span></kbd></dt>
+<dd><p>有点长的参数</p>
+</dd>
+<dt><kbd><span class="option">--an-arg-that-is-very-long</span></kbd></dt>
+<dd><p>过长的参数的说明文字，可以从第二行开始，注意对齐</p>
+</dd>
+<dt><kbd><span class="option">/S</span></kbd></dt>
+<dd><p>斜线开头的参数</p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="id45">
+<h2><a class="toc-backref" href="#id117" role="doc-backlink">表格</a><a class="headerlink" href="#id45" title="Link to this heading"></a></h2>
+<section id="id46">
+<h3><a class="toc-backref" href="#id118" role="doc-backlink">网格表格</a><a class="headerlink" href="#id46" title="Link to this heading"></a></h3>
+<p>网格表格使用画图的方式绘制表格，做以下说明。</p>
+<ul class="simple">
+<li><p>网格表中使用的符号如下：</p>
+<ul>
+<li><p>用 <span class="menuselection">-</span> 来分隔行。</p></li>
+<li><p>用 <span class="menuselection">=</span> 来分隔表头和表体行。</p></li>
+<li><p>用 <span class="menuselection">|</span> 来分隔列。</p></li>
+<li><p>用 <span class="menuselection">+</span> 来表示行和列相交的节点。</p></li>
+</ul>
+</li>
+<li><p>单元格内部支持段落、强调、链接等语法。</p></li>
+<li><p>表格的引用通过<code class="docutils literal notranslate"><span class="pre">:ref:</span></code>指令实现，这是<a class="reference internal" href="#id47"><span class="std std-ref">标准网格表</span></a>，也可以<a class="reference internal" href="#id47"><span class="std std-ref">自定义表格名称</span></a> 。</p></li>
+</ul>
+<dl class="simple">
+<dt>参数释义</dt><dd><dl class="field-list simple">
+<dt class="field-odd">table<span class="colon">:</span></dt>
+<dd class="field-odd"><p>表格标题</p>
+</dd>
+<dt class="field-even">widths<span class="colon">:</span></dt>
+<dd class="field-even"><p>表格相对宽度</p>
+</dd>
+<dt class="field-odd">align<span class="colon">:</span></dt>
+<dd class="field-odd"><p>表格对齐方式（非单元格内容对齐方式）</p>
+</dd>
+<dt class="field-even">name<span class="colon">:</span></dt>
+<dd class="field-even"><p>表格标签，用于表格跳转，格式：表格-表格标题</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<table class="docutils align-center" id="id47">
+<caption><span class="caption-text">标准网格表</span><a class="headerlink" href="#id47" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Heading</p></th>
+<th class="head"><p>Heading</p></th>
+<th class="head"><p>Heading</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>Contents</em></p></td>
+<td><p>Contents</p></td>
+<td><p><strong>Contents</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p><em>Contents</em></p></td>
+<td><p>Contents</p></td>
+<td><p>Contents (<a class="reference external" href="http://example.com">http://example.com</a>)</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-center" id="id48">
+<caption><span class="caption-text">合并单元格</span><a class="headerlink" href="#id48" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Heading</p></th>
+<th class="head"><p>Heading</p></th>
+<th class="head"><p>Heading</p></th>
+</tr>
+<tr class="row-even"><th class="head"><p>Heading</p></th>
+<th class="head" colspan="2"><p>Heading</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td><p>Contents</p></td>
+<td><p>Contents</p></td>
+<td><p>Contents</p></td>
+</tr>
+<tr class="row-even"><td><p>Contents</p></td>
+<td colspan="2"><p>Cells may span columns.</p>
+<p>Cells may span columns.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Contents</p></td>
+<td rowspan="2"><p>Cells may
+span
+columns.</p></td>
+<td rowspan="2"><ul class="simple">
+<li><p>Contents</p></li>
+<li><p>Contents</p></li>
+<li><p>Contents</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>Contents</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>网格表的绘制必须保持每个单元格长度（主要是字符）一致，否则无法解析。</p></li>
+<li><p>rst中涉及到单元格合并的表格建议使用网格表绘制。</p></li>
+<li><p>当前文档表格单元格内容均设置左对齐，目前暂时无法对某一列单独做调整，需要自定义CSS功能。</p></li>
+</ul>
+</div>
+<section id="asciitable">
+<h4>AsciiTable工具<a class="headerlink" href="#asciitable" title="Link to this heading"></a></h4>
+<p>由于中英文字符的不同，中文表格的绘制比较复杂，可以使用表格生成工具<a class="reference external" href="https://www.tablesgenerator.com/text_tables">AsciiTable</a>，直接将表格转换成rst能识别的语法。</p>
+<p>以下是<a class="reference internal" href="#id50"><span class="std std-ref">AsciiTable工具说明</span></a>以及<a class="reference internal" href="#id51"><span class="std std-ref">AsciiTable转换示例</span></a>。</p>
+<figure class="align-center" id="id50">
+<img alt="figures/AsciiTable.*" src="figures/AsciiTable.*" />
+<figcaption>
+<p><span class="caption-text">AsciiTable工具说明</span><a class="headerlink" href="#id50" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<table class="docutils align-center" id="id51">
+<caption><span class="caption-text">AsciiTable转换示例</span><a class="headerlink" href="#id51" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>标题1</p></th>
+<th class="head"><p>标题2</p></th>
+<th class="head"><p>标题3</p></th>
+<th class="head"><p>标题4</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>内容</p></td>
+<td colspan="2"><p>内容</p></td>
+<td><p>内容</p></td>
+</tr>
+<tr class="row-odd"><td><p>内容</p></td>
+<td><p>内容</p></td>
+<td rowspan="2"><p>内容</p></td>
+<td rowspan="2"><p>内容</p></td>
+</tr>
+<tr class="row-even"><td><p>内容</p></td>
+<td><p>内容</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="csv">
+<h3><a class="toc-backref" href="#id119" role="doc-backlink">CSV表格</a><a class="headerlink" href="#csv" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>参数释义</dt><dd><dl class="field-list simple">
+<dt class="field-odd">csv-table<span class="colon">:</span></dt>
+<dd class="field-odd"><p>表格标题</p>
+</dd>
+<dt class="field-even">header<span class="colon">:</span></dt>
+<dd class="field-even"><p>表格标题行</p>
+</dd>
+<dt class="field-odd">stub-columns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>指定首列做标题</p>
+</dd>
+<dt class="field-even">widths<span class="colon">:</span></dt>
+<dd class="field-even"><p>表格相对宽度</p>
+</dd>
+<dt class="field-odd">align<span class="colon">:</span></dt>
+<dd class="field-odd"><p>表格对齐方式</p>
+</dd>
+<dt class="field-even">name<span class="colon">:</span></dt>
+<dd class="field-even"><p>表格标签</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<table class="docutils align-center" id="id52">
+<caption><span class="caption-text">CSV表格举例</span><a class="headerlink" href="#id52" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 11.1%" />
+<col style="width: 44.4%" />
+<col style="width: 44.4%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>标题1</p></th>
+<th class="head"><p>标题2</p></th>
+<th class="head"><p>标题3</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>说明1</p></th>
+<td><p>Xxx</p></td>
+<td><p>Xxx</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>说明2</p></th>
+<td><p>Xxx</p></td>
+<td><p>Xxx</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>说明3</p></th>
+<td><p>Xxx</p></td>
+<td><p>Xxx</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>说明4</p></th>
+<td><p>Hello, world!</p></td>
+<td><p>“Hello, world!”</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>标题行和数据行用英文逗号 <code class="docutils literal notranslate"><span class="pre">,</span></code> 进行分格，若单元格内容本身包含逗号，可用引号包含，如上示例 <code class="docutils literal notranslate"><span class="pre">&quot;Hello,</span> <span class="pre">world!&quot;</span></code></p></li>
+<li><p>如果数据中本身包含引号，那么需要使用<a href="#id53"><span class="problematic" id="id54">:red-text:`两个`</span></a>连续的引引号来表示一个，如上示例 <code class="docutils literal notranslate"><span class="pre">&quot;&quot;&quot;Hello,</span> <span class="pre">world!&quot;&quot;&quot;</span></code></p></li>
+<li><p>CSV表格也可以添加 <code class="docutils literal notranslate"><span class="pre">:file:</span></code> 参数引 <code class="docutils literal notranslate"><span class="pre">.csv</span></code> 文件直接插入表格。</p></li>
+</ul>
+</div>
+</section>
+<section id="listtable">
+<h3><a class="toc-backref" href="#id120" role="doc-backlink">Listtable表格</a><a class="headerlink" href="#listtable" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>参数释义</dt><dd><dl class="field-list simple">
+<dt class="field-odd">list-table<span class="colon">:</span></dt>
+<dd class="field-odd"><p>表标题</p>
+</dd>
+<dt class="field-even">header-rows<span class="colon">:</span></dt>
+<dd class="field-even"><p>标题行数量（这边设置2级标题）</p>
+</dd>
+<dt class="field-odd">stub-columns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>指定首列做标题</p>
+</dd>
+<dt class="field-even">widths<span class="colon">:</span></dt>
+<dd class="field-even"><p>表格相对宽度</p>
+</dd>
+<dt class="field-odd">align<span class="colon">:</span></dt>
+<dd class="field-odd"><p>表格对齐方式</p>
+</dd>
+<dt class="field-even">name<span class="colon">:</span></dt>
+<dd class="field-even"><p>表格标签</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<table class="docutils align-center" id="id55">
+<caption><span class="caption-text">Listtable表格举例</span><a class="headerlink" href="#id55" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 11.1%" />
+<col style="width: 44.4%" />
+<col style="width: 44.4%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>标题1</p></th>
+<th class="head"><p>标题2</p></th>
+<th class="head"><p>标题3</p></th>
+</tr>
+<tr class="row-even"><th class="head stub"><p>次标题1</p></th>
+<th class="head"><p>次标题2</p></th>
+<th class="head"><p>次标题3</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><th class="stub"><p>Xxx</p></th>
+<td><p>Xxx</p></td>
+<td><p>Xxx</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Xxx</p></th>
+<td><p>Hello, world!</p></td>
+<td><p>“Hello, world!”</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>线性表格内容无需用引号包含。</p>
+</div>
+</section>
+<section id="id56">
+<h3><a class="toc-backref" href="#id121" role="doc-backlink">水平列表</a><a class="headerlink" href="#id56" title="Link to this heading"></a></h3>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">hlist::</span></code> 生成， <code class="docutils literal notranslate"><span class="pre">:columns:</span></code> 参数设置列数。</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><p>说明1</p></li>
+<li><p>说明2</p></li>
+</ul>
+</td><td><ul class="simple">
+<li><p>说明3</p></li>
+<li><p>说明4</p></li>
+</ul>
+</td><td><ul class="simple">
+<li><p>说明5</p></li>
+<li><p>说明6</p></li>
+</ul>
+</td><td><ul class="simple">
+<li><p>说明7</p></li>
+<li><p>说明8</p></li>
+</ul>
+</td></tr></table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>该指令通常用于创建紧凑的列表，如一节结束时放置相关主题列表或者显示一系列小项列表以便紧凑、易读。</p>
+</div>
+</section>
+</section>
+<section id="id57">
+<h2><a class="toc-backref" href="#id122" role="doc-backlink">图片</a><a class="headerlink" href="#id57" title="Link to this heading"></a></h2>
+<div class="line-block">
+<div class="line">使用 <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">figure::</span></code> 或者 <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">image::</span></code> 指令添加图片。</div>
+<div class="line">他们的主要区别在于：使用figure对图片进行更多控制和格式化选项，而image则更简单直接，以下参数选项均可选。</div>
+</div>
+<dl class="simple">
+<dt>参数释义</dt><dd><dl class="field-list simple">
+<dt class="field-odd">figure<span class="colon">:</span></dt>
+<dd class="field-odd"><p>图片路径，支持使用 <code class="docutils literal notranslate"><span class="pre">.*</span></code> 扩展名自动选择文件： <code class="docutils literal notranslate"><span class="pre">.pgn</span></code> <code class="docutils literal notranslate"><span class="pre">.jpg</span></code> <code class="docutils literal notranslate"><span class="pre">.pdf</span></code></p>
+</dd>
+<dt class="field-even">height<span class="colon">:</span></dt>
+<dd class="field-even"><p>设置图片的高度，可以为具体像素px或者百分比</p>
+</dd>
+<dt class="field-odd">width<span class="colon">:</span></dt>
+<dd class="field-odd"><p>设置图片的宽度，可以为具体像素px或者百分比</p>
+</dd>
+<dt class="field-even">scale<span class="colon">:</span></dt>
+<dd class="field-even"><p>设置图片缩放比例，可以为数值或者百分比</p>
+</dd>
+<dt class="field-odd">align<span class="colon">:</span></dt>
+<dd class="field-odd"><p>图片对齐方式：center/left/right</p>
+</dd>
+<dt class="field-even">alt<span class="colon">:</span></dt>
+<dd class="field-even"><p>图片加载失败时的替代文本</p>
+</dd>
+<dt class="field-odd">name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>图片标签，用于图片跳转，注意与图片标题做区分，使用figure指令，图片标题在下方添加</p>
+</dd>
+<dt class="field-even">target<span class="colon">:</span></dt>
+<dd class="field-even"><p>点击图片时跳转的链接，可以是绝对地址、相对地址，或者rst的超链接。</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>图片的引用通过 <code class="docutils literal notranslate"><span class="pre">:ref:</span></code> 指令实现， 这是<a class="reference internal" href="#id59"><span class="std std-ref">绿灯</span></a>，也可以<a class="reference internal" href="#id59"><span class="std std-ref">自定义图片名称</span></a> 。</p>
+<figure class="align-center" id="id58">
+<a class="reference internal image-reference" href="figures/red.*"><img alt="这里应该是红灯图片" src="figures/red.*" /></a>
+<figcaption>
+<p><span class="caption-text">在这里添加图片标题</span><a class="headerlink" href="#id58" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id59">
+<a class="reference internal image-reference" href="figures/green.*"><img alt="figures/green.*" src="figures/green.*" /></a>
+<figcaption>
+<p><span class="caption-text">绿灯</span><a class="headerlink" href="#id59" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<img alt="figures/yellow.*" src="figures/yellow.*" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>image指令无法添加图片标题，其余参数和figure一致。</p></li>
+<li><p>每份文档的图片均在对应文档的 <code class="file docutils literal notranslate"><span class="pre">../figures</span></code> 文件夹下，Visio原图保存在 <code class="file docutils literal notranslate"><span class="pre">../vsd</span></code> 文件夹下，中英文文档共用一份。</p></li>
+</ul>
+</div>
+</section>
+<section id="id60">
+<h2><a class="toc-backref" href="#id123" role="doc-backlink">词汇表</a><a class="headerlink" href="#id60" title="Link to this heading"></a></h2>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">glossary::</span></code> 指令生成词汇表，请参阅 <span class="xref std std-doc">Glossary</span> 以了解所有专业术语。</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>.. glossary::
+   :sorted:
+
+   BLE
+      Bluetooth Low Energyn
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>词汇表的引用： <span class="xref std std-term">BLE</span></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:sorted:</span></code> 参数选项用于词汇表自动排序。</p></li>
+</ul>
+</div>
+</section>
+<section id="id61">
+<h2><a class="toc-backref" href="#id124" role="doc-backlink">代码</a><a class="headerlink" href="#id61" title="Link to this heading"></a></h2>
+<div class="line-block">
+<div class="line">使用 <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">code-block::</span></code> 指令生成代码块。</div>
+</div>
+<dl class="simple">
+<dt>参数释义</dt><dd><dl class="field-list simple">
+<dt class="field-odd">code-block<span class="colon">:</span></dt>
+<dd class="field-odd"><p>code语言</p>
+</dd>
+<dt class="field-even">emphasize-lines<span class="colon">:</span></dt>
+<dd class="field-even"><p>高亮特定行</p>
+</dd>
+<dt class="field-odd">linenos<span class="colon">:</span></dt>
+<dd class="field-odd"><p>显示行号，默认显示在左侧单独一列</p>
+</dd>
+<dt class="field-even">caption<span class="colon">:</span></dt>
+<dd class="field-even"><p>添加代码块标题</p>
+</dd>
+<dt class="field-odd">name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>代码引用标签</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="literal-block-wrapper docutils container" id="id62">
+<div class="code-block-caption"><span class="caption-text">高亮代码块示例</span><a class="headerlink" href="#id62" title="Link to this code"></a></div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="cm">/* This is a sample code */</span>
+<span class="linenos">2</span><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="hll"><span class="linenos">3</span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+</span><span class="linenos">4</span><span class="p">{</span>
+<span class="hll"><span class="linenos">5</span><span class="w">   </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="s">&quot;aaaa&quot;</span><span class="p">);</span>
+</span><span class="linenos">6</span><span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="linenos">7</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>文本代码块示例中所有参数选项都不是必须的。</p></li>
+<li><p>代码块的引用需name，caption搭配，使用 <code class="docutils literal notranslate"><span class="pre">:name:</span></code> 为代码块添加引用标签，使用 <code class="docutils literal notranslate"><span class="pre">:caption:</span></code> 添加代码块标题，同时在引用时显示链接为 <a class="reference internal" href="#id62"><span class="std std-ref">高亮代码块示例</span></a></p></li>
+</ul>
+</div>
+</section>
+<section id="id63">
+<span id="id64"></span><h2><a class="toc-backref" href="#id125" role="doc-backlink">内联标记</a><a class="headerlink" href="#id63" title="Link to this heading"></a></h2>
+<section id="id65">
+<h3><a class="toc-backref" href="#id126" role="doc-backlink">角色</a><a class="headerlink" href="#id65" title="Link to this heading"></a></h3>
+<div class="line-block">
+<div class="line">“角色”（role）是内联标记的一种形式，用来定义特殊的文本格式或者链接，以下是一些<a class="reference internal" href="#id66"><span class="std std-ref">常用角色</span></a>。</div>
+<div class="line">角色的语法为 <code class="docutils literal notranslate"><span class="pre">:role:`content`</span></code></div>
+</div>
+<table class="docutils align-center" id="id66">
+<caption><span class="caption-text">常用角色</span><a class="headerlink" href="#id66" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 11.1%" />
+<col style="width: 44.4%" />
+<col style="width: 44.4%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>角色</p></th>
+<th class="head"><p>说明</p></th>
+<th class="head"><p>效果</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">:math:</span></code></p></td>
+<td><p>用于数学表达式</p></td>
+<td><p><span class="math notranslate nohighlight">\((a + b)^2 = a^2 + 2ab + b^2\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">:file:</span></code></p></td>
+<td><p>用于标识文件</p></td>
+<td><p><code class="file docutils literal notranslate"><span class="pre">../../cn/conf.py</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">:doc:</span></code></p></td>
+<td><p>用于文件跳转</p></td>
+<td><p><span class="xref std std-doc">Glossary</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">:term:</span></code></p></td>
+<td><p>用于链接术语表</p></td>
+<td><p><span class="xref std std-term">ADC</span></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">:guilabel:</span></code></p></td>
+<td><p>用于标识图形界面元素</p></td>
+<td><p><span class="guilabel">OK</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">:menuselection:</span></code></p></td>
+<td><p>用于标识菜单条目</p></td>
+<td><p><span class="menuselection">File ‣ New ‣ Project</span></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">:kbd:</span></code></p></td>
+<td><p>用于键盘输入指令</p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">C</kbd></kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">:sup:</span></code></p></td>
+<td><p>用于上标</p></td>
+<td><p>Bluetooth<sup>®</sup></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">:sub:</span></code></p></td>
+<td><p>用于下标</p></td>
+<td><p>H<sub>2</sub>O</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">:mod:</span></code></p></td>
+<td><p>用于引用模块</p></td>
+<td><p><code class="xref py py-mod docutils literal notranslate"><span class="pre">numpy</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">:func:</span></code></p></td>
+<td><p>用于引用函数</p></td>
+<td><p><code class="xref py py-func docutils literal notranslate"><span class="pre">my_function()</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">:class:</span></code></p></td>
+<td><p>用于引用类</p></td>
+<td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id67">
+<h3><a class="toc-backref" href="#id127" role="doc-backlink">交叉引用</a><a class="headerlink" href="#id67" title="Link to this heading"></a></h3>
+<div class="line-block">
+<div class="line">rst中广泛的交叉引用可以通过 <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">_标签:</span></code> 与 <code class="docutils literal notranslate"><span class="pre">:ref:</span></code> 的配合实现。</div>
+<div class="line">使用 <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">_标签:</span></code> 在目标地址处添加标签，使用 <code class="docutils literal notranslate"><span class="pre">:ref:`标签`</span></code> 在需要引用时添加跳转。</div>
+</div>
+<p>这是 <a class="reference internal" href="#id63"><span class="std std-ref">内联标记</span></a>，也可以 <a class="reference internal" href="#id63"><span class="std std-ref">自定义名称</span></a>。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>整份在线文档中的标签名必须要唯一，否则可能会引发错误或者警告，可以采用 <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">_文档名-标签:</span></code> 以作区分。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:ref:</span></code> 适用于广泛的跳转，rst中为一些特定的跳转提供了更为简单的指令。</p>
+<ul>
+<li><p>rst文档之间的跳转，可以使用文档指令 <code class="docutils literal notranslate"><span class="pre">:Doc:`文档名/路径`</span></code> 直接跳转。</p></li>
+<li><p>图片、表格、代码等跳转，可以在 <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">table::</span></code> <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">figure::</span></code> <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">code-block::</span></code> 指令处添加 <code class="docutils literal notranslate"><span class="pre">:name:</span></code> 选项参数说明，即可直接使用 <code class="docutils literal notranslate"><span class="pre">:ref:</span></code> 跳转。</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="id68">
+<h3><a class="toc-backref" href="#id128" role="doc-backlink">文本引用</a><a class="headerlink" href="#id68" title="Link to this heading"></a></h3>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">include::</span></code> 指令引用内容，以下是测试文本。</p>
+<ol class="arabic simple">
+<li><p>这是第1行</p></li>
+<li><p><strong>这是第2行</strong></p></li>
+<li><p>这是第3行</p></li>
+<li><p>这是第4行</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">include::</span></code> 指令直接引用文件的<a href="#id69"><span class="problematic" id="id70">:red-text:`内容`</span></a>，而非指向该文件的链接。</p></li>
+<li><p>该指令会对内容共进行解析，如果导入文件中包含rst的语法，都会被正确的解析和渲染。</p></li>
+<li><p>用于避免重复内容，维护大型文档，团队协作等情况非常有帮助。</p></li>
+</ul>
+</div>
+<section id="id71">
+<h4>行数引用<a class="headerlink" href="#id71" title="Link to this heading"></a></h4>
+<dl class="simple">
+<dt>参数释义</dt><dd><dl class="field-list simple">
+<dt class="field-odd">include<span class="colon">:</span></dt>
+<dd class="field-odd"><p>引用文件，可以是当前文件，也可以添加文件路径，必须注明文件类型</p>
+</dd>
+<dt class="field-even">start-line<span class="colon">:</span></dt>
+<dd class="field-even"><p>行引用开始，不包含当前行内容</p>
+</dd>
+<dt class="field-odd">end-line<span class="colon">:</span></dt>
+<dd class="field-odd"><p>行引用结束，包含当前行内容</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>以下是行引用的内容：</p>
+<ol class="arabic simple" start="2">
+<li><p><strong>这是第2行</strong></p></li>
+<li><p>这是第3行</p></li>
+<li><p>这是第4行</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>行数引用有一定的使用限制，会由于内容的修改引起行数变化，需要及时更新行数。</p>
+</div>
+</section>
+<section id="id72">
+<h4>节点引用<a class="headerlink" href="#id72" title="Link to this heading"></a></h4>
+<dl class="simple">
+<dt>参数释义</dt><dd><dl class="field-list simple">
+<dt class="field-odd">include<span class="colon">:</span></dt>
+<dd class="field-odd"><p>引用文件，可以是当前文件，也可以添加文件路径，必须注明文件类型</p>
+</dd>
+<dt class="field-even">start-after<span class="colon">:</span></dt>
+<dd class="field-even"><p>行引用开始，添加开始标签</p>
+</dd>
+<dt class="field-odd">end-before<span class="colon">:</span></dt>
+<dd class="field-odd"><p>行引用结束，添加结束标签</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>以下是节点引用的内容：（引用index中的免责声明）</p>
+<ol class="arabic simple">
+<li><p>这是第1行</p></li>
+<li><p><strong>这是第2行</strong></p></li>
+<li><p>这是第3行</p></li>
+<li><p>这是第4行</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">:start-after:</span></code> 和 <code class="docutils literal notranslate"><span class="pre">:end-before:</span></code> 后的标签名唯一。</p></li>
+<li><p>使用语法 <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">标签</span></code> 在引用处添加。</p></li>
+</ul>
+</div>
+</section>
+<section id="id73">
+<h4>块引用<a class="headerlink" href="#id73" title="Link to this heading"></a></h4>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">literalinclude::</span></code> 指令，把导入的文件内容当作“字面量”来对待，对导入的所有文本显示在文字块中，不进行再次解析。适用于引用源代码或者其它不希望被处理的文本。</p>
+<dl class="simple">
+<dt>参数释义</dt><dd><dl class="field-list simple">
+<dt class="field-odd">literalinclude<span class="colon">:</span></dt>
+<dd class="field-odd"><p>引用文件，可以是当前文件，也可以添加文件路径，必须注明文件类型</p>
+</dd>
+<dt class="field-even">linenos<span class="colon">:</span></dt>
+<dd class="field-even"><p>对代码编号</p>
+</dd>
+<dt class="field-odd">lines<span class="colon">:</span></dt>
+<dd class="field-odd"><p>引用第1行，第6行往后</p>
+</dd>
+<dt class="field-even">diff<span class="colon">:</span></dt>
+<dd class="field-even"><p>比较两份文档不同</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>引用一份文件：</p>
+<p>对比两份文件：</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>可以以文本的形式直接导入内容。</p></li>
+<li><p>也可以选择高亮以及提取哪些行。</p></li>
+</ul>
+</div>
+</section>
+</section>
+<section id="id74">
+<h3><a class="toc-backref" href="#id129" role="doc-backlink">内联替换</a><a class="headerlink" href="#id74" title="Link to this heading"></a></h3>
+<section id="id75">
+<h4>文字替换<a class="headerlink" href="#id75" title="Link to this heading"></a></h4>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">|text|</span></code> 产生替换，并统一使用 <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">|text|</span> <span class="pre">replace::</span></code> 声明替换内容。</p>
+<p>这是一个替换文本，在需要使用的时候可以多处引用。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>在文档中涉及到频繁重复的长文本或者插入常用的内容，可以使用替换标记。</p></li>
+<li><p>替换声明在文档中不显示。</p></li>
+<li><p>rst中有一个默认的替换字段 <code class="docutils literal notranslate"><span class="pre">|release|</span></code>，对应于 <code class="file docutils literal notranslate"><span class="pre">beeSDK/doc/conf_common.py</span></code> 配置文件中的 <code class="docutils literal notranslate"><span class="pre">release</span></code> 变量，可直接使用。如本文档版本号为： </p></li>
+</ul>
+</div>
+</section>
+<section id="id76">
+<h4>图像替换<a class="headerlink" href="#id76" title="Link to this heading"></a></h4>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">|text|</span></code> 产生替换，并统一使用 <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">|text|</span> <span class="pre">image::</span> <span class="pre">图片路径</span></code> 声明替换图片。</p>
+<p><a class="reference internal" href="figures/red.*"><img alt="red" src="figures/red.*" /></a> 红灯停， <a class="reference internal" href="figures/green.*"><img alt="green" src="figures/green.*" /></a> 绿灯行。</p>
+<p><img alt="yellow" src="figures/yellow.*" /> 这个黄灯的图片是文字替换过来的。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>图像的替换与文字替换指令相同，适用于在文本中需要添加图片或者操作按钮图标的情况。</p></li>
+<li><p>可以添加 <code class="docutils literal notranslate"><span class="pre">:scale:</span></code> 参数改变图像大小。</p></li>
+</ul>
+</div>
+</section>
+</section>
+</section>
+<section id="id77">
+<h2><a class="toc-backref" href="#id130" role="doc-backlink">指令</a><a class="headerlink" href="#id77" title="Link to this heading"></a></h2>
+<div class="line-block">
+<div class="line">“指令”是rst中一种定义块级元素的方式，比如上述的表格、图片等都是采用指令生成，rst通过不同的指令可以丰富文档的展示效果。</div>
+<div class="line">指令的语法格式为 <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">directive::</span></code></div>
+</div>
+<section id="id78">
+<h3><a class="toc-backref" href="#id131" role="doc-backlink">强调</a><a class="headerlink" href="#id78" title="Link to this heading"></a></h3>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">强调::</span></code> 指令生成各种强调窗口。</p>
+<div class="admonition-admonition admonition">
+<p class="admonition-title">使用admonition可以自定义标题</p>
+<ul class="simple">
+<li><p>自定义标题是 <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">admonition::</span></code> 指令与其他强调语法的不同之处，其余格式均相同</p></li>
+<li><p>较短内容可以直接在指令后填写，需要和指令保持一个空格</p></li>
+<li><p>较长的文字可以在区块上继续说明，需要保持相同缩进，不可以顶格</p></li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>这是note指令，显示为蓝色</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>这是seealso指令，显示为蓝色</p>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>这是attention指令，显示为橙色</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>这是warning指令，显示为橙色</p>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>这是caution指令，显示为橙色</p>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>这是danger指令，显示为红色</p>
+</div>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>这是error指令，显示为红色</p>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>这是hint指令，显示为绿色</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>这是important指令，显示为绿色</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>这是tip指令，显示为绿色</p>
+</div>
+</section>
+<section id="id79">
+<h3><a class="toc-backref" href="#id132" role="doc-backlink">选项卡</a><a class="headerlink" href="#id79" title="Link to this heading"></a></h3>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">tabs::</span></code> 指令定义选项卡，子卡页面使用 <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">tab::</span></code> 指令生成。</p>
+<hr class="docutils" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>选项卡组件对于展示不同版本的代码，或者展示同一内容的不同语言版本等方面非常有用。</p></li>
+<li><p>可以在选项卡指令后添加<a class="reference internal" href="#id18"><span class="std std-ref">分隔线</span></a>，方便与正文做区分。</p></li>
+</ul>
+</div>
+</section>
+<section id="id80">
+<h3><a class="toc-backref" href="#id133" role="doc-backlink">折叠</a><a class="headerlink" href="#id80" title="Link to this heading"></a></h3>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">toggle::</span></code> 指令生成折叠，用于创建一个可折叠和展开的段落或者章节。。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>这个功能在需要提供额外信息，但又希望初始显示时保持页面简洁的情况下非常有用。</p>
+</div>
+</section>
+<section id="id81">
+<span id="id82"></span><h3><a class="toc-backref" href="#id134" role="doc-backlink">脚注</a><a class="headerlink" href="#id81" title="Link to this heading"></a></h3>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">[#name]_</span></code> 产生脚注，并使用 <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">[#name]</span></code> 声明脚注信息。</p>
+<p>脚注在文中会以编号的形式输出 <a class="footnote-reference brackets" href="#id85" id="id83" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>，且格式上位于上标位置 <a class="footnote-reference brackets" href="#id86" id="id84" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>。点击文中脚注的链接可以跳转到脚注说明处，通常使用 <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">rubric::</span></code> 指令置于文档或者段落末尾，之后可以点击该脚注的链接重新跳回之前文中的阅读位置。</p>
+<p class="rubric">脚注申明</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id85" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id83">1</a><span class="fn-bracket">]</span></span>
+<p>第一条脚注说明</p>
+</aside>
+<aside class="footnote brackets" id="id86" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id84">2</a><span class="fn-bracket">]</span></span>
+<p>第二条脚注说明</p>
+</aside>
+</aside>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">#</span></code> 添加在脚注名称之前可以自动编号，避免序号混乱。</p></li>
+<li><p>脚注名称不会显示，用作本地区分，HTML上仅显示标号。</p></li>
+<li><p>脚注的定义不能放在引用之前，否则定义将无法找到。</p></li>
+</ul>
+</div>
+</section>
+<section id="id87">
+<h3><a class="toc-backref" href="#id135" role="doc-backlink">参考</a><a class="headerlink" href="#id87" title="Link to this heading"></a></h3>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">[name]_</span></code> 来引用参考资料，与脚注的用法及其类似，除了除了它在文中输出的是正文格式的文本而不是上标格式的编号。如： <a class="reference internal" href="#cit2002" id="id88"><span>[cit2002]</span></a></p>
+<div role="list" class="citation-list">
+<div class="citation" id="cit2002" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id88">cit2002</a><span class="fn-bracket">]</span></span>
+<p>添加参考资料信息</p>
+</div>
+</div>
+<div class="admonition- admonition">
+<p class="admonition-title">脚注和参考的语法相同，在显示上有以下差别</p>
+<ul class="simple">
+<li><p>HTML：脚注会显示成数字上标，参考则显示与文本一致。</p></li>
+<li><p>PDF：脚注会在页脚作注释，而参考文档信息在整篇PDF最后生成一页<a class="reference internal" href="#bibliography"><span class="std std-ref">BIBLIOGRAPHY</span></a>，放置所有资料。</p></li>
+</ul>
+</div>
+<figure class="align-center" id="bibliography">
+<img alt="figures/BIBLIOGRAPHY.*" src="figures/BIBLIOGRAPHY.*" />
+<figcaption>
+<p><span class="caption-text">BIBLIOGRAPHY</span><a class="headerlink" href="#bibliography" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id89">
+<h3><a class="toc-backref" href="#id136" role="doc-backlink">下载</a><a class="headerlink" href="#id89" title="Link to this heading"></a></h3>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">:download:</span></code> 进行下载，该指令只对HTML输出有效。</p>
+<p>图片下载：<code class="xref download docutils literal notranslate"><span class="pre">熊猫</span></code></p>
+<p>文件下载：<code class="xref download docutils literal notranslate"><span class="pre">SDK</span> <span class="pre">Doc</span> <span class="pre">Maintain</span> <span class="pre">Structure</span></code></p>
+<p>程序下载：<code class="xref download docutils literal notranslate"><span class="pre">example.py</span></code></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>对于 <code class="docutils literal notranslate"><span class="pre">.png</span></code> <code class="docutils literal notranslate"><span class="pre">.jpg</span></code> 格式的图片，浏览器默认会直接打开图片。</p></li>
+<li><p>对于无法直接打开的文件类型，如 <code class="docutils literal notranslate"><span class="pre">.py</span></code> <code class="docutils literal notranslate"><span class="pre">.pdf</span></code> <code class="docutils literal notranslate"><span class="pre">.doc</span></code>，浏览器会弹出窗口选择下载开始通过某种方式打开。</p></li>
+</ul>
+</div>
+</section>
+<section id="id90">
+<h3><a class="toc-backref" href="#id137" role="doc-backlink">超链接</a><a class="headerlink" href="#id90" title="Link to this heading"></a></h3>
+<section id="id91">
+<h4>行内超链接<a class="headerlink" href="#id91" title="Link to this heading"></a></h4>
+<div class="line-block">
+<div class="line">使用 <code class="docutils literal notranslate"><span class="pre">`显示名称</span> <span class="pre">&lt;链接地址&gt;`_</span></code> 生成行内超链接，点击可以直接跳转。</div>
+<div class="line"><a class="reference external" href="https://www.realmcu.com/zh/Home">RealMCU</a> 直接在行内显示。</div>
+</div>
+</section>
+<section id="id92">
+<h4>多处超链接<a class="headerlink" href="#id92" title="Link to this heading"></a></h4>
+<div class="line-block">
+<div class="line">如果在文中需要多次使用超链接，避免每次定义，也可以使用以下方式。</div>
+<div class="line">使用 <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">_显示名称:</span> <span class="pre">链接地址</span></code> 声明超链接（一般在文末统一定义），并在需要使用时直接用 <code class="docutils literal notranslate"><span class="pre">显示名称_</span></code> 即可多次引用。</div>
+</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://www.baidu.com">百度</a></div>
+<div class="line"><a class="reference external" href="https://www.realmcu.com/zh/Home">RealMCU</a></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">_显示名称:</span> <span class="pre">链接地址</span></code> 这些链接声明不会在文档中显示。</p>
+</div>
+</section>
+</section>
+<section id="id95">
+<h3><a class="toc-backref" href="#id138" role="doc-backlink">序列图</a><a class="headerlink" href="#id95" title="Link to this heading"></a></h3>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="power_save.html" class="btn btn-neutral float-left" title="Power Saving" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, claire_wang.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Configuration &mdash; AmebaDocs  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Power Saving" href="power_save.html" />
+    <link rel="prev" title="Boot Process" href="boot_process.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            AmebaDocs
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="gcc_build_environment.html">Build Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sdk_example.html">SDK Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mpu_cache.html">MPU</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mpu_cache.html#cache">Cache</a></li>
+<li class="toctree-l1"><a class="reference internal" href="flash_memory_layout.html">Flash Layout</a></li>
+<li class="toctree-l1"><a class="reference internal" href="flash_memory_layout.html#memory-layout">Memory Layout</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file_system.html">Virtual File System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ota.html">OTA Firmware Update</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mp_image.html">MP Image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="boot_process.html">Boot Process</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">User Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#soc-clock-switch">SoC Clock Switch</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#flow">Flow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#flash-clock-switch">Flash Clock Switch</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="power_save.html">Power Saving</a></li>
+<li class="toctree-l1"><a class="reference internal" href="template_rst_syntax.html">RST语法</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AmebaDocs</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">&lt;no title&gt;</a></li>
+      <li class="breadcrumb-item active">User Configuration</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/application_note/user_config.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="user-configuration">
+<span id="id1"></span><h1>User Configuration<a class="headerlink" href="#user-configuration" title="Link to this heading"></a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
+<p>The KM4 in <a href="#id2"><span class="problematic" id="id3">|CHIP_NAME|</span></a> device boots at 200MHz at the BootRom Stage, and switches to a higher frequency during the BootLoader Stage. There are some limits when changing SoC clock:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Clock</p></th>
+<th class="head"><p>Cut</p></th>
+<th class="head"><p>Frequency</p></th>
+<th class="head"><p>Core voltage</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>PLL</p></td>
+<td></td>
+<td><p>300MHz ~ 600MHz</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>KM0</p></td>
+<td><p>A-Cut</p></td>
+<td><p>≤115MHz</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>KM4</p></td>
+<td><p>A-Cut</p></td>
+<td><p>≤260MHz</p></td>
+<td><p>0.9V</p></td>
+</tr>
+<tr class="row-odd"><td><p>KM4</p></td>
+<td><p>A-Cut</p></td>
+<td><p>≤345MHz</p></td>
+<td><p>1.0V</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The maximum operating speed of Flash with Wide Range VCC 1.65V~3.6V should use the speed limit of 1.65V~2.3V power supply.</p>
+</div>
+</section>
+<section id="soc-clock-switch">
+<h2>SoC Clock Switch<a class="headerlink" href="#soc-clock-switch" title="Link to this heading"></a></h2>
+<section id="flow">
+<h3>Flow<a class="headerlink" href="#flow" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>(Optional) Find out the speed limit of PSRAM device embedded in <a href="#id4"><span class="problematic" id="id5">|CHIP_NAME|</span></a> if not sure.</p>
+<ol class="loweralpha simple">
+<li><p>Print the value of ChipInfo_BDNum() function, which will get the chip info from OTP.</p></li>
+<li><p>Refer to PSRAM type in Chip_Info[] in <code class="docutils literal notranslate"><span class="pre">{SDK}\component\soc\amebadplus\lib\ram_common\ameba_chipinfo_lib.c</span></code>.</p></li>
+</ol>
+</li>
+</ol>
+<p>For Now, This step can be skipped because wb955 is only used.</p>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+2. Check the value of Boot_SocClk_Info_Idx and SocClk_Info[] in <code class="docutils literal notranslate"><span class="pre">{SDK}\component\soc\amebadplus\usrcfg\ameba_</span></code> <code class="docutils literal notranslate"><span class="pre">bootcfg.c</span></code>.
+=======
+2. Check the value of Boot_SocClk_Info_Idx and SocClk_Info[] in <code class="docutils literal notranslate"><span class="pre">{SDK}\component\soc\amebadplus\usrcfg\ameba_</span> <span class="pre">bootcfg.c</span></code>.
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; 0e8663f (update files)</p>
+<a class="reference internal image-reference" href="../_images/418472eafdc889c9bfa2a32acb00e811f3748ec1.png"><img alt="../_images/418472eafdc889c9bfa2a32acb00e811f3748ec1.png" class="align-center" src="../_images/418472eafdc889c9bfa2a32acb00e811f3748ec1.png" style="width: 1046px;" /></a>
+<ol class="arabic simple" start="3">
+<li><p>Check the BOOT_ChipInfo_ClkInfoIdx() function in <code class="docutils literal notranslate"><span class="pre">{SDK}\component\soc\amebadplus\bootloader\bootloader_km4.c</span></code>.</p></li>
+</ol>
+<a class="reference internal image-reference" href="../_images/5b5354622e7be590f629af9c1c610ea6f8fc4d5e.png"><img alt="../_images/5b5354622e7be590f629af9c1c610ea6f8fc4d5e.png" class="align-center" src="../_images/5b5354622e7be590f629af9c1c610ea6f8fc4d5e.png" style="width: 869px;" /></a>
+<p>No Limitation by PSRAM Divice , so BootLoader will set the SoC clock defined by SocClk_Info[Boot_SocClk_Info_Idx ].</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>PSRAM type</p></th>
+<th class="head"><p>PSRAM speed</p></th>
+<th class="head"><p>SocClk_Info[x]</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Clock Info</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>No PSRAM</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Boot_SocClk_Info_Idx = 0;</p></td>
+<td><p>BootLoader will set the Soc clock according to SocClk_Info[0]</p></td>
+<td><p>PLL: 520MHz</p>
+<p>KM4: 260MHz</p>
+<p>KM0: 86.6MHz</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>WB955</p></td>
+<td><p>&lt;=200M</p></td>
+<td><p>Boot_SocClk_Info_Idx = 1;</p></td>
+<td><p>BootLoader will set the Soc clock according to SocClk_Info[1]</p></td>
+<td><p>PLL: 330MHz</p>
+<p>KM4: PLL/1</p>
+<p>KM0: PLL/4</p>
+<p>PSRASM: PLL/1/2</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ol class="arabic simple" start="4">
+<li><p>Refer to one of the following methods to change the SoC clock if needed.</p></li>
+</ol>
+<dl class="simple">
+<dt>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</dt><dd><ul class="simple">
+<li><p>Modify SocClk_Info[0] in`` {SDK}componentsocamebadplususrcfgameba_bootcfg.c``, refer to 1.2.2 step (2) for details.</p></li>
+</ul>
+</dd>
+</dl>
+<blockquote>
+<div><ul class="simple">
+<li><p>Modify Boot_SocClk_Info_Idx to [0, sizeof(SocClk_Info)), and then define your own clock info in SocClk_Info [<a href="#id8"><span class="problematic" id="id9">Boot_SocClk_</span></a> Info_Idx].</p></li>
+</ul>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Consider the limitations of the hardware and do not set the clock info illogically.</p>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>Rebuild the project and download the new image again.</p></li>
+</ol>
+</section>
+<section id="example">
+<h3>Example<a class="headerlink" href="#example" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Refer to 1.2.1 step (1) to find out the speed limit of PSRAM device if not sure (suppose the maximum speed is 200MHz).</p></li>
+<li><p>Change KM4_CKD of SocClk_Info[0] to CLKDIV(3) if KM4 is wanted to run at 520MHz/3.</p></li>
+</ol>
+<a class="reference internal image-reference" href="../_images/e927169908a31ff5b16b5f6533e407a864aceabf.png"><img alt="../_images/e927169908a31ff5b16b5f6533e407a864aceabf.png" class="align-center" src="../_images/e927169908a31ff5b16b5f6533e407a864aceabf.png" style="width: 1060px;" /></a>
+<ol class="arabic simple" start="3">
+<li><p>Rebuild the project and download the new image.</p></li>
+</ol>
+<p>Now, the clock of KM4 is 173.3MHz, KM0 is 86.6MHz, PSRAM controller is 260MHz (twice the PSRAM), and core power is 0.9V. The clocks of left modules in <a href="#id6"><span class="problematic" id="id7">|CHIP_NAME|</span></a> will be set to a reasonable value by software automatically based on their maximum speeds.</p>
+</section>
+</section>
+<section id="flash-clock-switch">
+<h2>Flash Clock Switch<a class="headerlink" href="#flash-clock-switch" title="Link to this heading"></a></h2>
+<p>Flash runs half as fast as the SPI Flash controller. By default, the speed of the SPI Flash controller is divided by the PLL, and the speed of the SPI Flash controller shall be less than SPIC_CLK_LIMIT (208MHz). If the Flash needs to run slower, change the value of Flash_Speed (SPIC0) or Data_Flash_Speed (SPIC1) in <code class="docutils literal notranslate"><span class="pre">{SDK}\component\soc\amebadplus\usrcfg\ameba_flashcfg.c.</span></code></p>
+<a class="reference internal image-reference" href="../_images/3d0d60a1a7055593ecb53c72afea651c98c71040.png"><img alt="../_images/3d0d60a1a7055593ecb53c72afea651c98c71040.png" class="align-center" src="../_images/3d0d60a1a7055593ecb53c72afea651c98c71040.png" style="width: 647px;" /></a>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="boot_process.html" class="btn btn-neutral float-left" title="Boot Process" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="power_save.html" class="btn btn-neutral float-right" title="Power Saving" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, claire_wang.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
